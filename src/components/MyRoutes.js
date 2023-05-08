@@ -6,10 +6,10 @@ import Members from "../pages/Members";
 import Journal from "../pages/Journal";
 import Lists from "../pages/Lists";
 
-const MyRoutes = () => {
+const MyRoutes = (props) => {
   return (
     <Routes>
-      <Route exact path="/" element={<Home />} />
+      <Route exact path="/" element={<Home props={props} />} />
       <Route path="/films" element={<Films />} />
       <Route path="/lists" element={<Lists />} />
       <Route path="/members" element={<Members />} />

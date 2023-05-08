@@ -68,9 +68,9 @@ header {
   .primary-navigation[data-visible="true"] {
     transform: translateX(0%);
   }
-  .mobile-nav-toggle[aria-expanded="true"] {
-    /* background-image: url("../assets/close-icon.png"); */
-  }
+  /* .mobile-nav-toggle[aria-expanded="true"] {
+    background-image: url("../assets/close-icon.png");
+  } */
 }
 
 /* UTILITY */
