@@ -1,70 +1,55 @@
-# Getting Started with Create React App
+# Jana's Letterboxd Clone
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Project's Scope
 
-## Available Scripts
+- The scope of this project is to build **a fullstack clone of the Letterboxd Website**.
+- See the full live preview on the GitHub Pages deploy [Jana's Letterboxd Clone](https://janaiscoding.github.io/letterboxd-clone/).
 
-In the project directory, you can run:
+## Live Demo
 
-### `npm start`
+### On Browser
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+![Gif preview of the Letterboxd website cart]()
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### On Mobile
 
-### `npm test`
+![Gif preview of the Letterboxd website on mobile]()
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Getting Started
 
-### `npm run build`
+### Installing and running
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```
+git clone https://github.com/janaiscoding/letterboxd-clone.git
+cd shopping-cart
+npm install
+npm run start
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Project Details & Description
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- To be written (working on this project right now)
 
-### `npm run eject`
+# Built with
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Technologies
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- React, React Router
+- Firebase
+- CSS3
+- HTML5
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Tools Used
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- Visual Studio Code
+- npm package manager
+- Linux Terminal
+- Git and Github
 
-## Learn More
+### Future plans for this project
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- To be completed
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Copyright
 
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- This project is part of The Odin Project's curriculum [Project: JavaScript Final Project](https://www.theodinproject.com/lessons/node-path-javascript-javascript-final-project).
