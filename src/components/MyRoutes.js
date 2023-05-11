@@ -5,6 +5,8 @@ import Films from "../pages/Films";
 import Members from "../pages/Members";
 import Journal from "../pages/Journal";
 import Lists from "../pages/Lists";
+import Signup from "./Signup";
+import Login from "./Login";
 
 const MyRoutes = (props) => {
   return (
@@ -14,6 +16,8 @@ const MyRoutes = (props) => {
       <Route path="/lists" element={<Lists />} />
       <Route path="/members" element={<Members />} />
       <Route path="/journal" element={<Journal />} />
+      <Route path="/login" element={<Login />} />
+      <Route path="/signup" element={<Signup />} />
     </Routes>
   );
 };
