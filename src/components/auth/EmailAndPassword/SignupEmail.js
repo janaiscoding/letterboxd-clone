@@ -1,19 +1,17 @@
 import React, { useState } from "react";
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../firebase/firebase";
-import { NavLink, useNavigate } from "react-router-dom";
+import { auth } from "../../../firebase/firebase";
 
-const Signup = () => {
+const SignUpEmail = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const navigate = useNavigate();
+
   const onSubmit = async (e) => {
     e.preventDefault();
     await createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         const user = userCredential.user;
         console.log(user, `successfully signed up`);
-        navigate("/login");
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -25,6 +23,7 @@ const Signup = () => {
     <>
       <form className="form-sign-up">
         <div className="form-group form-group-email">
+          <legend>Create a new account</legend>
           <label htmlFor="email">Email</label>
           <input
             type="email"
@@ -50,12 +49,7 @@ const Signup = () => {
           Sign Up
         </button>
       </form>
-      <p>
-        {" "}
-        Already have an account?
-        <NavLink to="/login">Sign In</NavLink>
-      </p>
     </>
   );
 };
-export default Signup;
+export default SignUpEmail;

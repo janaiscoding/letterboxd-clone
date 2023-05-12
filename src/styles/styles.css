@@ -1,0 +1,11 @@
+.home-section {
+  background-color: var(--header-background-color);
+  min-height: 90vh;
+}
+button {
+  background-color: white;
+  color: black;
+}
+a{
+    color:white;
+}

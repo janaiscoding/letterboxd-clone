@@ -2,8 +2,11 @@ import React from "react";
 import { Link } from "react-router-dom";
 import logo from "../assets/logo-nav.png";
 import "../styles/navbar.css";
+import SignInAll from "./auth/SignInAll";
+import HandleUser from "./auth/HandleUser";
+import SearchInput from "./SearchInput";
 
-const Navbar = () => {
+const Navbar = ({ authStatus, handleUrl }) => {
   const toggleNav = () => {
     const primaryNav = document.querySelector(".primary-navigation");
     const navToggle = document.querySelector(".mobile-nav-toggle");
@@ -29,9 +32,19 @@ const Navbar = () => {
     <>
       <header className="flex">
         <div className="header-left flex">
-          <Link to="/" className="logo" style={{ backgroundImage: `url(${logo})` }}>
-          </Link>
+          <Link
+            to="/"
+            className="logo"
+            style={{ backgroundImage: `url(${logo})` }}
+          ></Link>
           {/* <img src={logo} alt="Your SVG" /> */}
+        </div>
+        <div className="auth-navigation">
+          {/* true means user is logged in, false means user needs to log in */}
+          {authStatus ? <HandleUser /> : <SignInAll />}
+        </div>
+        <div className="search-navigation">
+          <SearchInput handleUrl={handleUrl} />
         </div>
         <button
           className="mobile-nav-toggle"

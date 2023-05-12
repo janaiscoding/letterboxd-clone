@@ -1,7 +1,8 @@
 import { signOut } from "firebase/auth";
 import React from "react";
-import { auth } from "../firebase/firebase";
+import { auth } from "../../firebase/firebase";
 
+// this will work on any auth type
 const SignOut = () => {
   const onSignOut = () => {
     signOut(auth)
@@ -16,7 +17,7 @@ const SignOut = () => {
   };
   return (
     <>
-      <button onClick={onSignOut}>logout</button>
+      <button onClick={onSignOut}>Sign Out</button>
     </>
   );
 };

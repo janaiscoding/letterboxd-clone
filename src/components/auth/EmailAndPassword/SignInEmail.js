@@ -1,18 +1,17 @@
 import { signInWithEmailAndPassword } from "firebase/auth";
 import React, { useState } from "react";
-import { useNavigate, NavLink } from "react-router-dom";
-import { auth } from "../firebase/firebase";
-const Login = () => {
-  const navigate = useNavigate();
+import { auth } from "../../../firebase/firebase";
+
+const SignInEmail = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
   const onLogin = (e) => {
     e.preventDefault();
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         const user = userCredential.user;
-         navigate('/')
-        console.log(user, `successfully logged in`);
+        console.log(user, `successfully logged in with email and password`);
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -20,10 +19,12 @@ const Login = () => {
         console.log(errorCode, errorMessage);
       });
   };
+
   return (
     <>
       <form className="form-login">
         <div className="form-group form-group-email">
+          <legend>Sign in with an existing account</legend>
           <label htmlFor="email">Email</label>
           <input
             type="email"
@@ -46,14 +47,10 @@ const Login = () => {
           />
         </div>
         <button type="submit" onClick={onLogin}>
-          LOGIN
+          Log in
         </button>
       </form>
-      <p>
-        Don't have an account?
-        <NavLink to="/signup">Sign Up</NavLink>
-      </p>
     </>
   );
 };
-export default Login;
+export default SignInEmail;

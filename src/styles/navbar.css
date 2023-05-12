@@ -6,7 +6,7 @@ header {
   justify-content: space-between;
   background-color: var(--header-background-color);
   position: sticky;
-  height: 72px;
+  height: 20vh;
   padding: 0px 10px;
 }
 .header-left {
@@ -86,6 +86,11 @@ header {
   margin: 0;
 }
 .primary-navigation a {
+  color:white;
   text-decoration: none;
   font-size: 1.6rem;
+}
+.auth-navigation{
+  display: flex;
+  color:white;
 }
