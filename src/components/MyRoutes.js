@@ -9,14 +9,10 @@ import Signup from "./auth/EmailAndPassword/SignupEmail";
 import Login from "./auth/EmailAndPassword/SignInEmail";
 import Results from "../pages/Results";
 
-const MyRoutes = ({ movieData, handleUrl, results }) => {
+const MyRoutes = ({ movieData, results }) => {
   return (
     <Routes>
-      <Route
-        exact
-        path="/"
-        element={<Home movieData={movieData} handleUrl={handleUrl} />}
-      />
+      <Route exact path="/" element={<Home movieData={movieData} />} />
       <Route path="/films" element={<Films />} />
       <Route path="/lists" element={<Lists />} />
       <Route path="/members" element={<Members />} />

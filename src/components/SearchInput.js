@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-const SearchInput = ({ handleUrl }) => {
+const SearchInput = ({ handleSearchReq }) => {
   const navigate = useNavigate();
   const [query, setQuery] = useState("");
 
   const handleSearch = () => {
-    handleUrl(query);
+    handleSearchReq(query);
     navigate("/results");
   };
 

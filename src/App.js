@@ -11,19 +11,38 @@ const App = () => {
   const [authStatus, setAuthStatus] = useState(false);
   const [results, setResults] = useState([]);
   const [url, setUrl] = useState(
-    "https://api.themoviedb.org/3/movie/500?api_key=" + myTmdbApiKey
+    "https://api.themoviedb.org/3/discover/movie?api_key=" + myTmdbApiKey
   );
-  const handleUrl = (modifier) => {
-    console.log(`calling handle url with the query of`, modifier);
+  const handleSearchReq = (query) => {
+    console.log(`calling handle url with the query of`, query);
     setUrl(
       "https://api.themoviedb.org/3/search/movie?api_key=" +
         myTmdbApiKey +
         "&query=" +
-        modifier
+        query
     );
-    console.log(url);
+    fetchRequest(url, "results");
+    console.log(`ive fetched the results`, results);
   };
-
+  const fetchRequest = (url, type) => {
+    fetch(url, {
+      method: "GET",
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (type === "discover") {
+          console.log("type is discover");
+          setMovieData(data);
+        } else if (type === "results") {
+          console.log("type is results");
+          setResults(data);
+        }
+        console.log(data, `my new movie data inside my handlerFunction`);
+      })
+      .catch((err) => {
+        console.log(err.message);
+      });
+  };
   useEffect(() => {
     //auth status in my app (my listener)
     onAuthStateChanged(auth, (user) => {
@@ -36,29 +55,17 @@ const App = () => {
       }
     });
     //my initial api call
-    console.log("fetching everytime url changes?");
-    fetch(url, {
-      method: "GET",
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        setMovieData(data);
-        console.log(data, `my new movie data inside useeffect`);
-        setResults(data);
-      })
-      .catch((err) => {
-        console.log(err.message);
-      });
-  }, [url]);
+    console.log("initial api call showing popular movies");
+    fetchRequest(
+      "https://api.themoviedb.org/3/search/movie?api_key=90a83017dcd0ef93c3e5474af9093de9",
+      "discover"
+    );
+  }, []);
   return (
     <>
       <HashRouter>
-        <Navbar authStatus={authStatus} handleUrl={handleUrl} />
-        <MyRoutes
-          movieData={movieData}
-          handleUrl={handleUrl}
-          results={results}
-        />
+        <Navbar authStatus={authStatus} handleSearchReq={handleSearchReq} />
+        <MyRoutes movieData={movieData} results={results} />
       </HashRouter>
     </>
   );
