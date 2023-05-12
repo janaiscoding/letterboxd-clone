@@ -6,7 +6,7 @@ import SignInAll from "./auth/SignInAll";
 import HandleUser from "./auth/HandleUser";
 import SearchInput from "./SearchInput";
 
-const Navbar = ({ authStatus, handleSearchReq }) => {
+const Navbar = ({ query, authStatus, handleSearchReq }) => {
   const toggleNav = () => {
     const primaryNav = document.querySelector(".primary-navigation");
     const navToggle = document.querySelector(".mobile-nav-toggle");
@@ -44,7 +44,9 @@ const Navbar = ({ authStatus, handleSearchReq }) => {
           {authStatus ? <HandleUser /> : <SignInAll />}
         </div>
         <div className="search-navigation">
-          <SearchInput handleSearchReq={handleSearchReq} />
+          <SearchInput 
+          query={query}
+          handleSearchReq={handleSearchReq} />
         </div>
         <button
           className="mobile-nav-toggle"

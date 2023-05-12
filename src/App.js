@@ -7,11 +7,7 @@ import { onAuthStateChanged } from "firebase/auth";
 
 const App = () => {
   const apiKey = "90a83017dcd0ef93c3e5474af9093de9";
-
   const [authStatus, setAuthStatus] = useState(false);
-  const [url, setUrl] = useState(
-    "https://api.themoviedb.org/3/discover/movie?api_key=" + apiKey
-  );
   const [movie, setMovie] = useState([]);
   const [results, setResults] = useState([]);
   const [popular, setPopular] = useState([]);
@@ -26,6 +22,7 @@ const App = () => {
           console.log("type is discover for one individual movie");
           setMovie(data);
         } else if (type === "results") {
+          console.log(data)
           console.log("type is results");
           setResults(data);
         } else if (type === "popular") {
@@ -37,17 +34,10 @@ const App = () => {
         console.log(err.message);
       });
   };
-
   const handleSearchReq = (query) => {
-    console.log(`calling handle url with the query of`, query);
-    setUrl(
-      "https://api.themoviedb.org/3/search/movie?api_key=" +
-        apiKey +
-        "&query=" +
-        query
-    );
-    fetchRequest(url, "results");
-    console.log(`ive fetched the results`, results);
+    fetchRequest("https://api.themoviedb.org/3/search/movie?api_key=" +
+    apiKey +
+    "&query=" + query, "results");
   };
   useEffect(() => {
     //AUTH LISTENER
@@ -64,7 +54,9 @@ const App = () => {
   return (
     <>
       <HashRouter>
-        <Navbar authStatus={authStatus} handleSearchReq={handleSearchReq} />
+        <Navbar 
+        authStatus={authStatus} 
+        handleSearchReq={handleSearchReq} />
         <MyRoutes
           authStatus={authStatus}
           apiKey={apiKey}
@@ -72,6 +64,7 @@ const App = () => {
           popular={popular}
           results={results}
           fetchRequest={fetchRequest}
+          handleSearchReq={handleSearchReq} 
         />
       </HashRouter>
     </>

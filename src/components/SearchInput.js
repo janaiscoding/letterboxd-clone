@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 const SearchInput = ({ handleSearchReq }) => {
+  const [query, setQuery] = useState('')
   const navigate = useNavigate();
-  const [query, setQuery] = useState("");
 
   const handleSearch = () => {
-    handleSearchReq(query);
-    navigate("/results");
+     handleSearchReq(query)
+    navigate("/results/" + query);
   };
 
   // let allResponses = movieData.map((movie) => <div>{movie.title}</div>);

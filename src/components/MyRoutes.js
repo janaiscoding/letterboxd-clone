@@ -10,7 +10,7 @@ import Results from "../pages/Results";
 import MoviePage from "../pages/MoviePage";
 import Profile from "./auth/Profile";
 
-const MyRoutes = ({ authStatus, apiKey, movie, popular, results, fetchRequest }) => {
+const MyRoutes = ({ authStatus, apiKey, movie, popular, results, fetchRequest, handleSearchReq }) => {
   return (
     <Routes>
       <Route
@@ -25,7 +25,7 @@ const MyRoutes = ({ authStatus, apiKey, movie, popular, results, fetchRequest })
       <Route path="/lists" element={<Lists />} />
       <Route path="/members" element={<Members />} />
       <Route path="/journal" element={<Journal />} />
-      <Route path="/results" element={<Results results={results} />} />
+      <Route path="/results/:query" element={<Results results={results} handleSearchReq={handleSearchReq} />} />
       <Route
         path="/movie/:movieId"
         element={

@@ -1,9 +1,14 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Poster from "../components/Poster";
-
-const Results = ({ results }) => {
+import { useParams } from "react-router-dom";
+const Results = ({ results, handleSearchReq}) => {
+  const { query} = useParams()
+  useEffect(()=>{
+    handleSearchReq(query)
+  },[query]) 
   return (
     <div>
+      my results
       {results.length === 0
         ? "no search input"
         : results.results.map((movie) => (
