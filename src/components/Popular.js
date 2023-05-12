@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import Poster from "./Poster";
+
 const Popular = ({ popular }) => {
   const [firstSix, setFirstSix] = useState([]);
   useEffect(() => {
@@ -13,13 +15,7 @@ const Popular = ({ popular }) => {
       My popular component
       {firstSix.length === 0
         ? "no populars"
-        : firstSix.map((movie) => (
-            <div key={movie.id}>
-              <p>
-                Movie Title: {movie.title} made in {movie.release_date}
-              </p>
-            </div>
-          ))}
+        : firstSix.map((movie) => <Poster key={movie.id} movie={movie} />)}
     </>
   );
 };

@@ -8,6 +8,7 @@ import Lists from "../pages/Lists";
 import Signup from "./auth/EmailAndPassword/SignupEmail";
 import Login from "./auth/EmailAndPassword/SignInEmail";
 import Results from "../pages/Results";
+import MoviePage from "../pages/MoviePage";
 
 const MyRoutes = ({ popular, results }) => {
   return (
@@ -20,6 +21,7 @@ const MyRoutes = ({ popular, results }) => {
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<Signup />} />
       <Route path="/results" element={<Results results={results} />} />
+      <Route path="" element={<MoviePage />} />
     </Routes>
   );
 };
