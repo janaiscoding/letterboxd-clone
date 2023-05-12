@@ -66,6 +66,7 @@ const App = () => {
       <HashRouter>
         <Navbar authStatus={authStatus} handleSearchReq={handleSearchReq} />
         <MyRoutes
+          authStatus={authStatus}
           apiKey={apiKey}
           movie={movie}
           popular={popular}

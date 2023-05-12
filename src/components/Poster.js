@@ -9,9 +9,7 @@ const Poster = ({ movie }) => {
   };
   return (
     <div key={movie.id} onClick={goToMovie}>
-      <h1>
-        Movie Title: {movie.title} made in {movie.release_date}
-      </h1>
+      <h1>{movie.title}</h1>
       <img
         src={"https://image.tmdb.org/t/p/w500/" + movie.poster_path}
         alt={movie.title}

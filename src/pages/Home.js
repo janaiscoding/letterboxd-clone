@@ -11,7 +11,6 @@ const Home = ({ apiKey, popular, fetchRequest }) => {
   }, []);
   return (
     <div className="home-section">
-      This is my Home component and I am rendering all sorts of cool stuff.
       <Popular popular={popular} />
     </div>
   );

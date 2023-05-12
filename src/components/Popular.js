@@ -12,7 +12,6 @@ const Popular = ({ popular }) => {
 
   return (
     <>
-      My popular component
       {firstSix.length === 0
         ? "no populars"
         : firstSix.map((movie) => <Poster key={movie.id} movie={movie} />)}
