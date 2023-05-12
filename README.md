@@ -29,6 +29,10 @@ npm run start
 ## Project Details & Description
 
 - useParams in React Router for deplaying individual movie pages
+- Create user
+- Show Popular movies
+- Display individual page for movie
+- Create add to favourite button (using database to store data on each user)
 
 # Built with
 
@@ -46,6 +50,10 @@ npm run start
 - Git and Github
 
 ### Future plans for this project
+
+- Filter by Genres/years etc
+- Think about how to create more collections/add reviews/add rating system
+- How to view other users ? (maybe create references by username)
 
 ## Sources, Materials, Copyright
 
