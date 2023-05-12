@@ -28,6 +28,7 @@ npm run start
 
 ## Project Details & Description
 
+- useParams in React Router for deplaying individual movie pages
 
 # Built with
 
@@ -45,7 +46,6 @@ npm run start
 - Git and Github
 
 ### Future plans for this project
-
 
 ## Sources, Materials, Copyright
 

@@ -5,7 +5,7 @@ const Poster = ({ movie }) => {
   const navigate = useNavigate();
   const goToMovie = () => {
     console.log("redirecting to movie page");
-    navigate("/" + movie.id);
+    navigate("/movie/" + movie.id);
   };
   return (
     <div key={movie.id} onClick={goToMovie}>
