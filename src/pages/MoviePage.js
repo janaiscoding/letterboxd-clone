@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
-import Poster from "../components/Poster";
+import MoviePagePoster from "../components/MoviePagePoster";
 
 const MoviePage = ({ apiKey, movie, fetchRequest }) => {
   const { movieId } = useParams();
@@ -14,7 +14,7 @@ const MoviePage = ({ apiKey, movie, fetchRequest }) => {
   return (
     <>
       This is the movie page for what i have picked
-      <Poster movie={movie} />
+      <MoviePagePoster movie={movie} />
     </>
   );
 };

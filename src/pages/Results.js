@@ -1,4 +1,5 @@
 import React from "react";
+import Poster from "../components/Poster";
 
 const Results = ({ results }) => {
   return (
@@ -6,13 +7,7 @@ const Results = ({ results }) => {
       {results.length === 0
         ? "no search input"
         : results.results.map((movie) => (
-            <div key={movie.id}>
-              <p>
-                Movie Title: {movie.title} made in {movie.release_date}
-              </p>
-              <p>{movie.overview}</p>
-              <p>{movie.vote_average}</p>
-            </div>
+            <Poster key={movie.id} movie={movie} />
           ))}
     </div>
   );
