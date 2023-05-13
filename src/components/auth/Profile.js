@@ -20,7 +20,6 @@ const Profile = ({ authStatus }) => {
 
   const fetchDatabaseData = async () => {
     const userRef = collection(db, auth.currentUser.uid);
-    console.log("1. calling my fetching fav movies on my user ref", userRef);
     try {
       const query = await getDocs(userRef);
       let tempMovies = [];
