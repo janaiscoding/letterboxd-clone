@@ -10,8 +10,12 @@ const MoviePagePoster = ({ movie }) => {
   let movieWatched = false;
   let movieReviewed = false;
   let fetchedReview = "";
-
-    // WATCHLIST LOGIC
+  // GET ALL REFERENCES THAT REPEAT EACHOTHER ON TOP 
+  // GET MORE USER INFO FOR DISPLAYING THE REVIEWS
+  // WHEN I CALL DELETE REVIEW FROM USER, ALSO DELETE FROM MOVIE DB = ON DELETE REVIEW
+  // WHEN I DELETE FROM USER AND SEND AGAIN, MAKE SURE TO NOT SEND A NEW ONE ON MOVIE DB
+  
+  // WATCHED LIST LOGIC
   const onWatched= async (movie) =>{
     if (auth.currentUser === null) {
       alert("login to use this feature");
@@ -215,7 +219,6 @@ const MoviePagePoster = ({ movie }) => {
       })
     })
     //also gotta delete from db movies
-
   }
     // MOVIE FROM DATABASE LOGIC 
     // checks if this movie already exists in db
@@ -236,8 +239,8 @@ const MoviePagePoster = ({ movie }) => {
   const addNewMovieDB = async (review)=>{    
     console.log('calling add new movie to db')
     const user = auth.currentUser.displayName;
+    const userImg = auth.currentUser.photoURL;
     const movieID =  movie.id;
-    console.log(user, movieID)
     // the docs will be id'ed by movie id in case of title duplicates
     await setDoc(doc(db, 'movies/'+ movieID),{
       movieID: movieID,
@@ -245,6 +248,7 @@ const MoviePagePoster = ({ movie }) => {
         {
           review: review,
           user: user,
+          userIMG: userImg, 
         }
       ]
     })
@@ -252,24 +256,16 @@ const MoviePagePoster = ({ movie }) => {
   // add new review to movie that exists
   const addNewReviewToMovieDB = async (review) => {
     console.log('checking if im adding on top')
-    // const movieID =  movie.id;
-    // const user = auth.currentUser.displayName;
-    // const movieRef = doc(db, "movies/"+ movieID);
-    // await updateDoc(movieRef, {
-    // reviews: arrayUnion({
-    //     user: user,
-    //     review: review,
-    // })
-    // })
-
     const user = auth.currentUser.displayName;
+    const userImg = auth.currentUser.photoURL;
     const movieID =  movie.id;
     const movieRef = doc(db, "movies/"+ movieID);
-
+    
     await updateDoc(movieRef, {
     reviews: arrayUnion({
       user: user,
       review: review,
+      userIMG: userImg, 
     })
     });
   }
