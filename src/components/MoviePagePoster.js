@@ -5,27 +5,87 @@ import { collection, getDoc,doc, updateDoc, arrayRemove, arrayUnion } from "fire
 
 const MoviePagePoster = ({ movie }) => {
   let movieFavourited = false;
+  let movieWatched = false;
+
+    // WATCHLIST LOGIC
+  const onWatched= async (movie) =>{
+    if (auth.currentUser === null) {
+      alert("login to use this feature");
+    } 
+    else {
+      await checkMovieWatchedDB(movie).then( async ()=>{
+        if(movieWatched){
+          await removeFromWatchedDB(movie)
+          console.log('removed from db watchlists')
+        }
+        else if (!movieWatched){
+        await addToWatchedDB(movie)
+        console.log('added to watchlist')
+      }
+      //i can replace with a ternary operator?
+      })
+    }
+  };
+    //returns true or false based on the checked movie
+    const checkMovieWatchedDB = async (movie) =>{
+      const userId = auth.currentUser.displayName;
+      const userRef = await getDoc(doc(collection(db, "users"),userId))
+      const userFavs = userRef.data().watched;
+      userFavs.forEach((watchedMovie)=>{
+        if(watchedMovie.movieID === movie.id){
+          movieWatched = true; 
+        }
+        else {
+          movieWatched = false;
+        }
+        return movieWatched;
+        })
+    } 
+  
+    const addToWatchedDB = async (movie) => {
+      const userId = auth.currentUser.displayName;
+      const userRef = doc(db, "users", userId);
+  
+      await updateDoc(userRef, {
+      watched: arrayUnion({
+        movieID: movie.id,
+        isWatched: true,
+      })
+      });
+    }
+    const removeFromWatchedDB = async (movie) => {
+      const userId = auth.currentUser.displayName;
+      const userRef = doc(db, "users", userId);
+      await updateDoc(userRef, {
+        watched: arrayRemove({
+          movieID: movie.id,
+          isWatched: true,
+        })
+      })
+    }
+
+
+  // FAVOURITE LOGIC
   const onFavourite = async (movie) => {
     if (auth.currentUser === null) {
       alert("login to use this feature");
     } else {
-      await checkMovie(movie).then( async ()=>{
-        console.log('i know if the checkmovie returns true or false now')
+      await checkMovieFavsDB(movie).then( async ()=>{
         if(movieFavourited){
-          console.log('if movieFavourited is true i deleteFromFavs(movie)')
+          await removeFromFavsDB(movie)
+          console.log('removed from db')
         }
         else if (!movieFavourited){
-        await AddToFavsDB(movie)
+        await addToFavsDB(movie)
         console.log('added to db')
       }
-      //i can replace with a ternary operator
+      //i can replace with a ternary operator?
       })
-      // no need to check if user exists, already doing this on login
-      // now checking db if movie is alrdy fav
     }
   };
+
   //returns true or false based on the checked movie
-  const checkMovie = async (movie) =>{
+  const checkMovieFavsDB = async (movie) =>{
     const userId = auth.currentUser.displayName;
     const userRef = await getDoc(doc(collection(db, "users"),userId))
     const userFavs = userRef.data().favourites;
@@ -40,18 +100,26 @@ const MoviePagePoster = ({ movie }) => {
       })
   } 
 
-  const AddToFavsDB = async (movie) => {
-    console.log('calling add to favs db function', movie)
+  const addToFavsDB = async (movie) => {
     const userId = auth.currentUser.displayName;
+    const userRef = doc(db, "users", userId);
 
-    const userFavRef = doc(db, "users", userId);
-    await updateDoc(userFavRef, {
+    await updateDoc(userRef, {
     favourites: arrayUnion({
       movieID: movie.id,
       isFav: true,
     })
     });
-
+  }
+  const removeFromFavsDB = async (movie) => {
+    const userId = auth.currentUser.displayName;
+    const userRef = doc(db, "users", userId);
+    await updateDoc(userRef, {
+      favourites: arrayRemove({
+        movieID: movie.id,
+        isFav: true,
+      })
+    })
   }
   return (
     <div key={movie.id}>
@@ -62,6 +130,7 @@ const MoviePagePoster = ({ movie }) => {
         width={200}
       />
       <button onClick={() => onFavourite(movie)}>Favourite</button>
+      <button onClick={() => onWatched(movie)}> Viewed</button>
     </div>
   );
 };
