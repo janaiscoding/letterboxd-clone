@@ -1,32 +1,58 @@
 import React from "react";
 import { auth } from "../firebase/firebase";
 import { db } from "../firebase/firebase";
-import { collection, getDocs } from "firebase/firestore";
+import { collection, getDoc,doc, updateDoc, arrayRemove, arrayUnion } from "firebase/firestore";
 
 const MoviePagePoster = ({ movie }) => {
-
-  const onFavourite = async () => {
-    // const userRef = collection(db, "users");
+  let movieFavourited = false;
+  const onFavourite = async (movie) => {
     if (auth.currentUser === null) {
       alert("login to use this feature");
     } else {
-      console.log('my user is logged in, now checking his existing collection')
-      const usersRef = collection(db, "users", auth.currentUser.displayName, "favourites");
-      //checking my existing docs
-      const query = await getDocs(usersRef);
-      query.forEach((doc) =>{
-          console.log(doc.data())
+      await checkMovie(movie).then( async ()=>{
+        console.log('i know if the checkmovie returns true or false now')
+        if(movieFavourited){
+          console.log('if movieFavourited is true i deleteFromFavs(movie)')
+        }
+        else if (!movieFavourited){
+        await AddToFavsDB(movie)
+        console.log('added to db')
+      }
+      //i can replace with a ternary operator
       })
-    //  if(canFavourite){
-    //   console.log('waiting for checking to finish, havent found the movie in my sets, so i can fav = ', canFavourite)
-    //     await addDoc(userRef, {
-    //    movie: movie,
-    //    isFavourite: true,
-    //     });
-    //     }
+      // no need to check if user exists, already doing this on login
+      // now checking db if movie is alrdy fav
     }
-    console.log("called til the end");
   };
+  //returns true or false based on the checked movie
+  const checkMovie = async (movie) =>{
+    const userId = auth.currentUser.displayName;
+    const userRef = await getDoc(doc(collection(db, "users"),userId))
+    const userFavs = userRef.data().favourites;
+    userFavs.forEach((favMovie)=>{
+      if(favMovie.movieID === movie.id){
+        movieFavourited = true; 
+      }
+      else {
+        movieFavourited = false;
+      }
+      return movieFavourited;
+      })
+  } 
+
+  const AddToFavsDB = async (movie) => {
+    console.log('calling add to favs db function', movie)
+    const userId = auth.currentUser.displayName;
+
+    const userFavRef = doc(db, "users", userId);
+    await updateDoc(userFavRef, {
+    favourites: arrayUnion({
+      movieID: movie.id,
+      isFav: true,
+    })
+    });
+
+  }
   return (
     <div key={movie.id}>
       <h1>{movie.title}</h1>
@@ -35,7 +61,7 @@ const MoviePagePoster = ({ movie }) => {
         alt={movie.title}
         width={200}
       />
-      <button onClick={onFavourite}>Favourite</button>
+      <button onClick={() => onFavourite(movie)}>Favourite</button>
     </div>
   );
 };
