@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import MyRoutes from "./components/MyRoutes";
-import Navbar from "./components/Navbar";
+import Navbar from "./components/UI_components/Navbar";
 import { HashRouter } from "react-router-dom";
 import { auth } from "./firebase/firebase";
-import { onAuthStateChanged, signInWithEmailAndPassword } from "firebase/auth";
+import { onAuthStateChanged } from "firebase/auth";
 
 const App = () => {
   const apiKey = "90a83017dcd0ef93c3e5474af9093de9";

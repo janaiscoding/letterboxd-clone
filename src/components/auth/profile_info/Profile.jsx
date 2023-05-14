@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import { auth } from "../../../firebase/firebase";
 import { db } from "../../../firebase/firebase";
 import { collection, getDocs } from "firebase/firestore";
-import Poster from "../../Poster";
+import Poster from "../../UI_components/Poster";
 import defaultProfileImg from "../../../assets/diary-icon.png";
 
 const Profile = ({ authStatus }) => {

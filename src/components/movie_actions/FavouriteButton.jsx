@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useEffect, useState } from "react";
 import { auth, db } from "../../firebase/firebase";
 import {
   doc,
@@ -53,7 +54,9 @@ const FavouriteButton = ({ movie }) => {
       setFavourite(false);
     });
   };
-
+  useEffect(() => {
+    checkMovieFavsDB(movie);
+  }, []);
   return (
     <>
       <button onClick={() => onFavourite(movie)}>

@@ -1,10 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import logo from "../assets/logo-nav.png";
-import "../styles/navbar.css";
-import SignInAll from "./auth/auth_methods/SignInAll";
-import HandleUser from "./auth/profile_info/HandleUser";
-import SearchInput from "./SearchInput";
+import logo from "../../assets/logo-nav.png";
+import "../../styles/navbar.css";
+import SignInAll from "../auth/auth_methods/SignInAll";
+import HandleUser from "../auth/profile_info/HandleUser";
+import SearchInput from "../api_actions/SearchInput";
 
 const Navbar = ({ query, authStatus, handleSearchReq }) => {
   const toggleNav = () => {

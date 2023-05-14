@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect } from "react";
-import Poster from "../components/Poster";
+import Poster from "../components/UI_components/Poster";
 import { useParams } from "react-router-dom";
 const Results = ({ results, handleSearchReq}) => {
   const { query} = useParams()

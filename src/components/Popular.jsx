@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Poster from "./Poster";
+import Poster from "./UI_components/Poster";
 
 const Popular = ({ popular }) => {
   const [firstSix, setFirstSix] = useState([]);

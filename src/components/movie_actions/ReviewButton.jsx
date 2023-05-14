@@ -24,7 +24,7 @@ const ReviewButton = ({ movie }) => {
   };
   const checkMovieReviewedDB = async (movie) => {
     const userId = auth.currentUser.uid;
-    const userDoc= await getDoc(doc(db, "users", userId));
+    const userDoc = await getDoc(doc(db, "users", userId));
     const userRevs = userDoc.data().reviews;
     setReviewed(userRevs.some((RM) => RM.movieID === movie.id));
   };
@@ -55,8 +55,9 @@ const ReviewButton = ({ movie }) => {
     const movieRef = doc(db, "movies/" + movie.id);
     await updateDoc(movieRef, {
       reviews: arrayUnion({
-        userImg: user.photoURL,
-        userName: user.displayName,
+        movieID: movie.id,
+        userName: user.displayName || "Test",
+        userURL: user.photoURL || "img url",
         review: review,
       }),
     })
@@ -73,9 +74,10 @@ const ReviewButton = ({ movie }) => {
     await setDoc(doc(db, "movies/" + movie.id), {
       reviews: [
         {
+          movieID: movie.id,
           review: review,
-          userName: user.displayName,
-          userURL: user.photoURL,
+          userName: user.displayName || "Test",
+          userURL: user.photoURL || "img url",
         },
       ],
     });

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { auth, db } from "../../firebase/firebase";
 import {
   doc,
@@ -56,9 +56,14 @@ const WatchedButton = ({ movie }) => {
       setWatched(false);
     });
   };
+  useEffect(() => {
+    checkMovieWatchedDB(movie);
+  }, []);
   return (
     <>
-      <button onClick={() => onWatched(movie)}>Add to watched movies</button>
+      <button onClick={() => onWatched(movie)}>
+        {isWatched ? "Un-watch" : "watched"}
+      </button>
     </>
   );
 };
