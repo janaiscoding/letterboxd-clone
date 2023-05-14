@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from "react";
 import { auth, db } from "../../firebase/firebase";
 import {
@@ -57,7 +58,9 @@ const WatchedButton = ({ movie }) => {
     });
   };
   useEffect(() => {
-    checkMovieWatchedDB(movie);
+    if (auth.currentUser != null) {
+      checkMovieWatchedDB(movie);
+    }
   }, []);
   return (
     <>

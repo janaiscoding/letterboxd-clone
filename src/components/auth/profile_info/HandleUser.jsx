@@ -13,7 +13,7 @@ const HandleUser = () => {
     return auth.currentUser.photoURL || defaultProfileImg;
   };
   const getUserName = () => {
-    return auth.currentUser.displayName || "Test";
+    return auth.currentUser.displayName || "Testing Account";
   };
 
   useEffect(() => {

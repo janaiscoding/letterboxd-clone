@@ -3,7 +3,7 @@ import { db } from "../../firebase/firebase";
 import React, { useEffect, useState } from "react";
 import ReviewItem from "../UI_components/ReviewItem";
 
-const Reviews = ({ movie }) => {
+const Reviews = ({ movie, review, onReview }) => {
   const [reviews, setReviews] = useState([]);
 
   const getReviews = async () => {
@@ -20,16 +20,26 @@ const Reviews = ({ movie }) => {
       setReviews([]);
     }
   };
+  const handleReviewEvent = async (movie, review) => {
+    await onReview(movie, review).then(() => {
+      getReviews();
+    });
+
+    console.log(reviews);
+  };
 
   useEffect(() => {
     getReviews();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [movie]);
+    console.log("checking");
+  }, [setReviews]);
 
   return (
     <>
       my review wrapper
-      <button onClick={getReviews}>Refresh reviews</button>
+      <button onClick={() => handleReviewEvent(movie, review)}>
+        Send Review
+      </button>
       {reviews.length > 0
         ? reviews.map((review, index) => (
             <ReviewItem key={index} review={review} />

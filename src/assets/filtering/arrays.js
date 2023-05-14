@@ -5,7 +5,7 @@ const arrays = [
   },
   {
     type: "ratings",
-    array: ["highest first", "lowest first"],
+    array: ["Highest First", "Lowest First"],
   },
   {
     type: "popularity",
@@ -13,7 +13,27 @@ const arrays = [
   },
   {
     type: "genres",
-    array: ["action", "adventure"],
+    array: [
+      "Action",
+      "Adventure",
+      "Animation",
+      "Comedy",
+      "Crime",
+      "Documentary",
+      "Drama",
+      "Family",
+      "Fantasy",
+      "History",
+      "Horror",
+      "Music",
+      "Mystery",
+      "Romance",
+      "Science Fiction",
+      "TV Movie",
+      "Thriller",
+      "War",
+      "Western",
+    ],
   },
 ];
 export default arrays;

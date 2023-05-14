@@ -5,6 +5,13 @@
 - Create a fullstack app with React and Firebase
 - See the full live preview on the Firebase deploy [Clonnerboxd]().
 
+## TO DO 
+- USER PAGE: Display all info from db 
+- FILTERS
+- FIND/CREATE A GOOD IMAGE FOR PLACEHOLDER IMAGE
+- ALLOW TESTER ACCOUNTS TO POST MORE REVIEWS
+- THE ORDER OF THE REVIEWS 
+
 ## Live Demo
 
 ### On Browser

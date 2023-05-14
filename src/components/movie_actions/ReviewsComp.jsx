@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { auth, db } from "../../firebase/firebase";
 import { doc, setDoc, getDoc, updateDoc, arrayUnion } from "firebase/firestore";
+import Reviews from "./Reviews";
 
-const ReviewButton = ({ movie }) => {
+const ReviewsComp = ({ movie }) => {
   const [review, setReview] = useState("");
   const [isReviewed, setReviewed] = useState(false);
 
@@ -39,7 +40,9 @@ const ReviewButton = ({ movie }) => {
         review: review,
       }),
     }).then(() => {
-      setReviewed(true);
+      auth.currentUser.uid === "omVEdBhoCJQr2imTBjMF8Plmiyi2"
+        ? setReviewed(false)
+        : setReviewed(true);
     });
   };
 
@@ -56,7 +59,7 @@ const ReviewButton = ({ movie }) => {
     await updateDoc(movieRef, {
       reviews: arrayUnion({
         movieID: movie.id,
-        userName: user.displayName || "Test",
+        userName: user.displayName || "Testing Account",
         userURL: user.photoURL || "img url",
         review: review,
       }),
@@ -89,9 +92,9 @@ const ReviewButton = ({ movie }) => {
         value={review}
         onChange={(e) => setReview(e.target.value)}
       />
-      <button onClick={() => onReview(movie, review)}>Send Review</button>
+      <Reviews movie={movie} review={review} onReview={onReview} />
     </>
   );
 };
 
-export default ReviewButton;
+export default ReviewsComp;

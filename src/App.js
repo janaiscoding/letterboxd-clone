@@ -60,7 +60,7 @@ const App = () => {
   return (
     <>
       <HashRouter>
-        <Navbar authStatus={authStatus} handleSearchReq={handleSearchReq}/>
+        <Navbar authStatus={authStatus} handleSearchReq={handleSearchReq} />
         <MyRoutes
           authStatus={authStatus}
           apiKey={apiKey}

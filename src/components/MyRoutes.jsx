@@ -1,7 +1,7 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 import Home from "../pages/Home";
-import Films from "../pages/Films";
+import Films from "../pages/Films_Handlers/Films";
 import Members from "../pages/Members";
 import Journal from "../pages/Journal";
 import Lists from "../pages/Lists";
@@ -9,6 +9,7 @@ import Lists from "../pages/Lists";
 import Results from "../pages/Results";
 import MoviePage from "../pages/MoviePage";
 import Profile from "./auth/profile_info/Profile";
+import FilterPage from "../pages/Films_Handlers/FilterPage";
 
 const MyRoutes = ({
   authStatus,
@@ -17,7 +18,7 @@ const MyRoutes = ({
   popular,
   results,
   fetchRequest,
-  handleSearchReq
+  handleSearchReq,
 }) => {
   return (
     <Routes>
@@ -25,11 +26,7 @@ const MyRoutes = ({
         exact
         path="/"
         element={
-          <Home
-            apiKey={apiKey}
-            fetchRequest={fetchRequest}
-            popular={popular}
-          />
+          <Home apiKey={apiKey} fetchRequest={fetchRequest} popular={popular} />
         }
       />
       <Route path="/profile" element={<Profile authStatus={authStatus} />} />
@@ -52,6 +49,10 @@ const MyRoutes = ({
             fetchRequest={fetchRequest}
           />
         }
+      />
+      <Route
+        path="/films/:query"
+        element={<FilterPage apiKey={apiKey} fetchRequest={fetchRequest} />}
       />
     </Routes>
   );

@@ -55,7 +55,9 @@ const FavouriteButton = ({ movie }) => {
     });
   };
   useEffect(() => {
-    checkMovieFavsDB(movie);
+    if (auth.currentUser != null) {
+      checkMovieFavsDB(movie);
+    }
   }, []);
   return (
     <>
