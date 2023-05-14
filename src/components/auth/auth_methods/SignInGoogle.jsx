@@ -1,5 +1,5 @@
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
-import { auth, db } from "../../firebase/firebase";
+import { auth, db } from "../../../firebase/firebase";
 import React, { useState } from "react";
 import { doc, getDoc, setDoc } from "firebase/firestore";
 

@@ -1,6 +1,6 @@
 import { signOut } from "firebase/auth";
 import React from "react";
-import { auth } from "../../firebase/firebase";
+import { auth } from "../../../firebase/firebase";
 import { useNavigate } from "react-router-dom";
 
 // this will work on any auth type

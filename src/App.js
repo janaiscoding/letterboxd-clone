@@ -43,9 +43,7 @@ const App = () => {
       "results"
     );
   };
-  const onTestAccount = () => {
-    signInWithEmailAndPassword(auth, "testwithemail@mail.com", "mypassword");
-  };
+
   useEffect(() => {
     //AUTH LISTENER
     onAuthStateChanged(auth, (user) => {
@@ -62,7 +60,7 @@ const App = () => {
   return (
     <>
       <HashRouter>
-        <Navbar authStatus={authStatus} handleSearchReq={handleSearchReq} onTestAccount={onTestAccount} />
+        <Navbar authStatus={authStatus} handleSearchReq={handleSearchReq}/>
         <MyRoutes
           authStatus={authStatus}
           apiKey={apiKey}

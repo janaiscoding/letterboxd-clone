@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
-import defaultProfileImg from "../../assets/android-icon.png";
-import { auth } from "../../firebase/firebase";
-import { db } from "../../firebase/firebase";
+
+import { auth } from "../../../firebase/firebase";
+import { db } from "../../../firebase/firebase";
 import { collection, getDocs } from "firebase/firestore";
-import Poster from "../Poster";
+import Poster from "../../Poster";
+import defaultProfileImg from "../../../assets/diary-icon.png";
 
 const Profile = ({ authStatus }) => {
   const [profilePic, setProfilePic] = useState("");

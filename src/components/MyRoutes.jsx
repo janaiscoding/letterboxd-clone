@@ -8,7 +8,7 @@ import Lists from "../pages/Lists";
 
 import Results from "../pages/Results";
 import MoviePage from "../pages/MoviePage";
-import Profile from "./auth/Profile";
+import Profile from "./auth/profile_info/Profile";
 
 const MyRoutes = ({
   authStatus,

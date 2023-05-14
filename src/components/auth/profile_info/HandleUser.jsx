@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { auth } from "../../firebase/firebase";
-import SignOut from "./SignOut";
+import { auth } from "../../../firebase/firebase";
+import SignOut from "../auth_methods/SignOut";
 import { NavLink } from "react-router-dom";
-import defaultProfileImg from "../../assets/android-icon.png";
+import defaultProfileImg from "../../../assets/diary-icon.png";
 // when user is logged in, show user info + tabs + sign out button
 
 const HandleUser = () => {

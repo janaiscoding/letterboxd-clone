@@ -1,17 +1,12 @@
 import SignInGoogle from "./SignInGoogle";
 import React from "react";
+import SignInTest from "./SignInTest";
 
-const SignInAll = ({ onTestAccount }) => {
+const SignInAll = () => {
   return (
     <div className="sign-in-methods">
-      <div className="sign-in-email">
-        <p>Sign in with a test account</p>
-        <button onClick={onTestAccount}>X</button>
-      </div>
-      <div className="sign-in-google">
-        <p>Sign In with your Google Account</p>
-        <SignInGoogle />
-      </div>
+      <SignInTest />
+      <SignInGoogle />
     </div>
   );
 };

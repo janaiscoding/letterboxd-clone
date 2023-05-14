@@ -2,11 +2,11 @@ import React from "react";
 import { Link } from "react-router-dom";
 import logo from "../assets/logo-nav.png";
 import "../styles/navbar.css";
-import SignInAll from "./auth/SignInAll";
-import HandleUser from "./auth/HandleUser";
+import SignInAll from "./auth/auth_methods/SignInAll";
+import HandleUser from "./auth/profile_info/HandleUser";
 import SearchInput from "./SearchInput";
 
-const Navbar = ({ query, authStatus, handleSearchReq, onTestAccount }) => {
+const Navbar = ({ query, authStatus, handleSearchReq }) => {
   const toggleNav = () => {
     const primaryNav = document.querySelector(".primary-navigation");
     const navToggle = document.querySelector(".mobile-nav-toggle");
@@ -41,12 +41,10 @@ const Navbar = ({ query, authStatus, handleSearchReq, onTestAccount }) => {
         </div>
         <div className="auth-navigation">
           {/* true means user is logged in, false means user needs to log in */}
-          {authStatus ? <HandleUser /> : <SignInAll onTestAccount={onTestAccount} />}
+          {authStatus ? <HandleUser /> : <SignInAll />}
         </div>
         <div className="search-navigation">
-          <SearchInput 
-          query={query}
-          handleSearchReq={handleSearchReq} />
+          <SearchInput query={query} handleSearchReq={handleSearchReq} />
         </div>
         <button
           className="mobile-nav-toggle"
