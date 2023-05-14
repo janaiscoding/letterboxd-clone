@@ -17,9 +17,8 @@ const Reviews = ({ movie }) => {
       });
       setReviews(tempArray);
     } else {
-      console.log("no such data for this movie");
+      setReviews([]);
     }
-    console.log(reviews);
   };
 
   useEffect(() => {

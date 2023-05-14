@@ -8,6 +8,7 @@ import Reviews from "../components/movie_actions/Reviews";
 
 const MoviePage = ({ apiKey, movie, fetchRequest }) => {
   const { movieId } = useParams();
+
   useEffect(() => {
     fetchRequest(
       "https://api.themoviedb.org/3/movie/" + movieId + "?api_key=" + apiKey,
