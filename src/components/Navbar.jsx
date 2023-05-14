@@ -6,7 +6,7 @@ import SignInAll from "./auth/SignInAll";
 import HandleUser from "./auth/HandleUser";
 import SearchInput from "./SearchInput";
 
-const Navbar = ({ query, authStatus, handleSearchReq }) => {
+const Navbar = ({ query, authStatus, handleSearchReq, onTestAccount }) => {
   const toggleNav = () => {
     const primaryNav = document.querySelector(".primary-navigation");
     const navToggle = document.querySelector(".mobile-nav-toggle");
@@ -41,7 +41,7 @@ const Navbar = ({ query, authStatus, handleSearchReq }) => {
         </div>
         <div className="auth-navigation">
           {/* true means user is logged in, false means user needs to log in */}
-          {authStatus ? <HandleUser /> : <SignInAll />}
+          {authStatus ? <HandleUser /> : <SignInAll onTestAccount={onTestAccount} />}
         </div>
         <div className="search-navigation">
           <SearchInput 

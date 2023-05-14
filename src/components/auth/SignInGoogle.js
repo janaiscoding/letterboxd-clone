@@ -1,5 +1,5 @@
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
-import { auth, db } from "../../../firebase/firebase";
+import { auth, db } from "../../firebase/firebase";
 import React, { useState } from "react";
 import { doc, getDoc, setDoc } from "firebase/firestore";
 
@@ -35,24 +35,9 @@ const SignInGoogle = () => {
       name: auth.currentUser.displayName,
       uid: auth.currentUser.uid,
       bio: "placeholder bio",
-      reviews: [
-        {
-          movieID: 242582,
-          review: "most exciting movie ever",
-        },
-      ],
-      watched: [
-        {
-          movieID: 242582,
-          isWatched: true,
-        },
-      ],
-      favourites: [
-        {
-          movieID: 242582,
-          isFav: true,
-        },
-      ],
+      reviews: [],
+      watched: [],
+      favourites: [],
     }).catch((err) => {
       console.log(err);
     });

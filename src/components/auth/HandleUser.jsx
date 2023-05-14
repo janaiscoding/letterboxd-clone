@@ -4,15 +4,16 @@ import SignOut from "./SignOut";
 import { NavLink } from "react-router-dom";
 import defaultProfileImg from "../../assets/android-icon.png";
 // when user is logged in, show user info + tabs + sign out button
+
 const HandleUser = () => {
   const [profilePic, setProfilePic] = useState("");
-  const [userName, setUserName] = useState("Placeholder Username");
+  const [userName, setUserName] = useState("Test");
 
   const getProfilePicUrl = () => {
     return auth.currentUser.photoURL || defaultProfileImg;
   };
   const getUserName = () => {
-    return auth.currentUser.displayName || "Placeholder Username";
+    return auth.currentUser.displayName || "Test";
   };
 
   useEffect(() => {

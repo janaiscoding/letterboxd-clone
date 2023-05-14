@@ -15,7 +15,7 @@ const Profile = ({ authStatus }) => {
   };
 
   const getUserName = () => {
-    return auth.currentUser.displayName || "Placeholder Username";
+    return auth.currentUser.displayName || "Test";
   };
 
   const fetchDatabaseData = async () => {

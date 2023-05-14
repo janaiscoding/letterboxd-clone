@@ -9,6 +9,7 @@ const Home = ({ apiKey, popular, fetchRequest }) => {
     );
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
   return (
     <div className="home-section">
       <Popular popular={popular} />

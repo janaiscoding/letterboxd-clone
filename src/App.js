@@ -3,7 +3,7 @@ import MyRoutes from "./components/MyRoutes";
 import Navbar from "./components/Navbar";
 import { HashRouter } from "react-router-dom";
 import { auth } from "./firebase/firebase";
-import { onAuthStateChanged } from "firebase/auth";
+import { onAuthStateChanged, signInWithEmailAndPassword } from "firebase/auth";
 
 const App = () => {
   const apiKey = "90a83017dcd0ef93c3e5474af9093de9";
@@ -22,7 +22,7 @@ const App = () => {
           console.log("type is discover for one individual movie");
           setMovie(data);
         } else if (type === "results") {
-          console.log(data)
+          console.log(data);
           console.log("type is results");
           setResults(data);
         } else if (type === "popular") {
@@ -35,9 +35,16 @@ const App = () => {
       });
   };
   const handleSearchReq = (query) => {
-    fetchRequest("https://api.themoviedb.org/3/search/movie?api_key=" +
-    apiKey +
-    "&query=" + query, "results");
+    fetchRequest(
+      "https://api.themoviedb.org/3/search/movie?api_key=" +
+        apiKey +
+        "&query=" +
+        query,
+      "results"
+    );
+  };
+  const onTestAccount = () => {
+    signInWithEmailAndPassword(auth, "testwithemail@mail.com", "mypassword");
   };
   useEffect(() => {
     //AUTH LISTENER
@@ -51,12 +58,11 @@ const App = () => {
       }
     });
   }, []);
+
   return (
     <>
       <HashRouter>
-        <Navbar 
-        authStatus={authStatus} 
-        handleSearchReq={handleSearchReq} />
+        <Navbar authStatus={authStatus} handleSearchReq={handleSearchReq} onTestAccount={onTestAccount} />
         <MyRoutes
           authStatus={authStatus}
           apiKey={apiKey}
@@ -64,7 +70,7 @@ const App = () => {
           popular={popular}
           results={results}
           fetchRequest={fetchRequest}
-          handleSearchReq={handleSearchReq} 
+          handleSearchReq={handleSearchReq}
         />
       </HashRouter>
     </>

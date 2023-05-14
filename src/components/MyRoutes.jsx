@@ -10,22 +10,39 @@ import Results from "../pages/Results";
 import MoviePage from "../pages/MoviePage";
 import Profile from "./auth/Profile";
 
-const MyRoutes = ({ authStatus, apiKey, movie, popular, results, fetchRequest, handleSearchReq }) => {
+const MyRoutes = ({
+  authStatus,
+  apiKey,
+  movie,
+  popular,
+  results,
+  fetchRequest,
+  handleSearchReq
+}) => {
   return (
     <Routes>
       <Route
         exact
         path="/"
         element={
-          <Home apiKey={apiKey} fetchRequest={fetchRequest} popular={popular} />
+          <Home
+            apiKey={apiKey}
+            fetchRequest={fetchRequest}
+            popular={popular}
+          />
         }
       />
-      <Route path="/profile" element={<Profile authStatus={authStatus}/>} />
+      <Route path="/profile" element={<Profile authStatus={authStatus} />} />
       <Route path="/films" element={<Films />} />
       <Route path="/lists" element={<Lists />} />
       <Route path="/members" element={<Members />} />
       <Route path="/journal" element={<Journal />} />
-      <Route path="/results/:query" element={<Results results={results} handleSearchReq={handleSearchReq} />} />
+      <Route
+        path="/results/:query"
+        element={
+          <Results results={results} handleSearchReq={handleSearchReq} />
+        }
+      />
       <Route
         path="/movie/:movieId"
         element={
