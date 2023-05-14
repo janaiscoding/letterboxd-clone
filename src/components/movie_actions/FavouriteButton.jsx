@@ -23,13 +23,13 @@ const FavouriteButton = ({ movie }) => {
 
   //returns true or false based on the checked movie
   const checkMovieFavsDB = async (movie) => {
-    const userId = auth.currentUser.displayName;
-    const userDocument = await getDoc(doc(db, "users", userId));
-    const userFavourites = userDocument.data().favourites;
-    setFavourite(userFavourites.some((FM) => FM.movieID === movie.id));
+    const userId = auth.currentUser.uid;
+    const userDoc = await getDoc(doc(db, "users", userId));
+    const userFavs = userDoc.data().favourites;
+    setFavourite(userFavs.some((FM) => FM.movieID === movie.id));
   };
   const addToFavsDB = async (movie) => {
-    const userId = auth.currentUser.displayName;
+    const userId = auth.currentUser.uid;
     const userRef = doc(db, "users", userId);
 
     await updateDoc(userRef, {
@@ -38,11 +38,11 @@ const FavouriteButton = ({ movie }) => {
       }),
     }).then(() => {
       setFavourite(true);
-      console.log("movie was succesffully added to db");
+      console.log("favourite was succesffully added to db");
     });
   };
   const removeFromFavsDB = async (movie) => {
-    const userId = auth.currentUser.displayName;
+    const userId = auth.currentUser.uid;
     const userRef = doc(db, "users", userId);
     await updateDoc(userRef, {
       favourites: arrayRemove({

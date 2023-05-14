@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import MoviePagePoster from "../components/MoviePagePoster";
 import FavouriteButton from "../components/movie_actions/FavouriteButton";
 import WatchedButton from "../components/movie_actions/WatchedButton";
+import ReviewButton from "../components/movie_actions/ReviewButton";
 
 const MoviePage = ({ apiKey, movie, fetchRequest }) => {
   const { movieId } = useParams();
@@ -19,6 +20,7 @@ const MoviePage = ({ apiKey, movie, fetchRequest }) => {
       <MoviePagePoster movie={movie} />
       <FavouriteButton movie={movie}/>
       <WatchedButton movie={movie} />
+      <ReviewButton movie={movie} />
     </>
   );
 };
