@@ -20,10 +20,11 @@ const ProfilePoster = ({ movieID, apiKey }) => {
   };
   useEffect(() => {
     fetchRequestFromAPI();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [movieID]);
   return (
     <>
-      <div>U FAV'D THIS MOVIE: {movieData.title}</div>
+      <div> {movieData.title}</div>
       <img
         src={"https://image.tmdb.org/t/p/w500/" + movieData.poster_path}
         width={100}

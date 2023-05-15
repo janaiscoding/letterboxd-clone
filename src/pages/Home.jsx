@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import Popular from "../components/Popular";
-
+import IntroMessage from "./Home_Handlers/IntroMessage";
 const Home = ({ apiKey, fetchResults, fetchRequest }) => {
   useEffect(() => {
     fetchRequest(
@@ -11,6 +11,7 @@ const Home = ({ apiKey, fetchResults, fetchRequest }) => {
 
   return (
     <div className="home-section">
+      <IntroMessage />
       <Popular populars={fetchResults} />
     </div>
   );
