@@ -12,13 +12,12 @@ const IntroMessage = ({ authStatus }) => {
   }, [authStatus]);
   return (
     <>
-      <div className="text-h-grey font-bold underline">
-        Welcome back,
-        <NavLink to="/profile" className="text-l-white"> {displayName}</NavLink>. Here's what we've been
-        watching...
+      <div className="text-h-grey text-3xl text-center font-normal font-['Graphik']">
+        Welcome back,{" "}<NavLink to="/profile" className="text-p-white border-b border-solid border-h-grey hover:border-p-white">{displayName}</NavLink>. <span className="hidden md:inline-block">Here's what we've been
+        watching...</span>
       </div>
-      <p>
-        This homepage will become customized as you follow active members on
+      <p className="text-center md:mb-8 text-lg text-h-grey">
+        This homepage will become customized as <a href="/" className="text-p-white hover:text-hov-blue">you follow active members</a> on
         Clonnerboxd.
       </p>
     </>

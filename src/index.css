@@ -1,8 +1,14 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-#root {
-  --header-blue: #14181c;
-  --background-color: #1b2026;
-  background-color: var(--background-color);
+
+@font-face {
+  font-family: 'Graphik';
+  src: url("./assets/font/graphic-web-regular.ttf")
+}
+
+@layer base {
+  html {
+    font-family: 'Graphik', system-ui, sans-serif;
+  }
 }

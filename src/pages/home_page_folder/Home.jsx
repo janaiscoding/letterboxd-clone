@@ -15,11 +15,13 @@ const Home = ({ apiKey, fetchResults, fetchRequest,authStatus }) => {
 
   return (
     <div className="bg-b-blue">
+    <div className="site-content md:py-8 md:w-9/12 md:my-0 md:mx-auto" >
       <IntroMessage authStatus={authStatus} />
       <UpgradeToPro />
       <PopularHome populars={fetchResults} />
       <LatestNews />
       <RecentStories />
+    </div>
     </div>
   );
 };

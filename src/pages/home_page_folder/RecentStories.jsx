@@ -7,7 +7,7 @@ const RecentStories = () => {
   return (
     <>
       <div>RECENT STORIES</div>
-      <div className="grid">
+      <div className="columns-3">
       {stories.map((story) => (
         <Story key={story.id} story={story} />
       ))}
