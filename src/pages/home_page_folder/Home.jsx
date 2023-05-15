@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
-import PopularHome from "./Home_Handlers/PopularHome";
-import IntroMessage from "./Home_Handlers/IntroMessage";
-import UpgradeToPro from "./Home_Handlers/UpgradeToPro";
-import LatestNews from "./Home_Handlers/LatestNews";
-import RecentStories from "./Home_Handlers/RecentStories";
+import PopularHome from "./PopularHome";
+import IntroMessage from "./IntroMessage";
+import UpgradeToPro from "./UpgradeToPro";
+import LatestNews from "./LatestNews";
+import RecentStories from "./RecentStories";
 
 const Home = ({ apiKey, fetchResults, fetchRequest,authStatus }) => {
   useEffect(() => {

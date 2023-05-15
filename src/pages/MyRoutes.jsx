@@ -1,16 +1,16 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
-import Home from "../pages/Home";
-import Films from "../pages/Films_Handlers/Films";
-import Members from "../pages/Members";
-import Journal from "../pages/Journal";
-import Lists from "../pages/Lists";
+import Home from "./home_page_folder/Home";
+import Films from "./films_page_folder/Films";
+import Members from "./members_page_folder/Members";
+import Journal from "./journal_page_folder/Journal";
+import Lists from "./lists_page_folder/Lists";
 
-import Results from "../pages/Results";
-import MoviePage from "../pages/MoviePage";
-import Profile from "./auth/profile_info/Profile";
-import FilterPage from "../pages/Films_Handlers/FilterPage";
-import Settings from "../pages/Settings";
+import Results from "./results_page_folder/Results";
+import MoviePage from "./movie_page_folder/MoviePage";
+import Profile from "../components/auth/profile_info/Profile";
+import FilterPage from "./films_page_folder/FilterPage";
+import Settings from "./settings_page_folder/Settings";
 
 const MyRoutes = ({
   authStatus,

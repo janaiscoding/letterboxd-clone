@@ -1,5 +1,5 @@
 import React from "react";
-import ChangeUserInfo from "../components/auth/auth_methods/ChangeUserInfo";
+import ChangeUserInfo from "../../components/auth/auth_methods/ChangeUserInfo";
 
 const Settings = () => {
   return (

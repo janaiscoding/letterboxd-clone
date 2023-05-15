@@ -7,7 +7,7 @@ import { onAuthStateChanged } from "firebase/auth";
 // SPA & UI
 import Navbar from "./components/UI_components/navbar_component_and_assets/Navbar";
 import { HashRouter } from "react-router-dom";
-import MyRoutes from "./components/MyRoutes";
+import MyRoutes from "./pages/MyRoutes";
 import Footer from "./components/UI_components/footer_component_and_assets/Footer";
 
 const App = () => {

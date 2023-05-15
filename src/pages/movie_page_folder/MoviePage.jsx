@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
-import MoviePagePoster from "../components/UI_components/MoviePagePoster";
-import FavouriteButton from "../components/movie_actions/FavouriteButton";
-import WatchedButton from "../components/movie_actions/WatchedButton";
-import ReviewsComp from "../components/movie_actions/ReviewsComp";
+import MoviePagePoster from "../../components/UI_components/MoviePagePoster";
+import FavouriteButton from "../../components/movie_actions/FavouriteButton";
+import WatchedButton from "../../components/movie_actions/WatchedButton";
+import ReviewsComp from "../../components/movie_actions/ReviewsComp";
 
 const MoviePage = ({ apiKey, fetchResults, fetchRequest }) => {
   const { movieId } = useParams();
