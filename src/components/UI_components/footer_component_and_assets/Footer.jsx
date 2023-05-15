@@ -7,15 +7,15 @@ const Footer = () => {
   const socials = socialLinksData;
   return (
     <>
-      <div>
-        <ul>
+      <div className="flex">
+        <ul className="flex">
           {footerLinks.map((link) => (
             <li key={link.id}>
               <Link to={link.link}>{link.name}</Link>
             </li>
           ))}
         </ul>
-        <ul>
+        <ul className="flex">
           {socials.map((social) => (
             <li key={social.id}>
               <Link to={social.link}>{social.img}</Link>

@@ -7,9 +7,11 @@ const RecentStories = () => {
   return (
     <>
       <div>RECENT STORIES</div>
+      <div className="grid">
       {stories.map((story) => (
         <Story key={story.id} story={story} />
       ))}
+      </div>
     </>
   );
 };

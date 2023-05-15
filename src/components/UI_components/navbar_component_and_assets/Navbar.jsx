@@ -51,8 +51,8 @@ const Navbar = ({
 
   return (
     <>
-      <header className="flex space-x-4 bg-h-blue text-l-white text-xl p-2 z-50">
-        <div>
+      <header className="flex space-x-4 bg-h-blue text-l-white text-xl p-2 w-10 lg:w-auto">
+        <div className="">
           <Link
             to="/"
           > 
