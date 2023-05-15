@@ -1,7 +1,25 @@
 const arrays = [
   {
     type: "years",
-    array: ["all", "upcoming", "2020s", "2010s"],
+    array: [
+      "all",
+      "upcoming",
+      "2020s",
+      "2010s",
+      "1990s",
+      "1980s",
+      "1970s",
+      "1960s",
+      "1950s",
+      "1940s",
+      "1930s",
+      "1920s",
+      "1910s",
+      "1900s",
+      "1890s",
+      "1880s",
+      "1870s",
+    ],
   },
   {
     type: "ratings",
@@ -9,7 +27,7 @@ const arrays = [
   },
   {
     type: "popularity",
-    array: ["all time", "this year"],
+    array: ["all time", "this year", "this month", "this week"],
   },
   {
     type: "genres",

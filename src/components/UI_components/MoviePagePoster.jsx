@@ -3,8 +3,8 @@ import PlaceholderImg from "../../assets/apple-icon.png";
 
 const MoviePagePoster = ({ movie }) => {
   const [image, setImage] = useState(PlaceholderImg);
+  // console.log(movie, "from poster");
   useEffect(() => {
-    console.log(`MOVIE POSTER PATH`, movie.poster_path);
     if (movie.poster_path === null) {
       setImage(PlaceholderImg);
     } else {

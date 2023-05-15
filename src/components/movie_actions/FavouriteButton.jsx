@@ -11,6 +11,7 @@ import {
 
 const FavouriteButton = ({ movie }) => {
   const [isFavourite, setFavourite] = useState(false);
+  // console.log(movie, "from fav button");
   // FAVOURITE LOGIC
   const onFavourite = async (movie) => {
     if (auth.currentUser === null) {
@@ -58,7 +59,7 @@ const FavouriteButton = ({ movie }) => {
     if (auth.currentUser != null) {
       checkMovieFavsDB(movie);
     }
-  }, []);
+  }, [movie]);
   return (
     <>
       <button onClick={() => onFavourite(movie)}>

@@ -61,7 +61,7 @@ const WatchedButton = ({ movie }) => {
     if (auth.currentUser != null) {
       checkMovieWatchedDB(movie);
     }
-  }, []);
+  }, [movie]);
   return (
     <>
       <button onClick={() => onWatched(movie)}>

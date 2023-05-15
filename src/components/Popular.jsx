@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from "react";
 import Poster from "./UI_components/Poster";
 
-const Popular = ({ popular }) => {
+const Popular = ({ populars }) => {
   const [firstSix, setFirstSix] = useState([]);
   useEffect(() => {
-    if (popular.results !== undefined) {
-      const firstSix = popular.results.filter((movie, index) => index < 6);
+    if (populars.results !== undefined) {
+      const firstSix = populars.results.filter((movie, index) => index < 6);
       setFirstSix(firstSix);
     }
-  }, [popular]);
+    console.log(`in popular`, populars);
+  }, [populars]);
 
   return (
     <>

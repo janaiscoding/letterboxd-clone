@@ -9,7 +9,6 @@ const Reviews = ({ movie, review, onReview }) => {
   const getReviews = async () => {
     let tempArray = [];
     const movieDoc = await getDoc(doc(db, "movies/" + movie.id));
-
     if (movieDoc.exists()) {
       const movieReviews = movieDoc.data().reviews;
       movieReviews.forEach((review) => {
@@ -24,15 +23,13 @@ const Reviews = ({ movie, review, onReview }) => {
     await onReview(movie, review).then(() => {
       getReviews();
     });
-
-    console.log(reviews);
   };
 
   useEffect(() => {
     getReviews();
+    console.log("this also changes everytime i get new reviews, right?");
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    console.log("checking");
-  }, [setReviews]);
+  }, [movie, setReviews]);
 
   return (
     <>
@@ -41,9 +38,10 @@ const Reviews = ({ movie, review, onReview }) => {
         Send Review
       </button>
       {reviews.length > 0
-        ? reviews.map((review, index) => (
-            <ReviewItem key={index} review={review} />
-          ))
+        ? reviews
+            .slice(0)
+            .reverse()
+            .map((review, index) => <ReviewItem key={index} review={review} />)
         : "There are no reviews on this movie yet"}
     </>
   );

@@ -1,11 +1,16 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-const SearchInput = ({ handleSearchReq }) => {
-  const [query, setQuery] = useState('')
+const SearchInput = ({ apiKey, fetchRequest }) => {
+  const [query, setQuery] = useState("");
   const navigate = useNavigate();
 
   const handleSearch = () => {
-     handleSearchReq(query)
+    fetchRequest(
+      "https://api.themoviedb.org/3/search/movie?api_key=" +
+        apiKey +
+        "&query=" +
+        query
+    );
     navigate("/results/" + query);
   };
 

@@ -8,40 +8,19 @@ import { onAuthStateChanged } from "firebase/auth";
 const App = () => {
   const apiKey = "90a83017dcd0ef93c3e5474af9093de9";
   const [authStatus, setAuthStatus] = useState(false);
-  const [movie, setMovie] = useState([]);
-  const [results, setResults] = useState([]);
-  const [popular, setPopular] = useState([]);
+  const [fetchResults, setFetchResults] = useState([]);
 
-  const fetchRequest = (url, type) => {
+  const fetchRequest = (url) => {
     fetch(url, {
       method: "GET",
     })
       .then((response) => response.json())
       .then((data) => {
-        if (type === "discover") {
-          console.log("type is discover for one individual movie");
-          setMovie(data);
-        } else if (type === "results") {
-          console.log(data);
-          console.log("type is results");
-          setResults(data);
-        } else if (type === "popular") {
-          console.log("type is popular");
-          setPopular(data);
-        }
+        setFetchResults(data);
       })
       .catch((err) => {
         console.log(err.message);
       });
-  };
-  const handleSearchReq = (query) => {
-    fetchRequest(
-      "https://api.themoviedb.org/3/search/movie?api_key=" +
-        apiKey +
-        "&query=" +
-        query,
-      "results"
-    );
   };
 
   useEffect(() => {
@@ -60,15 +39,18 @@ const App = () => {
   return (
     <>
       <HashRouter>
-        <Navbar authStatus={authStatus} handleSearchReq={handleSearchReq} />
+        <Navbar
+          apiKey={apiKey}
+          authStatus={authStatus}
+          fetchRequest={fetchRequest}
+        />
         <MyRoutes
           authStatus={authStatus}
           apiKey={apiKey}
-          movie={movie}
-          popular={popular}
-          results={results}
+          fetchResults={fetchResults}
           fetchRequest={fetchRequest}
-          handleSearchReq={handleSearchReq}
+          //handler for genres
+          setFetchResults={setFetchResults}
         />
       </HashRouter>
     </>

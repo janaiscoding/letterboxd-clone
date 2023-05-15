@@ -2,17 +2,22 @@
 import React, { useEffect } from "react";
 import Poster from "../components/UI_components/Poster";
 import { useParams } from "react-router-dom";
-const Results = ({ results, handleSearchReq}) => {
-  const { query} = useParams()
-  useEffect(()=>{
-    handleSearchReq(query)
-  },[]) 
+const Results = ({ apiKey, fetchResults, fetchRequest }) => {
+  const { query } = useParams();
+  useEffect(() => {
+    fetchRequest(
+      "https://api.themoviedb.org/3/search/movie?api_key=" +
+        apiKey +
+        "&query=" +
+        query
+    );
+  }, []);
   return (
     <div>
       my results
-      {results.length === 0
+      {fetchResults.length === 0
         ? "no search input"
-        : results.results.map((movie) => (
+        : fetchResults.results.map((movie) => (
             <Poster key={movie.id} movie={movie} />
           ))}
     </div>

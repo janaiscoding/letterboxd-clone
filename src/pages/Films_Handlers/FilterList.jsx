@@ -1,20 +1,22 @@
 import React, { useState, useEffect } from "react";
 import Poster from "../../components/UI_components/Poster";
 
-const FilterList = ({ filterResults }) => {
-  const [limit, setLimit] = useState([]);
+const FilterList = ({ fetchResults }) => {
+  const [hasImageList, setHasImageList] = useState([]);
   useEffect(() => {
-    if (filterResults.results !== undefined) {
-      const limit = filterResults.results.filter((movie, index) => index < 20);
-      setLimit(limit);
+    if (fetchResults.results !== undefined) {
+      const hasImageList = fetchResults.results.filter(
+        (movie) => movie.poster_path !== null
+      );
+      setHasImageList(hasImageList);
     }
-  }, [filterResults]);
-  console.log(limit)
+  }, [fetchResults]);
+
   return (
     <>
-      {limit.length === 0
+      {hasImageList.length === 0
         ? "no movies found for this filtered search"
-        : limit.map((movie) => <Poster key={movie.id} movie={movie} />)}
+        : hasImageList.map((movie) => <Poster key={movie.id} movie={movie} />)}
     </>
   );
 };

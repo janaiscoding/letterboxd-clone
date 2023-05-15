@@ -1,18 +1,18 @@
 import React, { useEffect } from "react";
 import Popular from "../components/Popular";
 
-const Home = ({ apiKey, popular, fetchRequest }) => {
+const Home = ({ apiKey, fetchResults, fetchRequest }) => {
   useEffect(() => {
     fetchRequest(
-      "https://api.themoviedb.org/3/movie/popular?api_key=" + apiKey,
-      "popular"
+      "https://api.themoviedb.org/3/movie/popular?api_key=" + apiKey
     );
+    console.log(`in home`, fetchResults)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
     <div className="home-section">
-      <Popular popular={popular} />
+      <Popular populars={fetchResults} />
     </div>
   );
 };

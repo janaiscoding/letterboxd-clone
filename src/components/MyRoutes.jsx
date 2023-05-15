@@ -14,11 +14,9 @@ import FilterPage from "../pages/Films_Handlers/FilterPage";
 const MyRoutes = ({
   authStatus,
   apiKey,
-  movie,
-  popular,
-  results,
   fetchRequest,
-  handleSearchReq,
+  fetchResults,
+  setFetchResults,
 }) => {
   return (
     <Routes>
@@ -26,7 +24,11 @@ const MyRoutes = ({
         exact
         path="/"
         element={
-          <Home apiKey={apiKey} fetchRequest={fetchRequest} popular={popular} />
+          <Home
+            apiKey={apiKey}
+            fetchRequest={fetchRequest}
+            fetchResults={fetchResults}
+          />
         }
       />
       <Route path="/profile" element={<Profile authStatus={authStatus} />} />
@@ -37,7 +39,11 @@ const MyRoutes = ({
       <Route
         path="/results/:query"
         element={
-          <Results results={results} handleSearchReq={handleSearchReq} />
+          <Results
+            apiKey={apiKey}
+            fetchResults={fetchResults}
+            fetchRequest={fetchRequest}
+          />
         }
       />
       <Route
@@ -45,14 +51,21 @@ const MyRoutes = ({
         element={
           <MoviePage
             apiKey={apiKey}
-            movie={movie}
+            fetchResults={fetchResults}
             fetchRequest={fetchRequest}
           />
         }
       />
       <Route
         path="/films/:query"
-        element={<FilterPage apiKey={apiKey} fetchRequest={fetchRequest} />}
+        element={
+          <FilterPage
+            apiKey={apiKey}
+            fetchResults={fetchResults}
+            fetchRequest={fetchRequest}
+            setFetchResults={setFetchResults}
+          />
+        }
       />
     </Routes>
   );
