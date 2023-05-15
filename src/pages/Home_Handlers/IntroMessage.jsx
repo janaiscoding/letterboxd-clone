@@ -2,16 +2,17 @@ import React, { useEffect, useState } from "react";
 import { auth } from "../../firebase/firebase";
 import { NavLink } from "react-router-dom";
 
-const IntroMessage = () => {
+const IntroMessage = ({ authStatus }) => {
   const [displayName, setDisplayName] = useState("");
   useEffect(() => {
-    if (auth.currentUser !== null) {
+    if (authStatus) {
       setDisplayName(auth.currentUser.displayName);
+      console.log("user is logged in");
     }
-  }, []);
+  }, [authStatus]);
   return (
     <>
-      <div>
+      <div className="text-3xl font-bold underline">
         Welcome back,
         <NavLink to="/profile"> {displayName}</NavLink>. Here's what we've been
         watching...

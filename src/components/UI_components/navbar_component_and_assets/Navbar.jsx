@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import logo from "../../assets/logo-nav.png";
-import "../../styles/navbar.css";
-import SignInAll from "../auth/auth_methods/SignInAll";
-import SearchInput from "../api_actions/SearchInput";
-import { auth } from "../../firebase/firebase";
-import NavBarUser from "../auth/profile_info/NavBarUser";
+import logo from "../../../assets/logo-nav.png";
+import "../../../styles/navbar.css";
+import SignInAll from "../../auth/auth_methods/SignInAll";
+import SearchInput from "../../api_actions/SearchInput";
+import { auth } from "../../../firebase/firebase";
+import NavBarUser from "./NavBarUser";
+import navbarLinksData from "./navbarLinksData";
 
 const Navbar = ({
   query,
@@ -16,6 +17,7 @@ const Navbar = ({
   setProfileUpdated,
 }) => {
   const [userName, setUserName] = useState();
+  const navbarLinks = navbarLinksData;
   const toggleNav = () => {
     const primaryNav = document.querySelector(".primary-navigation");
     const navToggle = document.querySelector(".mobile-nav-toggle");
@@ -40,7 +42,7 @@ const Navbar = ({
 
   useEffect(() => {
     if (authStatus) {
-      console.log(authStatus)
+      console.log(authStatus);
       setUserName(auth.currentUser.displayName);
       setProfileUpdated(false);
     }
@@ -81,29 +83,13 @@ const Navbar = ({
             className="primary-navigation flex"
             data-visible="false"
           >
-            <li className="active">
-              <Link to="/films" className="cart-menu-icon">
-                Films
-              </Link>
-            </li>
-            <li className="active">
-              <Link to="/lists" onClick={closeNav}>
-                Lists
-              </Link>
-            </li>
-            <li className="active">
-              <Link to="/members" onClick={closeNav}>
-                Members
-              </Link>
-            </li>
-            <li className="active">
-              <Link to="/journal" onClick={closeNav}>
-                Journal
-              </Link>
-            </li>
-            <li className="active search-icon">
-              <Link to="/journal">Search</Link>
-            </li>
+            {navbarLinks.map((link) => (
+              <li className="active" key={link.id}>
+                <Link to={link.link} onClick={closeNav}>
+                  {link.name}
+                </Link>
+              </li>
+            ))}
           </ul>
         </nav>
       </header>

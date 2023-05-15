@@ -1,7 +1,11 @@
 import React, { useEffect } from "react";
-import Popular from "../components/Popular";
+import PopularHome from "./Home_Handlers/PopularHome";
 import IntroMessage from "./Home_Handlers/IntroMessage";
-const Home = ({ apiKey, fetchResults, fetchRequest }) => {
+import UpgradeToPro from "./Home_Handlers/UpgradeToPro";
+import LatestNews from "./Home_Handlers/LatestNews";
+import RecentStories from "./Home_Handlers/RecentStories";
+
+const Home = ({ apiKey, fetchResults, fetchRequest,authStatus }) => {
   useEffect(() => {
     fetchRequest(
       "https://api.themoviedb.org/3/movie/popular?api_key=" + apiKey
@@ -11,8 +15,11 @@ const Home = ({ apiKey, fetchResults, fetchRequest }) => {
 
   return (
     <div className="home-section">
-      <IntroMessage />
-      <Popular populars={fetchResults} />
+      <IntroMessage authStatus={authStatus} />
+      <UpgradeToPro />
+      <PopularHome populars={fetchResults} />
+      <LatestNews />
+      <RecentStories />
     </div>
   );
 };

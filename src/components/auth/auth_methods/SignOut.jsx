@@ -20,7 +20,7 @@ const SignOut = () => {
   };
   return (
     <>
-      <button onClick={onSignOut}>Sign Out</button>
+      <p onClick={onSignOut}>Sign Out</p>
     </>
   );
 };

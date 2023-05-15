@@ -1,9 +1,14 @@
 import React, { useEffect, useState } from "react";
-import MyRoutes from "./components/MyRoutes";
-import Navbar from "./components/UI_components/Navbar";
-import { HashRouter } from "react-router-dom";
+
+// DB FIREBASE
 import { auth } from "./firebase/firebase";
 import { onAuthStateChanged } from "firebase/auth";
+
+// SPA & UI
+import Navbar from "./components/UI_components/navbar_component_and_assets/Navbar";
+import { HashRouter } from "react-router-dom";
+import MyRoutes from "./components/MyRoutes";
+import Footer from "./components/UI_components/footer_component_and_assets/Footer";
 
 const App = () => {
   const apiKey = "90a83017dcd0ef93c3e5474af9093de9";
@@ -58,6 +63,7 @@ const App = () => {
           setProfileUpdated={setProfileUpdated}
           isProfileUpdated={isProfileUpdated}
         />
+        <Footer />
       </HashRouter>
     </>
   );

@@ -10,6 +10,7 @@ import Results from "../pages/Results";
 import MoviePage from "../pages/MoviePage";
 import Profile from "./auth/profile_info/Profile";
 import FilterPage from "../pages/Films_Handlers/FilterPage";
+import Settings from "../pages/Settings";
 
 const MyRoutes = ({
   authStatus,
@@ -28,6 +29,7 @@ const MyRoutes = ({
         element={
           <Home
             apiKey={apiKey}
+            authStatus={authStatus}
             fetchRequest={fetchRequest}
             fetchResults={fetchResults}
           />
@@ -81,6 +83,7 @@ const MyRoutes = ({
           />
         }
       />
+      <Route path="/settings" element={<Settings />} />
     </Routes>
   );
 };
