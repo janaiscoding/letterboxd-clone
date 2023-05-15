@@ -10,6 +10,7 @@ const App = () => {
   const [authStatus, setAuthStatus] = useState(false);
   const [fetchResults, setFetchResults] = useState([]);
   const [isProfileUpdated, setProfileUpdated] = useState(false);
+
   const fetchRequest = (url) => {
     fetch(url, {
       method: "GET",

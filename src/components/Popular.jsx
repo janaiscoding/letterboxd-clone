@@ -8,7 +8,6 @@ const Popular = ({ populars }) => {
       const firstSix = populars.results.filter((movie, index) => index < 6);
       setFirstSix(firstSix);
     }
-    console.log(`in popular`, populars);
   }, [populars]);
 
   return (

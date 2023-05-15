@@ -10,8 +10,7 @@ const MoviePage = ({ apiKey, fetchResults, fetchRequest }) => {
 
   useEffect(() => {
     fetchRequest(
-      "https://api.themoviedb.org/3/movie/" + movieId + "?api_key=" + apiKey,
-      "discover"
+      "https://api.themoviedb.org/3/movie/" + movieId + "?api_key=" + apiKey
     );
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

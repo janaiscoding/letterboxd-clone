@@ -18,7 +18,7 @@ const MyRoutes = ({
   fetchResults,
   setFetchResults,
   setProfileUpdated,
-  isProfileUpdated
+  isProfileUpdated,
 }) => {
   return (
     <Routes>
@@ -37,9 +37,12 @@ const MyRoutes = ({
         path="/profile"
         element={
           <Profile
+            apiKey={apiKey}
             authStatus={authStatus}
             isProfileUpdated={isProfileUpdated}
             setProfileUpdated={setProfileUpdated}
+            fetchResults={fetchResults}
+            fetchRequest={fetchRequest}
           />
         }
       />

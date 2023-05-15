@@ -7,6 +7,7 @@ const Reviews = ({ movie, review, onReview }) => {
   const [reviews, setReviews] = useState([]);
 
   const getReviews = async () => {
+    console.log('getting reviews...')
     let tempArray = [];
     const movieDoc = await getDoc(doc(db, "movies/" + movie.id));
     if (movieDoc.exists()) {
@@ -27,7 +28,7 @@ const Reviews = ({ movie, review, onReview }) => {
 
   useEffect(() => {
     getReviews();
-    console.log("this also changes everytime i get new reviews, right?");
+    console.log(reviews);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [movie, setReviews]);
 

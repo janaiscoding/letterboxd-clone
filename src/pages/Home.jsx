@@ -6,7 +6,6 @@ const Home = ({ apiKey, fetchResults, fetchRequest }) => {
     fetchRequest(
       "https://api.themoviedb.org/3/movie/popular?api_key=" + apiKey
     );
-    console.log(`in home`, fetchResults)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
