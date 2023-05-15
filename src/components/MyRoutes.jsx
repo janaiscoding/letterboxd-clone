@@ -17,6 +17,8 @@ const MyRoutes = ({
   fetchRequest,
   fetchResults,
   setFetchResults,
+  setProfileUpdated,
+  isProfileUpdated
 }) => {
   return (
     <Routes>
@@ -31,7 +33,16 @@ const MyRoutes = ({
           />
         }
       />
-      <Route path="/profile" element={<Profile authStatus={authStatus} />} />
+      <Route
+        path="/profile"
+        element={
+          <Profile
+            authStatus={authStatus}
+            isProfileUpdated={isProfileUpdated}
+            setProfileUpdated={setProfileUpdated}
+          />
+        }
+      />
       <Route path="/films" element={<Films />} />
       <Route path="/lists" element={<Lists />} />
       <Route path="/members" element={<Members />} />

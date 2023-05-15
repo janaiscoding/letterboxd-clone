@@ -1,12 +1,21 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import logo from "../../assets/logo-nav.png";
 import "../../styles/navbar.css";
 import SignInAll from "../auth/auth_methods/SignInAll";
-import HandleUser from "../auth/profile_info/HandleUser";
 import SearchInput from "../api_actions/SearchInput";
+import { auth } from "../../firebase/firebase";
+import NavBarUser from "../auth/profile_info/NavBarUser";
 
-const Navbar = ({ query, apiKey, authStatus, fetchRequest }) => {
+const Navbar = ({
+  query,
+  apiKey,
+  authStatus,
+  fetchRequest,
+  isProfileUpdated,
+  setProfileUpdated,
+}) => {
+  const [userName, setUserName] = useState();
   const toggleNav = () => {
     const primaryNav = document.querySelector(".primary-navigation");
     const navToggle = document.querySelector(".mobile-nav-toggle");
@@ -28,6 +37,16 @@ const Navbar = ({ query, apiKey, authStatus, fetchRequest }) => {
       navToggle.setAttribute("aria-expanded", false);
     }
   };
+
+  useEffect(() => {
+    if (authStatus) {
+      console.log(authStatus)
+      setUserName(auth.currentUser.displayName);
+      setProfileUpdated(false);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [authStatus, isProfileUpdated]);
+
   return (
     <>
       <header className="flex">
@@ -41,10 +60,14 @@ const Navbar = ({ query, apiKey, authStatus, fetchRequest }) => {
         </div>
         <div className="auth-navigation">
           {/* true means user is logged in, false means user needs to log in */}
-          {authStatus ? <HandleUser /> : <SignInAll />}
+          {authStatus ? <NavBarUser userName={userName} /> : <SignInAll />}
         </div>
         <div className="search-navigation">
-          <SearchInput apiKey={apiKey} query={query} fetchRequest={fetchRequest}  />
+          <SearchInput
+            apiKey={apiKey}
+            query={query}
+            fetchRequest={fetchRequest}
+          />
         </div>
         <button
           className="mobile-nav-toggle"

@@ -9,7 +9,7 @@ const App = () => {
   const apiKey = "90a83017dcd0ef93c3e5474af9093de9";
   const [authStatus, setAuthStatus] = useState(false);
   const [fetchResults, setFetchResults] = useState([]);
-
+  const [isProfileUpdated, setProfileUpdated] = useState(false);
   const fetchRequest = (url) => {
     fetch(url, {
       method: "GET",
@@ -43,6 +43,8 @@ const App = () => {
           apiKey={apiKey}
           authStatus={authStatus}
           fetchRequest={fetchRequest}
+          isProfileUpdated={isProfileUpdated}
+          setProfileUpdated={setProfileUpdated}
         />
         <MyRoutes
           authStatus={authStatus}
@@ -51,6 +53,9 @@ const App = () => {
           fetchRequest={fetchRequest}
           //handler for genres
           setFetchResults={setFetchResults}
+          //handler for settings
+          setProfileUpdated={setProfileUpdated}
+          isProfileUpdated={isProfileUpdated}
         />
       </HashRouter>
     </>
