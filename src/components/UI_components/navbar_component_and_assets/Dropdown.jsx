@@ -3,12 +3,13 @@ import { Link } from "react-router-dom";
 import dropdownLinksData from "./dropdownLinksData";
 import SignOut from "../../auth/auth_methods/SignOut";
 
-const Dropdown = () => {
+const Dropdown = ({setVisible}) => {
   const dropdownList = dropdownLinksData;
 
   return (
     <>
-      <ul>
+    <div onMouseEnter={()=>setVisible(true)}>
+      <ul className="bg-drop-grey text-drop-black z-50">
         {dropdownList.map((L) => (
           <li key={L.id}>
             <Link to={L.link}>{L.name} </Link>
@@ -22,6 +23,7 @@ const Dropdown = () => {
           <SignOut />
         </li>
       </ul>
+      </div>
     </>
   );
 };

@@ -8,14 +8,16 @@ const NavBarUser = ({ userName }) => {
   const [visible, setVisible] = useState(false);
   return (
     <div
-      className="user-navbar-wrapper"
+      className="flex h-1"
       onMouseEnter={() => setVisible(true)}
       onMouseLeave={() => setVisible(false)}
     >
       <Link to="/profile">{userName}</Link>
-      <img src={defaultProfileImg} alt="your user profile" width={30} />
-      {visible ? <Dropdown /> : ""}
+      <img src={defaultProfileImg} alt="your user profile" />
       <div>tiny arrow</div>
+      <div>
+      {visible ? <Dropdown setVisible={setVisible}/> : ""}
+      </div>
     </div>
   );
 };

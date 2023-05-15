@@ -14,7 +14,7 @@ const Home = ({ apiKey, fetchResults, fetchRequest,authStatus }) => {
   }, []);
 
   return (
-    <div className="home-section">
+    <div className="bg-b-blue">
       <IntroMessage authStatus={authStatus} />
       <UpgradeToPro />
       <PopularHome populars={fetchResults} />

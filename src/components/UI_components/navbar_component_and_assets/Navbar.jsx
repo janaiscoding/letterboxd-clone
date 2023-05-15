@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import logo from "../../../assets/logo-nav.png";
-import "../../../styles/navbar.css";
+// import "../../../styles/navbar.css";
 import SignInAll from "../../auth/auth_methods/SignInAll";
 import SearchInput from "../../api_actions/SearchInput";
 import { auth } from "../../../firebase/firebase";
@@ -51,13 +51,13 @@ const Navbar = ({
 
   return (
     <>
-      <header className="flex">
-        <div className="header-left flex">
+      <header className="flex space-x-4 bg-h-blue text-l-white text-xl p-2 z-50">
+        <div>
           <Link
             to="/"
-            className="logo"
-            style={{ backgroundImage: `url(${logo})` }}
-          ></Link>
+          > 
+          <img src={logo} alt="clonnerboxd logo"/>
+           </Link>
           {/* <img src={logo} alt="Your SVG" /> */}
         </div>
         <div className="auth-navigation">

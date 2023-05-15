@@ -12,9 +12,9 @@ const IntroMessage = ({ authStatus }) => {
   }, [authStatus]);
   return (
     <>
-      <div className="text-3xl font-bold underline">
+      <div className="text-h-grey font-bold underline">
         Welcome back,
-        <NavLink to="/profile"> {displayName}</NavLink>. Here's what we've been
+        <NavLink to="/profile" className="text-l-white"> {displayName}</NavLink>. Here's what we've been
         watching...
       </div>
       <p>
