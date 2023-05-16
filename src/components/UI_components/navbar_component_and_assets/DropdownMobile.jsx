@@ -3,17 +3,13 @@ import { Link } from "react-router-dom";
 import dropdownLinksData from "./navbar_assets/dropdownLinksData";
 import SignOut from "../../auth/auth_methods/SignOut";
 import "../../../styles/dropdown.css";
-import navbarLinksData from "./navbar_assets/navbarLinksData";
 
 const DropdownMobile = ({ userName, profilePic }) => {
   const dropdownList = dropdownLinksData;
-  const navbarLinks = navbarLinksData;
-
   return (
     <>
       <div
-        id="mobile-nav"
-        className="rounded-sm p-2 bg-h-blue flex flex-col self-start"
+        className="mobile-nav rounded-sm p-2 bg-h-blue flex flex-col self-start"
       >
         <div className="flex items-center mx-1">
           <img

@@ -7,18 +7,22 @@ const UpgradeToPro = () => {
     "https://a.ltrbxd.com/sm/upload/1n/js/vs/bi/pro-mobile.png?k=8ce50124d8";
   return (
     <>
-      <img
-        className="block md:hidden mb-8 self-center"
-        src={mobileUrl}
-        alt="upgrade to pro banner"
-      />
-      <img
-        className="hidden md:block mb-8 self-center"
-        src={url}
-        alt="upgrade to pro banner"
-        height={100}
-        width={950}
-      />
+      <a href="https://letterboxd.com/pro/?utm_medium=banner&utm_campaign=get-pro">
+        <img
+          className="block md:hidden mb-8 self-center"
+          src={mobileUrl}
+          alt="upgrade to pro banner"
+        />
+      </a>
+      <a href="https://letterboxd.com/pro/?utm_medium=banner&utm_campaign=get-pro">
+        <img
+          className="hidden md:block mb-8 self-center"
+          src={url}
+          alt="upgrade to pro banner"
+          height={100}
+          width={950}
+        />
+      </a>
     </>
   );
 };

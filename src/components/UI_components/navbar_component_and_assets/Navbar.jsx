@@ -12,7 +12,6 @@ import logoMobile from "./navbar_assets/logoMobile.png";
 import addNewIcon from "./navbar_assets/plusIcon.png";
 import openCloseMenu from "./navbar_assets/menuopenclose.png";
 import searchIcon from "./navbar_assets/searchIcon.png";
-import SignOut from "../../auth/auth_methods/SignOut";
 import myFace from "./navbar_assets/myface.jpg";
 import arrowDown from "./navbar_assets/arrowdownprofile.png";
 import DropdownDesktop from "./DropdownDesktop";
@@ -68,7 +67,7 @@ const Navbar = ({
   return (
     <>
       <header className="flex flex-col align-center bg-h-blue md:h-[70px] md:flex-row">
-        <section className="px-2 flex justify-between align-center md:w-[950px] md:my-0 md:mx-auto">
+        <section className="px-2 pl-4 flex justify-between align-center md:w-[950px] md:my-0 md:mx-auto">
           <Link className="self-center" to="/">
             <img
               src={logoMobile}

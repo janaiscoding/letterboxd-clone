@@ -6,30 +6,53 @@ const Footer = () => {
   const footerLinks = footerLinksData;
   const socials = socialLinksData;
   return (
-    <>
-      <div className="flex">
-        <ul className="flex">
-          {footerLinks.map((link) => (
-            <li key={link.id}>
-              <Link to={link.link}>{link.name}</Link>
-            </li>
-          ))}
-        </ul>
-        <ul className="flex">
-          {socials.map((social) => (
-            <li key={social.id}>
-              <Link to={social.link}>{social.img}</Link>
-            </li>
-          ))}
-        </ul>
+    <footer style={{ backgroundColor: "#2c3440" }}>
+      <div className="px-4 flex flex-col py-6 md:w-[950px] md:my-0 md:mx-auto font-['Graphik']">
+        <nav className="flex justify-between items-center mb-3">
+          <ul className=" md:flex grid grid-cols-3  py-1">
+            {footerLinks.map((link) => (
+              <li key={link.id}>
+                <Link
+                  className="text-s text-sh-grey hover:text-p-white font-bold mr-2"
+                  to={link.link}
+                >
+                  {link.name}
+                </Link>
+              </li>
+            ))}
+          </ul>
+
+          <ul className="flex flex-col gap-2 md:gap-0 md:flex-row justify-between  items-center  py-1">
+            {socials.map((social) => (
+              <li className="self-center" key={social.id}>
+                <Link to={social.link}>
+                  <svg
+                    width={social.width}
+                    height={social.height}
+                    fill="#9ab"
+                    className="mr-2"
+                  >
+                    <path d={social.path}></path>
+                  </svg>
+                  <span className="hidden">{social.name}</span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
+        <p className="text-xs text-sh-grey pb-3">
+          © Clonnerboxd Limited. Made by{" "}
+          <a className="underline" href="https://github.com/JanaIsCoding">
+            JanaIsCoding
+          </a>
+          . Film data from{" "}
+          <a className="underline" href="https://www.themoviedb.org/">
+            TMDb
+          </a>
+          .
+        </p>
       </div>
-      <p>
-        © Clonnerboxd Limited. Made by
-        <a href="https://github.com/JanaIsCoding"> JanaIsCoding</a>. Film data
-        from
-        <a href="https://www.themoviedb.org/"> TMDb</a>.
-      </p>
-    </>
+    </footer>
   );
 };
 export default Footer;

@@ -63,7 +63,7 @@ const App = () => {
           setProfileUpdated={setProfileUpdated}
           isProfileUpdated={isProfileUpdated}
         />
-        {/* <Footer /> */}
+        <Footer />
       </HashRouter>
     </>
   );

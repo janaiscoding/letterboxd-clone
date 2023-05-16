@@ -29,6 +29,7 @@ module.exports = {
       "if-blue": "#2c3440",
       //card blue
       "c-blue":'#202830'
+      
     },
     // extend: {},
   },
