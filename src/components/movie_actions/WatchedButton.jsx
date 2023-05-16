@@ -8,7 +8,8 @@ import {
   arrayRemove,
   arrayUnion,
 } from "firebase/firestore";
-
+import watchIcon from "./watched.png";
+import remWatched from "./remWatched.png";
 const WatchedButton = ({ movie }) => {
   const [isWatched, setWatched] = useState(false);
   // WATCHED LIST LOGIC
@@ -64,9 +65,23 @@ const WatchedButton = ({ movie }) => {
   }, [movie]);
   return (
     <>
-      <button onClick={() => onWatched(movie)}>
-        {isWatched ? "Un-watch" : "watched"}
-      </button>
+      <div onClick={() => onWatched(movie)} className="p-2">
+        {isWatched ? (
+          <img
+            src={remWatched}
+            width={20}
+            height={20}
+            alt="add movie to favourites icon"
+          />
+        ) : (
+          <img
+            src={watchIcon}
+            width={20}
+            height={20}
+            alt="add movie to favourites icon"
+          />
+        )}
+      </div>
     </>
   );
 };

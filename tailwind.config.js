@@ -27,6 +27,8 @@ module.exports = {
       "si-black": "#14181c",
       //input field
       "if-blue": "#2c3440",
+      //card blue
+      "c-blue":'#202830'
     },
     // extend: {},
   },

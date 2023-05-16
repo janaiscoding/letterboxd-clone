@@ -8,6 +8,8 @@ import {
   arrayRemove,
   arrayUnion,
 } from "firebase/firestore";
+import favIcon from "./fav.png";
+import removeFavIcon from "./remFav.png";
 
 const FavouriteButton = ({ movie }) => {
   const [isFavourite, setFavourite] = useState(false);
@@ -62,9 +64,23 @@ const FavouriteButton = ({ movie }) => {
   }, [movie]);
   return (
     <>
-      <button onClick={() => onFavourite(movie)}>
-        {isFavourite ? "Un-favourite" : "Add to fav"}
-      </button>
+      <div className="p-2" onClick={() => onFavourite(movie)}>
+        {isFavourite ? (
+          <img
+            src={removeFavIcon}
+            width={20}
+            height={20}
+            alt="add movie to favourites icon"
+          />
+        ) : (
+          <img
+            src={favIcon}
+            width={20}
+            height={20}
+            alt="add movie to favourites icon"
+          />
+        )}
+      </div>
     </>
   );
 };

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import PosterHomePopular from "./Poster_home_popular";
+import "../../styles/poster.css"
 
 const PopularHome = ({ populars }) => {
   const [firstSix, setFirstSix] = useState([]);
@@ -12,8 +13,16 @@ const PopularHome = ({ populars }) => {
 
   return (
     <>
-      <div className="flex justify-between section-heading text-sh-grey text-sm border-b border-solid border-b-grey mb-3 ">
-        <a href="/popular" className="text-base/[13px]  hover:text-hov-blue">
+      <div className="flex 
+      justify-between 
+      section-heading 
+      text-sh-grey 
+      text-sm 
+      border-b 
+      border-solid 
+      border-b-grey 
+      mb-3 ">
+        <a href="/popular" className="text-base  hover:text-hov-blue">
           POPULAR ON CLONNERBOXD
         </a>{" "}
         <a href="/popular" className="text-[11px] hover:text-hov-blue">
@@ -21,9 +30,14 @@ const PopularHome = ({ populars }) => {
         </a>
       </div>
 
-      <div className="flex flex-col md:flex-row">
+      <div className="flex 
+      flex-wrap 
+      justify-between 
+      md:flex-row 
+      md:flex-nowrap
+      mb-10">
         {firstSix.length === 0
-          ? "no populars"
+          ? "no populars available atm"
           : firstSix.map((movie) => (
               <PosterHomePopular key={movie.id} movie={movie} />
             ))}

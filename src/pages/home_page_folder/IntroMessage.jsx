@@ -16,7 +16,7 @@ const IntroMessage = ({ authStatus }) => {
         Welcome back,{" "}<NavLink to="/profile" className="text-p-white border-b border-solid border-h-grey hover:border-p-white">{displayName}</NavLink>. <span className="hidden md:inline-block">Here's what we've been
         watching...</span>
       </div>
-      <p className="text-center md:mb-8 text-lg text-h-grey">
+      <p className="text-center mb-8 md:mb-8 text-lg text-h-grey">
         This homepage will become customized as <a href="/" className="text-p-white hover:text-hov-blue">you follow active members</a> on
         Clonnerboxd.
       </p>
