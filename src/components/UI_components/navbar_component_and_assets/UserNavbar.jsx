@@ -3,7 +3,7 @@ import React from "react";
 const UserNavbar = ({ profilePic, userName, arrowDown, setVisibility }) => {
   return (
     <div
-      className="mx-3 flex items-center mt-2"
+      className="flex items-center mt-2 mx-1"
       onMouseEnter={() => setVisibility(true)}
     >
       <img
@@ -17,7 +17,7 @@ const UserNavbar = ({ profilePic, userName, arrowDown, setVisibility }) => {
         {userName}
       </span>
       <span>
-        <img src={arrowDown} alt="arrow down indicator icon" />
+        <img src={arrowDown} alt="arrow down indicator icon" className="ml-1" />
       </span>
     </div>
   );

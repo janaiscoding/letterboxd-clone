@@ -14,7 +14,7 @@ const DropdownDesktop = ({ userName, profilePic, arrowDown, setVisibility }) => 
         className="rounded-sm pt-2 pb-2 bg-drop-grey flex flex-col self-start"
         onMouseLeave={() => setVisibility(false)}
       >
-        <div className="mx-3 flex items-center">
+        <div className="flex items-center mx-1">
           <img
             src={profilePic}
             alt={userName}
@@ -26,7 +26,7 @@ const DropdownDesktop = ({ userName, profilePic, arrowDown, setVisibility }) => 
             {userName}
           </span>
           <span>
-            <img src={arrowDown} alt="arrow down indicator icon" />
+            <img src={arrowDown} alt="arrow down indicator icon"  className="ml-1"/>
           </span>
         </div>
         <ul

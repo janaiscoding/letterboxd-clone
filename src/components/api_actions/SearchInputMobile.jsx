@@ -21,7 +21,7 @@ const SearchInputMobile = ({ apiKey, fetchRequest }) => {
   // let allResponses = movieData.map((movie) => <div>{movie.title}</div>);
   return (
     <div className="p-4">
-      <label for="search" className="hidden">
+      <label htmlFor="search" className="hidden">
         Search:
       </label>
       <input

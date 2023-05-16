@@ -18,6 +18,7 @@ import myFace from "./navbar_assets/myface.jpg";
 import arrowDown from "./navbar_assets/arrowdownprofile.png";
 import DropdownDesktop from "./DropdownDesktop";
 import UserNavbar from "./UserNavbar";
+import { doc } from "firebase/firestore";
 
 const Navbar = ({
   query,
@@ -39,7 +40,19 @@ const Navbar = ({
       : SIM.classList.add("hidden");
   };
   const displaySearchDesktop = () => {
-    console.log("show destop search bar");
+    //show the bar element
+
+    const SBD = document.querySelector(".search-bar-desktop");
+    SBD.classList.remove("md:hidden");
+    SBD.classList.add("md:block");
+
+    // hide the icon
+    const SIID = document.querySelector(".search-icon-desktop");
+    SIID.classList.add("md:hidden");
+    // show the x button
+    const CSD = document.querySelector(".close-search-icon-desktop");
+    CSD.classList.add("md:block");
+    CSD.classList.remove("md:hidden");
   };
 
   useEffect(() => {
@@ -55,7 +68,7 @@ const Navbar = ({
 
   return (
     <>
-      <header className="flex flex-col align-center bg-h-blue px-2 md:h-20 md:flex-row">
+      <header className="flex flex-col align-center bg-h-blue px-2 md:h-[70px] md:flex-row">
         <section className=" flex justify-between align-center md:w-[950px] md:my-0 md:mx-auto">
           <Link className="self-center" to="/">
             <img
@@ -67,14 +80,14 @@ const Navbar = ({
             />
             <img
               src={logo}
-              width={273}
-              height={25}
+              width={265}
+              max-height={25}
               className="hidden md:block"
               alt="letterboxd browser logo"
             />
           </Link>
           <div className="flex items-center">
-            <nav className="flex flex-col self-start z-50 mt-5">
+            <nav className="flex flex-col self-start z-50 mt-4">
               <ul className="hidden md:flex">
                 <li>
                   {visibility ? (
@@ -125,6 +138,15 @@ const Navbar = ({
               alt="search icon"
               onClick={displaySearchDesktop}
             />
+            <div className="search-bar-desktop bg-h-blue hidden md:hidden">
+              <SearchInputDesktop
+                profilePic={profilePic}
+                apiKey={apiKey}
+                query={query}
+                fetchRequest={fetchRequest}
+              />
+            </div>
+
             <img
               className="search-icon-mobile md:hidden"
               src={searchIcon}
