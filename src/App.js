@@ -9,6 +9,7 @@ import Navbar from "./components/UI_components/navbar_component_and_assets/Navba
 import { HashRouter } from "react-router-dom";
 import MyRoutes from "./pages/MyRoutes";
 import Footer from "./components/UI_components/footer_component_and_assets/Footer";
+import NavbarSignout from "./components/UI_components/navbar_component_and_assets/NavbarSignout";
 
 const App = () => {
   const apiKey = "90a83017dcd0ef93c3e5474af9093de9";
@@ -45,13 +46,24 @@ const App = () => {
   return (
     <>
       <HashRouter>
-        <Navbar
-          apiKey={apiKey}
-          authStatus={authStatus}
-          fetchRequest={fetchRequest}
-          isProfileUpdated={isProfileUpdated}
-          setProfileUpdated={setProfileUpdated}
-        />
+        {authStatus ? (
+          <Navbar
+            apiKey={apiKey}
+            authStatus={authStatus}
+            fetchRequest={fetchRequest}
+            isProfileUpdated={isProfileUpdated}
+            setProfileUpdated={setProfileUpdated}
+          />
+        ) : (
+          <NavbarSignout
+            apiKey={apiKey}
+            authStatus={authStatus}
+            fetchRequest={fetchRequest}
+            isProfileUpdated={isProfileUpdated}
+            setProfileUpdated={setProfileUpdated}
+          />
+        )}
+
         <MyRoutes
           authStatus={authStatus}
           apiKey={apiKey}

@@ -18,7 +18,7 @@ import DropdownDesktop from "./DropdownDesktop";
 import UserNavbar from "./UserNavbar";
 import DropdownMobile from "./DropdownMobile";
 
-const Navbar = ({
+const NavbarSignout = ({
   query,
   apiKey,
   authStatus,
@@ -57,6 +57,10 @@ const Navbar = ({
     CSD.classList.remove("md:hidden");
   };
   const handleVisDDMob = () => {
+    const BDI = document.querySelector(".backdrop-container");
+    BDI.classList.contains("hidden")
+      ? BDI.classList.remove("hidden")
+      : BDI.classList.add("hidden");
     visDDMob ? setVisDDMob(false) : setVisDDMob(true);
   };
   useEffect(() => {
@@ -75,25 +79,25 @@ const Navbar = ({
 
   return (
     <>
-      <header className="flex flex-col align-center bg-h-blue md:h-[70px] md:flex-row">
-        <section className="px-2 pl-4 flex justify-between align-center md:w-[950px] md:my-0 md:mx-auto">
-          <Link className="self-center" to="/">
+      <header className="flex flex-col align-center bg-h-blue md:bg-transparent md:h-[70px] md:flex-row z-50">
+        <section className="z-50 px-2 pl-4  bg-h-blue md:bg-transparent flex justify-between align-center md:w-[950px] md:my-0 md:mx-auto">
+          <Link className=" z-50 self-center" to="/">
             <img
               src={logoMobile}
               width={60}
               height={42}
-              className="block md:hidden"
+              className="block z-index-10 md:hidden"
               alt="letterboxd mobile logo"
             />
             <img
               src={logo}
               width={265}
               max-height={25}
-              className="hidden md:block"
+              className="hidden md:z-50 md:block"
               alt="letterboxd browser logo"
             />
           </Link>
-          <div className="flex items-center">
+          <div className="z-50  flex items-center">
             <nav className="flex flex-col self-start z-50 mt-4">
               <ul className="hidden md:flex">
                 {userVis ? (
@@ -115,7 +119,9 @@ const Navbar = ({
                     )}
                   </li>
                 ) : (
-                  <p  className="ml-4 text-base text-sh-grey font-semibold hover:text-p-white	pt-2 hover:cursor-pointer">SIGN IN</p>
+                  <p className="ml-4 text-base text-sh-grey font-semibold hover:text-p-white	pt-2 hover:cursor-pointer">
+                    SIGN IN
+                  </p>
                 )}
 
                 {navbarLinks.map((L) => (
@@ -152,7 +158,7 @@ const Navbar = ({
               alt="search icon"
               onClick={displaySearchDesktop}
             />
-            <div className="search-bar-desktop bg-h-blue hidden md:hidden">
+            <div className="search-bar-desktop bg-h-blue hidden md:hidden z-50">
               <SearchInputDesktop
                 apiKey={apiKey}
                 query={query}
@@ -161,7 +167,7 @@ const Navbar = ({
             </div>
 
             <img
-              className="search-icon-mobile md:hidden"
+              className="search-icon-mobile md:hidden z-50"
               src={searchIcon}
               width={40}
               height={40}
@@ -181,7 +187,7 @@ const Navbar = ({
           " "
         )}
         {visDDMob ? (
-          <div className="dropdown-mobile bg-h-blue">
+          <div className="dropdown-mobile bg-h-blue z-50">
             <DropdownMobile
               profilePic={profilePic}
               userName={userName}
@@ -197,4 +203,4 @@ const Navbar = ({
   );
 };
 
-export default Navbar;
+export default NavbarSignout;

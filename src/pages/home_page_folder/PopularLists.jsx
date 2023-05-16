@@ -32,7 +32,8 @@ const PopularLists = ({ populars }) => {
       border-b 
       border-solid 
       border-b-grey 
-      mb-3 "
+      mb-3
+      z-50 "
       >
         <a
           href="https://letterboxd.com/lists/popular/this/week/"

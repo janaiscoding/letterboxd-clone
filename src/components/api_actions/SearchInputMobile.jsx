@@ -21,7 +21,7 @@ const SearchInputMobile = ({ apiKey, fetchRequest, handleVisSIMob }) => {
 
   // let allResponses = movieData.map((movie) => <div>{movie.title}</div>);
   return (
-    <div className="p-4">
+    <div className="p-4 z-50 bg-h-blue">
       <label htmlFor="search" className="hidden">
         Search:
       </label>

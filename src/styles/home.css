@@ -1,4 +1,3 @@
-.site-body{
-    background: #14181c url(../pages/home_page_folder/background-pic.png) 0 -1px repeat-x;
-    padding: 30px 0;
+body{
+    background-color:#14181c;
 }

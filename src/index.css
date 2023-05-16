@@ -3,15 +3,20 @@
 @tailwind utilities;
 
 @font-face {
-  font-family: 'Graphik';
-  src: url("./assets/font/graphic-web-regular.ttf")
+  font-family: "Graphik";
+  src: url("./assets/font/graphic-web-regular.ttf");
 }
 
 @layer base {
   html {
-    font-family: 'Graphik', system-ui, sans-serif;
+    font-family: "Graphik", system-ui, sans-serif;
   }
-}
-.poster-frame {
-  background-image: linear-gradient(90deg,hsla(0,0%,100%,0) 0,hsla(0,0%,100%,.5) 50%,hsla(0,0%,100%,0));
+  body {
+    background-image: linear-gradient(
+      to bottom,
+      #14181c calc(var(--layout-flex-leaderboard-height)),
+      #14181c calc(250px + var(--layout-flex-leaderboard-height)),
+      #2c3440 calc(251px + var(--layout-flex-leaderboard-height))
+    );
+  }
 }
