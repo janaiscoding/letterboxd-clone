@@ -7,20 +7,22 @@ const SearchInputDesktop = ({ apiKey, fetchRequest }) => {
   const navigate = useNavigate();
 
   const handleSearchDesktop = () => {
-    fetchRequest(
-      "https://api.themoviedb.org/3/search/movie?api_key=" +
-        apiKey +
-        "&query=" +
-        query
-    );
-    const SBD = document.querySelector(".search-bar-desktop");
-    SBD.classList.add("md:hidden");
-    const SID = document.querySelector(".search-icon-desktop");
-    console.log(SID)
-    SID.classList.remove("md:hidden")
-    SID.classList.add("md:block");
-    setQuery("");
-    navigate("/results/" + query);
+    if (query !== "") {
+      fetchRequest(
+        "https://api.themoviedb.org/3/search/movie?api_key=" +
+          apiKey +
+          "&query=" +
+          query
+      );
+      const SBD = document.querySelector(".search-bar-desktop");
+      SBD.classList.add("md:hidden");
+      const SID = document.querySelector(".search-icon-desktop");
+      console.log(SID);
+      SID.classList.remove("md:hidden");
+      SID.classList.add("md:block");
+      setQuery("");
+      navigate("/results/" + query);
+    }
   };
   const closeSearchDeskop = () => {
     //the x button is hidden now

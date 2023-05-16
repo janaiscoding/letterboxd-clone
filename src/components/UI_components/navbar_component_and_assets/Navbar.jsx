@@ -5,7 +5,6 @@ import SignInAll from "../../auth/auth_methods/SignInAll";
 import SearchInputMobile from "../../api_actions/SearchInputMobile";
 import SearchInputDesktop from "../../api_actions/SearchInputDesktop";
 import { auth } from "../../../firebase/firebase";
-import NavBarUser from "./NavBarUser";
 import navbarLinksData from "./navbar_assets/navbarLinksData";
 
 import logo from "./navbar_assets/logo.png";
@@ -18,7 +17,7 @@ import myFace from "./navbar_assets/myface.jpg";
 import arrowDown from "./navbar_assets/arrowdownprofile.png";
 import DropdownDesktop from "./DropdownDesktop";
 import UserNavbar from "./UserNavbar";
-import { doc } from "firebase/firestore";
+import DropdownMobile from "./DropdownMobile";
 
 const Navbar = ({
   query,
@@ -31,13 +30,11 @@ const Navbar = ({
   const [userName, setUserName] = useState();
   const [profilePic, setProfilePic] = useState(myFace);
   const [visibility, setVisibility] = useState(false);
-
+  const [visDDMob, setVisDDMob] = useState(false);
+  const [visSIMob, setVisSIMob] = useState(false);
   const navbarLinks = navbarLinksData;
-  const displaySearchBar = () => {
-    const SIM = document.querySelector(".search-bar-mobile");
-    SIM.classList.contains("hidden")
-      ? SIM.classList.remove("hidden")
-      : SIM.classList.add("hidden");
+  const handleVisSIMob = () => {
+    visSIMob ? setVisSIMob(false) : setVisSIMob(true);
   };
   const displaySearchDesktop = () => {
     //show the bar element
@@ -54,7 +51,9 @@ const Navbar = ({
     CSD.classList.add("md:block");
     CSD.classList.remove("md:hidden");
   };
-
+  const handleVisDDMob = () => {
+    visDDMob ? setVisDDMob(false) : setVisDDMob(true);
+  };
   useEffect(() => {
     if (authStatus) {
       console.log(authStatus);
@@ -68,8 +67,8 @@ const Navbar = ({
 
   return (
     <>
-      <header className="flex flex-col align-center bg-h-blue px-2 md:h-[70px] md:flex-row">
-        <section className=" flex justify-between align-center md:w-[950px] md:my-0 md:mx-auto">
+      <header className="flex flex-col align-center bg-h-blue md:h-[70px] md:flex-row">
+        <section className="px-2 flex justify-between align-center md:w-[950px] md:my-0 md:mx-auto">
           <Link className="self-center" to="/">
             <img
               src={logoMobile}
@@ -121,9 +120,11 @@ const Navbar = ({
               src={addNewIcon}
               width={40}
               height={40}
-              alt="decorative plus icon"
+              alt="search for a new movie to add"
+              onClick={handleVisSIMob}
             />
             <img
+              onClick={handleVisDDMob}
               className="md:hidden"
               src={openCloseMenu}
               width={40}
@@ -140,7 +141,6 @@ const Navbar = ({
             />
             <div className="search-bar-desktop bg-h-blue hidden md:hidden">
               <SearchInputDesktop
-                profilePic={profilePic}
                 apiKey={apiKey}
                 query={query}
                 fetchRequest={fetchRequest}
@@ -153,17 +153,32 @@ const Navbar = ({
               width={40}
               height={40}
               alt="search icon"
-              onClick={displaySearchBar}
+              onClick={handleVisSIMob}
             />
           </div>
         </section>
-        <div className="search-bar-mobile bg-h-blue hidden">
+        {visSIMob ? (
           <SearchInputMobile
             apiKey={apiKey}
             query={query}
             fetchRequest={fetchRequest}
+            handleVisSIMob={handleVisSIMob}
           />
-        </div>
+        ) : (
+          " "
+        )}
+        {visDDMob ? (
+          <div className="dropdown-mobile bg-h-blue">
+            <DropdownMobile
+              profilePic={profilePic}
+              userName={userName}
+              arrowDown={arrowDown}
+              setVisDDMob={setVisDDMob}
+            />
+          </div>
+        ) : (
+          ""
+        )}
       </header>
       {/* <header className="flex space-x-4 bg-h-blue text-l-white text-xl p-2 w-10 lg:w-auto">
         <div className="">

@@ -1,21 +1,22 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import searchInputIcon from "./searchinput.png";
-const SearchInputMobile = ({ apiKey, fetchRequest }) => {
+const SearchInputMobile = ({ apiKey, fetchRequest, handleVisSIMob }) => {
   const [query, setQuery] = useState("");
   const navigate = useNavigate();
 
   const handleSearchMobile = () => {
-    fetchRequest(
-      "https://api.themoviedb.org/3/search/movie?api_key=" +
-        apiKey +
-        "&query=" +
-        query
-    );
-    const SIM = document.querySelector(".search-bar-mobile");
-    SIM.classList.add("hidden");
-    setQuery("");
-    navigate("/results/" + query);
+    if (query !== "") {
+      fetchRequest(
+        "https://api.themoviedb.org/3/search/movie?api_key=" +
+          apiKey +
+          "&query=" +
+          query
+      );
+      setQuery("");
+      handleVisSIMob();
+      navigate("/results/" + query);
+    }
   };
 
   // let allResponses = movieData.map((movie) => <div>{movie.title}</div>);

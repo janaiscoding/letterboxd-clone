@@ -3,3 +3,9 @@
   margin-top: 5px;
   padding-top: 5px;
 }
+.divider-mobile{
+    border-bottom: 1px solid #2c3641;
+}
+#mobile-nav {
+    box-shadow: 0 10px 10px #000;
+}
