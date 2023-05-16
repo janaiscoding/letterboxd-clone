@@ -31,7 +31,8 @@ module.exports = {
       "c-blue": "#202830",
       //signout poster hover,
       "p-green": "#00e054",
-      "b-green":"#00c030"
+      "b-green": "#00c030",
+      "b-h-green": "#00B020",
     },
     // extend: {},
   },

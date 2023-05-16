@@ -26,7 +26,7 @@ const DropdownMobile = ({
     <>
       <div className="mobile-nav rounded-sm p-2 bg-h-blue flex flex-col self-start">
         {userLogin ? (
-          <div className="flex items-center mx-1">
+          <div className="flex items-center px-2 mx-1">
             <img
               src={profilePic}
               alt={userName}
@@ -52,13 +52,21 @@ const DropdownMobile = ({
             ))}
           </li>
           <li className="divider-mobile pt-2"></li>
-          <li className="flex pt-2">
-            <Link to="/settings" className="block pt-2 px-4">
-              Settings
-            </Link>
-            {userLogin ? <SignOut /> : <SignInAll />}
-            <p className="block pt-2 px-4 ">Subscriptions</p>
-          </li>
+          {userLogin ? (
+            <li className="grid grid-cols-2 pt-2">
+              <Link to="/settings" className="block pt-2 px-4">
+                Settings
+              </Link>
+              <SignOut />
+            </li>
+          ) : (
+            <li className="flex justify-between pt-2">
+              <Link to="/settings" className="block pt-2 px-4">
+                Settings
+              </Link>
+              <SignInAll />
+            </li>
+          )}
         </ul>
       </div>
     </>

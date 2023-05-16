@@ -22,7 +22,7 @@ const Footer = () => {
             ))}
           </ul>
 
-          <ul className="flex flex-col gap-2 md:gap-0 md:flex-row justify-between  items-center  py-1">
+          <ul className="flex sans-serif flex-col gap-2 md:gap-0 md:flex-row justify-between  items-center  py-1">
             {socials.map((social) => (
               <li className="self-center" key={social.id}>
                 <Link to={social.link}>

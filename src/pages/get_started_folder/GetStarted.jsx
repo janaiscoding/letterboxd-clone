@@ -38,10 +38,13 @@ const GetStarted = () => {
         h-10
         rounded
         text-base
-        md:text-xl 
+        md:text-l 
         text-[#fff]
-        px-3
-        mt-2
+        px-5
+        md:px-8
+        mt-1
+        sans-serif
+        hover:bg-b-h-green
         "
         >
           GET STARTED - IT'S FREE!
@@ -49,11 +52,13 @@ const GetStarted = () => {
 
         <div
           className="flex 
+          sans-serif
         flex-col
         md:flex-row
         items-center 
         gap-2
-        text-base
+        text-xs
+        md:text-base
         md:text-xl 
         text-sh-grey  
         my-2"

@@ -19,4 +19,7 @@
       #2c3440 calc(251px + var(--layout-flex-leaderboard-height))
     );
   }
+  .sans-serif{
+    font-family: sans-serif;
+  }
 }

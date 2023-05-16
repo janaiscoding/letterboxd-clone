@@ -65,7 +65,6 @@ const Navbar = ({
   };
   useEffect(() => {
     if (authStatus) {
-      console.log(auth.currentUser.photoURL);
       setUserName(auth.currentUser.displayName);
       setProfilePic(auth.currentUser.photoURL);
       setUserVis(true);
@@ -133,7 +132,7 @@ const Navbar = ({
 
                 {navbarLinks.map((L) => (
                   <li
-                    className="ml-4 text-base text-sh-grey font-semibold hover:text-p-white	pt-2"
+                    className="sans-serif ml-4 text-base text-sh-grey font-semibold hover:text-p-white	pt-2"
                     key={L.id}
                   >
                     <Link to={L.link}>{L.name}</Link>
