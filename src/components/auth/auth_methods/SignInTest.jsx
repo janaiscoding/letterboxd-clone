@@ -1,7 +1,8 @@
 import { doc, getDoc, setDoc } from "firebase/firestore";
 import { db, auth } from "../../../firebase/firebase";
 import React, { useState } from "react";
-import { signInWithEmailAndPassword } from "firebase/auth";
+import { signInWithEmailAndPassword, updateProfile } from "firebase/auth";
+import testerPic from "../../../assets/eye-icon.png";
 
 const SignInTest = () => {
   const [isInColl, setIsInColl] = useState(false);
@@ -14,7 +15,7 @@ const SignInTest = () => {
     )
       .then((userCredential) => {
         const user = userCredential.user;
-        console.log(user, "has logged in");
+        console.log(user, "has logged in with new info");
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -26,7 +27,6 @@ const SignInTest = () => {
   const checkUsersFromDB = async () => {
     const userDoc = await getDoc(doc(db, "user/" + auth.currentUser.uid));
     userDoc.exists() ? setIsInColl(true) : await addNewUserToDB();
-    console.log(isInColl);
   };
   // creates a new document for the new user
   const addNewUserToDB = async () => {
@@ -34,6 +34,7 @@ const SignInTest = () => {
       name: "Testing Account",
       uid: auth.currentUser.uid,
       bio: "Nice to see you!",
+      photoUrl: "",
       reviews: [],
       watched: [],
       favourites: [],
@@ -48,10 +49,17 @@ const SignInTest = () => {
     });
   };
   return (
-    <div className="sign-in-test">
-      <p>Sign in with a test account</p>
-      <button onClick={onLogin}>Sign IN with test acc</button>
-    </div>
+    <p
+      className="text-base 
+    text-sh-grey 
+    font-semibold 
+    hover:text-p-white	
+    hover:cursor-pointer 
+    uppercase"
+      onClick={onLogin}
+    >
+      Test Acc.
+    </p>
   );
 };
 //when i sign in, check if user exists

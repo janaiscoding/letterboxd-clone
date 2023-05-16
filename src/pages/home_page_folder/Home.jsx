@@ -7,6 +7,7 @@ import RecentStories from "./RecentStories";
 import "../../styles/home.css";
 import PopularLists from "./PopularLists";
 import GetStarted from "../get_started_folder/GetStarted";
+import PopularSignout from "../get_started_folder/PopularSignout";
 
 const Home = ({ apiKey, fetchResults, fetchRequest, authStatus }) => {
   useEffect(() => {
@@ -18,19 +19,27 @@ const Home = ({ apiKey, fetchResults, fetchRequest, authStatus }) => {
 
   return (
     <>
-      {authStatus ? "" : <GetStarted />}
+      {authStatus ? (
+        ""
+      ) : (
+        <>
+          <GetStarted />
+        </>
+      )}
 
       <div className="site-body py-5">
-        <div className="site-content px-4 flex flex-col md:py-8 md:w-[950px] md:my-0 md:mx-auto font-['Graphik']">
+        <div className="px-4 flex flex-col md:w-[950px] md:my-0 md:mx-auto font-['Graphik']">
           {authStatus ? (
             <>
               <IntroMessage authStatus={authStatus} />
+              <PopularHome populars={fetchResults} />
               <UpgradeToPro />
             </>
           ) : (
-            ""
+            <PopularSignout populars={fetchResults} />
           )}
-          <PopularHome populars={fetchResults} />
+        </div>
+        <div className="site-content px-4 flex flex-col md:py-8 md:w-[950px] md:my-0 md:mx-auto font-['Graphik']">
           <PopularLists populars={fetchResults} />
           <LatestNews />
           <RecentStories />

@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { auth } from "../../../firebase/firebase";
 import { updateProfile } from "firebase/auth";
+import Sappling from "./sappling.jpg";
 
 const ChangeUserInfo = ({ setProfileUpdated }) => {
   const [newName, setNewName] = useState("");
-  //   const [newBio, setNewBio] = useState(auth.currentUser); => would need db
+
   const updateUserName = () => {
     updateProfile(auth.currentUser, {
       displayName: newName,
@@ -21,6 +22,13 @@ const ChangeUserInfo = ({ setProfileUpdated }) => {
       });
   };
 
+  // const changePP = () => {
+  //   updateProfile(auth.currentUser, {
+  //     photoURL: Sappling,
+  //   }).then(() => {
+  //     console.log('welcome as a testing account user!')
+  //   })
+  // };
   return (
     <>
       <div>change name</div>
@@ -30,6 +38,8 @@ const ChangeUserInfo = ({ setProfileUpdated }) => {
         onChange={(e) => setNewName(e.target.value)}
       />
       <button onClick={updateUserName}>Save new name</button>
+
+      {/* <button onClick={changePP}>change pp</button> */}
       {/* <div>change bio</div>
       <input
         value={newBio}

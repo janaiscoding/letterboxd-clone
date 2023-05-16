@@ -28,8 +28,10 @@ module.exports = {
       //input field
       "if-blue": "#2c3440",
       //card blue
-      "c-blue":'#202830'
-      
+      "c-blue": "#202830",
+      //signout poster hover,
+      "p-green": "#00e054",
+      "b-green":"#00c030"
     },
     // extend: {},
   },

@@ -20,7 +20,7 @@ const SignOut = () => {
   };
   return (
     <>
-      <p onClick={onSignOut}>Sign Out</p>
+      <p className="block pt-2 px-4 md:p-0" onClick={onSignOut}>Sign Out</p>
     </>
   );
 };

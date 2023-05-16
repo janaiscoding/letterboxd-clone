@@ -7,7 +7,6 @@ const IntroMessage = ({ authStatus }) => {
   useEffect(() => {
     if (authStatus) {
       setDisplayName(auth.currentUser.displayName);
-      console.log("user is logged in");
     }
   }, [authStatus]);
   return (

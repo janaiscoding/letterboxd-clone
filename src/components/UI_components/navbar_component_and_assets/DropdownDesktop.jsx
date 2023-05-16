@@ -22,7 +22,13 @@ const DropdownDesktop = ({ userName, profilePic, arrowDown, setVisibility }) => 
             height={24}
             className="rounded-xl"
           />
-          <span className="text-base text-p-white font-semibold hover:cursor-pointer hover:text-p-white uppercase mx-1">
+          <span className="text-base 
+          text-p-white 
+          font-semibold 
+          hover:cursor-pointer 
+          hover:text-p-white 
+          uppercase 
+          mx-1">
             {userName}
           </span>
           <span>

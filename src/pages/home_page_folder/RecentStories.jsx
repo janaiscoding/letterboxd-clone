@@ -4,7 +4,6 @@ import Story from "./Story";
 import { Link } from "react-router-dom";
 const RecentStories = () => {
   const stories = storiesData;
-  console.log(stories);
   return (
     <>
       <div

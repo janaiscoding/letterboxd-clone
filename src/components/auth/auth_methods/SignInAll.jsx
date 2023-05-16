@@ -2,10 +2,17 @@ import SignInGoogle from "./SignInGoogle";
 import React from "react";
 import SignInTest from "./SignInTest";
 
-const SignInAll = () => {
+const SignInAll = ({ setShowLogin }) => {
   return (
-    <div className="sign-in-methods">
-      <SignInTest />
+    <div
+      className="
+    flex
+    ml-4 
+    self-center
+    items-center
+    pt-2"
+    >
+      <SignInTest /> {" "}
       <SignInGoogle />
     </div>
   );

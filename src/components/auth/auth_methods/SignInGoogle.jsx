@@ -50,7 +50,13 @@ const SignInGoogle = () => {
   };
   return (
     <>
-      <button onClick={onLogin}>Sign In With Google</button>
+      <p className="ml-4
+      text-base 
+    text-sh-grey 
+    font-semibold 
+    hover:text-p-white	
+    hover:cursor-pointer 
+    uppercase" onClick={onLogin}>{" "}Google</p>
     </>
   );
 };

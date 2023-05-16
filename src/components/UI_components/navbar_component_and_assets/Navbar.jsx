@@ -28,7 +28,8 @@ const Navbar = ({
 }) => {
   const [userName, setUserName] = useState();
   const [profilePic, setProfilePic] = useState(myFace);
-
+  const [userLogin, setUserLogin] = useState(false);
+  const [showLogin, setShowLogin] = useState(false);
   //for hover on navbar
   const [visibility, setVisibility] = useState(false);
   // dropdown menu on mobile and visibility of search input on mobile
@@ -59,11 +60,13 @@ const Navbar = ({
   const handleVisDDMob = () => {
     visDDMob ? setVisDDMob(false) : setVisDDMob(true);
   };
+  const toggleLogin = () => {
+    showLogin ? setShowLogin(false) : setShowLogin(true);
+  };
   useEffect(() => {
     if (authStatus) {
-      console.log(authStatus);
+      console.log(auth.currentUser.photoURL);
       setUserName(auth.currentUser.displayName);
-      //i gotta update a placeholder user img for meow
       setProfilePic(auth.currentUser.photoURL);
       setUserVis(true);
       setProfileUpdated(false);
@@ -94,7 +97,7 @@ const Navbar = ({
             />
           </Link>
           <div className="flex items-center">
-            <nav className="flex flex-col self-start z-50 mt-4">
+            <nav className="flex flex-col self-start z-[1000] mt-4">
               <ul className="hidden md:flex">
                 {userVis ? (
                   <li>
@@ -115,7 +118,17 @@ const Navbar = ({
                     )}
                   </li>
                 ) : (
-                  <p  className="ml-4 text-base text-sh-grey font-semibold hover:text-p-white	pt-2 hover:cursor-pointer">SIGN IN</p>
+                  <p
+                    className="ml-4 
+                  text-base 
+                  text-sh-grey 
+                  font-semibold 
+                  hover:text-p-white	
+                  pt-2 
+                  hover:cursor-pointer"
+                  >
+                    SIGN IN
+                  </p>
                 )}
 
                 {navbarLinks.map((L) => (
@@ -187,6 +200,10 @@ const Navbar = ({
               userName={userName}
               arrowDown={arrowDown}
               setVisDDMob={setVisDDMob}
+              userLogin={userLogin}
+              authStatus={authStatus}
+              toggleLogin={toggleLogin}
+              setUserLogin={setUserLogin}
             />
           </div>
         ) : (

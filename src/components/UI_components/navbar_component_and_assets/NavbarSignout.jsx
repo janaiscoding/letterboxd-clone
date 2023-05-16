@@ -35,8 +35,8 @@ const NavbarSignout = ({
   const [visDDMob, setVisDDMob] = useState(false);
   const [visSIMob, setVisSIMob] = useState(false);
   //user handler
-  const [userVis, setUserVis] = useState(false);
-
+  const [userLogin, setUserLogin] = useState(false);
+  const [showLogin, setShowLogin] = useState(false);
   const navbarLinks = navbarLinksData;
   const handleVisSIMob = () => {
     visSIMob ? setVisSIMob(false) : setVisSIMob(true);
@@ -63,24 +63,27 @@ const NavbarSignout = ({
       : BDI.classList.add("hidden");
     visDDMob ? setVisDDMob(false) : setVisDDMob(true);
   };
+  const toggleLogin = () => {
+    showLogin ? setShowLogin(false) : setShowLogin(true);
+  };
   useEffect(() => {
     if (authStatus) {
       console.log(authStatus);
       setUserName(auth.currentUser.displayName);
       //i gotta update a placeholder user img for meow
       setProfilePic(auth.currentUser.photoURL);
-      setUserVis(true);
+      setUserLogin(true);
       setProfileUpdated(false);
     } else {
-      setUserVis(false);
+      setUserLogin(false);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [authStatus, isProfileUpdated]);
 
   return (
     <>
-      <header className="flex flex-col align-center bg-h-blue md:bg-transparent md:h-[70px] md:flex-row z-50">
-        <section className="z-50 px-2 pl-4  bg-h-blue md:bg-transparent flex justify-between align-center md:w-[950px] md:my-0 md:mx-auto">
+      <header className="flex flex-col align-center bg-transparent md:h-[70px] md:flex-row z-50">
+        <section className="z-50 px-2 pl-4 bg-transparent flex justify-between align-center md:w-[950px] md:my-0 md:mx-auto">
           <Link className=" z-50 self-center" to="/">
             <img
               src={logoMobile}
@@ -100,7 +103,7 @@ const NavbarSignout = ({
           <div className="z-50  flex items-center">
             <nav className="flex flex-col self-start z-50 mt-4">
               <ul className="hidden md:flex">
-                {userVis ? (
+                {userLogin ? (
                   <li>
                     {visibility ? (
                       <DropdownDesktop
@@ -118,8 +121,19 @@ const NavbarSignout = ({
                       />
                     )}
                   </li>
+                ) : showLogin ? (
+                  <SignInAll setShowLogin={setShowLogin} />
                 ) : (
-                  <p className="ml-4 text-base text-sh-grey font-semibold hover:text-p-white	pt-2 hover:cursor-pointer">
+                  <p
+                    className="ml-4
+                      pt-2  
+                      text-base 
+                      text-sh-grey 
+                      font-semibold 
+                      hover:text-p-white	
+                      hover:cursor-pointer"
+                    onClick={toggleLogin}
+                  >
                     SIGN IN
                   </p>
                 )}
@@ -158,14 +172,13 @@ const NavbarSignout = ({
               alt="search icon"
               onClick={displaySearchDesktop}
             />
-            <div className="search-bar-desktop bg-h-blue hidden md:hidden z-50">
+            <div className="search-bar-desktop hidden md:hidden z-50">
               <SearchInputDesktop
                 apiKey={apiKey}
                 query={query}
                 fetchRequest={fetchRequest}
               />
             </div>
-
             <img
               className="search-icon-mobile md:hidden z-50"
               src={searchIcon}
@@ -193,6 +206,10 @@ const NavbarSignout = ({
               userName={userName}
               arrowDown={arrowDown}
               setVisDDMob={setVisDDMob}
+              userLogin={userLogin}
+              authStatus={authStatus}
+              toggleLogin={toggleLogin}
+              setUserLogin={setUserLogin}
             />
           </div>
         ) : (

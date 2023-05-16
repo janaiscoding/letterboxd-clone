@@ -10,6 +10,25 @@
   width: 1200px;
 }
 
+.gradient-helper {
+  background-image: linear-gradient(
+    to bottom,
+    #14181c00,
+    #14181c09,
+    #14181c4b,
+    #14181cbe,
+    #14181cf5,
+    #14181c
+  );
+  background-repeat: no-repeat;
+  content: "";
+  display: block;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 0;
+}
 .backdrop-container:after {
   background-image: linear-gradient(
       90deg,
