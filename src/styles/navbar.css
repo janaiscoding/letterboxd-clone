@@ -1,96 +1,13 @@
-#root {
-  --header-background-color: #14181c;
-}
-
-header {
-  justify-content: space-between;
-  background-color: var(--header-background-color);
-  position: sticky;
-  height: 20vh;
-  padding: 0px 10px;
-}
-.header-left {
-  justify-content: flex-start;
-  --gap: 20px;
-}
-.logo {
-  margin: 2rem;
+.replace {
+  background: url(../assets/letterboxd-svg-file.svg) no-repeat;
   display: block;
   overflow: hidden;
   text-indent: 110%;
-  white-space: nowrap;
-  background-repeat: no-repeat;
-  width: 273px;
-  height: 25px;
+  white-space: no-wrap;
 }
-.cart-menu-icon {
-  display: flex;
-  gap: 10px;
-  font-size: 20px;
-  font-weight: 700;
-}
-.cart-menu-icon > div {
-  color: white;
-}
-.mobile-nav-toggle {
-  display: none;
-  padding: 0;
-}
-
-@media (max-width: 35em) {
-  .primary-navigation {
-    position: fixed;
-    z-index: 1000;
-    inset: 0 0 0 30%;
-    --gap: 2.5em;
-    flex-direction: column;
-    padding: min(30vh, 10rem) 2em !important;
-    background: hsl(0, 0%, 0%, 0.45);
-    backdrop-filter: blur(1rem);
-    align-items: flex-start;
-    transform: translateX(100%);
-    transition: transform 350ms ease-out;
-  }
-  .mobile-nav-toggle {
-    display: block;
-    position: absolute;
-    /* background-image: url("../assets/hamburger-icon.png"); */
-    background-repeat: no-repeat;
-    border: 0;
-    width: 2rem;
-    right: 2rem;
-    z-index: 9999;
-    aspect-ratio: 1;
-  }
-  .cart-menu-icon {
-    z-index: 9999;
-  }
-  .primary-navigation[data-visible="true"] {
-    transform: translateX(0%);
-  }
-  /* .mobile-nav-toggle[aria-expanded="true"] {
-    background-image: url("../assets/close-icon.png");
-  } */
-}
-
-/* UTILITY */
-.flex {
-  display: flex;
-  align-items: center;
-  gap: var(--gap, 4rem);
-}
-.primary-navigation {
-  align-items: center;
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-.primary-navigation a {
-  color:white;
-  text-decoration: none;
-  font-size: 1.6rem;
-}
-.auth-navigation{
-  display: flex;
-  color:white;
+.site-header > .site-logo > .logo {
+  background-position: 0 -800px;
+  height: 40px;
+  width: 62px;
+  position: relative;
 }

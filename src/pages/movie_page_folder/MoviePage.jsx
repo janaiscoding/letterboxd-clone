@@ -12,6 +12,7 @@ const MoviePage = ({ apiKey, fetchResults, fetchRequest }) => {
     fetchRequest(
       "https://api.themoviedb.org/3/movie/" + movieId + "?api_key=" + apiKey
     );
+    console.log('why am i redirected')
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (

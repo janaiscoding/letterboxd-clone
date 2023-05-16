@@ -14,8 +14,8 @@ const Home = ({ apiKey, fetchResults, fetchRequest,authStatus }) => {
   }, []);
 
   return (
-    <div className="bg-b-blue">
-    <div className="site-content md:py-8 md:w-9/12 md:my-0 md:mx-auto" >
+    <div className="bg-b-blue py-5">
+    <div className="site-content px-4 flex flex-col md:py-8 md:w-[950px] md:my-0 md:mx-auto font-['Graphik']" >
       <IntroMessage authStatus={authStatus} />
       <UpgradeToPro />
       <PopularHome populars={fetchResults} />

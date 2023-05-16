@@ -12,7 +12,7 @@ const IntroMessage = ({ authStatus }) => {
   }, [authStatus]);
   return (
     <>
-      <div className="text-h-grey text-3xl text-center font-normal font-['Graphik']">
+      <div className="text-h-grey text-3xl text-center font-normal">
         Welcome back,{" "}<NavLink to="/profile" className="text-p-white border-b border-solid border-h-grey hover:border-p-white">{displayName}</NavLink>. <span className="hidden md:inline-block">Here's what we've been
         watching...</span>
       </div>

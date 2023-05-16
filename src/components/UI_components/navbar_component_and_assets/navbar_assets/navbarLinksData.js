@@ -3,22 +3,22 @@ import uniqid from "uniqid";
 const navbarLinksData = [
   {
     id: uniqid(),
-    name: "Films",
+    name: "FILMS",
     link: "/films",
   },
   {
     id: uniqid(),
-    name: "Lists",
+    name: "LISTS",
     link: "/lists",
   },
   {
     id: uniqid(),
-    name: "Members",
+    name: "MEMBERS",
     link: "/members",
   },
   {
     id: uniqid(),
-    name: "Journal",
+    name: "JOURNAL",
     link: "/journal",
   },
 ];
