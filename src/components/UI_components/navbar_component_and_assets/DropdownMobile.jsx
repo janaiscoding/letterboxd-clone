@@ -24,7 +24,7 @@ const DropdownMobile = ({
 
   return (
     <>
-      <div className="mobile-nav rounded-sm p-2 bg-h-blue flex flex-col self-start  z-50">
+      <div className="mobile-nav rounded-sm p-2 bg-h-blue flex flex-col self-start static z-999">
         {userLogin ? (
           <div className="flex items-center px-2 mx-1">
             <img

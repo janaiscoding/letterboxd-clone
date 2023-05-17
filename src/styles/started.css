@@ -85,9 +85,7 @@
   );
   background-repeat: no-repeat;
   content: "";
-
   height: 100%;
-
   top: 0;
   width: 100%;
   z-index: 0;
@@ -106,6 +104,8 @@
     background-repeat: no-repeat;
     content: "";
     height: 100%;
+    top: 0;
     width: 100%;
+    z-index: 0;
   }
 }

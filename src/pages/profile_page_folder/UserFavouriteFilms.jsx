@@ -16,7 +16,7 @@ const UserFavouriteFilms = ({ apiKey, favIDs, setNewDataGained }) => {
     <>
       <div
         className="flex 
-      justify-between 
+      align-start 
       section-heading
       text-sh-grey 
       text-xs
@@ -31,7 +31,6 @@ const UserFavouriteFilms = ({ apiKey, favIDs, setNewDataGained }) => {
       <div
         className="flex 
       gap-1
-      justify-between
       flex-wrap 
       md:flex-row 
       md:flex-nowrap

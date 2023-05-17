@@ -16,7 +16,7 @@ const UserWatchedFilms = ({ apiKey, watchedIDs, setNewDataGained }) => {
     <>
       <div
         className="flex 
-      justify-between 
+       justify-start 
       section-heading
       text-sh-grey 
       text-xs
@@ -32,7 +32,6 @@ const UserWatchedFilms = ({ apiKey, watchedIDs, setNewDataGained }) => {
         className="flex 
         gap-1
         flex-wrap 
-        justify-between
       md:flex-row 
       md:flex-nowrap
       mb-10"

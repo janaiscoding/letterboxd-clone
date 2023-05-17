@@ -1,8 +1,3 @@
-.site-body {
-  background-image: linear-gradient(
-    to bottom,
-    #14181cfb,
-    #14181c
-  );
-
+body {
+  background-color: #14181cfa;
 }
