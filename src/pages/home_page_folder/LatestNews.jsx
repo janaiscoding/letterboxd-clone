@@ -48,6 +48,7 @@ const LatestNews = () => {
         >
           <h1
             className="text-p-white 
+            pl-3
           mt-2 
           text-xl 
           font-bold 
@@ -59,7 +60,7 @@ const LatestNews = () => {
           >
             Mamma mia!
           </h1>
-          <p className="my-1.5 text-sh-grey">
+          <p className="pl-3 my-1.5 text-sh-grey">
             The Letterboxd crew celebrates Mother’s Day 2023 by asking our own
             moms about their favorite films.
             <Link

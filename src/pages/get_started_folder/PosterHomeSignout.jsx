@@ -38,7 +38,6 @@ const PosterHomeSignout = ({ movie }) => {
         <div
           className="
         rounded
-        block
         absolute
         flex 
         flex-col
@@ -48,6 +47,8 @@ const PosterHomeSignout = ({ movie }) => {
         top-[30px]
         w-[70%]
         z-10
+        hidden 
+        md:block
         "
           style={{ backgroundColor: "rgba(0,0,0,0.8)" }}
         >

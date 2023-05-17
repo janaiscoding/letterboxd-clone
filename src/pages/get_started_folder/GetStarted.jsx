@@ -14,7 +14,7 @@ const GetStarted = () => {
         <img
           alt="backdrop"
           src="https://a.ltrbxd.com/resized/sm/upload/tx/hy/xj/lw/sanctuary-2023-1200-1200-675-675-crop-000000.jpg?v=b1d98010cd"
-          className="backdropimage  h-[300px]  md:h-[650px] md:w-full top-0 z-[-99]"
+          className="backdropimage  h-[300px]  md:h-[650px] w-full top-0 z-[-99]"
         ></img>
       </div>
       <div
@@ -23,12 +23,12 @@ const GetStarted = () => {
       flex-col 
       items-center 
       relative 
-      mt-[5%]
+      mt-[-5%]
       md:mt-[-15%] 
       gap-2 
       z-50"
       >
-        <div className="font-bold text-2xl md:text-5xl text-[#fff]">
+        <div className="font-bold gradient-helper-mobile text-2xl md:text-5xl text-[#fff] text-center">
           <p>Track films you’ve watched.</p>
           <p>Save those you want to see.</p>
           <p>Tell your friends what’s good.</p>

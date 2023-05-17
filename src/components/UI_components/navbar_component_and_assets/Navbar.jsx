@@ -85,7 +85,7 @@ const Navbar = ({
     <>
       <header className={style}>
         <section className="px-2 pl-4 flex justify-between align-center md:w-[950px] md:my-0 md:mx-auto z-50">
-          <Link className="self-center" to="/">
+          <Link className="self-center block md:hidden" to="/">
             <img
               src={logoMobile}
               width={60}
@@ -93,6 +93,8 @@ const Navbar = ({
               className="block md:hidden"
               alt="letterboxd mobile logo"
             />
+          </Link>
+          <Link className="self-center hidden md:block" to="/">
             <img
               src={logo}
               width={265}
