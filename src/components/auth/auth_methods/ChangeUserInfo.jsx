@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { auth } from "../../../firebase/firebase";
 import { updateProfile } from "firebase/auth";
-import Sappling from './sappling.jpg'
 const ChangeUserInfo = ({ setProfileUpdated }) => {
   const [newName, setNewName] = useState("");
 
@@ -37,9 +36,8 @@ const ChangeUserInfo = ({ setProfileUpdated }) => {
         onChange={(e) => setNewName(e.target.value)}
       />
       <button onClick={updateUserName}>Save new name</button>
-{/* 
+      {/* 
       <button onClick={changePP}>change pp</button> */}
-
     </>
   );
 };
