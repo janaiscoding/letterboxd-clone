@@ -69,6 +69,7 @@ const Navbar = ({
     if (authStatus) {
       setUserName(auth.currentUser.displayName);
       setProfilePic(auth.currentUser.photoURL);
+      console.log(auth.currentUser.photoURL);
       setUserLogin(true);
       setProfileUpdated(false);
       setStyle("flex flex-col align-center bg-h-blue md:h-[70px] md:flex-row");

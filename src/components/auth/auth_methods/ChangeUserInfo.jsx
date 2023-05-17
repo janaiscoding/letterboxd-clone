@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { auth } from "../../../firebase/firebase";
 import { updateProfile } from "firebase/auth";
-
+import Sappling from './sappling.jpg'
 const ChangeUserInfo = ({ setProfileUpdated }) => {
   const [newName, setNewName] = useState("");
 
@@ -23,9 +23,9 @@ const ChangeUserInfo = ({ setProfileUpdated }) => {
 
   // const changePP = () => {
   //   updateProfile(auth.currentUser, {
-  //     photoURL: Sappling,
+  //     photoURL: 'https://cdn.discordapp.com/attachments/948205733688786974/1108464787651833987/image.png',
   //   }).then(() => {
-  //     console.log('welcome as a testing account user!')
+  //       console.log(auth.currentUser.photoURL)
   //   })
   // };
   return (
@@ -37,15 +37,9 @@ const ChangeUserInfo = ({ setProfileUpdated }) => {
         onChange={(e) => setNewName(e.target.value)}
       />
       <button onClick={updateUserName}>Save new name</button>
+{/* 
+      <button onClick={changePP}>change pp</button> */}
 
-      {/* <button onClick={changePP}>change pp</button> */}
-      {/* <div>change bio</div>
-      <input
-        value={newBio}
-        type="text"
-        onChange={(e) => setNewBio(e.target.value)}
-      />
-      <button onClick={updateUserBio}>Save new bio</button> */}
     </>
   );
 };

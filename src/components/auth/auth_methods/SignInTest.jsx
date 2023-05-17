@@ -2,7 +2,7 @@ import { doc, getDoc, setDoc } from "firebase/firestore";
 import { db, auth } from "../../../firebase/firebase";
 import React from "react";
 import { signInWithEmailAndPassword } from "firebase/auth";
-
+import Sappling from './sappling.jpg'
 const SignInTest = () => {
   const handleAuthEvent = async () => {
     await signInWithEmailAndPassword(
@@ -24,6 +24,7 @@ const SignInTest = () => {
   const checkUsersFromDB = async () => {
     const userDoc = await getDoc(doc(db, "users/" + auth.currentUser.uid));
     userDoc.exists() ? console.log("fetched data") : await addNewUserToDB();
+    //welcome back popup username!
   };
   // creates a new document for the new user
   const addNewUserToDB = async () => {
@@ -31,7 +32,7 @@ const SignInTest = () => {
       name: "Testing Account",
       uid: auth.currentUser.uid,
       bio: "Nice to see you!",
-      photoUrl: "",
+      photoUrl: 'https://cdn.discordapp.com/attachments/948205733688786974/1108464787651833987/image.png',
       reviews: [],
       watched: [],
       favourites: [],
