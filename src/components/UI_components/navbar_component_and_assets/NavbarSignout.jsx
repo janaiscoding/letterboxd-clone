@@ -74,7 +74,9 @@ const NavbarSignout = ({
       setProfilePic(auth.currentUser.photoURL);
       setUserLogin(true);
       setProfileUpdated(false);
+      console.log('user is now logged in')
     } else {
+      console.log('user is not logged in')
       setUserLogin(false);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps

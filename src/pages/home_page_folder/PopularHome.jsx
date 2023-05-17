@@ -21,8 +21,7 @@ const PopularHome = ({ populars }) => {
       border-b 
       border-solid 
       border-b-grey 
-      mb-3 
-      z-50 ">
+      mb-3">
         <a href="/popular" className="text-base  hover:text-hov-blue">
           POPULAR ON CLONNERBOXD
         </a>{" "}

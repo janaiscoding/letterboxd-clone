@@ -24,7 +24,7 @@ const DropdownMobile = ({
 
   return (
     <>
-      <div className="mobile-nav rounded-sm p-2 bg-h-blue flex flex-col self-start">
+      <div className="mobile-nav rounded-sm p-2 bg-h-blue flex flex-col self-start  z-50">
         {userLogin ? (
           <div className="flex items-center px-2 mx-1">
             <img
@@ -34,7 +34,7 @@ const DropdownMobile = ({
               height={24}
               className="rounded-xl"
             />
-            <span className=" text-p-white font-semibold hover:cursor-pointer hover:text-p-white uppercase mx-1">
+            <span className=" text-p-white font-semibold hover:cursor-pointer hover:text-p-white uppercase mx-1 z-50">
               {userName}
             </span>
           </div>
@@ -42,7 +42,7 @@ const DropdownMobile = ({
           ""
         )}
 
-        <ul className="rounded-sm text-base text-sh-grey bg-h-blue uppercase mx-3 py-3">
+        <ul className="rounded-sm text-base text-sh-grey bg-h-blue uppercase mx-3 py-3 z-50">
           <li className="divider-mobile"></li>
           <li className="py-3 grid grid-cols-2">
             {dropdownList.map((L) => (
@@ -53,15 +53,15 @@ const DropdownMobile = ({
           </li>
           <li className="divider-mobile pt-2"></li>
           {userLogin ? (
-            <li className="grid grid-cols-2 pt-2">
-              <Link to="/settings" className="block pt-2 px-4">
+            <li className="grid grid-cols-2 pt-2  z-50">
+              <Link to="/settings" className="block pt-2 px-4 z-50">
                 Settings
               </Link>
               <SignOut />
             </li>
           ) : (
-            <li className="flex justify-between pt-2">
-              <Link to="/settings" className="block pt-2 px-4">
+            <li className="flex justify-between pt-2 z-50">
+              <Link to="/settings" className="block pt-2 px-4 z-50">
                 Settings
               </Link>
               <SignInAll />

@@ -15,6 +15,7 @@ const SignInGoogle = () => {
     await signInWithPopup(auth, provider)
       .then((userCredential) => {
         const user = userCredential.user;
+
         console.log(user, "has logged in");
       })
       .catch((error) => {
@@ -25,9 +26,16 @@ const SignInGoogle = () => {
   };
 
   const checkUsersFromDB = async () => {
-    const userDoc = await getDoc(doc(db, "user/" + auth.currentUser.uid));
-    userDoc.exists() ? setIsInColl(true) : await addNewUserToDB();
-    console.log(isInColl);
+    const docRef = doc(db, "user/" + auth.currentUser.uid);
+    const userDoc = await getDoc(docRef);
+
+    if (userDoc.exists()) {
+      console.log(`my uid`, auth.currentUser.uid);
+      console.log(`my user doc`, userDoc.data());
+      console.log("my doc exists bruh");
+    }
+    // userDoc.exists() ? setIsInColl(true) : await addNewUserToDB();
+    // console.log(isInColl);
   };
   // creates a new document for the new user
   const addNewUserToDB = async () => {
@@ -50,13 +58,19 @@ const SignInGoogle = () => {
   };
   return (
     <>
-      <p className="ml-4
+      <p
+        className="ml-4
       text-base 
     text-sh-grey 
     font-semibold 
     hover:text-p-white	
     hover:cursor-pointer 
-    uppercase" onClick={onLogin}>{" "}Google</p>
+    uppercase"
+        onClick={onLogin}
+      >
+        {" "}
+        Google
+      </p>
     </>
   );
 };

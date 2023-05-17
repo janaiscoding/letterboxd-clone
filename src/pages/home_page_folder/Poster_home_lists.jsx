@@ -21,7 +21,7 @@ const PosterHomeLists = ({ movie, index }) => {
         setFixedIndex(11);
         break;
       default:
-        console.log("index error");
+        console.log("");
     }
   },[index]);
   return (

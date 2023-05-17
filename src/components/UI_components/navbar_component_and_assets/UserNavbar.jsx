@@ -1,10 +1,10 @@
 import React from "react";
 
-const UserNavbar = ({ profilePic, userName, arrowDown, setVisibility }) => {
+const UserNavbar = ({ profilePic, userName, arrowDown, setShowDropdown }) => {
   return (
     <div
       className="flex items-center mt-2 mx-1"
-      onMouseEnter={() => setVisibility(true)}
+      onMouseEnter={() => setShowDropdown(true)}
     >
       <img
         src={profilePic}

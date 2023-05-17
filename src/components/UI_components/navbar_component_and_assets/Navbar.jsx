@@ -26,22 +26,23 @@ const Navbar = ({
   isProfileUpdated,
   setProfileUpdated,
 }) => {
+  const navbarLinks = navbarLinksData;
   const [userName, setUserName] = useState();
   const [profilePic, setProfilePic] = useState(myFace);
   const [userLogin, setUserLogin] = useState(false);
   const [showLogin, setShowLogin] = useState(false);
-  //for hover on navbar
-  const [visibility, setVisibility] = useState(false);
+  //for hover on navbar to display dropdown menu on desktop
+  const [showDropdown, setShowDropdown] = useState(false);
   // dropdown menu on mobile and visibility of search input on mobile
   const [visDDMob, setVisDDMob] = useState(false);
   const [visSIMob, setVisSIMob] = useState(false);
-  //user handler
-  const [userVis, setUserVis] = useState(false);
+  //style for online/offline
+  const [style, setStyle] = useState();
 
-  const navbarLinks = navbarLinksData;
   const handleVisSIMob = () => {
     visSIMob ? setVisSIMob(false) : setVisSIMob(true);
   };
+
   const displaySearchDesktop = () => {
     //show the bar element
 
@@ -57,28 +58,31 @@ const Navbar = ({
     CSD.classList.add("md:block");
     CSD.classList.remove("md:hidden");
   };
+
   const handleVisDDMob = () => {
     visDDMob ? setVisDDMob(false) : setVisDDMob(true);
   };
-  const toggleLogin = () => {
-    showLogin ? setShowLogin(false) : setShowLogin(true);
-  };
+
   useEffect(() => {
     if (authStatus) {
       setUserName(auth.currentUser.displayName);
       setProfilePic(auth.currentUser.photoURL);
-      setUserVis(true);
+      setUserLogin(true);
       setProfileUpdated(false);
+      setStyle("flex flex-col align-center bg-h-blue md:h-[70px] md:flex-row");
     } else {
-      setUserVis(false);
+      setUserLogin(false);
+      setStyle(
+        "flex flex-col align-center bg-transparent md:h-[70px] md:flex-row z-50"
+      );
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [authStatus, isProfileUpdated]);
 
   return (
     <>
-      <header className="flex flex-col align-center bg-h-blue md:h-[70px] md:flex-row">
-        <section className="px-2 pl-4 flex justify-between align-center md:w-[950px] md:my-0 md:mx-auto">
+      <header className={style}>
+        <section className="px-2 pl-4 flex justify-between align-center md:w-[950px] md:my-0 md:mx-auto z-50">
           <Link className="self-center" to="/">
             <img
               src={logoMobile}
@@ -97,34 +101,40 @@ const Navbar = ({
           </Link>
           <div className="flex items-center">
             <nav className="flex flex-col self-start z-[1000] mt-4">
-              <ul className="hidden md:flex">
-                {userVis ? (
+              <ul className="hidden md:flex  z-[1000]">
+                {/* if user if logged in, i show the dropdown/normal user UI */}
+                {userLogin ? (
                   <li>
-                    {visibility ? (
+                    {showDropdown ? (
                       <DropdownDesktop
                         profilePic={profilePic}
                         userName={userName}
                         arrowDown={arrowDown}
-                        setVisibility={setVisibility}
+                        setShowDropdown={setShowDropdown}
                       />
                     ) : (
                       <UserNavbar
                         profilePic={profilePic}
                         userName={userName}
                         arrowDown={arrowDown}
-                        setVisibility={setVisibility}
+                        setShowDropdown={setShowDropdown}
                       />
                     )}
                   </li>
+                ) : showLogin ? (
+                  // if user is not logged in, I display a toggle for the sign in options
+                  //show login = true when clicked on "SIGN IN"
+                  <SignInAll />
                 ) : (
                   <p
-                    className="ml-4 
-                  text-base 
-                  text-sh-grey 
-                  font-semibold 
-                  hover:text-p-white	
-                  pt-2 
-                  hover:cursor-pointer"
+                    className="ml-4
+                      pt-2  
+                      text-base 
+                      text-sh-grey 
+                      font-semibold 
+                      hover:text-p-white	
+                      hover:cursor-pointer"
+                    onClick={() => setShowLogin(true)}
                   >
                     SIGN IN
                   </p>
@@ -201,7 +211,6 @@ const Navbar = ({
               setVisDDMob={setVisDDMob}
               userLogin={userLogin}
               authStatus={authStatus}
-              toggleLogin={toggleLogin}
               setUserLogin={setUserLogin}
             />
           </div>

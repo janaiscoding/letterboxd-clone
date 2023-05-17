@@ -2,7 +2,7 @@ import SignInGoogle from "./SignInGoogle";
 import React from "react";
 import SignInTest from "./SignInTest";
 
-const SignInAll = ({ setShowLogin }) => {
+const SignInAll = () => {
   return (
     <div
       className="
@@ -12,8 +12,7 @@ const SignInAll = ({ setShowLogin }) => {
     items-center
     pt-2"
     >
-      <SignInTest /> {" "}
-      <SignInGoogle />
+      <SignInTest /> <SignInGoogle />
     </div>
   );
 };
