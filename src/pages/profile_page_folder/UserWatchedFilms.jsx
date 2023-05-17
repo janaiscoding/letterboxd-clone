@@ -5,7 +5,7 @@ const UserWatchedFilms = ({ apiKey, watchedIDs, setNewDataGained }) => {
   const [firstFour, setFirstFour] = useState([]);
   useEffect(() => {
     if (watchedIDs.length > 0) {
-      const firstFour = watchedIDs.reverse().filter((id, index) => index < 6);
+      const firstFour = watchedIDs.reverse().filter((id, index) => index < 4);
       setFirstFour(firstFour);
     }else {
         setFirstFour([])
