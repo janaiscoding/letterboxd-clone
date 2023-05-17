@@ -7,6 +7,7 @@ const UserProfileReview = ({ apiKey, movieID, review, setNewDataGained }) => {
   const [movieData, setMovieData] = useState([]);
   const [visibility, setVisibility] = useState(false);
   const [movieYear, setMovieYear] = useState();
+
   const fetchRequestFromAPI = () => {
     fetch(
       "https://api.themoviedb.org/3/movie/" + movieID + "?api_key=" + apiKey,
@@ -17,6 +18,7 @@ const UserProfileReview = ({ apiKey, movieID, review, setNewDataGained }) => {
       .then((response) => response.json())
       .then((data) => {
         setMovieData(data);
+        setMovieYear(data.release_date.substring(0,4))
       })
       .catch((err) => {
         console.log(err.message);
@@ -89,7 +91,7 @@ const UserProfileReview = ({ apiKey, movieID, review, setNewDataGained }) => {
         >
           {" "}
           {movieData.title}{" "}
-          <span className="text-sh-grey text-base">{movieYear}</span>
+          <span className="text-sh-grey font-normal text-base">{movieYear}</span>
         </Link>
         <p className="text-sh-grey text-sm pt-2">{review}</p>
       </div>

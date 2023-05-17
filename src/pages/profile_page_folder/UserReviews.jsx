@@ -32,7 +32,6 @@ const UserReviews = ({ apiKey, reviews, setNewDataGained }) => {
         flex-col
         gap-2
         justify-between 
-        md:flex-row 
         md:flex-nowrap
         mb-10"
       >
