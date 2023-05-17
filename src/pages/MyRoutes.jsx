@@ -43,11 +43,11 @@ const MyRoutes = ({
         element={
           <Profile
             apiKey={apiKey}
+            fetchResults={fetchResults}
+            fetchRequest={fetchRequest}
             authStatus={authStatus}
             isProfileUpdated={isProfileUpdated}
             setProfileUpdated={setProfileUpdated}
-            fetchResults={fetchResults}
-            fetchRequest={fetchRequest}
             setNewDataGained={setNewDataGained}
             newDataGained={newDataGained}
           />

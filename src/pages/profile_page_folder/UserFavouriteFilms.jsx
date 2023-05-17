@@ -1,16 +1,15 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from "react";
 import ProfilePoster from "./ProfilePoster";
-const UserFavouriteFilms = ({ apiKey, favIDs,setNewDataGained }) => {
-  const [firstSix, setFirstSix] = useState([]);
+const UserFavouriteFilms = ({ apiKey, favIDs, setNewDataGained }) => {
+  const [firstFour, setFirstFour] = useState([]);
   useEffect(() => {
-    console.log(favIDs.length);
     if (favIDs.length > 0) {
-      console.log("true");
-      const firstSix = favIDs.reverse().filter((id, index) => index < 6);
-      setFirstSix(firstSix);
+      const firstFour = favIDs.reverse().filter((id, index) => index < 6);
+      setFirstFour(firstFour);
+    }else {
+        setFirstFour([])
     }
-    console.log(firstSix, 'first six');
   }, [favIDs]);
 
   return (
@@ -24,22 +23,23 @@ const UserFavouriteFilms = ({ apiKey, favIDs,setNewDataGained }) => {
       border-b 
       border-solid 
       border-b-grey 
-      mb-2"
+      mb-2
+      md:min-w-[600px]"
       >
         <p>FAVORITE FILMS</p>
       </div>
       <div
         className="flex 
-    
+      gap-1
+      justify-between
       flex-wrap 
-      justify-between 
       md:flex-row 
       md:flex-nowrap
       mb-10"
       >
-        {firstSix.length === 0
-          ? ""
-          : firstSix.map((id) => (
+        {firstFour.length === 0
+          ?  <p className="text-sh-grey text-base pt-2">Go to any movie you like and press that heart icon!</p>
+          : firstFour.map((id) => (
               <ProfilePoster
                 apiKey={apiKey}
                 key={id}
