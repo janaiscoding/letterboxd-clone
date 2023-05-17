@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { auth } from "../../../firebase/firebase";
 import { updateProfile } from "firebase/auth";
-import Sappling from "./sappling.jpg";
 
 const ChangeUserInfo = ({ setProfileUpdated }) => {
   const [newName, setNewName] = useState("");

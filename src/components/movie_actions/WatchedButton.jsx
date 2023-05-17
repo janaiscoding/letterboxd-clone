@@ -10,7 +10,7 @@ import {
 } from "firebase/firestore";
 import watchIcon from "./watched.png";
 import remWatched from "./remWatched.png";
-const WatchedButton = ({ movie }) => {
+const WatchedButton = ({ movie, setNewDataGained }) => {
   const [isWatched, setWatched] = useState(false);
   // WATCHED LIST LOGIC
   const onWatched = async (movie) => {
@@ -43,6 +43,7 @@ const WatchedButton = ({ movie }) => {
       }),
     }).then(() => {
       setWatched(true);
+      setNewDataGained(true)
       console.log("watched was succesffully added to db");
     });
   };
@@ -55,6 +56,7 @@ const WatchedButton = ({ movie }) => {
       }),
     }).then(() => {
       console.log("movie was succesffully removed from db");
+      setNewDataGained(true)
       setWatched(false);
     });
   };

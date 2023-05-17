@@ -8,7 +8,7 @@ import Lists from "./lists_page_folder/Lists";
 
 import Results from "./results_page_folder/Results";
 import MoviePage from "./movie_page_folder/MoviePage";
-import Profile from "../components/auth/profile_info/Profile";
+import Profile from "./profile_page_folder/Profile";
 import FilterPage from "./films_page_folder/FilterPage";
 import Settings from "./settings_page_folder/Settings";
 
@@ -20,6 +20,8 @@ const MyRoutes = ({
   setFetchResults,
   setProfileUpdated,
   isProfileUpdated,
+  setNewDataGained,
+  newDataGained,
 }) => {
   return (
     <Routes>
@@ -32,6 +34,7 @@ const MyRoutes = ({
             authStatus={authStatus}
             fetchRequest={fetchRequest}
             fetchResults={fetchResults}
+            setNewDataGained={setNewDataGained}
           />
         }
       />
@@ -45,10 +48,15 @@ const MyRoutes = ({
             setProfileUpdated={setProfileUpdated}
             fetchResults={fetchResults}
             fetchRequest={fetchRequest}
+            setNewDataGained={setNewDataGained}
+            newDataGained={newDataGained}
           />
         }
       />
-      <Route path="/films" element={<Films />} />
+      <Route
+        path="/films"
+        element={<Films setNewDataGained={setNewDataGained} />}
+      />
       <Route path="/lists" element={<Lists />} />
       <Route path="/members" element={<Members />} />
       <Route path="/journal" element={<Journal />} />
@@ -59,6 +67,7 @@ const MyRoutes = ({
             apiKey={apiKey}
             fetchResults={fetchResults}
             fetchRequest={fetchRequest}
+            setNewDataGained={setNewDataGained}
           />
         }
       />
@@ -69,6 +78,7 @@ const MyRoutes = ({
             apiKey={apiKey}
             fetchResults={fetchResults}
             fetchRequest={fetchRequest}
+            setNewDataGained={setNewDataGained}
           />
         }
       />
@@ -80,6 +90,8 @@ const MyRoutes = ({
             fetchResults={fetchResults}
             fetchRequest={fetchRequest}
             setFetchResults={setFetchResults}
+            setNewDataGained={setNewDataGained}
+            
           />
         }
       />

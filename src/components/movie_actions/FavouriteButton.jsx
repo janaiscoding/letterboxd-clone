@@ -11,7 +11,7 @@ import {
 import favIcon from "./fav.png";
 import removeFavIcon from "./remFav.png";
 
-const FavouriteButton = ({ movie }) => {
+const FavouriteButton = ({ movie, setNewDataGained }) => {
   const [isFavourite, setFavourite] = useState(false);
   // console.log(movie, "from fav button");
   // FAVOURITE LOGIC
@@ -42,6 +42,7 @@ const FavouriteButton = ({ movie }) => {
       }),
     }).then(() => {
       setFavourite(true);
+      setNewDataGained(true);
       console.log("favourite was succesffully added to db");
     });
   };
@@ -55,6 +56,7 @@ const FavouriteButton = ({ movie }) => {
     }).then(() => {
       console.log("movie was succesffully removed from db");
       setFavourite(false);
+      setNewDataGained(true);
     });
   };
   useEffect(() => {

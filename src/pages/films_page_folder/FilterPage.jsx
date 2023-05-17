@@ -3,7 +3,6 @@ import React, { useEffect, useState } from "react";
 import arrays from "../../assets/filtering/arrays";
 import { useParams } from "react-router-dom";
 import FilterList from "./FilterList";
-
 const FilterPage = ({
   apiKey,
   fetchResults,
@@ -137,7 +136,9 @@ const FilterPage = ({
       <h1>
         TEST filter type: {filterType} + {query}
       </h1>
-      <FilterList fetchResults={fetchResults} />
+      <FilterList
+        fetchResults={fetchResults}
+      />
     </>
   );
 };

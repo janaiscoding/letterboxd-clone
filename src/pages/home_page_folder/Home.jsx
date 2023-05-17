@@ -10,7 +10,13 @@ import GetStarted from "../get_started_folder/GetStarted";
 import PopularSignout from "../get_started_folder/PopularSignout";
 import LetsYou from "../get_started_folder/LetsYou";
 
-const Home = ({ apiKey, fetchResults, fetchRequest, authStatus }) => {
+const Home = ({
+  apiKey,
+  fetchResults,
+  fetchRequest,
+  authStatus,
+  setNewDataGained,
+}) => {
   useEffect(() => {
     fetchRequest(
       "https://api.themoviedb.org/3/movie/popular?api_key=" + apiKey
@@ -29,11 +35,14 @@ const Home = ({ apiKey, fetchResults, fetchRequest, authStatus }) => {
       )}
 
       <div className="site-body py-5">
-        <div className="px-4 flex flex-col md:w-[950px] md:my-0 md:mx-auto font-['Graphik']">
+        <div className="flex flex-col px-4 md:w-[950px] md:my-0 md:mx-auto font-['Graphik']">
           {authStatus ? (
             <>
               <IntroMessage authStatus={authStatus} />
-              <PopularHome populars={fetchResults} />
+              <PopularHome
+                populars={fetchResults}
+                setNewDataGained={setNewDataGained}
+              />
               <UpgradeToPro />
             </>
           ) : (

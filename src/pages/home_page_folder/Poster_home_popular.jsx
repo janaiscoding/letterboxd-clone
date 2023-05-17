@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import FavouriteButton from "../../components/movie_actions/FavouriteButton";
 import WatchedButton from "../../components/movie_actions/WatchedButton";
 
-const PosterHomePopular = ({ movie }) => {
+const PosterHomePopular = ({ movie, setNewDataGained }) => {
   const [visibility, setVisibility] = useState(false);
 
   return (
@@ -48,8 +48,8 @@ const PosterHomePopular = ({ movie }) => {
         "
           style={{ backgroundColor: "rgba(0,0,0,0.8)" }}
         >
-          <FavouriteButton movie={movie} />
-          <WatchedButton movie={movie} />
+          <FavouriteButton movie={movie} setNewDataGained={setNewDataGained} />
+          <WatchedButton movie={movie} setNewDataGained={setNewDataGained} />
         </div>
       ) : (
         " "

@@ -11,15 +11,16 @@
   html {
     font-family: "Graphik", system-ui, sans-serif;
   }
-  body {
-    background-image: linear-gradient(
-      to bottom,
-      #14181c calc(var(--layout-flex-leaderboard-height)),
-      #14181c calc(250px + var(--layout-flex-leaderboard-height)),
-      #2c3440 calc(251px + var(--layout-flex-leaderboard-height))
-    );
-  }
-  .sans-serif{
+
+  .sans-serif {
     font-family: sans-serif;
   }
 }
+body {
+  background-image: linear-gradient(
+    to bottom,
+    #14181c calc(var(--layout-flex-leaderboard-height)),
+    #14181c calc(250px + var(--layout-flex-leaderboard-height)),
+    #2c3440 calc(251px + var(--layout-flex-leaderboard-height))
+  );
+} 
