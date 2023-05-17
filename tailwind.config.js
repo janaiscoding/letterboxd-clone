@@ -33,6 +33,10 @@ module.exports = {
       "p-green": "#00e054",
       "b-green": "#00c030",
       "b-h-green": "#00B020",
+      //home hover carts
+      "h-hov-green": "#00C030",
+      "h-hov-orange": "#EE7000",
+      "h-hov-blue": "#209CE4",
     },
     // extend: {},
   },

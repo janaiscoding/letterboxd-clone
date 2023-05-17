@@ -10,14 +10,13 @@ const RecentStories = () => {
         className="flex 
       justify-between 
       section-heading 
-      text-sh-grey 
-      text-sm 
+      text-sh-grey  
       border-b 
       border-solid 
       border-b-grey 
       mb-3 "
       >
-        <Link to="/journal" className="text-base/[13px]  hover:text-hov-blue">
+        <Link to="/journal" className="text-sm  hover:text-hov-blue">
           RECENT STORIES
         </Link>
         <Link to="/journal" className="text-[11px] hover:text-hov-blue">

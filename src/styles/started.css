@@ -85,14 +85,14 @@
   );
   background-repeat: no-repeat;
   content: "";
-  display: block;
+
   height: 100%;
-  position: absolute;
+
   top: 0;
   width: 100%;
   z-index: 0;
 }
-@media (max-width: 600px) {
+@media (max-width: 750px) {
   .gradient-helper-mobile {
     background-image: linear-gradient(
       to bottom,

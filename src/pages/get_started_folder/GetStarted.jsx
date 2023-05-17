@@ -19,7 +19,7 @@ const GetStarted = () => {
       </div>
       <div
         className="flex 
-      gradient-helper
+      md:gradient-helper
       flex-col 
       items-center 
       relative 

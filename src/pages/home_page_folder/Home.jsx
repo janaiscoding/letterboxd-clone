@@ -8,6 +8,7 @@ import "../../styles/home.css";
 import PopularLists from "./PopularLists";
 import GetStarted from "../get_started_folder/GetStarted";
 import PopularSignout from "../get_started_folder/PopularSignout";
+import LetsYou from "../get_started_folder/LetsYou";
 
 const Home = ({ apiKey, fetchResults, fetchRequest, authStatus }) => {
   useEffect(() => {
@@ -36,7 +37,10 @@ const Home = ({ apiKey, fetchResults, fetchRequest, authStatus }) => {
               <UpgradeToPro />
             </>
           ) : (
-            <PopularSignout populars={fetchResults} />
+            <>
+              <PopularSignout populars={fetchResults} />
+              <LetsYou />
+            </>
           )}
         </div>
         <div className="site-content px-4 flex flex-col md:py-8 md:w-[950px] md:my-0 md:mx-auto font-['Graphik']">

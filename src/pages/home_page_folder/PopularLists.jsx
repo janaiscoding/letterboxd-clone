@@ -28,7 +28,7 @@ const PopularLists = ({ populars }) => {
       justify-between 
       section-heading 
       text-sh-grey 
-      text-sm 
+      text-xs
       border-b 
       border-solid 
       border-b-grey 
@@ -37,7 +37,7 @@ const PopularLists = ({ populars }) => {
       >
         <a
           href="https://letterboxd.com/lists/popular/this/week/"
-          className="text-base  hover:text-hov-blue"
+          className="text-sm  hover:text-hov-blue"
         >
           POPULAR LISTS
         </a>{" "}

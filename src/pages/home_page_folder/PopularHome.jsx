@@ -17,12 +17,12 @@ const PopularHome = ({ populars }) => {
       justify-between 
       section-heading 
       text-sh-grey 
-      text-sm 
+      text-xs
       border-b 
       border-solid 
       border-b-grey 
       mb-3">
-        <a href="/popular" className="text-base  hover:text-hov-blue">
+        <a href="/popular" className="text-sm hover:text-hov-blue">
           POPULAR ON CLONNERBOXD
         </a>{" "}
         <a href="/popular" className="text-[11px] hover:text-hov-blue">
