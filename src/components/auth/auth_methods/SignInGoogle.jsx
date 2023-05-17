@@ -1,6 +1,6 @@
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { auth, db } from "../../../firebase/firebase";
-import React, { useState } from "react";
+import React from "react";
 import { doc, getDoc, setDoc } from "firebase/firestore";
 
 //when i sign in, check if user exists
@@ -8,7 +8,6 @@ import { doc, getDoc, setDoc } from "firebase/firestore";
 // users / displayName (name, bio, reviews, watched) /favourites (movieid, isfav) / reviews (movieid, review) /watched(movieid, iswatched)/watchlist
 
 const SignInGoogle = () => {
-  const [isInColl, setIsInColl] = useState(false);
 
   const handleAuthEvent = async () => {
     let provider = new GoogleAuthProvider();
@@ -26,16 +25,9 @@ const SignInGoogle = () => {
   };
 
   const checkUsersFromDB = async () => {
-    const docRef = doc(db, "user/" + auth.currentUser.uid);
-    const userDoc = await getDoc(docRef);
-
-    if (userDoc.exists()) {
-      console.log(`my uid`, auth.currentUser.uid);
-      console.log(`my user doc`, userDoc.data());
-      console.log("my doc exists bruh");
-    }
-    // userDoc.exists() ? setIsInColl(true) : await addNewUserToDB();
-    // console.log(isInColl);
+    const userDoc = await getDoc(doc(db, "users/" + auth.currentUser.uid));
+    userDoc.exists() ? console.log('fetched data') : await addNewUserToDB();
+     //welcome back popup username!
   };
   // creates a new document for the new user
   const addNewUserToDB = async () => {

@@ -1,11 +1,9 @@
 import { doc, getDoc, setDoc } from "firebase/firestore";
 import { db, auth } from "../../../firebase/firebase";
-import React, { useState } from "react";
-import { signInWithEmailAndPassword, updateProfile } from "firebase/auth";
+import React from "react";
+import { signInWithEmailAndPassword } from "firebase/auth";
 
 const SignInTest = () => {
-  const [isInColl, setIsInColl] = useState(false);
-
   const handleAuthEvent = async () => {
     await signInWithEmailAndPassword(
       auth,
@@ -14,7 +12,7 @@ const SignInTest = () => {
     )
       .then((userCredential) => {
         const user = userCredential.user;
-        console.log(user, "has logged in with new info");
+        console.log(user, "has logged in");
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -24,9 +22,8 @@ const SignInTest = () => {
   };
 
   const checkUsersFromDB = async () => {
-    const userDoc = await getDoc(doc(db, "user/" + auth.currentUser.uid));
-    console.log(isInColl)
-    userDoc.exists() ? setIsInColl(true) : await addNewUserToDB();
+    const userDoc = await getDoc(doc(db, "users/" + auth.currentUser.uid));
+    userDoc.exists() ? console.log("fetched data") : await addNewUserToDB();
   };
   // creates a new document for the new user
   const addNewUserToDB = async () => {

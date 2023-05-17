@@ -12,7 +12,7 @@ import logoMobile from "./navbar_assets/logoMobile.png";
 import addNewIcon from "./navbar_assets/plusIcon.png";
 import openCloseMenu from "./navbar_assets/menuopenclose.png";
 import searchIcon from "./navbar_assets/searchIcon.png";
-import myFace from "./navbar_assets/myface.jpg";
+
 import arrowDown from "./navbar_assets/arrowdownprofile.png";
 import DropdownDesktop from "./DropdownDesktop";
 import UserNavbar from "./UserNavbar";
@@ -28,7 +28,9 @@ const Navbar = ({
 }) => {
   const navbarLinks = navbarLinksData;
   const [userName, setUserName] = useState();
-  const [profilePic, setProfilePic] = useState(myFace);
+  const [profilePic, setProfilePic] = useState();
+
+  //this handles the login/logout styles and displays in the navbar
   const [userLogin, setUserLogin] = useState(false);
   const [showLogin, setShowLogin] = useState(false);
   //for hover on navbar to display dropdown menu on desktop
