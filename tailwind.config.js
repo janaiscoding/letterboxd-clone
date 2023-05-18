@@ -37,6 +37,8 @@ module.exports = {
       "h-hov-green": "#00C030",
       "h-hov-orange": "#EE7000",
       "h-hov-blue": "#209CE4",
+      // cast bg color
+      'c-grey': '#283038'
     },
     // extend: {},
   },

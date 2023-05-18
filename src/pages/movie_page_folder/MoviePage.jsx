@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import Backdrop from "./Backdrop";
 import "../../styles/movie.css";
 import MovieDetails from "./MovieDetails";
+import RecentReviewsMovie from "./RecentReviewsMovie";
 const MoviePage = ({ fetchResults, fetchRequest, setNewDataGained }) => {
   const { movieId } = useParams();
   useEffect(() => {
@@ -11,6 +12,7 @@ const MoviePage = ({ fetchResults, fetchRequest, setNewDataGained }) => {
         movieId +
         "?api_key=90a83017dcd0ef93c3e5474af9093de9&append_to_response=credits"
     );
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
     <div className="movie-body pb-5 md:mx-auto">
@@ -20,7 +22,6 @@ const MoviePage = ({ fetchResults, fetchRequest, setNewDataGained }) => {
           movie={fetchResults}
           setNewDataGained={setNewDataGained}
         />
-        {/* <MovieReviews movie={fetchResults} /> */}
       </div>
     </div>
   );

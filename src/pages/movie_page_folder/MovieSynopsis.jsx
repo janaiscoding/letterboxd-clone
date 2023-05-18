@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import MoviePanels from "./MoviePanels";
+import RecentReviewsMovie from "./RecentReviewsMovie";
 
 const MovieSynopsis = ({ movie }) => {
   const [movieYear, setMovieYear] = useState("");
@@ -19,7 +20,6 @@ const MovieSynopsis = ({ movie }) => {
   useEffect(() => {
     getYear();
     getDirector();
-    console.log(movie);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [movie]);
   return (
@@ -38,13 +38,16 @@ const MovieSynopsis = ({ movie }) => {
           </p>
         </div>
       </div>
-      <p className="py-3 text-sh-grey text-sm uppercase font-['Graphik']">
-        {movie.tagline}
-      </p>
-      <p className="max-w-sm text-sm tracking-wide text-sh-grey font-['Tiempos-Light']">
-        {movie.overview}
-      </p>
-      <MoviePanels movie={movie} />
+      <div className="md:w-[390px]">
+        <p className="py-3 text-sh-grey text-sm uppercase font-['Graphik']">
+          {movie.tagline}
+        </p>
+        <p className="max-w-sm text-sm tracking-wide text-sh-grey font-['Tiempos-Light'] mb-3">
+          {movie.overview}
+        </p>
+        <MoviePanels movie={movie} />
+        <RecentReviewsMovie movie={movie} />
+      </div>
     </div>
   );
 };

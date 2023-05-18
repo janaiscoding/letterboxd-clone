@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { auth, db } from "../../firebase/firebase";
 import { doc, setDoc, getDoc, updateDoc, arrayUnion } from "firebase/firestore";
-import Reviews from "./Reviews";
+import ReviewItem from "../UI_components/ReviewItem";
 
 const ReviewsComp = ({ movie }) => {
   const [review, setReview] = useState("");
@@ -16,7 +16,7 @@ const ReviewsComp = ({ movie }) => {
     } else {
       await checkMovieReviewedDB(movie).then(async () => {
         isReviewed
-          ? console.log("revd")
+          ? console.log("sent review to movie!")
           : await addReviewDB(review).then(async () => {
               await checkMovieCollection(movie, review);
             });
@@ -85,14 +85,53 @@ const ReviewsComp = ({ movie }) => {
       ],
     });
   };
+  const [reviews, setReviews] = useState([]);
+
+  const getReviews = async () => {
+    const movieDoc = await getDoc(doc(db, "movies/" + movie.id));
+    if (movieDoc.exists()) {
+      const movieReviews = movieDoc.data().reviews;
+      const firstFour = movieReviews.reverse().filter((id, index) => index < 4);
+      setReviews(firstFour);
+    } else {
+      setReviews([]);
+    }
+  };
+  const handleReviewEvent = async (movie, review) => {
+    await onReview(movie, review).then(() => {
+      getReviews();
+      setReview("");
+    });
+  };
+  useEffect(() => {
+    getReviews();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [movie, setReviews]);
+
   return (
     <>
-      <input
-        type="text"
-        value={review}
-        onChange={(e) => setReview(e.target.value)}
-      />
-      <Reviews movie={movie} review={review} onReview={onReview} />
+      <div className="flex flex-col justify-between gap-2">
+        {reviews.length > 0 ? (
+          reviews
+            .slice()
+            .reverse()
+            .map((review, index) => <ReviewItem key={index} review={review} />)
+        ) : (
+          <p className="text-sh-grey text-base pt-2">Write the first review!</p>
+        )}
+        <input
+          className="p-3 rounded bg-h-grey focus:outline-none active-outline-none text-drop-black"
+          value={review}
+          onChange={(e) => setReview(e.target.value)}
+        />{" "}
+        <button
+          className="bg-c-grey rounded text-l-white text-base hover:bg-sh-grey hover:text-b-blue p-1"
+          onClick={() => handleReviewEvent(movie, review)}
+        >
+          Send Review
+        </button>
+      </div>
+      <div></div>
     </>
   );
 };
