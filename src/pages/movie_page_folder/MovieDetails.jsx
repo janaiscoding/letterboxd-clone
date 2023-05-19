@@ -9,7 +9,7 @@ const MovieDetails = ({
   setNewDataGained,
 }) => {
   return (
-    <div className="backdrop-helper flex flex-col-reverse  md:flex-row justify-between md:flex-row md:justify-start">
+    <div className="backdrop-helper flex flex-col  md:flex-row justify-between md:flex-row md:justify-start">
       <MoviePoster movie={movie} setNewDataGained={setNewDataGained} />
       <MovieSynopsis movie={movie} authStatus={authStatus} />
     </div>
