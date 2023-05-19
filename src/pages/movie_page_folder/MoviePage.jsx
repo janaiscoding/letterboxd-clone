@@ -16,7 +16,7 @@ const MoviePage = ({ fetchResults,authStatus, fetchRequest, newDataGained, setNe
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
-    <div className="movie-body pb-5 md:mx-auto">
+    <div className="movie-body pb-5 md:mx-auto min-h-[80vh]">
       <Backdrop movie={fetchResults} />
       <div className="flex flex-col px-4 md:w-[950px] md:my-0 md:mx-auto">
         <MovieDetails
