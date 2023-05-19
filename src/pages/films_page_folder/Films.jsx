@@ -1,12 +1,12 @@
 import React, { useEffect } from "react";
-import SelectBox from "./SelectBox";
 import arrays from "./filtering/arrays";
 import SearchInputDesktop from "../../components/UI_components/navbar_component_and_assets/api_actions/SearchInputDesktop";
 import PopularHome from "../home_page_folder/PopularHome";
+import SelectBoxFilterPage from "./SelectBoxFilterPage";
 
 const Films = ({ apiKey, fetchRequest, fetchResults, setNewDataGained }) => {
   const allSelectionBoxes = arrays.map((element, index) => (
-    <SelectBox title={element.type} data={element.array} key={index} />
+    <SelectBoxFilterPage title={element.type} data={element.array} key={index} />
   ));
   useEffect(() => {
     fetchRequest(
