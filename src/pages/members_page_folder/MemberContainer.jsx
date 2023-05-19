@@ -32,7 +32,7 @@ const MemberContainer = ({ user }) => {
           <p className="text-sh-grey text-base">
             Watched{" "}
             <span className="text-p-white font-bold">
-              {user.favourites.length}{" "}
+              {user.watched.length}{" "}
             </span>
           </p>
         </div>
