@@ -55,7 +55,17 @@ const MoviePanels = ({ movie }) => {
   }, [movie]);
   return (
     <>
-      <div>
+      <div className="flex flex-col gap-2">
+        <p
+          className="
+      border-b 
+      border-solid 
+      border-b-grey 
+      text-p-white
+      hover:cursor-pointer"
+        >
+          CAST
+        </p>
         <div className="flex flex-wrap gap-1">
           {cast.length > 0
             ? cast.map((actor, index) => (
