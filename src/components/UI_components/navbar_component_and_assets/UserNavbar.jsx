@@ -1,9 +1,20 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { auth } from "../../../firebase/firebase";
 
-const UserNavbar = ({ profilePic, userName, arrowDown, setShowDropdown }) => {
-  const uid = auth.currentUser.uid;
+const UserNavbar = ({
+  authStatus,
+  profilePic,
+  userName,
+  arrowDown,
+  setShowDropdown,
+}) => {
+  const [uid, setUid] = useState();
+  useEffect(() => {
+    if (authStatus) {
+      setUid(auth.currentUser.uid);
+    }
+  }, [authStatus]);
   return (
     <div
       className="flex items-center mt-2 mx-1"
