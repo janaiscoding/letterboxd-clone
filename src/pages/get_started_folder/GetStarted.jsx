@@ -30,7 +30,7 @@ const GetStarted = () => {
           className="bg-b-green
         h-10
         rounded
-        text-base
+        text-sm
         md:text-l 
         text-[#fff]
         px-5

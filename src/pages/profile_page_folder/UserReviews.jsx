@@ -40,11 +40,11 @@ const UserReviews = ({ apiKey, reviews, setNewDataGained }) => {
             This user hasn't reviewed any movies yet.
           </p>
         ) : (
-          firstSix.map((R) => (
+          firstSix.map((R,index) => (
             <UserProfileReview
               setNewDataGained={setNewDataGained}
               apiKey={apiKey}
-              key={R.movieID}
+              key={index}
               movieID={R.movieID}
               review={R.review}
             />

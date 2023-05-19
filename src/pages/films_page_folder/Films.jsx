@@ -6,7 +6,11 @@ import SelectBoxFilterPage from "./SelectBoxFilterPage";
 
 const Films = ({ apiKey, fetchRequest, fetchResults, setNewDataGained }) => {
   const allSelectionBoxes = arrays.map((element, index) => (
-    <SelectBoxFilterPage title={element.type} data={element.array} key={index} />
+    <SelectBoxFilterPage
+      title={element.type}
+      data={element.array}
+      key={index}
+    />
   ));
   useEffect(() => {
     fetchRequest(
@@ -24,14 +28,14 @@ const Films = ({ apiKey, fetchRequest, fetchResults, setNewDataGained }) => {
           </p>
           {allSelectionBoxes}
         </div>
+        <div className="flex flex-col md:hidden items-center text-center my-3">
+          <p className="uppercase text-sh-grey font-['Graphik']">Find a film</p>
+          <SearchInputDesktop />
+        </div>
         <PopularHome
           populars={fetchResults}
           setNewDataGained={setNewDataGained}
         />
-      </div>
-      <div className="flex flex-col md:hidden items-center text-center mt-3">
-        <p className="uppercase text-sh-grey font-['Graphik']">Find a film</p>
-        <SearchInputDesktop />
       </div>
     </div>
   );

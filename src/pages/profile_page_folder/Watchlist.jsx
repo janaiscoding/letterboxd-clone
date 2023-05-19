@@ -32,12 +32,11 @@ const Watchlist = ({ apiKey, fetchResults, fetchRequest }) => {
       mb-2
       z-50 "
       >
-        <a
-          href="https://letterboxd.com/lists/popular/this/week/"
-          className="text-sm  hover:text-hov-blue"
+        <p
+          className="text-sm  hover:text-hov-blue hover:cursor-pointer"
         >
           POPULAR LISTS
-        </a>
+        </p>
       </div>
       <div
         className="flex 

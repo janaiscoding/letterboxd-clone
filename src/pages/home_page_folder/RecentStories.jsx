@@ -1,7 +1,7 @@
 import React from "react";
 import storiesData from "./storiesData";
 import Story from "./Story";
-import { Link } from "react-router-dom";
+
 const RecentStories = () => {
   const stories = storiesData;
   return (
@@ -16,12 +16,12 @@ const RecentStories = () => {
       border-b-grey 
       mb-3 "
       >
-        <Link to="/journal" className="text-sm  hover:text-hov-blue">
+        <p className="text-sm  hover:text-hov-blue hover:cursor-pointer">
           RECENT STORIES
-        </Link>
-        <Link to="/journal" className="text-[11px] hover:text-hov-blue">
+        </p>
+        <p className="text-[11px] hover:text-hov-blue hover:cursor-pointer">
           ALL HQS
-        </Link>
+        </p>
       </div>
       <div
         className="mt-1 

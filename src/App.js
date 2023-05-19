@@ -71,6 +71,7 @@ const App = () => {
           setNewDataGained={setNewDataGained}
           newDataGained={newDataGained}
           //handler for transparent navbar
+          isNavTransparent={isNavTransparent}
           setNavTransparent={setNavTransparent}
         />
         <Footer />

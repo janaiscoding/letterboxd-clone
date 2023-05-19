@@ -6,23 +6,26 @@ const Footer = () => {
   const footerLinks = footerLinksData;
   const socials = socialLinksData;
   return (
-    <footer style={{ backgroundColor: "#2c3440" }}>
-      <div className="px-4 flex flex-col py-6 md:w-[950px] md:my-0 md:mx-auto font-['Graphik']">
+    <footer
+      className="relative z-[9999]"
+      style={{ backgroundColor: "#2c3440" }}
+    >
+      <div className="px-4 flex flex-col py-6 md:w-[950px] md:my-0 md:mx-auto font-['Graphik'] ">
         <nav className="flex justify-between items-center mb-3">
           <ul className=" md:flex grid grid-cols-3  py-1">
             {footerLinks.map((link) => (
               <li key={link.id}>
-                <Link
-                  className="text-s text-sh-grey hover:text-p-white font-bold mr-2"
+                <p
+                  className="text-s text-sh-grey hover:text-p-white font-bold mr-2 hover:cursor-pointer"
                   to={link.link}
                 >
                   {link.name}
-                </Link>
+                </p>
               </li>
             ))}
           </ul>
 
-          <ul className="flex sans-serif flex-col gap-2 md:gap-0 md:flex-row justify-between  items-center  py-1">
+          <ul className=" hidden md:flex sans-serif flex-col gap-2 md:gap-0 md:flex-row justify-between  items-center  py-1">
             {socials.map((social) => (
               <li className="self-center" key={social.id}>
                 <Link to={social.link}>

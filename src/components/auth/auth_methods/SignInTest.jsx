@@ -30,7 +30,7 @@ const SignInTest = () => {
   // creates a new document for the new user
   const addNewUserToDB = async () => {
     await setDoc(doc(db, "users/" + auth.currentUser.uid), {
-      name: "Testing Account",
+      name: "Demo",
       uid: auth.currentUser.uid,
       bio: "Nice to see you!",
       photoUrl:

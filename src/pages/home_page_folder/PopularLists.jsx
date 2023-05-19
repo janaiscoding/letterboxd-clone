@@ -35,18 +35,8 @@ const PopularLists = ({ populars }) => {
       mb-3
       z-50 "
       >
-        <a
-          href="https://letterboxd.com/lists/popular/this/week/"
-          className="text-sm  hover:text-hov-blue"
-        >
-          POPULAR LISTS
-        </a>{" "}
-        <a
-          href="https://letterboxd.com/lists/popular/this/week/"
-          className="text-[11px] hover:text-hov-blue"
-        >
-          MORE
-        </a>
+        <p className="text-sm  hover:text-hov-blue hover:cursor-pointer">POPULAR LISTS</p>{" "}
+        <p className="text-[11px] hover:text-hov-blue hover:cursor-pointer">MORE</p>
       </div>
       <div
         className="flex 

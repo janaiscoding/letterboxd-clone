@@ -25,12 +25,8 @@ const PopularHome = ({ populars, setNewDataGained }) => {
       border-b-grey 
       mb-3"
       >
-        <Link to="/popular" className="text-sm hover:text-hov-blue">
-          POPULAR ON CLONNERBOXD
-        </Link>{" "}
-       <Link to="/popular" className="text-[11px] hover:text-hov-blue">
-          MORE
-        </Link>
+        <p className="text-sm hover:text-hov-blue hover:cursor-pointer">POPULAR ON CLONNERBOXD</p>{" "}
+        <p className="text-[11px] hover:text-hov-blue hover:cursor-pointer">MORE</p>
       </div>
 
       <div

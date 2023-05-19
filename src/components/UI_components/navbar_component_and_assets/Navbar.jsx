@@ -76,13 +76,12 @@ const Navbar = ({
       : setStyle(
           "flex flex-col align-center bg-h-blue md:h-[70px] md:flex-row"
         );
-    console.log("useeff in nav");
+
     if (authStatus) {
       setUserName(auth.currentUser.displayName);
       setProfilePic(auth.currentUser.photoURL);
       setUserLogin(true);
       setProfileUpdated(false);
-
       setNavTransparent(false);
     } else {
       setUserLogin(false);

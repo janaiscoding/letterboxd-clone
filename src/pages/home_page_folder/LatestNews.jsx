@@ -16,12 +16,12 @@ const LatestNews = () => {
       border-b-grey 
       mb-3 "
       >
-        <Link to="/journal" className="text-sm   hover:text-hov-blue">
+        <p className="text-sm   hover:text-hov-blue hover:cursor-pointer">
           LATEST NEWS
-        </Link>
-        <Link to="/journal" className="text-[11px] hover:text-hov-blue">
+        </p>
+        <p className="text-[11px] hover:text-hov-blue hover:cursor-pointer">
           MORE
-        </Link>
+        </p>
       </div>
       <div
         className="flex 

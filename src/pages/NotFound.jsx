@@ -1,14 +1,15 @@
 import { Link } from "react-router-dom";
 import React, { useEffect } from "react";
-const NotFound = ({ setNavTransparent }) => {
+const NotFound = ({ isNavTransparent, setNavTransparent }) => {
   useEffect(() => {
-    setNavTransparent(true);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+    isNavTransparent ? setNavTransparent(true) : setNavTransparent(false);
+    console.log(isNavTransparent);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isNavTransparent]);
   return (
     <div className="site-body py-5">
       <div
-        className="started-backdrop block md:h-[650px] md:mt-[-5%] md:max-h-[650px] md:w-[950px] md:m-auto max-h-[250px] h-[250px]"
+        className="started-backdrop block md:h-[650px] md:mt-[-10%] md:max-h-[650px] md:w-[950px] md:m-auto max-h-[250px] h-[250px]"
         style={{
           backgroundImage: `url(https://a.ltrbxd.com/resized/sm/upload/tx/hy/xj/lw/sanctuary-2023-1200-1200-675-675-crop-000000.jpg?v=b1d98010cd)`,
         }}

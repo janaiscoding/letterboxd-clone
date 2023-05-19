@@ -60,14 +60,14 @@ const ReviewsComp = ({ movie, authStatus }) => {
     await updateDoc(movieRef, {
       reviews: arrayUnion({
         movieID: movie.id,
-        userName: user.displayName || "Testing Account",
-        userURL: user.photoURL || "img url",
+        userName: user.displayName,
+        userURL: user.photoURL,
         review: review,
+        uid: user.uid,
       }),
     })
       .then(() => {
-        console.log("added new review", movie.id, review);
-        //add a popup here ?
+        console.log("added new review to db");
       })
       .catch((err) => {
         console.log(err);
@@ -80,8 +80,9 @@ const ReviewsComp = ({ movie, authStatus }) => {
         {
           movieID: movie.id,
           review: review,
-          userName: user.displayName || "Test",
-          userURL: user.photoURL || "img url",
+          userName: user.displayName,
+          userURL: user.photoURL,
+          uid: user.uid,
         },
       ],
     });
@@ -107,7 +108,7 @@ const ReviewsComp = ({ movie, authStatus }) => {
   useEffect(() => {
     getReviews();
     console.log("inside reviews comp");
-    console.log(authStatus);
+    console.log(reviews);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [movie, authStatus, setReviews]);
 
@@ -122,7 +123,9 @@ const ReviewsComp = ({ movie, authStatus }) => {
         ) : authStatus ? (
           <p className="text-sh-grey text-base pt-2">Write the first review!</p>
         ) : (
-          <p className="text-sh-grey text-base pt-2">Login and write the first review!</p>
+          <p className="text-sh-grey text-base pt-2">
+            Login and write the first review!
+          </p>
         )}
         {authStatus ? (
           <>

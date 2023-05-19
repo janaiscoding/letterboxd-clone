@@ -21,6 +21,7 @@ const MyRoutes = ({
   setNewDataGained,
   newDataGained,
   setNavTransparent,
+  isNavTransparent,
 }) => {
   return (
     <Routes>
@@ -103,10 +104,15 @@ const MyRoutes = ({
           />
         }
       />
-      <Route path="/settings" element={<Settings />} />
+      <Route path="/settings" element={<Settings setProfileUpdated={setProfileUpdated} />} />
       <Route
         path="*"
-        element={<NotFound setNavTransparent={setNavTransparent} />}
+        element={
+          <NotFound
+            setNavTransparent={setNavTransparent}
+            isNavTransparent={isNavTransparent}
+          />
+        }
       />
     </Routes>
   );

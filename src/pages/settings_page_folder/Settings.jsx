@@ -1,13 +1,13 @@
 import React from "react";
 import ChangeUserInfo from "../../components/auth/auth_methods/ChangeUserInfo";
 
-const Settings = () => {
+const Settings = ({setProfileUpdated}) => {
   return (
-    <>
-      <p>Account Settings</p>
-      <p>Profile</p>
-      <ChangeUserInfo />
-    </>
+    <div className="site-body py-5 min-h-[90vh]">
+      <div className="flex flex-col px-4 md:w-[950px] md:my-0 md:mx-auto font-['Graphik']">
+        <ChangeUserInfo setProfileUpdated={setProfileUpdated} />
+      </div>
+    </div>
   );
 };
 

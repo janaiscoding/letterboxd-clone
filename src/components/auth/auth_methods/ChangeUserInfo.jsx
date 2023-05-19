@@ -20,22 +20,37 @@ const ChangeUserInfo = ({ setProfileUpdated }) => {
       });
   };
 
-  // const changePP = () => {
-  //   updateProfile(auth.currentUser, {
-  //     photoURL: 'https://cdn.discordapp.com/attachments/948205733688786974/1108464787651833987/image.png',
-  //   }).then(() => {
-  //       console.log(auth.currentUser.photoURL)
-  //   })
-  // };
   return (
     <>
-      <div>change name</div>
-      <input
-        value={newName}
-        type="text"
-        onChange={(e) => setNewName(e.target.value)}
-      />
-      <button onClick={updateUserName}>Save new name</button>
+      <div
+        className="flex 
+      w-[50%]
+      m-auto
+      justify-between 
+      section-heading 
+      text-sh-grey 
+      text-xs
+      border-b 
+      border-solid 
+      border-b-grey 
+      mb-3"
+      >
+        <p className="text-sm hover:text-hov-blue hover:cursor-pointer uppercase">
+          CHANGE YOUR USERNAME
+        </p>{" "}
+      </div>
+      <div
+        className="flex 
+      w-[50%]
+      m-auto gap-3"
+      >
+        <input
+          value={newName}
+          type="text"
+          onChange={(e) => setNewName(e.target.value)}
+        />
+        <button className="px-3 py-2 rounded font-bold bg-[#567] text-p-white text-xs sans-serif" onClick={updateUserName}>Save new name</button>
+      </div>
       {/* 
       <button onClick={changePP}>change pp</button> */}
     </>
