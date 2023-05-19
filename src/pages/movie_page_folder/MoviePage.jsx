@@ -4,7 +4,7 @@ import Backdrop from "./Backdrop";
 import "../../styles/movie.css";
 import MovieDetails from "./MovieDetails";
 
-const MoviePage = ({ fetchResults,authStatus, fetchRequest, setNewDataGained,setNavTransparent }) => {
+const MoviePage = ({ fetchResults,authStatus, fetchRequest, newDataGained, setNewDataGained,setNavTransparent }) => {
   const { movieId } = useParams();
   useEffect(() => {
     fetchRequest(
@@ -23,6 +23,7 @@ const MoviePage = ({ fetchResults,authStatus, fetchRequest, setNewDataGained,set
           movie={fetchResults}
           authStatus={authStatus}
           setNewDataGained={setNewDataGained}
+          newDataGained={newDataGained}
         />
       </div>
     </div>

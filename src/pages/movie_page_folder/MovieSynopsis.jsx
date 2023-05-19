@@ -23,7 +23,7 @@ const MovieSynopsis = ({ movie, authStatus }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [movie]);
   return (
-    <div className="flex flex-col md:pl-10 mt-[-10%] md:mt-0">
+    <div className="flex flex-col md:pl-10 ">
       <div className="flex gap-2 flex-wrap items-end">
         <p className="text-p-white font-bold text-4xl/[2.25rem] font-['Tiempos-Regular']">
           {movie.title}

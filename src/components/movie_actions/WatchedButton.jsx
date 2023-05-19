@@ -44,7 +44,7 @@ const WatchedButton = ({ movie, setNewDataGained }) => {
     }).then(() => {
       setWatched(true);
       setNewDataGained(true)
-      console.log("watched was succesffully added to db");
+
     });
   };
   const removeFromWatchedDB = async (movie) => {
@@ -55,7 +55,6 @@ const WatchedButton = ({ movie, setNewDataGained }) => {
         movieID: movie.id,
       }),
     }).then(() => {
-      console.log("movie was succesffully removed from db");
       setNewDataGained(true)
       setWatched(false);
     });

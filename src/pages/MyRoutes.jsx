@@ -87,6 +87,7 @@ const MyRoutes = ({
             authStatus={authStatus}
             fetchResults={fetchResults}
             fetchRequest={fetchRequest}
+            newDataGained={newDataGained}
             setNewDataGained={setNewDataGained}
             setNavTransparent={setNavTransparent}
           />

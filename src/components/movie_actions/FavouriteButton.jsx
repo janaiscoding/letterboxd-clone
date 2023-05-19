@@ -13,8 +13,6 @@ import removeFavIcon from "./remFav.png";
 
 const FavouriteButton = ({ movie, setNewDataGained }) => {
   const [isFavourite, setFavourite] = useState(false);
-  // console.log(movie, "from fav button");
-  // FAVOURITE LOGIC
   const onFavourite = async (movie) => {
     if (auth.currentUser === null) {
       alert("login to use this feature");
@@ -43,7 +41,6 @@ const FavouriteButton = ({ movie, setNewDataGained }) => {
     }).then(() => {
       setFavourite(true);
       setNewDataGained(true);
-      console.log("favourite was succesffully added to db");
     });
   };
   const removeFromFavsDB = async (movie) => {
@@ -54,7 +51,6 @@ const FavouriteButton = ({ movie, setNewDataGained }) => {
         movieID: movie.id,
       }),
     }).then(() => {
-      console.log("movie was succesffully removed from db");
       setFavourite(false);
       setNewDataGained(true);
     });
