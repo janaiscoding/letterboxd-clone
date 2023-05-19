@@ -18,27 +18,7 @@ const NotFound = ({  isNavTransparent, setNavTransparent }) => {
         >
           Go back home
         </Link>
-        <p className="text-center mb-8 md:mb-8 text-lg text-h-grey">
-          Or other things to do on Clonnerboxd...{" "}
-          <Link
-            to={"/profile/" + auth.currentUser.uid}
-            className="text-p-white hover:text-hov-blue"
-          >
-            See your profile
-          </Link>
-          {" | "}
-          <Link to="/members" className="text-p-white hover:text-hov-blue">
-            See the registed members
-          </Link>
-          {" | "}
-          <Link to="/films" className="text-p-white hover:text-hov-blue">
-            Filter movies based on your criteria
-          </Link>
-          <span className="text-h-grey">
-            {" "}
-            or search for any movie in the navbar. Hope you enjoy your stay!
-          </span>
-        </p>
+
       </div>
     </div>
   );
