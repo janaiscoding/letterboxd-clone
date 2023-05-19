@@ -9,6 +9,7 @@ const GetStarted = () => {
       backdrop-container
         h-[200px]
         md:h-[650px]
+        md:mt-[-10%]
     "
       >
         <img

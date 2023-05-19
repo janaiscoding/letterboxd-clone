@@ -15,6 +15,7 @@ const App = () => {
   const [authStatus, setAuthStatus] = useState(false);
   const [fetchResults, setFetchResults] = useState([]);
   const [isProfileUpdated, setProfileUpdated] = useState(false);
+  const [isNavTransparent, setNavTransparent] = useState(false)
   const [newDataGained, setNewDataGained] = useState(false); //db event listener
 
   const fetchRequest = (url) => {
@@ -52,6 +53,8 @@ const App = () => {
           fetchRequest={fetchRequest}
           isProfileUpdated={isProfileUpdated}
           setProfileUpdated={setProfileUpdated}
+          setNavTransparent={setNavTransparent}
+          isNavTransparent={isNavTransparent}
         />
         <MyRoutes
           authStatus={authStatus}
@@ -66,6 +69,9 @@ const App = () => {
           //handler for movies
           setNewDataGained={setNewDataGained}
           newDataGained={newDataGained}
+          //handler for transparent navbar
+          setNavTransparent={setNavTransparent}
+          isNavTransparent={isNavTransparent}
         />
         <Footer />
       </HashRouter>

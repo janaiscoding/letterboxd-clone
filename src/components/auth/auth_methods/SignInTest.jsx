@@ -2,7 +2,7 @@ import { doc, getDoc, setDoc } from "firebase/firestore";
 import { db, auth } from "../../../firebase/firebase";
 import React from "react";
 import { signInWithEmailAndPassword } from "firebase/auth";
-import Sappling from "./sappling.jpg";
+
 const SignInTest = () => {
   const handleAuthEvent = async () => {
     await signInWithEmailAndPassword(
@@ -41,7 +41,8 @@ const SignInTest = () => {
     })
       .then(() => {
         console.log("added new user", auth.currentUser);
-      }).catch((err) => {
+      })
+      .catch((err) => {
         console.log(err);
       });
   };
@@ -53,12 +54,7 @@ const SignInTest = () => {
   };
   return (
     <p
-      className="text-base 
-    text-sh-grey 
-    font-semibold 
-    hover:text-p-white	
-    hover:cursor-pointer 
-    uppercase"
+      className="sans-serif text-xs text-sh-grey font-bold tracking-widest hover:text-p-white	hover:cursor-pointer uppercase"
       onClick={onLogin}
     >
       Test Acc.

@@ -3,11 +3,11 @@ import React from "react";
 import MoviePoster from "./MoviePoster";
 import MovieSynopsis from "./MovieSynopsis";
 
-const MovieDetails = ({ movie, setNewDataGained }) => {
+const MovieDetails = ({ movie,authStatus, setNewDataGained }) => {
   return (
     <div className="flex flex-row-reverse justify-between md:flex-row md:justify-start">
       <MoviePoster movie={movie} setNewDataGained={setNewDataGained} />
-      <MovieSynopsis movie={movie} />
+      <MovieSynopsis movie={movie} authStatus={authStatus} />
     </div>
   );
 };

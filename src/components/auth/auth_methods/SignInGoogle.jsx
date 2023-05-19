@@ -51,16 +51,9 @@ const SignInGoogle = () => {
   return (
     <>
       <p
-        className="ml-4
-      text-base 
-    text-sh-grey 
-    font-semibold 
-    hover:text-p-white	
-    hover:cursor-pointer 
-    uppercase"
+        className="ml-4 sans-serif text-xs text-sh-grey font-bold tracking-widest hover:text-p-white	hover:cursor-pointer uppercase"
         onClick={onLogin}
       >
-        {" "}
         Google
       </p>
     </>

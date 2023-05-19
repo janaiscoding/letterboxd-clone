@@ -16,6 +16,7 @@ const Home = ({
   fetchRequest,
   authStatus,
   setNewDataGained,
+
 }) => {
   useEffect(() => {
     fetchRequest(

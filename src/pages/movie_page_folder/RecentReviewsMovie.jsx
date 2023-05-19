@@ -1,7 +1,7 @@
 import React from "react";
 import ReviewsComp from "../../components/movie_actions/ReviewsComp";
 
-const RecentReviewsMovie = ({ movie }) => {
+const RecentReviewsMovie = ({ movie, authStatus }) => {
   return (
     <>
       <div
@@ -14,7 +14,7 @@ const RecentReviewsMovie = ({ movie }) => {
           RECENT REVIEWS
         </p>
       </div>{" "}
-      <ReviewsComp movie={movie} />
+      <ReviewsComp movie={movie} authStatus={authStatus} />
     </>
   );
 };

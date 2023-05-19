@@ -22,6 +22,7 @@ const MyRoutes = ({
   isProfileUpdated,
   setNewDataGained,
   newDataGained,
+  setNavTransparent
 }) => {
   return (
     <Routes>
@@ -76,9 +77,11 @@ const MyRoutes = ({
         element={
           <MoviePage
             apiKey={apiKey}
+            authStatus={authStatus}
             fetchResults={fetchResults}
             fetchRequest={fetchRequest}
             setNewDataGained={setNewDataGained}
+            setNavTransparent={setNavTransparent}
           />
         }
       />

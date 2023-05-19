@@ -21,14 +21,7 @@ const DropdownDesktop = ({ userName, profilePic, arrowDown, setShowDropdown }) =
             height={24}
             className="rounded-xl  z-50"
           />
-          <span className="text-base 
-          text-p-white 
-          font-semibold 
-          hover:cursor-pointer 
-          hover:text-p-white 
-          uppercase 
-          mx-1
-          z-50">
+          <span className="sans-serif text-xs text-p-white font-bold tracking-widest hover:cursor-pointer mx-1 uppercase z-50">
             {userName}
           </span>
           <span>
@@ -44,7 +37,7 @@ const DropdownDesktop = ({ userName, profilePic, arrowDown, setShowDropdown }) =
             <li key={L.id}>
               <Link
                 to={L.link}
-                className=" block tracking-normal py-0.5 px-4 text-base hover:bg-dd-blue  hover:text-p-white  z-50"
+                className="sans-serif block tracking-normal py-1 px-4 text-xs hover:bg-dd-blue  hover:text-p-white  z-50"
               >
                 {L.name}
               </Link>
@@ -53,12 +46,12 @@ const DropdownDesktop = ({ userName, profilePic, arrowDown, setShowDropdown }) =
           <li className="divider">
             <Link
               to="/settings"
-              className="block py-0.5 px-4 text-base hover:bg-dd-blue  hover:text-p-white"
+              className="sans-serif block py-1 px-4 text-xs hover:bg-dd-blue  hover:text-p-white"
             >
               Settings
             </Link>
           </li>
-          <li className="px-4 py-0.5 text-base hover:bg-dd-blue  hover:text-p-white hover:cursor-pointer">
+          <li className="sans-serif px-4 py-1 text-xs hover:bg-dd-blue  hover:text-p-white hover:cursor-pointer">
             <SignOut />
           </li>
         </ul>

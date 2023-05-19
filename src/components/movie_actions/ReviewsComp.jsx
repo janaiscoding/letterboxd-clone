@@ -2,8 +2,9 @@ import React, { useEffect, useState } from "react";
 import { auth, db } from "../../firebase/firebase";
 import { doc, setDoc, getDoc, updateDoc, arrayUnion } from "firebase/firestore";
 import ReviewItem from "../UI_components/ReviewItem";
+import SignInAll from "../auth/auth_methods/SignInAll";
 
-const ReviewsComp = ({ movie }) => {
+const ReviewsComp = ({ movie, authStatus }) => {
   const [review, setReview] = useState("");
   const [isReviewed, setReviewed] = useState(false);
 
@@ -105,8 +106,10 @@ const ReviewsComp = ({ movie }) => {
   };
   useEffect(() => {
     getReviews();
+    console.log("inside reviews comp");
+    console.log(authStatus);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [movie, setReviews]);
+  }, [movie, authStatus, setReviews]);
 
   return (
     <>
@@ -116,20 +119,28 @@ const ReviewsComp = ({ movie }) => {
             .slice()
             .reverse()
             .map((review, index) => <ReviewItem key={index} review={review} />)
-        ) : (
+        ) : authStatus ? (
           <p className="text-sh-grey text-base pt-2">Write the first review!</p>
+        ) : (
+          <p className="text-sh-grey text-base pt-2">Login and write the first review!</p>
         )}
-        <input
-          className="p-3 rounded bg-h-grey focus:outline-none active-outline-none text-drop-black"
-          value={review}
-          onChange={(e) => setReview(e.target.value)}
-        />{" "}
-        <button
-          className="bg-c-grey rounded text-l-white text-base hover:bg-sh-grey hover:text-b-blue p-1"
-          onClick={() => handleReviewEvent(movie, review)}
-        >
-          Send Review
-        </button>
+        {authStatus ? (
+          <>
+            <input
+              className="p-3 rounded bg-h-grey focus:outline-none active-outline-none text-drop-black"
+              value={review}
+              onChange={(e) => setReview(e.target.value)}
+            />
+            <button
+              className="bg-c-grey rounded text-l-white text-base hover:bg-sh-grey hover:text-b-blue p-1"
+              onClick={() => handleReviewEvent(movie, review)}
+            >
+              Send Review
+            </button>
+          </>
+        ) : (
+          <SignInAll />
+        )}
       </div>
       <div></div>
     </>

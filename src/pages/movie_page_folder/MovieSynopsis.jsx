@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import MoviePanels from "./MoviePanels";
 import RecentReviewsMovie from "./RecentReviewsMovie";
 
-const MovieSynopsis = ({ movie }) => {
+const MovieSynopsis = ({ movie, authStatus }) => {
   const [movieYear, setMovieYear] = useState("");
   const [director, setDirector] = useState([]);
   const getDirector = () => {
@@ -46,7 +46,7 @@ const MovieSynopsis = ({ movie }) => {
           {movie.overview}
         </p>
         <MoviePanels movie={movie} />
-        <RecentReviewsMovie movie={movie} />
+        <RecentReviewsMovie movie={movie} authStatus={authStatus} />
       </div>
     </div>
   );

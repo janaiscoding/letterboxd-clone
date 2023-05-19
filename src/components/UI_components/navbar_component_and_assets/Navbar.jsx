@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 import SignInAll from "../../auth/auth_methods/SignInAll";
-import SearchInputMobile from "../../api_actions/SearchInputMobile";
-import SearchInputDesktop from "../../api_actions/SearchInputDesktop";
+import SearchInputMobile from "./api_actions/SearchInputMobile";
+import SearchInputDesktop from "./api_actions/SearchInputDesktop";
 import { auth } from "../../../firebase/firebase";
 import navbarLinksData from "./navbar_assets/navbarLinksData";
 
@@ -25,6 +25,8 @@ const Navbar = ({
   fetchRequest,
   isProfileUpdated,
   setProfileUpdated,
+  isNavTransparent,
+  setNavTransparent,
 }) => {
   const navbarLinks = navbarLinksData;
   const [userName, setUserName] = useState();
@@ -66,21 +68,27 @@ const Navbar = ({
   };
 
   useEffect(() => {
+    isNavTransparent
+      ? setStyle(
+          "flex flex-col align-center bg-transparent md:h-[70px] md:flex-row"
+        )
+      : setStyle(
+          "flex flex-col align-center bg-h-blue md:h-[70px] md:flex-row"
+        );
+    console.log("useeff in nav");
     if (authStatus) {
       setUserName(auth.currentUser.displayName);
       setProfilePic(auth.currentUser.photoURL);
-      console.log(auth.currentUser.photoURL);
       setUserLogin(true);
       setProfileUpdated(false);
-      setStyle("flex flex-col align-center bg-h-blue md:h-[70px] md:flex-row");
+
+      setNavTransparent(false);
     } else {
       setUserLogin(false);
-      setStyle(
-        "flex flex-col align-center bg-transparent md:h-[70px] md:flex-row z-50"
-      );
+      setNavTransparent(true);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [authStatus, isProfileUpdated]);
+  }, [authStatus, isNavTransparent, isProfileUpdated]);
 
   return (
     <>
@@ -109,7 +117,7 @@ const Navbar = ({
               <ul className="hidden md:flex  z-[1000]">
                 {/* if user if logged in, i show the dropdown/normal user UI */}
                 {userLogin ? (
-                  <li>
+                  <li >
                     {showDropdown ? (
                       <DropdownDesktop
                         profilePic={profilePic}
@@ -134,9 +142,10 @@ const Navbar = ({
                   <p
                     className="ml-4
                       pt-2  
-                      text-base 
+                      text-xs 
                       text-sh-grey 
-                      font-semibold 
+                      font-bold
+                      tracking-wider 
                       hover:text-p-white	
                       hover:cursor-pointer"
                     onClick={() => setShowLogin(true)}
@@ -147,10 +156,10 @@ const Navbar = ({
 
                 {navbarLinks.map((L) => (
                   <li
-                    className="sans-serif ml-4 text-base text-sh-grey font-semibold hover:text-p-white	pt-2"
+                    className="ml-4 mt-2"
                     key={L.id}
                   >
-                    <Link to={L.link}>{L.name}</Link>
+                    <Link className="sans-serif text-xs text-sh-grey font-bold tracking-widest hover:text-p-white" to={L.link}>{L.name}</Link>
                   </li>
                 ))}
               </ul>
@@ -174,12 +183,12 @@ const Navbar = ({
             <img
               className="search-icon-desktop hidden hover:cursor-pointer md:block md:ml-4"
               src={searchIcon}
-              width={40}
-              height={40}
+              width={30}
+              height={30}
               alt="search icon"
               onClick={displaySearchDesktop}
             />
-            <div className="search-bar-desktop bg-h-blue hidden md:hidden">
+            <div className="search-bar-desktop hidden md:hidden">
               <SearchInputDesktop
                 apiKey={apiKey}
                 query={query}

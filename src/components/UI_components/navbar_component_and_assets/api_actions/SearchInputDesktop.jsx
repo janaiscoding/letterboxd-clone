@@ -40,7 +40,7 @@ const SearchInputDesktop = ({ apiKey, fetchRequest }) => {
 
   // let allResponses = movieData.map((movie) => <div>{movie.title}</div>);
   return (
-    <div className="flex items-center ml-3">
+    <div className="flex items-center ml-2">
       <img
         className="close-search-icon-desktop hidden hover:cursor-pointer md:hidden"
         src={closeIcon}
@@ -63,11 +63,11 @@ const SearchInputDesktop = ({ apiKey, fetchRequest }) => {
         h-8
         py-1.5
         pl-2.5
+        pr-7
         bg-if-blue
         text-drop-grey
-        focus:bg-white
         focus:outline-none
-        md:w-[100px]
+        md:w-[150px]
         "
       />
       <img

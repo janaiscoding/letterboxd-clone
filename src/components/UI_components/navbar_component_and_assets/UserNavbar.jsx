@@ -13,7 +13,7 @@ const UserNavbar = ({ profilePic, userName, arrowDown, setShowDropdown }) => {
         height={24}
         className="rounded-xl"
       />
-      <span className="text-base text-sh-grey font-semibold hover:text-p-white uppercase mx-1">
+      <span className="sans-serif text-xs text-sh-grey font-bold tracking-widest hover:text-p-white mx-1 uppercase">
         {userName}
       </span>
       <span>
