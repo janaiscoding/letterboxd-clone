@@ -22,6 +22,20 @@ const MemberContainer = ({ user }) => {
             {user.name}
           </Link>
         </div>
+        <div>
+          <p className="text-sh-grey text-base">
+            Favourite{" "}
+            <span className="text-p-white font-bold">
+              {user.favourites.length}{" "}
+            </span>
+          </p>
+          <p className="text-sh-grey text-base">
+            Watched{" "}
+            <span className="text-p-white font-bold">
+              {user.favourites.length}{" "}
+            </span>
+          </p>
+        </div>
       </div>
     </div>
   );
