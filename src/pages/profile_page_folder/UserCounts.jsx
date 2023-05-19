@@ -1,25 +1,32 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const UserCounts = ({
   favCount,
   watchedCount,
-
+  uid,
 }) => {
 
   return (
     <div className="flex p-3">
-      <div className="flex flex-col items-center justify-center px-3 hover:cursor-pointer">
-        <h1 className="text-p-white font-bold text-2xl">{favCount}</h1>
-        <p className="text-sh-grey sans-serif text-xs hover:text-hov-blue hover:cursor-pointer">
+      <Link to={'/profile/favourites/'+uid } className="flex flex-col items-center justify-center px-3 
+                  hover:text-hov-blue
+                  text-p-white
+            hover:cursor-pointer">
+        <h1 className=" font-bold text-2xl">{favCount}</h1>
+        <p className=" sans-serif text-xs ">
           FAVOURITES
         </p>
-      </div>
-      <div className="flex flex-col items-center justify-center border-l border-[#6677884f] border-solid px-3 hover:cursor-pointer">
-        <h1 className="text-p-white font-bold text-2xl">{watchedCount}</h1>
-        <p className="text-sh-grey sans-serif text-xs hover:text-hov-blue hover:cursor-pointer">
+      </Link>
+      <Link to={'/profile/watched/'+uid } className="flex flex-col items-center justify-center border-l border-[#6677884f] border-solid px-3
+            hover:text-hov-blue
+            text-p-white
+      hover:cursor-pointer">
+        <h1 className="font-bold text-2xl">{watchedCount}</h1>
+        <p className="sans-serif text-xs">
           WATCHED
         </p>
-      </div>
+      </Link>
     </div>
   );
 };

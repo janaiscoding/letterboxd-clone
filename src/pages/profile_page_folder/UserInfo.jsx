@@ -11,6 +11,7 @@ const UserInfo = ({ uid, isProfileUpdated, setProfileUpdated }) => {
   const fetchUsername = async (uid) => {
     const userSnap = await getDoc(doc(db, "users", uid));
     if (userSnap.exists()) {
+      console.log(userSnap.data())
       setUserName(userSnap.data().name);
       setUserPic(userSnap.data().photoUrl);
       setUserBio(userSnap.data().bio);
@@ -19,8 +20,8 @@ const UserInfo = ({ uid, isProfileUpdated, setProfileUpdated }) => {
     }
   };
   useEffect(() => {
-    setProfileUpdated(false);
     fetchUsername(uid);
+    setProfileUpdated(false);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [uid, isProfileUpdated]);
 
@@ -48,7 +49,7 @@ const UserInfo = ({ uid, isProfileUpdated, setProfileUpdated }) => {
           </div>
 
           <p className="text-sh-grey sans-serif text-xs py-2 hidden md:block">
-            Hope you are liking my project!
+      {userBio}
           </p>
         </div>
       </div>

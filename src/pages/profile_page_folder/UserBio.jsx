@@ -18,6 +18,7 @@ const UserBio = ({
         setProfileUpdated={setProfileUpdated}
       />
       <UserCounts
+        uid={uid}
         favCount={favCount}
         watchedCount={watchedCount}
         newDataGained={newDataGained}

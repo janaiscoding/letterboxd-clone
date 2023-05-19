@@ -10,6 +10,8 @@ import FilterPage from "./films_page_folder/FilterPage";
 import Settings from "./settings_page_folder/Settings";
 import NotFound from "./NotFound";
 import Journal from "./journals_page_folder/Journal";
+import ProfileFavourites from "./profile_page_folder/ProfileFavourites";
+import ProfileWatched from "./profile_page_folder/ProfileWatched";
 
 const MyRoutes = ({
   authStatus,
@@ -49,6 +51,30 @@ const MyRoutes = ({
             authStatus={authStatus}
             isProfileUpdated={isProfileUpdated}
             setProfileUpdated={setProfileUpdated}
+            setNewDataGained={setNewDataGained}
+            newDataGained={newDataGained}
+          />
+        }
+      />
+            <Route
+        path="/profile/favourites/:uid"
+        element={
+          <ProfileFavourites
+            apiKey={apiKey}
+            fetchResults={fetchResults}
+            fetchRequest={fetchRequest}
+            setNewDataGained={setNewDataGained}
+            newDataGained={newDataGained}
+          />
+        }
+      />
+                  <Route
+        path="/profile/watched/:uid"
+        element={
+          <ProfileWatched
+            apiKey={apiKey}
+            fetchResults={fetchResults}
+            fetchRequest={fetchRequest}
             setNewDataGained={setNewDataGained}
             newDataGained={newDataGained}
           />

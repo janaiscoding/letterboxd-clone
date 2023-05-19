@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 const ResultPoster = ({ movie, setNewDataGained }) => {
   const [visibility, setVisibility] = useState(false);
-  console.log(movie)
+
   return (
     <div
       className="

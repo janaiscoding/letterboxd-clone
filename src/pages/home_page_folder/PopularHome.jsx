@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import PosterHomePopular from "./Poster_home_popular";
 import "../../styles/poster.css";
-import { Link } from "react-router-dom";
 
 const PopularHome = ({ populars, setNewDataGained }) => {
   const [firstSix, setFirstSix] = useState([]);

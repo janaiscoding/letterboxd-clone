@@ -1,7 +1,8 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from "react";
 import ProfilePoster from "./ProfilePoster";
-const UserWatchedFilms = ({ apiKey, watchedIDs, setNewDataGained }) => {
+import { Link } from "react-router-dom";
+const UserWatchedFilms = ({ uid, apiKey, watchedIDs, setNewDataGained }) => {
   const [firstFour, setFirstFour] = useState([]);
   useEffect(() => {
     if (watchedIDs.length > 0) {
@@ -14,8 +15,9 @@ const UserWatchedFilms = ({ apiKey, watchedIDs, setNewDataGained }) => {
 
   return (
     <>
-      <div
-        className="flex 
+      <Link
+      to={'/profile/watched/'+uid}
+      className="flex 
        justify-start 
       section-heading
       text-sh-grey 
@@ -24,10 +26,11 @@ const UserWatchedFilms = ({ apiKey, watchedIDs, setNewDataGained }) => {
       border-solid 
       border-b-grey 
       mb-2
-      md:min-w-[600px]"
+      md:min-w-[600px]
+      hover:text-hov-blue"
       >
         <p>WATCHED FILMS</p>
-      </div>
+      </Link>
       <div
         className="flex 
         gap-1

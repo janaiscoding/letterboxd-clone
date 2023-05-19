@@ -90,12 +90,14 @@ const Profile = ({
           <div>
             <UserFavouriteFilms
               favIDs={favIDs}
+              uid={uid}
               apiKey={apiKey}
               setNewDataGained={setNewDataGained}
             />
             <UserWatchedFilms
               watchedIDs={watchedIDs}
               apiKey={apiKey}
+              uid={uid}
               setNewDataGained={setNewDataGained}
             />
           </div>

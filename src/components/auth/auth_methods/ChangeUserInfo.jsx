@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { auth } from "../../../firebase/firebase";
 import { updateProfile } from "firebase/auth";
+import { doc, updateDoc } from "firebase/firestore";
+import { db } from "../../../firebase/firebase";
 const ChangeUserInfo = ({ setProfileUpdated }) => {
   const [newName, setNewName] = useState("");
   const [newBio, setNewBio] = useState("");
@@ -10,22 +12,26 @@ const ChangeUserInfo = ({ setProfileUpdated }) => {
       displayName: newName,
     })
       .then(() => {
+        changeLoggedUsername(auth.currentUser.uid)
         setProfileUpdated(true);
       })
       .catch((err) => {
         console.log(err);
       });
   };
-  const updateUserBio = () => {
-    updateProfile(auth.currentUser, {
-      bio: newBio,
+  const changeLoggedUsername = async (uid) => {
+    const userSnap = doc(db, "users", uid)
+    await updateDoc(userSnap,{
+      name: newName,
     })
-      .then(() => {
-        setProfileUpdated(true);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+  };
+  const updateUserBio = async (uid) => {
+    const userSnap = doc(db, "users", uid)
+    await updateDoc(userSnap,{
+      bio: newBio,
+    }).then(()=>{
+      setProfileUpdated(true)
+    })
   };
   return (
     <>
@@ -91,13 +97,13 @@ const ChangeUserInfo = ({ setProfileUpdated }) => {
       m-auto gap-3"
       >
         <input
-          value={newName}
+          value={newBio}
           type="text"
           onChange={(e) => setNewBio(e.target.value)}
         />
         <button
           className="px-3 py-2 rounded font-bold bg-[#567] text-p-white text-xs sans-serif"
-          onClick={updateUserBio}
+          onClick={()=>updateUserBio(auth.currentUser.uid)}
         >
           Save new bio
         </button>

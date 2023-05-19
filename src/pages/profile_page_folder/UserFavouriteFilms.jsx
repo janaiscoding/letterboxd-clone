@@ -1,7 +1,8 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from "react";
 import ProfilePoster from "./ProfilePoster";
-const UserFavouriteFilms = ({ apiKey, favIDs, setNewDataGained }) => {
+import { Link } from "react-router-dom";
+const UserFavouriteFilms = ({uid, apiKey, favIDs, setNewDataGained }) => {
   const [firstFour, setFirstFour] = useState([]);
   useEffect(() => {
     if (favIDs.length > 0) {
@@ -14,7 +15,7 @@ const UserFavouriteFilms = ({ apiKey, favIDs, setNewDataGained }) => {
 
   return (
     <>
-      <div
+      <Link to={'/profile/favourites/'+uid }
         className="flex 
       align-start 
       section-heading
@@ -24,10 +25,11 @@ const UserFavouriteFilms = ({ apiKey, favIDs, setNewDataGained }) => {
       border-solid 
       border-b-grey 
       mb-2
-      md:min-w-[600px]"
+      md:min-w-[600px]
+      hover:text-hov-blue"
       >
         <p>FAVORITE FILMS</p>
-      </div>
+      </Link>
       <div
         className="flex 
       gap-1
