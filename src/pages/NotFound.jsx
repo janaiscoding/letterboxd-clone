@@ -3,7 +3,7 @@ import React, { useEffect } from "react";
 const NotFound = ({ setNavTransparent }) => {
   useEffect(() => {
     setNavTransparent(true);
-    console.log("navb");
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
     <div className="site-body py-5">
