@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from "react";
-import arrays from "../../assets/filtering/arrays";
+import arrays from "./filtering/arrays";
 import { useParams } from "react-router-dom";
 import FilterList from "./FilterList";
 const FilterPage = ({
@@ -136,9 +136,7 @@ const FilterPage = ({
       <h1>
         TEST filter type: {filterType} + {query}
       </h1>
-      <FilterList
-        fetchResults={fetchResults}
-      />
+      <FilterList fetchResults={fetchResults} />
     </>
   );
 };

@@ -3,14 +3,12 @@ import { Route, Routes } from "react-router-dom";
 import Home from "./home_page_folder/Home";
 import Films from "./films_page_folder/Films";
 import Members from "./members_page_folder/Members";
-import Journal from "./journal_page_folder/Journal";
-import Lists from "./lists_page_folder/Lists";
-
 import Results from "./results_page_folder/Results";
 import MoviePage from "./movie_page_folder/MoviePage";
 import Profile from "./profile_page_folder/Profile";
 import FilterPage from "./films_page_folder/FilterPage";
 import Settings from "./settings_page_folder/Settings";
+import NotFound from "./NotFound";
 
 const MyRoutes = ({
   authStatus,
@@ -22,7 +20,7 @@ const MyRoutes = ({
   isProfileUpdated,
   setNewDataGained,
   newDataGained,
-  setNavTransparent
+  setNavTransparent,
 }) => {
   return (
     <Routes>
@@ -58,9 +56,8 @@ const MyRoutes = ({
         path="/films"
         element={<Films setNewDataGained={setNewDataGained} />}
       />
-      <Route path="/lists" element={<Lists />} />
       <Route path="/members" element={<Members />} />
-      <Route path="/journal" element={<Journal />} />
+
       <Route
         path="/results/:query"
         element={
@@ -86,7 +83,7 @@ const MyRoutes = ({
         }
       />
       <Route
-        path="/films/:query"
+        path="/filter/:query"
         element={
           <FilterPage
             apiKey={apiKey}
@@ -94,11 +91,14 @@ const MyRoutes = ({
             fetchRequest={fetchRequest}
             setFetchResults={setFetchResults}
             setNewDataGained={setNewDataGained}
-            
           />
         }
       />
       <Route path="/settings" element={<Settings />} />
+      <Route
+        path="*"
+        element={<NotFound setNavTransparent={setNavTransparent} />}
+      />
     </Routes>
   );
 };

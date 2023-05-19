@@ -51,8 +51,13 @@ const DropdownDesktop = ({
           onMouseLeave={() => setShowDropdown(false)}
         >
           <li className="divider"></li>
-          <li className="sans-serif block tracking-normal py-1 px-4 text-xs hover:bg-dd-blue hover:cursor-pointer hover:text-p-white  z-50">
-            <Link to={"/profile/" + uid}>Profile</Link>
+          <li>
+            <Link
+              className="sans-serif block tracking-normal py-1 px-4 text-xs hover:bg-dd-blue hover:cursor-pointer hover:text-p-white  z-50"
+              to={"/profile/" + uid}
+            >
+              Profile
+            </Link>
           </li>
           {dropdownList.map((L) => (
             <li key={L.id}>

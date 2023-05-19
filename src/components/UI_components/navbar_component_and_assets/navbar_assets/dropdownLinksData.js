@@ -14,27 +14,32 @@ const dropdownLinksData = [
   {
     id: uniqid(),
     name: "Diary",
-    link: "/diary",
+    link: "/Diary",
+  },
+  {
+    id: uniqid(),
+    name: "Members",
+    link: "/members",
   },
   {
     id: uniqid(),
     name: "Reviews",
-    link: "/reviews",
+    link: "/Reviews",
   },
   {
     id: uniqid(),
     name: "Watchlist",
-    link: "/watchlist",
+    link: "/Watchlist",
   },
   {
     id: uniqid(),
     name: "Lists",
-    link: "/lists",
+    link: "/Lists",
   },
   {
     id: uniqid(),
     name: "Likes",
-    link: "/likes",
+    link: "/Likes",
   },
   {
     id: uniqid(),
@@ -44,7 +49,7 @@ const dropdownLinksData = [
   {
     id: uniqid(),
     name: "Network",
-    link: "/network",
+    link: "/Network",
   },
 ];
 

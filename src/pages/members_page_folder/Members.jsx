@@ -1,4 +1,4 @@
-import { collection, doc, getDocs } from "firebase/firestore";
+import { collection, getDocs } from "firebase/firestore";
 import React, { useEffect, useState } from "react";
 import { db } from "../../firebase/firebase";
 import { Link } from "react-router-dom";
@@ -15,7 +15,6 @@ const Members = () => {
   };
   useEffect(() => {
     fetchUsersfromDB();
-    console.log(users);
   }, []);
   return (
     <div className="site-body py-5">
