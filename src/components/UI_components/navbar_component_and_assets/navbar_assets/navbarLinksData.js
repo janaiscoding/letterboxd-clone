@@ -18,8 +18,8 @@ const navbarLinksData = [
   },
   {
     id: uniqid(),
-    name: "JOURNAL",
-    link: "/journal",
+    name: "REVIEWS",
+    link: "/Reviews",
   },
 ];
 

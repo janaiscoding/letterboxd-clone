@@ -42,6 +42,10 @@ const IntroMessage = ({ authStatus }) => {
         <Link to="/films" className="text-p-white hover:text-hov-blue">
           Filter movies based on your criteria
         </Link>
+        {" | "}
+        <Link to="/reviews" className="text-p-white hover:text-hov-blue">
+          Read all the reviews on the platform
+        </Link>
         <span className="text-h-grey">
           {" "}
           or search for your favourite movie in the navbar leave a review for
