@@ -10,7 +10,7 @@ const Backdrop = ({ movie }) => {
     <>
       {bgExists ? (
         <div
-          className="movie-backdrop block md:h-[500px] md:mt-[-5%] md:max-h-[500px] md:w-full max-h-[250px] h-[250px]"
+          className="movie-backdrop block md:h-[500px] md:mt-[-5%] md:max-h-[500px] md:w-[950px] md:m-auto max-h-[250px] h-[250px]"
           style={{ backgroundImage: `url(${background})` }}
         ></div>
       ) : (

@@ -1,111 +1,15 @@
-.backdropimage {
-  background-position: center -96px;
-  position: absolute;
-}
-.backdrop-wrapper {
-  height: 675px;
-  left: 50%;
-  position: absolute;
-  transform: translateX(-50%);
-  width: 1200px;
-}
-
-
-.backdrop-container:after {
-  background-image: linear-gradient(
-      90deg,
-      #14181d,
-      rgba(20, 24, 29, 0.986) 0.97%,
-      rgba(20, 24, 29, 0.945) 2.07833%,
-      rgba(20, 24, 29, 0.883) 3.29667%,
-      rgba(20, 24, 29, 0.803) 4.60167%,
-      rgba(20, 24, 29, 0.711) 5.96667%,
-      rgba(20, 24, 29, 0.61) 7.365%,
-      rgba(20, 24, 29, 0.504) 8.77167%,
-      rgba(20, 24, 29, 0.398) 10.16%,
-      rgba(20, 24, 29, 0.296) 11.505%,
-      rgba(20, 24, 29, 0.203) 12.78%,
-      rgba(20, 24, 29, 0.122) 13.95833%,
-      rgba(20, 24, 29, 0.059) 15.01667%,
-      rgba(20, 24, 29, 0.016) 15.92833%,
-      rgba(20, 24, 29, 0) 16.66667%,
-      rgba(20, 24, 29, 0) 83.33333%,
-      rgba(20, 24, 29, 0.016) 84.07167%,
-      rgba(20, 24, 29, 0.059) 84.98333%,
-      rgba(20, 24, 29, 0.122) 86.04167%,
-      rgba(20, 24, 29, 0.203) 87.22%,
-      rgba(20, 24, 29, 0.296) 88.495%,
-      rgba(20, 24, 29, 0.398) 89.84%,
-      rgba(20, 24, 29, 0.504) 91.22833%,
-      rgba(20, 24, 29, 0.61) 92.635%,
-      rgba(20, 24, 29, 0.711) 94.03333%,
-      rgba(20, 24, 29, 0.803) 95.39833%,
-      rgba(20, 24, 29, 0.883) 96.70333%,
-      rgba(20, 24, 29, 0.945) 97.92167%,
-      rgba(20, 24, 29, 0.986) 99.03%,
-      #14181d
-    ),
-    linear-gradient(
-      0deg,
-      #14181d,
-      #14181d 21.48148%,
-      rgba(20, 24, 29, 0.986) 23.63704%,
-      rgba(20, 24, 29, 0.945) 26.1%,
-      rgba(20, 24, 29, 0.883) 28.80741%,
-      rgba(20, 24, 29, 0.803) 31.70741%,
-      rgba(20, 24, 29, 0.711) 34.74074%,
-      rgba(20, 24, 29, 0.61) 37.84815%,
-      rgba(20, 24, 29, 0.504) 40.97407%,
-      rgba(20, 24, 29, 0.398) 44.05926%,
-      rgba(20, 24, 29, 0.296) 47.04815%,
-      rgba(20, 24, 29, 0.203) 49.88148%,
-      rgba(20, 24, 29, 0.122) 52.5%,
-      rgba(20, 24, 29, 0.059) 54.85185%,
-      rgba(20, 24, 29, 0.016) 56.87778%,
-      rgba(20, 24, 29, 0) 58.51852%
-    );
-  background-repeat: no-repeat;
-  content: "";
-  display: block;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  width: 100%;
-  z-index: 0;
-}
-.gradient-helper {
-  background-image: linear-gradient(
-    to bottom,
-    #14181c00,
-    #14181c4b,
-    #14171c93,
-    #14181cd5,
-    #14181cf5,
-    #14181c
-  );
-  background-repeat: no-repeat;
-  content: "";
-  height: 100%;
-  top: 0;
-  width: 100%;
-  z-index: 0;
-}
-@media (max-width: 750px) {
-  .gradient-helper-mobile {
-    background-image: linear-gradient(
-      to bottom,
-      #14181c05,
-      #14181c3b,
-      #14171c59,
-      #14181c98,
-      #14181cda,
-      #14181c
-    );
-    background-repeat: no-repeat;
-    content: "";
-    height: 100%;
-    top: 0;
-    width: 100%;
-    z-index: 0;
+@media (min-width: 750px) {
+  .started-backdrop {
+    box-shadow: inset 5px -46px 80px 109px #181C20;
   }
+}
+.backdrop-helper {
+  box-shadow: 16px 130px 0px 200px #181C20;
+}
+.movie-body {
+  background-color: #181C20;
+}
+.started-backdrop{
+  background-repeat: no-repeat;
+  background-size: cover;
 }

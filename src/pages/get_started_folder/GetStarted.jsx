@@ -5,22 +5,14 @@ const GetStarted = () => {
   return (
     <>
       <div
-        className="
-      backdrop-container
-        h-[200px]
-        md:h-[650px]
-        md:mt-[-10%]
-    "
-      >
-        <img
-          alt="backdrop"
-          src="https://a.ltrbxd.com/resized/sm/upload/tx/hy/xj/lw/sanctuary-2023-1200-1200-675-675-crop-000000.jpg?v=b1d98010cd"
-          className="backdropimage  h-[300px]  md:h-[650px] w-full z-[-99]"
-        ></img>
-      </div>
+        className="started-backdrop block md:h-[650px] md:mt-[-5%] md:max-h-[650px] md:w-[950px] md:m-auto max-h-[250px] h-[250px]"
+        style={{
+          backgroundImage: `url(https://a.ltrbxd.com/resized/sm/upload/tx/hy/xj/lw/sanctuary-2023-1200-1200-675-675-crop-000000.jpg?v=b1d98010cd)`,
+        }}
+      ></div>
+
       <div
         className="flex 
-      md:gradient-helper
       flex-col 
       items-center 
       relative 

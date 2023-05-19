@@ -117,7 +117,7 @@ const Navbar = ({
               <ul className="hidden md:flex  z-[1000]">
                 {/* if user if logged in, i show the dropdown/normal user UI */}
                 {userLogin ? (
-                  <li >
+                  <li>
                     {showDropdown ? (
                       <DropdownDesktop
                         profilePic={profilePic}
@@ -139,27 +139,22 @@ const Navbar = ({
                   //show login = true when clicked on "SIGN IN"
                   <SignInAll />
                 ) : (
-                  <p
-                    className="ml-4
-                      pt-2  
-                      text-xs 
-                      text-sh-grey 
-                      font-bold
-                      tracking-wider 
-                      hover:text-p-white	
-                      hover:cursor-pointer"
+                  <li
+                    className="ml-4 pt-2  self-center items-center"
                     onClick={() => setShowLogin(true)}
                   >
-                    SIGN IN
-                  </p>
+                    <p className="pt-2 -center items-center"> SIGN IN</p>
+                  </li>
                 )}
 
                 {navbarLinks.map((L) => (
-                  <li
-                    className="ml-4 mt-2"
-                    key={L.id}
-                  >
-                    <Link className="sans-serif text-xs text-sh-grey font-bold tracking-widest hover:text-p-white" to={L.link}>{L.name}</Link>
+                  <li className="ml-4 mt-2" key={L.id}>
+                    <Link
+                      className="sans-serif text-xs text-sh-grey font-bold tracking-widest hover:text-p-white"
+                      to={L.link}
+                    >
+                      {L.name}
+                    </Link>
                   </li>
                 ))}
               </ul>

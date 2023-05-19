@@ -1,15 +1,15 @@
 @media (min-width: 750px) {
   .movie-backdrop {
-    box-shadow: inset 100px 50px 100px 10px #14181c,
-      inset -50px -50px 100px 10px #14181c;
+    box-shadow: inset 5px -46px 80px 109px rgba(20, 24, 28, 1);
   }
 }
-.movie-backdrop {
-  background-position: center -20px;
-  background-repeat: no-repeat;
-  background-size: cover;
-  box-shadow: inset 10px 20px 79px 12px #14181c, inset -6px -64px 82px 24px #14181c
+.backdrop-helper {
+  box-shadow: 16px 130px 0px 200px rgba(20, 24, 28, 1);
 }
 .movie-body {
   background-color: #14181c;
+}
+.movie-backdrop {
+  background-repeat: no-repeat;
+  background-size: cover;
 }

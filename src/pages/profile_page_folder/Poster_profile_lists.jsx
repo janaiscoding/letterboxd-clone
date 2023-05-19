@@ -23,7 +23,7 @@ const PosterProfileLists = ({ movie, index }) => {
       default:
         console.log("");
     }
-  },[index]);
+  }, [index]);
   return (
     <div
       className="
@@ -41,7 +41,7 @@ const PosterProfileLists = ({ movie, index }) => {
     >
       <Link to={"/movie/" + movie.id}>
         <img
-          className="border rounded "
+          className="border rounded hover:scale-125"
           src={"https://image.tmdb.org/t/p/w500/" + movie.poster_path}
           alt={movie.title}
         />
