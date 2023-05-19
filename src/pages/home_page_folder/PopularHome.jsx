@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import PosterHomePopular from "./Poster_home_popular";
 import "../../styles/poster.css";
+import { Link } from "react-router-dom";
 
 const PopularHome = ({ populars, setNewDataGained }) => {
   const [firstSix, setFirstSix] = useState([]);
@@ -24,12 +25,12 @@ const PopularHome = ({ populars, setNewDataGained }) => {
       border-b-grey 
       mb-3"
       >
-        <a href="/popular" className="text-sm hover:text-hov-blue">
+        <Link to="/popular" className="text-sm hover:text-hov-blue">
           POPULAR ON CLONNERBOXD
-        </a>{" "}
-        <a href="/popular" className="text-[11px] hover:text-hov-blue">
+        </Link>{" "}
+       <Link to="/popular" className="text-[11px] hover:text-hov-blue">
           MORE
-        </a>
+        </Link>
       </div>
 
       <div

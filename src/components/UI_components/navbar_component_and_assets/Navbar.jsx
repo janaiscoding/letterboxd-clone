@@ -27,6 +27,7 @@ const Navbar = ({
   setProfileUpdated,
   isNavTransparent,
   setNavTransparent,
+  setNewDataGained,
 }) => {
   const navbarLinks = navbarLinksData;
   const [userName, setUserName] = useState();
@@ -94,7 +95,7 @@ const Navbar = ({
     <>
       <header className={style}>
         <section className="px-2 pl-4 flex justify-between align-center md:w-[950px] md:my-0 md:mx-auto z-50">
-          <Link className="self-center block md:hidden" to="/">
+          <Link className="self-center block md:hidden" exact to="/">
             <img
               src={logoMobile}
               width={60}
@@ -103,7 +104,7 @@ const Navbar = ({
               alt="letterboxd mobile logo"
             />
           </Link>
-          <Link className="self-center hidden md:block" to="/">
+          <Link className="self-center hidden md:block" exact to="/">
             <img
               src={logo}
               width={265}
@@ -193,6 +194,7 @@ const Navbar = ({
                 apiKey={apiKey}
                 query={query}
                 fetchRequest={fetchRequest}
+                setNewDataGained={setNewDataGained}
               />
             </div>
 
@@ -212,6 +214,7 @@ const Navbar = ({
             query={query}
             fetchRequest={fetchRequest}
             handleVisSIMob={handleVisSIMob}
+            setNewDataGained={setNewDataGained}
           />
         ) : (
           " "

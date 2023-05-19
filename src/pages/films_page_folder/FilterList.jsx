@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import Poster from "../../components/UI_components/Poster";
+import FilterComp from "./FilterComp";
 
-const FilterList = ({ fetchResults }) => {
+const FilterList = ({ fetchResults, setNewDataGained }) => {
   const [hasImageList, setHasImageList] = useState([]);
   useEffect(() => {
     if (fetchResults.results !== undefined) {
@@ -13,11 +13,17 @@ const FilterList = ({ fetchResults }) => {
   }, [fetchResults]);
 
   return (
-    <>
+    <div>
       {hasImageList.length === 0
         ? "no movies found for this filtered search"
-        : hasImageList.map((movie) => <Poster key={movie.id} movie={movie} />)}
-    </>
+        : hasImageList.map((movie) => (
+            <FilterComp
+              key={movie.id}
+              movie={movie}
+              setNewDataGained={setNewDataGained}
+            />
+          ))}
+    </div>
   );
 };
 

@@ -54,7 +54,15 @@ const MyRoutes = ({
       />
       <Route
         path="/films"
-        element={<Films setNewDataGained={setNewDataGained} />}
+        element={
+          <Films
+            apiKey={apiKey}
+            authStatus={authStatus}
+            fetchRequest={fetchRequest}
+            fetchResults={fetchResults}
+            setNewDataGained={setNewDataGained}
+          />
+        }
       />
       <Route path="/members" element={<Members />} />
 
@@ -66,6 +74,7 @@ const MyRoutes = ({
             fetchResults={fetchResults}
             fetchRequest={fetchRequest}
             setNewDataGained={setNewDataGained}
+            newDataGained={newDataGained}
           />
         }
       />

@@ -2,27 +2,37 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import ResultComp from "./ResultComp";
-const Results = ({ apiKey, fetchResults, fetchRequest, setNewDataGained }) => {
+const Results = ({
+  apiKey,
+  fetchResults,
+  fetchRequest,
+  newDataGained,
+  setNewDataGained,
+}) => {
   const { query } = useParams();
   const [resultsLength, setResultsLength] = useState("");
   const [results, setResults] = useState([]);
-  const getResults = () => {
-    if (fetchResults.results !== undefined) {
-      setResultsLength(fetchResults.results.length);
-      setResults(fetchResults.results);
-      console.log(fetchResults);
-    }
-  };
+
   useEffect(() => {
-    fetchRequest(
+    fetch(
       "https://api.themoviedb.org/3/search/movie?api_key=" +
         apiKey +
         "&query=" +
-        query
-    );
-
-    getResults();
-  }, []);
+        query,
+      {
+        method: "GET",
+      }
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        setResults(data.results);
+        setResultsLength(data.results.length);
+        setNewDataGained(false);
+      })
+      .catch((err) => {
+        console.log(err.message);
+      });
+  }, [query, newDataGained]);
   return (
     <div className="site-body py-5">
       <div className="flex flex-col px-4 md:w-[950px] md:my-0 md:mx-auto font-['Graphik']">
@@ -49,6 +59,7 @@ const Results = ({ apiKey, fetchResults, fetchRequest, setNewDataGained }) => {
               key={movie.id}
               movie={movie}
               setNewDataGained={setNewDataGained}
+              newDataGained={newDataGained}
               fetchRequest={fetchRequest}
               fetchResults={fetchResults}
             />

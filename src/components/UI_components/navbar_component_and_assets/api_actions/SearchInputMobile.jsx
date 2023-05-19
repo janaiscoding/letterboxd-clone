@@ -1,7 +1,12 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import searchInputIcon from "./searchinput.png";
-const SearchInputMobile = ({ apiKey, fetchRequest, handleVisSIMob }) => {
+const SearchInputMobile = ({
+  apiKey,
+  fetchRequest,
+  handleVisSIMob,
+  setNewDataGained,
+}) => {
   const [query, setQuery] = useState("");
   const navigate = useNavigate();
 
@@ -13,10 +18,11 @@ const SearchInputMobile = ({ apiKey, fetchRequest, handleVisSIMob }) => {
           "&query=" +
           query
       );
-      setQuery("");
       handleVisSIMob();
+      setNewDataGained(true);
       navigate("/results/" + query);
     }
+    setQuery("");
   };
 
   // let allResponses = movieData.map((movie) => <div>{movie.title}</div>);

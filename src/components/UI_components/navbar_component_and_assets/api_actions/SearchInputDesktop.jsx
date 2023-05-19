@@ -2,25 +2,28 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import searchInputIcon from "./searchinput.png";
 import closeIcon from "./csb.png";
-const SearchInputDesktop = ({ apiKey, fetchRequest }) => {
+const SearchInputDesktop = ({ apiKey, fetchRequest, setNewDataGained }) => {
   const [query, setQuery] = useState("");
   const navigate = useNavigate();
 
   const handleSearchDesktop = () => {
+    console.log("what happens here exactly");
     if (query !== "") {
-      fetchRequest(
-        "https://api.themoviedb.org/3/search/movie?api_key=" +
-          apiKey +
-          "&query=" +
-          query
-      );
       const SBD = document.querySelector(".search-bar-desktop");
       SBD.classList.add("md:hidden");
       const SID = document.querySelector(".search-icon-desktop");
       console.log(SID);
       SID.classList.remove("md:hidden");
       SID.classList.add("md:block");
-      setQuery("");
+      //fetch first
+      fetchRequest(
+        "https://api.themoviedb.org/3/search/movie?api_key=" +
+          apiKey +
+          "&query=" +
+          query
+      );
+        //setting that new data was gained to refresh results page
+      setNewDataGained(true);
       navigate("/results/" + query);
     }
   };

@@ -55,6 +55,7 @@ const App = () => {
           setProfileUpdated={setProfileUpdated}
           setNavTransparent={setNavTransparent}
           isNavTransparent={isNavTransparent}
+          setNewDataGained={setNewDataGained}
         />
         <MyRoutes
           authStatus={authStatus}
@@ -71,7 +72,6 @@ const App = () => {
           newDataGained={newDataGained}
           //handler for transparent navbar
           setNavTransparent={setNavTransparent}
-          isNavTransparent={isNavTransparent}
         />
         <Footer />
       </HashRouter>

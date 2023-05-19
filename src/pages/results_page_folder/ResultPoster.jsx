@@ -4,6 +4,7 @@ import WatchedButton from "../../components/movie_actions/WatchedButton";
 
 const ResultPoster = ({ movie, setNewDataGained }) => {
   const [visibility, setVisibility] = useState(false);
+
   return (
     <div
       className="
@@ -26,22 +27,13 @@ const ResultPoster = ({ movie, setNewDataGained }) => {
       key={movie.id}
     >
       <img
-        className="border rounded block h-[110px] w-[75px]"
+        className="border rounded block max-h-[110px] max-w-[75px]"
         src={"https://image.tmdb.org/t/p/w500/" + movie.poster_path}
         alt={movie.title}
       />
       {visibility ? (
         <div
-          className="
-                  rounded
-                  absolute
-                  flex 
-                  items-center
-                  p-0.5
-                  top-[65%]     
-                 
-                  z-10
-                  "
+          className="rounded absolute flex items-center p-0.5 top-[65%] z-10"
           style={{ backgroundColor: "rgba(0,0,0,0.8)" }}
         >
           <FavouriteButton movie={movie} setNewDataGained={setNewDataGained} />

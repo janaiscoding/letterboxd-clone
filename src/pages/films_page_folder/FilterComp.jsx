@@ -1,11 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import ResultPoster from "./ResultPoster";
+import ResultPoster from "../results_page_folder/ResultPoster";
 
-const ResultComp = ({
-  movie,
-  setNewDataGained
-}) => {
+const FilterComp = ({ movie, setNewDataGained }) => {
   return (
     <div
       className="flex gap-4 my-2
@@ -31,4 +28,4 @@ const ResultComp = ({
   );
 };
 
-export default ResultComp;
+export default FilterComp;

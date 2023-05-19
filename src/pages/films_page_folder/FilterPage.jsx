@@ -1,15 +1,21 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from "react";
-import arrays from "./filtering/arrays";
 import { useParams } from "react-router-dom";
+import arrays from "./filtering/arrays";
 import FilterList from "./FilterList";
+import SelectBoxFilterPage from "./SelectBoxFilterPage";
+
 const FilterPage = ({
   apiKey,
   fetchResults,
   fetchRequest,
   setFetchResults,
+  setNewDataGained,
 }) => {
   const [filterType, setFilterType] = useState("");
+  const allSelectionBoxes = arrays.map((element, index) => (
+    <SelectBoxFilterPage title={element.type} data={element.array} key={index} />
+  ));
   const { query } = useParams();
 
   // FETCHING THE GENRE LIST => FINDING THE MATCHING WITH MY QUERY GENRE ID => FETCHING MOVIES BY GENRE ID => DISPLAYING
@@ -132,12 +138,35 @@ const FilterPage = ({
 
   //here i perform my api call
   return (
-    <>
-      <h1>
-        TEST filter type: {filterType} + {query}
-      </h1>
-      <FilterList fetchResults={fetchResults} />
-    </>
+    <div className="site-body py-5">
+      <div className="grid grid-cols-2 md:flex md:flex-row px-4 md:w-[950px] md:my-0 md:mx-auto font-['Graphik']">
+        <div className="flex flex-col">
+          <div
+            className="flex 
+      justify-between 
+      section-heading 
+      text-sh-grey 
+      text-xs
+      border-b 
+      border-solid 
+      border-b-grey 
+      mb-3"
+          >
+            <div className="text-sm">FILMS FILTERED BY {query}</div>
+          </div>
+          <div className="grid grid-cols-2 md:flex md:flex-row px-4 md:w-[950px] md:my-0 md:mx-auto font-['Graphik']">
+            {allSelectionBoxes}
+          </div>
+          <FilterList
+            fetchResults={fetchResults}
+            setNewDataGained={setNewDataGained}
+            apiKey={apiKey}
+            fetchRequest={fetchRequest}
+            setFetchResults={setFetchResults}
+          />
+        </div>
+      </div>
+    </div>
   );
 };
 
