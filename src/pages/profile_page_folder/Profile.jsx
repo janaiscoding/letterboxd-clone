@@ -14,7 +14,6 @@ const Profile = ({
   apiKey,
   fetchRequest,
   fetchResults,
-  authStatus,
   isProfileUpdated,
   setProfileUpdated,
   newDataGained,
@@ -74,9 +73,6 @@ const Profile = ({
   };
   useEffect(() => {
     fetchUserMoviesDB(uid);
-    console.log(uid);
-
-    console.log("profile got new data so im refreshing here");
   }, [uid,newDataGained]);
 
   return (

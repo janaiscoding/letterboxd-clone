@@ -5,10 +5,6 @@ const SelectBoxFilterPage = ({ title, data }) => {
   const [showDropdown, setShowDropdown] = useState(false);
   const navigate = useNavigate();
   const onSelect = (i) => {
-    console.log("selected", i);
-
-    //redirect and pass data to fetcher
-    console.log("redirecting to movie page followed by query");
     navigate("/filter/" + i);
   };
 

@@ -12,7 +12,6 @@ const MoviePage = ({ fetchResults,authStatus, fetchRequest, setNewDataGained,set
         movieId +
         "?api_key=90a83017dcd0ef93c3e5474af9093de9&append_to_response=credits"
     );
-    console.log('im on movie page')
     setNavTransparent(true)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

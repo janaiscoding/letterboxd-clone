@@ -3,7 +3,6 @@ import React, { useEffect } from "react";
 const NotFound = ({ isNavTransparent, setNavTransparent }) => {
   useEffect(() => {
     isNavTransparent ? setNavTransparent(true) : setNavTransparent(false);
-    console.log(isNavTransparent);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isNavTransparent]);
   return (

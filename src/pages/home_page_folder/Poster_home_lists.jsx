@@ -21,9 +21,9 @@ const PosterHomeLists = ({ movie, index }) => {
         setFixedIndex(11);
         break;
       default:
-        console.log("");
+        setFixedIndex(99);
     }
-  },[index]);
+  }, [index]);
   return (
     <div
       className="

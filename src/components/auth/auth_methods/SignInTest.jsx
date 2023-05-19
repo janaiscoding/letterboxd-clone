@@ -9,12 +9,7 @@ const SignInTest = () => {
       auth,
       "testwithemail@mail.com",
       "mypassword"
-    )
-      .then((userCredential) => {
-        const user = userCredential.user;
-        console.log(user, "has logged in");
-      })
-      .catch((error) => {
+    ).catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
         console.log(errorCode, errorMessage);
@@ -23,8 +18,7 @@ const SignInTest = () => {
 
   const checkUsersFromDB = async () => {
     const userDoc = await getDoc(doc(db, "users/" + auth.currentUser.uid));
-    userDoc.exists() ? console.log("fetched data") : await addNewUserToDB();
-    console.log(userDoc.exists(), `why not call`);
+    userDoc.exists() ? console.log("fetched data for the existing user") : await addNewUserToDB();
     //welcome back popup username!
   };
   // creates a new document for the new user
@@ -38,11 +32,7 @@ const SignInTest = () => {
       reviews: [],
       watched: [],
       favourites: [],
-    })
-      .then(() => {
-        console.log("added new user", auth.currentUser);
-      })
-      .catch((err) => {
+    }).catch((err) => {
         console.log(err);
       });
   };

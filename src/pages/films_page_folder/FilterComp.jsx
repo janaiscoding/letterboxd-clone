@@ -5,7 +5,11 @@ import ResultPoster from "../results_page_folder/ResultPoster";
 const FilterComp = ({ movie, setNewDataGained }) => {
   return (
     <div
-      className="flex gap-4 my-2
+      className="flex 
+      flex-col
+      md:flex-row
+      gap-4
+       my-2
       border-b 
     border-solid 
     border-b-grey 

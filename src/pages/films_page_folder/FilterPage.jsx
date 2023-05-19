@@ -14,7 +14,11 @@ const FilterPage = ({
 }) => {
   const [filterType, setFilterType] = useState("");
   const allSelectionBoxes = arrays.map((element, index) => (
-    <SelectBoxFilterPage title={element.type} data={element.array} key={index} />
+    <SelectBoxFilterPage
+      title={element.type}
+      data={element.array}
+      key={index}
+    />
   ));
   const { query } = useParams();
 
@@ -70,14 +74,11 @@ const FilterPage = ({
     let thisDay = newDate.getDay();
     if (thisMonth < 10) {
       thisMonth = "0" + thisMonth;
-      console.log(thisMonth);
     }
     if (thisDay < 10) {
       thisDay = "0" + thisDay;
-      console.log(thisDay);
     }
     if (query === "this year") {
-      console.log(query, "fetching this year", thisYear);
       let url =
         "https://api.themoviedb.org/3/discover/movie?api_key=" +
         apiKey +
@@ -85,7 +86,6 @@ const FilterPage = ({
         thisYear;
       fetchRequest(url);
     } else if (query === "this month") {
-      console.log(query, "fetching this month", thisMonth);
       let url =
         "https://api.themoviedb.org/3/discover/movie?api_key=" +
         apiKey +
@@ -96,7 +96,6 @@ const FilterPage = ({
         "-01";
       fetchRequest(url);
     } else if (query === "this week") {
-      console.log(query, "fetching this month", thisMonth);
       let url =
         "https://api.themoviedb.org/3/discover/movie?api_key=" +
         apiKey +
@@ -107,27 +106,20 @@ const FilterPage = ({
         "-" +
         thisDay;
       fetchRequest(url);
-    } else if (query === "all time") {
-      console.log("no idea how to do this");
-    }
+    } 
   };
   // DECIDE WHAT TYPE OF FETCH YOU WANT TO DO
   const getFilterType = () => {
-    console.log("got filter type");
     setFilterType(arrays.find(({ array }) => array.includes(query)).type);
   };
   const fetchByFilterType = () => {
     if (filterType === "genres") {
-      console.log("filtering by genre");
       fetchByGenre();
     } else if (filterType === "years") {
-      console.log("filtering by years");
       fetchByYears();
     } else if (filterType === "ratings") {
-      console.log("filtering by ratings", query);
       fetchByRating();
     } else if (filterType === "popularity") {
-      console.log("filtering by popularity", query);
       fetchByPopularity();
     }
   };
@@ -139,7 +131,7 @@ const FilterPage = ({
   //here i perform my api call
   return (
     <div className="site-body py-5">
-      <div className="grid grid-cols-2 md:flex md:flex-row px-4 md:w-[950px] md:my-0 md:mx-auto font-['Graphik']">
+      <div className=" md:flex md:flex-row px-4 md:w-[950px] md:my-0 md:mx-auto font-['Graphik']">
         <div className="flex flex-col">
           <div
             className="flex 
@@ -152,7 +144,7 @@ const FilterPage = ({
       border-b-grey 
       mb-3"
           >
-            <div className="text-sm">FILMS FILTERED BY {query}</div>
+            <div className="text-sm uppercase">FILMS FILTERED BY {query}</div>
           </div>
           <div className="grid grid-cols-2 md:flex md:flex-row px-4 md:w-[950px] md:my-0 md:mx-auto font-['Graphik']">
             {allSelectionBoxes}

@@ -7,12 +7,10 @@ const SearchInputDesktop = ({ apiKey, fetchRequest, setNewDataGained }) => {
   const navigate = useNavigate();
 
   const handleSearchDesktop = () => {
-    console.log("what happens here exactly");
     if (query !== "") {
       const SBD = document.querySelector(".search-bar-desktop");
       SBD.classList.add("md:hidden");
       const SID = document.querySelector(".search-icon-desktop");
-      console.log(SID);
       SID.classList.remove("md:hidden");
       SID.classList.add("md:block");
       //fetch first

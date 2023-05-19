@@ -6,10 +6,6 @@ const SelectBox = ({ title, data }) => {
   const [style, setStyle] = useState("hidden");
   const navigate = useNavigate();
   const onSelect = (i) => {
-    console.log("selected", i);
-
-    //redirect and pass data to fetcher
-    console.log("redirecting to movie page followed by query");
     navigate("/filter/" + i);
   };
   const toggleClick = () => {
@@ -17,7 +13,6 @@ const SelectBox = ({ title, data }) => {
   };
   useEffect(() => {
     isClicked ? setStyle("block") : setStyle("hidden");
-    console.log("changing style based on isclicked");
   }, [isClicked]);
   return (
     <div className="m-2">

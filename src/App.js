@@ -35,10 +35,8 @@ const App = () => {
     //AUTH LISTENER
     onAuthStateChanged(auth, (user) => {
       if (user) {
-        console.log("user is currently logged in");
         setAuthStatus(true);
       } else {
-        console.log("user is not logged in");
         setAuthStatus(false);
       }
     });
