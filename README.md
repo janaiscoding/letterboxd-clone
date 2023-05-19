@@ -2,25 +2,20 @@
 
 ## Project's Scope
 
-- Create a fullstack app with React and Firebase
-- See the full live preview on the Firebase deploy [Clonnerboxd]().
-
-## TO DO 
-- USER PAGE: Display all info from db 
-- FILTERS
-- FIND/CREATE A GOOD IMAGE FOR PLACEHOLDER IMAGE
-- ALLOW TESTER ACCOUNTS TO POST MORE REVIEWS
-- THE ORDER OF THE REVIEWS 
+- Fully responsive clone of a popular social movie tracking and reviewing platform.
+- Search, save and review your favourite movies, fetched from The Movie Database ’s API.
+- Implemented Google Authentication using the BaaS Firebase Auth and storing all users' information in Firestore DB.
+- Live previewon [Firebase's Hosting](https://clonnerboxd.web.app/).
 
 ## Live Demo
 
 ### On Browser
 
-![Gif preview of the shopping cart]()
+![Gif preview of the Clonnerboxd]()
 
 ### On Mobile
 
-![Gif preview of the shopping cart on mobile]()
+![Gif preview of the Clonnerboxd on mobile]()
 
 ## Getting Started
 
@@ -35,18 +30,14 @@ npm run start
 
 ## Project Details & Description
 
-- useParams in React Router for deplaying individual movie pages
-- Create user
-- Show Popular movies
-- Display individual page for movie
-- Create add to favourite button (using database to store data on each user)
+- To be completed
 
 # Built with
 
-## Technologies
+## Technologies 
 
-- React
-- CSS3
+- ReactJs, Javascript
+- CSS3, TailwindCSS
 - HTML5
 
 ## Tools Used
@@ -55,12 +46,6 @@ npm run start
 - npm package manager
 - Linux Terminal
 - Git and Github
-
-### Future plans for this project
-
-- Filter by Genres/years etc
-- Think about how to create more collections/add reviews/add rating system
-- How to view other users ? (maybe create references by username)
 
 ## Sources, Materials, Copyright
 
