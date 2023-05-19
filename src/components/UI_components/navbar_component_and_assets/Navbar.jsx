@@ -120,6 +120,7 @@ const Navbar = ({
                   <li>
                     {showDropdown ? (
                       <DropdownDesktop
+                        authStatus={authStatus}
                         profilePic={profilePic}
                         userName={userName}
                         arrowDown={arrowDown}
@@ -127,6 +128,7 @@ const Navbar = ({
                       />
                     ) : (
                       <UserNavbar
+                        authStatus={authStatus}
                         profilePic={profilePic}
                         userName={userName}
                         arrowDown={arrowDown}

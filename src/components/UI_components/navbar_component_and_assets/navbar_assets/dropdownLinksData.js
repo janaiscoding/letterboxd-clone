@@ -8,11 +8,6 @@ const dropdownLinksData = [
   },
   {
     id: uniqid(),
-    name: "Profile",
-    link: "/profile",
-  },
-  {
-    id: uniqid(),
     name: "Films",
     link: "/films",
   },

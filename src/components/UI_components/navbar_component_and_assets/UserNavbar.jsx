@@ -1,6 +1,9 @@
 import React from "react";
+import { Link } from "react-router-dom";
+import { auth } from "../../../firebase/firebase";
 
 const UserNavbar = ({ profilePic, userName, arrowDown, setShowDropdown }) => {
+  const uid = auth.currentUser.uid;
   return (
     <div
       className="flex items-center mt-2 mx-1"
@@ -13,9 +16,12 @@ const UserNavbar = ({ profilePic, userName, arrowDown, setShowDropdown }) => {
         height={24}
         className="rounded-xl"
       />
-      <span className="sans-serif text-xs text-sh-grey font-bold tracking-widest hover:text-p-white mx-1 uppercase">
+      <Link
+        to={"/profile/" + uid}
+        className="sans-serif text-xs text-sh-grey font-bold tracking-widest hover:text-p-white mx-1 uppercase"
+      >
         {userName}
-      </span>
+      </Link>
       <span>
         <img src={arrowDown} alt="arrow down indicator icon" className="ml-1" />
       </span>

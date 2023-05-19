@@ -1,12 +1,23 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import dropdownLinksData from "./navbar_assets/dropdownLinksData";
 import SignOut from "../../auth/auth_methods/SignOut";
 import "../../../styles/dropdown.css";
-
-const DropdownDesktop = ({ userName, profilePic, arrowDown, setShowDropdown }) => {
+import { auth } from "../../../firebase/firebase";
+const DropdownDesktop = ({
+  authStatus,
+  userName,
+  profilePic,
+  arrowDown,
+  setShowDropdown,
+}) => {
   const dropdownList = dropdownLinksData;
-
+  const [uid, setUid] = useState("");
+  useEffect(() => {
+    if (authStatus) {
+      setUid(auth.currentUser.uid);
+    }
+  }, [authStatus]);
   return (
     <>
       <div
@@ -21,11 +32,18 @@ const DropdownDesktop = ({ userName, profilePic, arrowDown, setShowDropdown }) =
             height={24}
             className="rounded-xl  z-50"
           />
-          <span className="sans-serif text-xs text-p-white font-bold tracking-widest hover:cursor-pointer mx-1 uppercase z-50">
+          <Link
+            to={"/profile/" + uid}
+            className="sans-serif text-xs text-p-white font-bold tracking-widest hover:text-p-white mx-1 uppercase hover:cursor"
+          >
             {userName}
-          </span>
+          </Link>
           <span>
-            <img src={arrowDown} alt="arrow down indicator icon  z-50"  className="ml-1"/>
+            <img
+              src={arrowDown}
+              alt="arrow down indicator icon  z-50"
+              className="ml-1"
+            />
           </span>
         </div>
         <ul
@@ -33,6 +51,9 @@ const DropdownDesktop = ({ userName, profilePic, arrowDown, setShowDropdown }) =
           onMouseLeave={() => setShowDropdown(false)}
         >
           <li className="divider"></li>
+          <li className="sans-serif block tracking-normal py-1 px-4 text-xs hover:bg-dd-blue hover:cursor-pointer hover:text-p-white  z-50">
+            <Link to={"/profile/" + uid}>Profile</Link>
+          </li>
           {dropdownList.map((L) => (
             <li key={L.id}>
               <Link

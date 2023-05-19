@@ -1,7 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from "react";
-
-import { auth } from "../../firebase/firebase";
+import { useParams } from "react-router-dom";
 import { db } from "../../firebase/firebase";
 import { getDoc, doc } from "firebase/firestore";
 
@@ -21,6 +20,8 @@ const Profile = ({
   newDataGained,
   setNewDataGained,
 }) => {
+  const { uid } = useParams();
+
   const [favIDs, setFavIDs] = useState([]);
   const [watchedIDs, setWatchedIDs] = useState([]);
 
@@ -28,16 +29,15 @@ const Profile = ({
   const [favCount, setFavCount] = useState(0);
   const [watchedCount, setWatchedCount] = useState(0);
 
-  const fetchUserMoviesDB = () => {
-    fetchFavouritesDB();
-    fetchWatchedDB();
-    fetchReviewsDB();
+  const fetchUserMoviesDB = (uid) => {
+    fetchFavouritesDB(uid);
+    fetchWatchedDB(uid);
+    fetchReviewsDB(uid);
     setNewDataGained(false);
   };
 
-  const fetchReviewsDB = async () => {
-    const userId = auth.currentUser.uid;
-    const userSnap = await getDoc(doc(db, "users", userId));
+  const fetchReviewsDB = async (uid) => {
+    const userSnap = await getDoc(doc(db, "users", uid));
     if (userSnap.exists()) {
       let userReviews = userSnap.data().reviews;
       let tempArray = [];
@@ -48,9 +48,8 @@ const Profile = ({
     }
   };
 
-  const fetchFavouritesDB = async () => {
-    const userId = auth.currentUser.uid;
-    const userSnap = await getDoc(doc(db, "users", userId));
+  const fetchFavouritesDB = async (uid) => {
+    const userSnap = await getDoc(doc(db, "users", uid));
     if (userSnap.exists()) {
       let userFavs = userSnap.data().favourites;
       let tempArray = [];
@@ -61,9 +60,8 @@ const Profile = ({
       setFavCount(tempArray.length);
     }
   };
-  const fetchWatchedDB = async () => {
-    const userId = auth.currentUser.uid;
-    const userSnap = await getDoc(doc(db, "users", userId));
+  const fetchWatchedDB = async (uid) => {
+    const userSnap = await getDoc(doc(db, "users", uid));
     if (userSnap.exists()) {
       let userFavs = userSnap.data().watched;
       let tempArray = [];
@@ -75,17 +73,17 @@ const Profile = ({
     }
   };
   useEffect(() => {
-    if (authStatus) {
-      fetchUserMoviesDB();
-    }
+    fetchUserMoviesDB(uid);
+    console.log(uid);
+
     console.log("profile got new data so im refreshing here");
-  }, [newDataGained, authStatus]);
+  }, [uid,newDataGained]);
 
   return (
     <div className="site-body min-h-screen-[90vh] py-5">
       <div className="px-4 flex flex-col md:py-8 md:w-[950px] md:my-0 md:mx-auto font-['Graphik']">
         <UserBio
-          authStatus={authStatus}
+          uid={uid}
           isProfileUpdated={isProfileUpdated}
           setProfileUpdated={setProfileUpdated}
           favCount={favCount}

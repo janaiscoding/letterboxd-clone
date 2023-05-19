@@ -37,7 +37,7 @@ const UserFavouriteFilms = ({ apiKey, favIDs, setNewDataGained }) => {
       mb-10"
       >
         {firstFour.length === 0
-          ?  <p className="text-sh-grey text-base pt-2">Go to any movie you like and press that heart icon!</p>
+          ?  <p className="text-sh-grey text-base pt-2">This user has no favourite movies yet.</p>
           : firstFour.map((id) => (
               <ProfilePoster
                 apiKey={apiKey}

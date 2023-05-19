@@ -40,7 +40,7 @@ const MyRoutes = ({
         }
       />
       <Route
-        path="/profile"
+        path="/profile/:uid"
         element={
           <Profile
             apiKey={apiKey}

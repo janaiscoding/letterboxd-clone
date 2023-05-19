@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { auth } from "../../firebase/firebase";
-import { Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const IntroMessage = ({ authStatus }) => {
   const [displayName, setDisplayName] = useState("");
+  const [uid, setUid] = useState("");
   useEffect(() => {
     if (authStatus) {
       setDisplayName(auth.currentUser.displayName);
+      setUid(auth.currentUser.uid);
     }
   }, [authStatus]);
   return (
@@ -14,7 +16,7 @@ const IntroMessage = ({ authStatus }) => {
       <div className="text-h-grey text-3xl text-center font-normal">
         Welcome back,{" "}
         <Link
-          to="/profile"
+          to={"/profile/" + uid}
           className="text-p-white border-b border-solid border-h-grey hover:border-p-white"
         >
           {displayName}

@@ -8,7 +8,6 @@ import { doc, getDoc, setDoc } from "firebase/firestore";
 // users / displayName (name, bio, reviews, watched) /favourites (movieid, isfav) / reviews (movieid, review) /watched(movieid, iswatched)/watchlist
 
 const SignInGoogle = () => {
-
   const handleAuthEvent = async () => {
     let provider = new GoogleAuthProvider();
     await signInWithPopup(auth, provider)
@@ -26,8 +25,8 @@ const SignInGoogle = () => {
 
   const checkUsersFromDB = async () => {
     const userDoc = await getDoc(doc(db, "users/" + auth.currentUser.uid));
-    userDoc.exists() ? console.log('fetched data') : await addNewUserToDB();
-     //welcome back popup username!
+    userDoc.exists() ? console.log("fetched data") : await addNewUserToDB();
+    //welcome back popup username!
   };
   // creates a new document for the new user
   const addNewUserToDB = async () => {
@@ -35,6 +34,7 @@ const SignInGoogle = () => {
       name: auth.currentUser.displayName,
       uid: auth.currentUser.uid,
       bio: "placeholder bio",
+      photoUrl: auth.currentUser.photoURL,
       reviews: [],
       watched: [],
       favourites: [],

@@ -3,7 +3,7 @@ import UserInfo from "./UserInfo";
 import React from "react";
 
 const UserBio = ({
-  authStatus,
+  uid,
   isProfileUpdated,
   setProfileUpdated,
   favCount,
@@ -13,7 +13,7 @@ const UserBio = ({
   return (
     <div className="flex flex-col items-center md:flex-row md:justify-between mb-10">
       <UserInfo
-        authStatus={authStatus}
+        uid={uid}
         isProfileUpdated={isProfileUpdated}
         setProfileUpdated={setProfileUpdated}
       />

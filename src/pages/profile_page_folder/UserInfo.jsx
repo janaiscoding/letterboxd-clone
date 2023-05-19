@@ -1,20 +1,27 @@
 import React, { useState, useEffect } from "react";
 import { auth } from "../../firebase/firebase";
 import { Link } from "react-router-dom";
+import { doc, getDoc } from "firebase/firestore";
+import { db } from "../../firebase/firebase";
 
-const UserInfo = ({ authStatus, isProfileUpdated, setProfileUpdated }) => {
+const UserInfo = ({ uid, isProfileUpdated, setProfileUpdated }) => {
   const [userName, setUserName] = useState("");
   const [userPic, setUserPic] = useState("");
-  useEffect(() => {
-    if (authStatus) {
-      setUserName(auth.currentUser.displayName);
-      setUserPic(auth.currentUser.photoURL);
 
-      setProfileUpdated(false);
+  const fetchUsername = async (uid) => {
+    const userSnap = await getDoc(doc(db, "users", uid));
+    if (userSnap.exists()) {
+      setUserName(userSnap.data().name);
+      setUserPic(userSnap.data().photoUrl);
+    } else {
+      alert("This user does not exist!");
     }
-
+  };
+  useEffect(() => {
+    setProfileUpdated(false);
+    fetchUsername(uid);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [authStatus, isProfileUpdated]);
+  }, [uid, isProfileUpdated]);
 
   return (
     <div className="flex flex-col items-center">
@@ -39,9 +46,9 @@ const UserInfo = ({ authStatus, isProfileUpdated, setProfileUpdated }) => {
             </Link>
           </div>
 
-        <p className="text-sh-grey sans-serif text-xs py-2 hidden md:block">
-          Hope you are liking my project!
-        </p>
+          <p className="text-sh-grey sans-serif text-xs py-2 hidden md:block">
+            Hope you are liking my project!
+          </p>
         </div>
       </div>
 

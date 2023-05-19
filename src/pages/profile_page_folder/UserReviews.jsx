@@ -8,7 +8,7 @@ const UserReviews = ({ apiKey, reviews, setNewDataGained }) => {
       const firstSix = reviews.reverse().filter((id, index) => index < 6);
       setFirstSix(firstSix);
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [reviews]);
 
   return (
@@ -35,17 +35,21 @@ const UserReviews = ({ apiKey, reviews, setNewDataGained }) => {
         md:flex-nowrap
         mb-10"
       >
-        {firstSix.length === 0
-          ? <p className="text-sh-grey text-base pt-2">Go to a movie to write a review, and come back here!</p>
-          : firstSix.map((R) => (
-              <UserProfileReview
-                setNewDataGained={setNewDataGained}
-                apiKey={apiKey}
-                key={R.movieID}
-                movieID={R.movieID}
-                review={R.review}
-              />
-            ))}
+        {firstSix.length === 0 ? (
+          <p className=" mx-2 text-sh-grey text-base pt-2">
+            This user hasn't reviewed any movies yet.
+          </p>
+        ) : (
+          firstSix.map((R) => (
+            <UserProfileReview
+              setNewDataGained={setNewDataGained}
+              apiKey={apiKey}
+              key={R.movieID}
+              movieID={R.movieID}
+              review={R.review}
+            />
+          ))
+        )}
       </div>
     </>
   );
