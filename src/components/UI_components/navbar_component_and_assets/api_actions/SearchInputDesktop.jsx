@@ -11,6 +11,7 @@ const SearchInputDesktop = ({ apiKey, fetchRequest, setNewDataGained }) => {
       const SBD = document.querySelector(".search-bar-desktop");
       SBD.classList.add("md:hidden");
       const SID = document.querySelector(".search-icon-desktop");
+
       SID.classList.remove("md:hidden");
       SID.classList.add("md:block");
       //fetch first

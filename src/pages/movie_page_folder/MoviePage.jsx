@@ -8,7 +8,7 @@ const MoviePage = ({ fetchResults,authStatus, fetchRequest, newDataGained, setNe
   const { movieId } = useParams();
   useEffect(() => {
     fetchRequest(
-      " https://api.themoviedb.org/3/movie/" +
+      "https://api.themoviedb.org/3/movie/" +
         movieId +
         "?api_key=90a83017dcd0ef93c3e5474af9093de9&append_to_response=credits"
     );

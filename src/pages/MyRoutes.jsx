@@ -9,6 +9,7 @@ import Profile from "./profile_page_folder/Profile";
 import FilterPage from "./films_page_folder/FilterPage";
 import Settings from "./settings_page_folder/Settings";
 import NotFound from "./NotFound";
+import Journal from "./journals_page_folder/Journal";
 
 const MyRoutes = ({
   authStatus,
@@ -105,7 +106,11 @@ const MyRoutes = ({
           />
         }
       />
-      <Route path="/settings" element={<Settings setProfileUpdated={setProfileUpdated} />} />
+      <Route
+        path="/settings"
+        element={<Settings setProfileUpdated={setProfileUpdated} />}
+      />
+      <Route path="/journal" element={<Journal     apiKey={apiKey} setNewDataGained={setNewDataGained} />} />
       <Route
         path="*"
         element={
