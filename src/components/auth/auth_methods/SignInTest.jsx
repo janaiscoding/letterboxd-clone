@@ -26,7 +26,7 @@ const SignInTest = () => {
     await setDoc(doc(db, "users/" + auth.currentUser.uid), {
       name: "Demo",
       uid: auth.currentUser.uid,
-      bio: "Nice to see you!",
+      bio: "I hope you like my project!",
       photoUrl:
         "https://cdn.discordapp.com/attachments/948205733688786974/1108464787651833987/image.png",
       reviews: [],

@@ -10,13 +10,7 @@ import { doc, getDoc, setDoc } from "firebase/firestore";
 const SignInGoogle = () => {
   const handleAuthEvent = async () => {
     let provider = new GoogleAuthProvider();
-    await signInWithPopup(auth, provider)
-      .then((userCredential) => {
-        const user = userCredential.user;
-
-        console.log(user, "has logged in");
-      })
-      .catch((error) => {
+    await signInWithPopup(auth, provider).catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
         console.log(errorCode, errorMessage);
@@ -33,7 +27,7 @@ const SignInGoogle = () => {
     await setDoc(doc(db, "users", auth.currentUser.uid), {
       name: auth.currentUser.displayName,
       uid: auth.currentUser.uid,
-      bio: "placeholder bio",
+      bio: "I hope you like my project!",
       photoUrl: auth.currentUser.photoURL,
       reviews: [],
       watched: [],

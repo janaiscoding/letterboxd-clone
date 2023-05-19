@@ -6,12 +6,14 @@ import { db } from "../../firebase/firebase";
 const UserInfo = ({ uid, isProfileUpdated, setProfileUpdated }) => {
   const [userName, setUserName] = useState("");
   const [userPic, setUserPic] = useState("");
+  const [userBio, setUserBio] = useState("");
 
   const fetchUsername = async (uid) => {
     const userSnap = await getDoc(doc(db, "users", uid));
     if (userSnap.exists()) {
       setUserName(userSnap.data().name);
       setUserPic(userSnap.data().photoUrl);
+      setUserBio(userSnap.data().bio);
     } else {
       alert("This user does not exist!");
     }
@@ -52,7 +54,7 @@ const UserInfo = ({ uid, isProfileUpdated, setProfileUpdated }) => {
       </div>
 
       <p className="text-sh-grey sans-serif text-xs py-2 md:hidden">
-        Hope you are liking my project!
+        {userBio}
       </p>
     </div>
   );
