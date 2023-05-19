@@ -34,7 +34,7 @@ const Results = ({
       });
   }, [query, newDataGained]);
   return (
-    <div className="site-body py-5">
+    <div className="site-body py-5 min-h-[80vh]">
       <div className="flex flex-col px-4 md:w-[950px] md:my-0 md:mx-auto font-['Graphik']">
         <div
           className="flex 

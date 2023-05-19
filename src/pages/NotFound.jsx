@@ -7,7 +7,7 @@ const NotFound = ({  isNavTransparent, setNavTransparent }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isNavTransparent]);
   return (
-    <div className="site-body py-5 min-h-[90vh]">
+    <div className="site-body py-5 min-h-[80vh]">
       <div className="flex flex-col justify-between items-center  gap-4 px-4 md:w-[950px] md:my-0 md:mx-auto font-['Graphik']">
         <p className="text-p-white font-normal text-3xl text-center z-999 relative">
           This page does not actually exist!{" "}

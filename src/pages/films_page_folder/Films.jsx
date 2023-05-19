@@ -20,7 +20,7 @@ const Films = ({ apiKey, fetchRequest, fetchResults, setNewDataGained }) => {
   }, []);
 
   return (
-    <div className="site-body py-5">
+    <div className="site-body py-5 min-h-[80vh]">
       <div className="md:flex md:flex-col px-4 md:w-[950px] md:my-0 md:mx-auto font-['Graphik']">
         <div className="md:flex md:flex-row">
           <p className="sans-serif block tracking-normal text-xs uppercase px-4 text-sh-grey self-center">
