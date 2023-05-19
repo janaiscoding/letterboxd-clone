@@ -27,7 +27,7 @@ const IntroMessage = ({ authStatus }) => {
         </span>
       </div>
       <p className="text-center mb-8 md:mb-8 text-lg text-h-grey">
-        Things to do on Clonnerboxd...
+        Things to do on Clonnerboxd...{" "}
         <Link
           to={"/profile/" + uid}
           className="text-p-white hover:text-hov-blue"
@@ -44,7 +44,8 @@ const IntroMessage = ({ authStatus }) => {
         </Link>
         <span className="text-h-grey">
           {" "}
-          or search for any movie in the navbar. Hope you enjoy your stay!
+          or search for your favourite movie in the navbar leave a review for
+          it!
         </span>
       </p>
     </>

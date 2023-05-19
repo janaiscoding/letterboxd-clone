@@ -36,8 +36,9 @@ const Members = () => {
         </div>
 
         {users.length > 0 ? (
-          users.map((user) => (
+          users.map((user, index) => (
             <div
+              key={index}
               className="flex flex-col text-sh-grey 
           text-xs
           border-b 
