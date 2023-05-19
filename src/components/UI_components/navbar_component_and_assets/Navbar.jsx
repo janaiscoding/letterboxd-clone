@@ -143,7 +143,10 @@ const Navbar = ({
                     className="ml-4 pt-2  self-center items-center"
                     onClick={() => setShowLogin(true)}
                   >
-                    <p className="pt-2 -center items-center"> SIGN IN</p>
+                    <p className="ml-4 sans-serif text-xs text-sh-grey font-bold tracking-widest hover:text-p-white	hover:cursor-pointer uppercase">
+                      {" "}
+                      SIGN IN
+                    </p>
                   </li>
                 )}
 

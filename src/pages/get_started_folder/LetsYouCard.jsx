@@ -1,27 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 
 const LetsYouCard = ({ id, icon, description, bgHov }) => {
-  let hoverColor = "hover:bg-" + bgHov;
-  const toggleHover = () => {
-    const Card = document.getElementById(id);
-    Card.classList.contains(hoverColor)
-      ? Card.classList.remove(hoverColor)
-      : Card.classList.add(hoverColor);
-    const cardImg = document.getElementById(id + 1);
-    if (cardImg.classList.contains("opacity-50")) {
-      cardImg.classList.remove("opacity-50");
-      cardImg.classList.add("opacity-100");
-    } else {
-      cardImg.classList.add("opacity-50");
-      cardImg.classList.remove("opacity-100");
-    }
-  };
+  const [background, setBackground] = useState("");
+
   return (
     <div
-      className="flex rounded md:mr-3 mb-3 bg-b-grey py-4 text-p-white px-5 hover:cursor-pointer"
+      className="flex rounded md:mr-3 mb-3 py-4 bg-b-grey text-p-white px-5 hover:cursor-pointer"
       id={id}
-      onMouseEnter={toggleHover}
-      onMouseLeave={toggleHover}
+      onMouseEnter={() => setBackground(bgHov)}
+      onMouseLeave={() => setBackground("#456")}
+      style={{ backgroundColor: background }}
     >
       <img
         src={icon}

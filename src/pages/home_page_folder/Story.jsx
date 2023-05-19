@@ -11,7 +11,7 @@ const Story = ({ story }) => {
     mr-3
     "
     >
-      <a href={story.link}>
+      <p>
         <img
           className="w-full
         h-[135px]
@@ -26,22 +26,16 @@ const Story = ({ story }) => {
           width={352}
           height={198}
         />
-      </a>
+      </p>
       <div className="p-3">
-        <a
-          href={story.link}
-          className="mt-1 text-p-white font-bold text-xl hover:cursor-pointer hover:text-hov-blue"
-        >
+        <p className="mt-1 text-p-white font-bold text-xl hover:cursor-pointer hover:text-hov-blue">
           {" "}
           {story.title}
-        </a>
+        </p>
         <p className="text-sh-grey card-description "> {story.description}</p>
-        <a
-          href={story.link}
-          className="text-p-white font-bold text-xs mt-8 hover:text-hov-blue hover:cursor-pointer"
-        >
+        <p className="text-p-white font-bold text-xs mt-8 hover:text-hov-blue hover:cursor-pointer">
           READ STORY
-        </a>
+        </p>
       </div>
     </article>
   );
