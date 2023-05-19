@@ -106,7 +106,7 @@ const FilterPage = ({
         "-" +
         thisDay;
       fetchRequest(url);
-    } 
+    }
   };
   // DECIDE WHAT TYPE OF FETCH YOU WANT TO DO
   const getFilterType = () => {
@@ -126,7 +126,7 @@ const FilterPage = ({
   useEffect(() => {
     getFilterType();
     fetchByFilterType();
-  }, [filterType]);
+  }, [query, filterType]);
 
   //here i perform my api call
   return (
