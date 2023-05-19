@@ -37,7 +37,7 @@ const Journal = ({ apiKey, setNewDataGained }) => {
           </Link>
         </div>
         <div>
-          {reviews.map((review, index) => (
+          {reviews.slice().reverse().map((review, index) => (
             <JournalReview
               key={index}
               review={review}

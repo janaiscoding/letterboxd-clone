@@ -6,7 +6,9 @@ const JournalReview = ({ review, setNewDataGained }) => {
   const [movieData, setMovieData] = useState([]);
   useEffect(() => {
     fetch(
-      "https://api.themoviedb.org/3/movie/502356?api_key=90a83017dcd0ef93c3e5474af9093de9",
+      "https://api.themoviedb.org/3/movie/" +
+        review.movieID +
+        "?api_key=90a83017dcd0ef93c3e5474af9093de9",
       {
         method: "GET",
       }
