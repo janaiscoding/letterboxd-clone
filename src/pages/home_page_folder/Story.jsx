@@ -19,7 +19,6 @@ const Story = ({ story }) => {
         md:h-[198px]
         md:w-[352px]
         rounded
-        hover:cursor-pointer
         "
           src={story.img}
           alt={story.title}
