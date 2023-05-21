@@ -12,6 +12,7 @@ const UpgradeToPro = () => {
           className="block md:hidden mb-8 self-center"
           src={mobileUrl}
           alt="upgrade to pro banner"
+          loading="lazy"
         />
       </a>
       <a href="https://letterboxd.com/pro/?utm_medium=banner&utm_campaign=get-pro">
@@ -21,6 +22,7 @@ const UpgradeToPro = () => {
           alt="upgrade to pro banner"
           height={100}
           width={950}
+          loading="lazy"
         />
       </a>
     </>

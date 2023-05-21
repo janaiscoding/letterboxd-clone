@@ -1,6 +1,6 @@
 import { doc, getDoc } from "firebase/firestore";
 import React, { useEffect, useState } from "react"
-import { useParams } from "react-router-dom"
+import { Link, useParams } from "react-router-dom"
 import { db } from "../../firebase/firebase";
 import ProfilePoster from "./ProfilePoster";
 const ProfileFavourites = ({apiKey, fetchRequest, fetchResults,newDataGained, setNewDataGained}) => {
@@ -53,7 +53,7 @@ const ProfileFavourites = ({apiKey, fetchRequest, fetchResults,newDataGained, se
       border-b-grey 
       mb-3"
       >
-        <p className="text-sm hover:text-hov-blue hover:cursor-pointer uppercase">{userName}'s FAVOURITE MOVIES</p>
+        <Link to={"/profile/"+ uid} className="text-sm hover:text-hov-blue hover:cursor-pointer uppercase">{userName}'s FAVOURITE MOVIES</Link>
       </div>
 
           <div className="flex flex-wrap">

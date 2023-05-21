@@ -115,6 +115,7 @@ const Profile = ({
               className="block md:hidden"
               width={343}
               height={134}
+              loading="lazy"
             />
             <Watchlist
               apiKey={apiKey}

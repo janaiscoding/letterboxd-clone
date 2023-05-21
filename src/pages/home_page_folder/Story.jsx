@@ -23,8 +23,7 @@ const Story = ({ story }) => {
         "
           src={story.img}
           alt={story.title}
-          width={352}
-          height={198}
+          loading="lazy"
         />
       </p>
       <div className="p-3">

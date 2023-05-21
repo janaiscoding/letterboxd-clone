@@ -41,9 +41,10 @@ const PosterProfileLists = ({ movie, index }) => {
     >
       <Link to={"/movie/" + movie.id}>
         <img
-          className="border rounded hover:scale-125"
+          className="border rounded md:w-[70px] md:h-[100px]"
           src={"https://image.tmdb.org/t/p/w500/" + movie.poster_path}
           alt={movie.title}
+          loading="lazy"
         />
       </Link>
     </div>

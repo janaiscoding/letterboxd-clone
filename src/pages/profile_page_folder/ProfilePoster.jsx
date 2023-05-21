@@ -53,6 +53,7 @@ const ProfilePoster = ({ movieID, apiKey, setNewDataGained }) => {
             className="border rounded block  max-h-[120px] max-w-[80px] md:max-w-[140px] md:max-h-[220px] "
             src={"https://image.tmdb.org/t/p/w500/" + movieData.poster_path}
             alt={movieData.title}
+            loading="lazy"
           />
         </Link>
         {visibility ? (

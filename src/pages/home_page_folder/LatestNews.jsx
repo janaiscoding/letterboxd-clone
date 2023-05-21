@@ -35,6 +35,7 @@ const LatestNews = () => {
           width={310}
           height={174}
           alt="latest news post"
+          loading="lazy"
           className="
         w-full
         rounded

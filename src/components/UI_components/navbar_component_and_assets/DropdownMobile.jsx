@@ -1,10 +1,10 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import dropdownLinksData from "./navbar_assets/dropdownLinksData";
 import SignOut from "../../auth/auth_methods/SignOut";
 import "../../../styles/dropdown.css";
 import SignInAll from "../../auth/auth_methods/SignInAll";
-
+import { auth } from "../../../firebase/firebase";
 const DropdownMobile = ({
   authStatus,
   setUserLogin,
@@ -13,9 +13,12 @@ const DropdownMobile = ({
   profilePic,
 }) => {
   const dropdownList = dropdownLinksData;
+  const [uid, setUid] = useState("");
+
   useEffect(() => {
     if (authStatus) {
       setUserLogin(true);
+      setUid(auth.currentUser.uid);
     } else {
       setUserLogin(false);
     }
@@ -26,7 +29,8 @@ const DropdownMobile = ({
     <>
       <div className="mobile-nav rounded-sm p-2 bg-h-blue flex flex-col self-start static z-999">
         {userLogin ? (
-          <div className="flex items-center px-2 mx-1">
+          <div className="py-1 grid grid-cols-2 mx-3 z-50">
+            <div className="flex gap-1 px-4">
             <img
               src={profilePic}
               alt={userName}
@@ -34,9 +38,15 @@ const DropdownMobile = ({
               height={24}
               className="rounded-xl"
             />
-            <span className=" text-p-white font-semibold hover:cursor-pointer hover:text-p-white uppercase mx-1 z-50">
+            <p className=" text-p-white font-semibold hover:cursor-pointer hover:text-p-white uppercase z-50">
               {userName}
-            </span>
+            </p>
+            </div>
+            <p>
+              <Link className="text-p-white font-semibold hover:cursor-pointer hover:text-p-white uppercase px-4 z-50" to={"/profile/" + uid}>
+                Profile
+              </Link>
+            </p>
           </div>
         ) : (
           ""
@@ -44,6 +54,7 @@ const DropdownMobile = ({
 
         <ul className="rounded-sm text-base text-sh-grey bg-h-blue uppercase mx-3 py-3 z-50">
           <li className="divider-mobile"></li>
+
           <li className="py-3 grid grid-cols-2">
             {dropdownList.map((L) => (
               <p key={L.id} className="py-0.5 px-4">

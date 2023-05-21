@@ -18,6 +18,7 @@ const LetsYouCard = ({ id, icon, description, bgHov }) => {
         width={33}
         height={50}
         alt="card icon"
+        loading="lazy"
       />
       <p id={id + 2} className="ml-5 text-xs">
         {description}

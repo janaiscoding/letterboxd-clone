@@ -56,6 +56,7 @@ const UserProfileReview = ({ apiKey, movieID, review, setNewDataGained }) => {
             src={"https://image.tmdb.org/t/p/w500/" + movieData.poster_path}
             alt={movieData.title}
             height={150}
+            loading="lazy"
           />
         </Link>
         {visibility ? (
