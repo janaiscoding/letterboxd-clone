@@ -27,8 +27,6 @@ const PosterHomeLists = ({ movie, index }) => {
   return (
     <div
       className="
-    md:w-[70px]
-    md:h-[100px]
     border 
     border-solid 
     rounded 
@@ -41,7 +39,7 @@ const PosterHomeLists = ({ movie, index }) => {
     >
       <Link to={"/movie/" + movie.id}>
         <img
-          className="border rounded border rounded md:w-[70px] md:h-[100px]"
+          className="border rounded border rounded max-h-[120px] md:w-[70px] md:h-[100px] "
           src={"https://image.tmdb.org/t/p/w500/" + movie.poster_path}
           alt={movie.title}
           loading="lazy"

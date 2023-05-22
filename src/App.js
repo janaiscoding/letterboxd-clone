@@ -15,7 +15,7 @@ const App = () => {
   const [authStatus, setAuthStatus] = useState(false);
   const [fetchResults, setFetchResults] = useState([]);
   const [isProfileUpdated, setProfileUpdated] = useState(false);
-  const [isNavTransparent, setNavTransparent] = useState(false)
+  const [isNavTransparent, setNavTransparent] = useState(false);
   const [newDataGained, setNewDataGained] = useState(false); //db event listener
 
   const fetchRequest = (url) => {

@@ -9,7 +9,6 @@ import navbarLinksData from "./navbar_assets/navbarLinksData";
 
 import logo from "./navbar_assets/logo.png";
 import logoMobile from "./navbar_assets/logoMobile.png";
-import addNewIcon from "./navbar_assets/plusIcon.png";
 import openCloseMenu from "./navbar_assets/menuopenclose.png";
 import searchIcon from "./navbar_assets/searchIcon.png";
 
@@ -38,19 +37,15 @@ const Navbar = ({
   const [showLogin, setShowLogin] = useState(false);
   //for hover on navbar to display dropdown menu on desktop
   const [showDropdown, setShowDropdown] = useState(false);
-  // dropdown menu on mobile and visibility of search input on mobile
-  const [visDDMob, setVisDDMob] = useState(false);
-  const [visSIMob, setVisSIMob] = useState(false);
+
+  // MOBILE HELPER FOR ACTIVE/INACTIVE
+  const [searchMobOpen, setSearchMobOpen] = useState(false); //for searchbar mobile
+  const [DDMobOpen, setDDMobOpen] = useState(false); //for dropdown mobile
+
   //style for online/offline
   const [style, setStyle] = useState();
-
-  const handleVisSIMob = () => {
-    visSIMob ? setVisSIMob(false) : setVisSIMob(true);
-  };
-
   const displaySearchDesktop = () => {
     //show the bar element
-
     const SBD = document.querySelector(".search-bar-desktop");
     SBD.classList.remove("md:hidden");
     SBD.classList.add("md:block");
@@ -62,10 +57,6 @@ const Navbar = ({
     const CSD = document.querySelector(".close-search-icon-desktop");
     CSD.classList.add("md:block");
     CSD.classList.remove("md:hidden");
-  };
-
-  const handleVisDDMob = () => {
-    visDDMob ? setVisDDMob(false) : setVisDDMob(true);
   };
 
   useEffect(() => {
@@ -165,20 +156,12 @@ const Navbar = ({
               </ul>
             </nav>
             <img
-              className="md:hidden"
-              src={addNewIcon}
-              width={40}
-              height={40}
-              alt="search for a new movie to add"
-              onClick={handleVisSIMob}
-            />
-            <img
-              onClick={handleVisDDMob}
+              onClick={() => setDDMobOpen(!DDMobOpen)}
               className="md:hidden"
               src={openCloseMenu}
               width={40}
               height={40}
-              alt="open and close navbar menu"
+              alt="open and close navbar dropdown menu on mobile"
             />
             <img
               className="search-icon-desktop hidden hover:cursor-pointer md:block md:ml-4"
@@ -188,6 +171,7 @@ const Navbar = ({
               alt="search icon"
               onClick={displaySearchDesktop}
             />
+
             <div className="search-bar-desktop hidden md:hidden">
               <SearchInputDesktop
                 apiKey={apiKey}
@@ -203,36 +187,35 @@ const Navbar = ({
               width={40}
               height={40}
               alt="search icon"
-              onClick={handleVisSIMob}
+              onClick={() => {
+                setSearchMobOpen(!searchMobOpen)
+              }}
             />
           </div>
         </section>
-        {visSIMob ? (
-          <SearchInputMobile
-            apiKey={apiKey}
-            query={query}
-            fetchRequest={fetchRequest}
-            handleVisSIMob={handleVisSIMob}
-            setNewDataGained={setNewDataGained}
-          />
-        ) : (
-          " "
-        )}
-        {visDDMob ? (
-          <div className="dropdown-mobile bg-h-blue">
-            <DropdownMobile
-              profilePic={profilePic}
-              userName={userName}
-              arrowDown={arrowDown}
-              setVisDDMob={setVisDDMob}
-              userLogin={userLogin}
-              authStatus={authStatus}
-              setUserLogin={setUserLogin}
-            />
-          </div>
-        ) : (
-          ""
-        )}
+        {/* All mobile components are 
+        1. Hidden from MD with Tailwind
+        2. Toggled on/off with the icons 
+        3. Handled when clicking outside of them with useRef and document event listeners for mousedown */}
+        <SearchInputMobile
+          apiKey={apiKey}
+          query={query}
+          fetchRequest={fetchRequest}
+          setNewDataGained={setNewDataGained}
+          setSearchMobOpen={setSearchMobOpen}
+          searchMobOpen={searchMobOpen}
+        />
+
+        <DropdownMobile
+          profilePic={profilePic}
+          userName={userName}
+          arrowDown={arrowDown}
+          userLogin={userLogin}
+          authStatus={authStatus}
+          setUserLogin={setUserLogin}
+          DDMobOpen={DDMobOpen}
+          setDDMobOpen={setDDMobOpen}
+        />
       </header>
     </>
   );

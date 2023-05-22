@@ -23,6 +23,7 @@ const SearchInputDesktop = ({ apiKey, fetchRequest, setNewDataGained }) => {
       //setting that new data was gained to refresh results page
       setNewDataGained(true);
       navigate("/results/" + query);
+      setQuery("");
     }
   };
   const handleSearchDesktop = () => {
@@ -43,6 +44,7 @@ const SearchInputDesktop = ({ apiKey, fetchRequest, setNewDataGained }) => {
       //setting that new data was gained to refresh results page
       setNewDataGained(true);
       navigate("/results/" + query);
+      // setQuery(""); fix input
     }
   };
   const closeSearchDeskop = () => {

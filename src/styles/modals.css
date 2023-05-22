@@ -1,0 +1,12 @@
+.search-bar-mobile.active {
+  display: block;
+}
+.search-bar-mobile.inactive{
+  display: none;
+}
+.mobile-dropdown-nav.active{
+  display: block;
+}
+.mobile-dropdown-nav.inactive{
+  display: none;
+}

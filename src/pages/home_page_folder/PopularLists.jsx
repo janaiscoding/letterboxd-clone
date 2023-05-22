@@ -85,7 +85,6 @@ const PopularLists = ({ populars }) => {
         <div>
           <div
             className="
-      w-fit  
       md:h-[105px]
       md:w-[275px]
       flex

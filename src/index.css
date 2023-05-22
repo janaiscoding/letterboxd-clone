@@ -5,18 +5,23 @@
 @font-face {
   font-family: "Graphik";
   src: url("./assets/font/graphic-web-regular.ttf");
-  font-family: 'Tiempos-Regular'; src: url('./assets/font/TiemposHeadline-Regular.otf');
-  font-family: 'Tiempos-Light'; src: url('./assets/font/TiemposHeadline-Light.otf');
+  font-family: "Tiempos-Regular";
+  src: url("./assets/font/TiemposHeadline-Regular.otf");
 }
 
 @layer base {
   html {
     font-family: "Graphik", system-ui, sans-serif;
     font-family: "Tiempos-Regular", system-ui, sans-serif;
-    font-family: "Tiempos-Light", system-ui, sans-serif;
   }
 
   .sans-serif {
     font-family: sans-serif;
+  }
+  .tiempos {
+    font-family: "Tiempos-Regular";
+  }
+  .graphik {
+    font-family: "Graphik";
   }
 }
