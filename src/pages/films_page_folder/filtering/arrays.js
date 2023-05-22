@@ -24,7 +24,7 @@ const arrays = [
   },
   {
     type: "popularity",
-    array: ["all time", "this year", "this month", "this week"],
+    array: ["this year", "this month", "this week"],
   },
   {
     type: "genres",
@@ -49,6 +49,6 @@ const arrays = [
       "War",
       "Western",
     ],
-  },
+  }
 ];
 export default arrays;

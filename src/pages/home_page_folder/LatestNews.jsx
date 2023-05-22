@@ -6,29 +6,29 @@ const LatestNews = () => {
   return (
     <>
       <div
-        className="flex 
+        className="section-heading 
+      mb-3 
+      flex 
       justify-between 
-      section-heading 
-      text-sh-grey 
-      text-sm 
       border-b 
       border-solid 
       border-b-grey 
-      mb-3 "
+      text-sm 
+      text-sh-grey "
       >
-        <p className="text-sm   hover:text-hov-blue hover:cursor-pointer">
+        <p className="text-sm   hover:cursor-pointer hover:text-hov-blue">
           LATEST NEWS
         </p>
-        <p className="text-[11px] hover:text-hov-blue hover:cursor-pointer">
+        <p className="text-[11px] hover:cursor-pointer hover:text-hov-blue">
           MORE
         </p>
       </div>
       <div
-        className="flex 
+        className="mb-9 
+      flex
       flex-col
-      md:flex-row
-       mb-9
-       pb-9"
+       pb-9
+       md:flex-row"
       >
         <img
           src={url}
@@ -36,24 +36,16 @@ const LatestNews = () => {
           height={174}
           alt="latest news post"
           loading="lazy"
-          className="
-        w-full
-        rounded
-        md:w-[32%]
-      "
+          className="w-full rounded md:w-[32%]"
         />
-        <div
-          className="bg-c-blue
-        md:p-8
-        "
-        >
+        <div className="bg-c-blue md:p-4">
           <h1
-            className="text-p-white 
+            className="mt-2 
             pl-3
-          mt-2 
           text-xl 
           font-bold 
-          tracking-wider
+          tracking-wider 
+          text-p-white
           hover:cursor-pointer 
           hover:text-hov-blue
           md:mt-0
@@ -61,12 +53,12 @@ const LatestNews = () => {
           >
             Mamma mia!
           </h1>
-          <p className="pl-3 my-1.5 text-sh-grey">
+          <p className="my-1.5 pl-3 text-sh-grey">
             The Letterboxd crew celebrates Mother’s Day 2023 by asking our own
             moms about their favorite films.
             <Link
               to="/journal"
-              className="text-[11px] text-p-white font-bold hover:text-hov-blue"
+              className="text-[11px] font-bold text-p-white hover:text-hov-blue"
             >
               {" "}
               READ MORE

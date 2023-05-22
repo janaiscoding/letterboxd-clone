@@ -4,13 +4,14 @@ import { auth } from "../../../firebase/firebase";
 import { useNavigate, useLocation } from "react-router-dom";
 
 // this will work on any auth type
-const SignOut = () => {
+const SignOut = ({ setDDMobOpen }) => {
   const navigate = useNavigate();
   const location = useLocation();
   const onSignOut = () => {
     signOut(auth)
       .then(() => {
-        console.log(location.pathname)
+        setDDMobOpen(false);
+        console.log(location.pathname);
         if (location.pathname.contains("/profile/")) {
           navigate("/");
         }
@@ -23,7 +24,7 @@ const SignOut = () => {
   };
   return (
     <>
-      <p className="block pt-2 px-4 md:p-0" onClick={onSignOut}>
+      <p className="block px-4 pt-2 md:p-0" onClick={onSignOut}>
         Sign Out
       </p>
     </>

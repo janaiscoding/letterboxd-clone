@@ -10,13 +10,13 @@ const Footer = () => {
       className="relative z-[9999]"
       style={{ backgroundColor: "#2c3440" }}
     >
-      <div className="px-4 flex flex-col py-6 md:w-[950px] md:my-0 md:mx-auto font-['Graphik'] ">
-        <nav className="flex justify-between items-center mb-3">
-          <ul className=" md:flex grid grid-cols-3  py-1">
+      <div className="flex flex-col px-4 py-6 font-['Graphik'] md:mx-auto md:my-0 md:w-[950px] ">
+        <nav className="mb-3 flex items-center justify-between">
+          <ul className=" grid grid-cols-3 py-1  md:flex">
             {footerLinks.map((link) => (
               <li key={link.id}>
                 <p
-                  className="text-s text-sh-grey hover:text-p-white font-bold mr-2 hover:cursor-pointer"
+                  className="text-s mr-2 font-bold text-sh-grey hover:cursor-pointer hover:text-p-white"
                   to={link.link}
                 >
                   {link.name}
@@ -25,7 +25,7 @@ const Footer = () => {
             ))}
           </ul>
 
-          <ul className=" hidden md:flex sans-serif flex-col gap-2 md:gap-0 md:flex-row justify-between  items-center  py-1">
+          <ul className=" sans-serif hidden flex-col items-center justify-between gap-2 py-1 md:flex  md:flex-row  md:gap-0">
             {socials.map((social) => (
               <li className="self-center" key={social.id}>
                 <Link to={social.link}>
@@ -43,16 +43,19 @@ const Footer = () => {
             ))}
           </ul>
         </nav>
-        <p className="text-xs text-sh-grey pb-3">
+        <p className="pb-3 text-xs text-sh-grey">
           © Clonnerboxd Limited. Made by{" "}
           <a className="underline" href="https://github.com/JanaIsCoding">
             JanaIsCoding
           </a>
           . Film data from{" "}
           <a className="underline" href="https://www.themoviedb.org/">
-            TMDb
+            TMDb 
           </a>
-          .
+          . Inspired by {" "}
+          <a className="underline" href="https://letterboxd.com/">
+            Letterboxd
+          </a>
         </p>
       </div>
     </footer>

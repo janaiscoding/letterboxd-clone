@@ -27,19 +27,20 @@ const PosterHomeLists = ({ movie, index }) => {
   return (
     <div
       className="
-    border 
-    border-solid 
+      relative
+    mr-[-25px] 
+    w-fit 
     rounded 
-    mr-[-25px]
-    border-pb-grey/25
-    shadow-inner 
+    border
+    border-solid
+    border-pb-grey/25 
     shadow-[0_0_1px_1px_rgba(20,24,28,1)] 
-    relative"
+    shadow-inner"
       style={{ zIndex: fixedIndex }}
     >
       <Link to={"/movie/" + movie.id}>
         <img
-          className="border rounded border rounded max-h-[120px] md:w-[70px] md:h-[100px] "
+          className="rounded border md:h-[100px] md:w-[70px]"
           src={"https://image.tmdb.org/t/p/w500/" + movie.poster_path}
           alt={movie.title}
           loading="lazy"

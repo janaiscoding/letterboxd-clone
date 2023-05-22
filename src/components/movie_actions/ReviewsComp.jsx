@@ -1,6 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { auth, db } from "../../firebase/firebase";
-import { doc, setDoc, getDoc, updateDoc, arrayUnion } from "firebase/firestore";
+import {
+  doc,
+  setDoc,
+  getDoc,
+  updateDoc,
+  arrayUnion,
+  serverTimestamp,
+} from "firebase/firestore";
 import ReviewItem from "../UI_components/ReviewItem";
 import SignInAll from "../auth/auth_methods/SignInAll";
 
@@ -10,10 +17,10 @@ const ReviewsComp = ({ movie, authStatus }) => {
 
   const onReview = async (movie, review) => {
     if (auth.currentUser === null) {
-      alert("login to use this feature");
+      createPopup("error");
     } else if (review === "") {
       // handler so you dont send empty reviews
-      alert("your review message cannot be empty");
+      createPopup("error");
     } else {
       await checkMovieReviewedDB(movie).then(async () => {
         isReviewed
@@ -64,6 +71,7 @@ const ReviewsComp = ({ movie, authStatus }) => {
         userURL: user.photoURL,
         review: review,
         uid: user.uid,
+        timestamp: serverTimestamp(),
       }),
     })
       .then(() => {
@@ -83,6 +91,7 @@ const ReviewsComp = ({ movie, authStatus }) => {
           userName: user.displayName,
           userURL: user.photoURL,
           uid: user.uid,
+          timestamp: serverTimestamp(),
         },
       ],
     });
@@ -105,6 +114,17 @@ const ReviewsComp = ({ movie, authStatus }) => {
       setReview("");
     });
   };
+  const createPopup = (action) => {
+    const popupAlert = document.createElement("div");
+    popupAlert.classList.add("popup-review");
+    if (action === "error") {
+      popupAlert.innerText = `Your review cannot be empty!`;
+    }
+    document.body.append(popupAlert);
+    setTimeout(() => {
+      popupAlert.remove();
+    }, 1000);
+  };
   useEffect(() => {
     getReviews();
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -119,21 +139,21 @@ const ReviewsComp = ({ movie, authStatus }) => {
             .reverse()
             .map((review, index) => <ReviewItem key={index} review={review} />)
         ) : authStatus ? (
-          <p className="text-sh-grey text-base pt-2">Write the first review!</p>
+          <p className="pt-2 text-base text-sh-grey">Write the first review!</p>
         ) : (
-          <p className="text-sh-grey text-base pt-2">
+          <p className="pt-2 text-base text-sh-grey">
             Login and write the first review!
           </p>
         )}
         {authStatus ? (
           <>
             <input
-              className="p-3 rounded bg-h-grey focus:outline-none active-outline-none text-drop-black"
+              className="active-outline-none rounded bg-h-grey p-3 text-drop-black focus:outline-none"
               value={review}
               onChange={(e) => setReview(e.target.value)}
             />
             <button
-              className="bg-c-grey rounded text-l-white text-base hover:bg-sh-grey hover:text-b-blue p-1"
+              className="rounded bg-c-grey p-1 text-base text-l-white hover:bg-sh-grey hover:text-b-blue"
               onClick={() => handleReviewEvent(movie, review)}
             >
               Send Review

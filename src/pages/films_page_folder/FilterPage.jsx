@@ -20,7 +20,7 @@ const FilterPage = ({
       key={index}
     />
   ));
-  const { query } = useParams();
+  let { query } = useParams();
 
   // FETCHING THE GENRE LIST => FINDING THE MATCHING WITH MY QUERY GENRE ID => FETCHING MOVIES BY GENRE ID => DISPLAYING
   const fetchByGenre = () => {
@@ -36,11 +36,15 @@ const FilterPage = ({
           "https://api.themoviedb.org/3/discover/movie?api_key=" +
             apiKey +
             "&language=en-US&sort_by=release_date.desc&page=1&with_genres=" +
-            genreObj.id
+            genreObj.id +
+            "&vote_count.gte=50"
         )
           .then((response) => response.json())
           .then((data) => {
             setFetchResults(data);
+          })
+          .catch((err) => {
+            console.log(err);
           });
       });
   };
@@ -108,7 +112,7 @@ const FilterPage = ({
       fetchRequest(url);
     }
   };
-  // DECIDE WHAT TYPE OF FETCH YOU WANT TO DO
+  // DECIDE WHAT TYPE OF FETCH YOU WANT TO DO (and if it exists)
   const getFilterType = () => {
     setFilterType(arrays.find(({ array }) => array.includes(query)).type);
   };
@@ -130,23 +134,23 @@ const FilterPage = ({
 
   //here i perform my api call
   return (
-    <div className="site-body py-5 min-h-[80vh]">
-      <div className=" md:flex md:flex-row px-4 md:w-[950px] md:my-0 md:mx-auto font-['Graphik']">
+    <div className="site-body min-h-[80vh] py-5">
+      <div className=" px-4 font-['Graphik'] md:mx-auto md:my-0 md:flex md:w-[950px] md:flex-row">
         <div className="flex flex-col">
           <div
-            className="flex 
+            className="section-heading 
+      mb-3 
+      flex 
       justify-between 
-      section-heading 
-      text-sh-grey 
-      text-xs
-      border-b 
+      border-b
       border-solid 
       border-b-grey 
-      mb-3"
+      text-xs 
+      text-sh-grey"
           >
             <div className="text-sm uppercase">FILMS FILTERED BY {query}</div>
           </div>
-          <div className="grid grid-cols-2 md:flex md:flex-row px-4 md:w-[950px] md:my-0 md:mx-auto font-['Graphik']">
+          <div className="grid grid-cols-2 px-4 font-['Graphik'] md:mx-auto md:my-0 md:flex md:w-[950px] md:flex-row">
             {allSelectionBoxes}
           </div>
           <FilterList

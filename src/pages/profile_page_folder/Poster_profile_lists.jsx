@@ -27,6 +27,7 @@ const PosterProfileLists = ({ movie, index }) => {
   return (
     <div
       className="
+      w-fit
     md:w-[70px]
     md:h-[100px]
     border 

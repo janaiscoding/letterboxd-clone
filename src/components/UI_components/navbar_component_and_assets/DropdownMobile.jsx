@@ -88,7 +88,7 @@ const DropdownMobile = ({
               <Link to="/settings" className="block pt-2 z-50">
                 Settings
               </Link>
-              <SignOut />
+              <SignOut setDDMobOpen={setDDMobOpen} />
             </li>
           ) : (
             <li className="z-50 pt-3 grid grid-cols-2">

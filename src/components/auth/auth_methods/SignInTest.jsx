@@ -49,7 +49,7 @@ const SignInTest = () => {
       className="mx-3 z-50 sans-serif text-sh-grey font-bold tracking-widest uppercase md:text-xs md:hover:text-p-white md:ml-4 md:hover:cursor-pointer md:mx-0"
       onClick={onLogin}
     >
-      Test Acc.
+      DEMO
     </p>
   );
 };

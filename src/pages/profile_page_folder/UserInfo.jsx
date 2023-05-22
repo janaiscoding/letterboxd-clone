@@ -42,7 +42,7 @@ const UserInfo = ({ uid, isProfileUpdated, setProfileUpdated, authStatus }) => {
           className="rounded-[50px] border-solid border border-[#678] hover:border-sh-grey hover:cursor-pointer md:w-[100px] md:h-[100px] "
         />{" "}
         <div className=" ml-4 mt-3 md:flex md:flex-col md:items-start md:gap-1 ">
-          <div className="md:flex-row md:gap-2 w-full md:flex">
+          <div className="md:flex-row gap-1 w-full flex flex-col items-start">
             <h1 className="sans-serif text-p-white font-bold text-2xl">
               {userName}
             </h1>

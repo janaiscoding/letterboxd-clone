@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../../firebase/firebase";
 import { Link } from "react-router-dom";
-import JournalReview from "./JournalReview";
+import SingularReview from "./SingularReview";
 
-const Journal = ({ apiKey, setNewDataGained }) => {
+const ReviewsPage = ({ apiKey, setNewDataGained }) => {
   const [reviews, setReviews] = useState([]);
 
   const fetchReviewsfromDB = async () => {
@@ -38,7 +38,7 @@ const Journal = ({ apiKey, setNewDataGained }) => {
         </div>
         <div>
           {reviews.slice().reverse().map((review, index) => (
-            <JournalReview
+            <SingularReview
               key={index}
               review={review}
               setNewDataGained={setNewDataGained}
@@ -50,4 +50,4 @@ const Journal = ({ apiKey, setNewDataGained }) => {
     </div>
   );
 };
-export default Journal;
+export default ReviewsPage;

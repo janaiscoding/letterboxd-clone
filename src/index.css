@@ -25,3 +25,43 @@
     font-family: "Graphik";
   }
 }
+.movie-background-helper {
+  background-color: #14181cbe;
+}
+.popup,
+.popup-review {
+  position: fixed;
+  background-color: #141414fb;
+  color: rgb(245, 237, 237);
+  padding: 2rem;
+  font-weight: 600;
+  border-radius: 10px;
+  text-transform: uppercase;
+  transform: translate(-50%, -50%);
+}
+@media (min-width: 750px) {
+  .popup {
+    top: 45%;
+    left: 50%;
+    font-size: large;
+  }
+  .popup-review {
+    top: 65%;
+    left: 50%;
+    font-size: large;
+  }
+}
+@media (max-width: 750px) {
+  .popup {
+    width: 250px;
+    top: 29%;
+    left: 51%;
+    font-size: 0.9rem;
+  }
+  .popup-review {
+    width: 250px;
+    top: 65%;
+    left: 50%;
+    font-size: 0.9rem;
+  }
+}

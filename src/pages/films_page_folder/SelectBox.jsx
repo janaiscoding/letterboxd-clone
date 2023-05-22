@@ -16,12 +16,12 @@ const SelectBox = ({ title, data }) => {
   }, [isClicked]);
   return (
     <div className="m-2">
-      <div className="rounded-sm pt-2 pb-2 bg-drop-grey flex flex-col self-start z-50 hover:cursor-pointer">
+      <div className="z-50 flex flex-col self-start rounded-sm bg-drop-grey pb-2 pt-2 hover:cursor-pointer">
         <div
           onClick={toggleClick}
-          className="flex py-1 px-4 hover:text-p-white"
+          className="flex px-4 py-1 hover:text-p-white"
         >
-          <p className="sans-serif block tracking-normal text-xs uppercase">
+          <p className="sans-serif block text-lg uppercase tracking-normal">
             {title}
           </p>
           <span>
@@ -36,7 +36,7 @@ const SelectBox = ({ title, data }) => {
           {data.map((data, index) => {
             return (
               <li
-                className="sans-serif block tracking-normal py-1 px-4 text-xs hover:bg-dd-blue hover:text-p-white  z-50"
+                className="sans-serif z-50 block px-4 py-1 text-lg tracking-normal hover:bg-dd-blue  hover:text-p-white"
                 onClick={() => onSelect(data)}
                 key={index}
               >

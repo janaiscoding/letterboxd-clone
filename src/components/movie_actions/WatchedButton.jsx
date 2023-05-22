@@ -15,7 +15,7 @@ const WatchedButton = ({ movie, setNewDataGained }) => {
   // WATCHED LIST LOGIC
   const onWatched = async (movie) => {
     if (auth.currentUser === null) {
-      alert("login to use this feature");
+      createPopup(movie.title, "error");
     } else {
       await checkMovieWatchedDB(movie).then(async () => {
         isWatched
@@ -43,8 +43,8 @@ const WatchedButton = ({ movie, setNewDataGained }) => {
       }),
     }).then(() => {
       setWatched(true);
-      setNewDataGained(true)
-
+      setNewDataGained(true);
+      createPopup(movie.title, "watched");
     });
   };
   const removeFromWatchedDB = async (movie) => {
@@ -55,9 +55,26 @@ const WatchedButton = ({ movie, setNewDataGained }) => {
         movieID: movie.id,
       }),
     }).then(() => {
-      setNewDataGained(true)
+      setNewDataGained(true);
       setWatched(false);
+      createPopup(movie.title, "removed");
     });
+  };
+
+  const createPopup = (title, action) => {
+    const popupAlert = document.createElement("div");
+    popupAlert.classList.add("popup");
+    if (action === "watched") {
+      popupAlert.innerText = `You added ${title} to your watched list!`;
+    } else if (action === "error") {
+      popupAlert.innerText = `Please sign in to add ${title} to your watched list!`;
+    } else if (action === "removed") {
+      popupAlert.innerText = `You removed ${title} from your watched list!`;
+    }
+    document.body.append(popupAlert);
+    setTimeout(() => {
+      popupAlert.remove();
+    }, 1000);
   };
   useEffect(() => {
     if (auth.currentUser != null) {

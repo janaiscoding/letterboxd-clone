@@ -29,11 +29,11 @@ const MovieSynopsis = ({ movie, authStatus }) => {
           {movie.title}
         </p>
         <div className="flex gap-1 font-['Graphik']">
-          <p className="text-p-white underline hover:cursor-pointer hover:text-hov-blue">
+          <p className="text-p-white underline">
             {movieYear}
           </p>
           <p className="text-sh-grey">Directed by</p>
-          <p className="text-p-white underline hover:cursor-pointer hover:text-hov-blue">
+          <p className="text-p-white underline">
             {director}
           </p>
         </div>

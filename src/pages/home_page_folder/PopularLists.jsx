@@ -24,46 +24,49 @@ const PopularLists = ({ populars }) => {
   return (
     <>
       <div
-        className="flex 
-      justify-between 
-      section-heading 
-      text-sh-grey 
-      text-xs
+        className="section-heading 
+      z-50 
+      mb-3 
+      flex 
+      justify-between
       border-b 
       border-solid 
       border-b-grey 
-      mb-3
-      z-50 "
+      text-xs
+      text-sh-grey "
       >
-        <p className="text-sm  hover:text-hov-blue hover:cursor-pointer">POPULAR LISTS</p>{" "}
-        <p className="text-[11px] hover:text-hov-blue hover:cursor-pointer">MORE</p>
+        <p className="text-sm  hover:cursor-pointer hover:text-hov-blue">
+          POPULAR LISTS
+        </p>{" "}
+        <p className="text-[11px] hover:cursor-pointer hover:text-hov-blue">
+          MORE
+        </p>
       </div>
       <div
-        className="flex 
+        className="flex      
         flex-col
-        md:flex-row
-      justify-between"
+        justify-between
+        md:flex-row"
       >
         <div>
           <div
             className="
-      w-fit  
-      md:h-[105px]
-      md:w-[275px]
+      hover:border-3  
       flex
+      w-fit
       overflow-hidden
+      rounded
       border 
       border-solid 
-      rounded 
-      border-pb-grey/25
+      border-pb-grey/25 
+      shadow-[0_0_1px_1px_rgba(20,24,28,1)]
       shadow-inner 
-      shadow-[0_0_1px_1px_rgba(20,24,28,1)]   
-      hover:cursor-pointer 
-      hover:border-3 
+      hover:cursor-pointer   
+      hover:rounded 
       hover:border-pb-grey 
-      hover:rounded
+      md:h-[105px] 
+      md:w-[275px]
       "
-            style={{ zIndex: 15 }}
           >
             {firstSix.length === 0
               ? ""
@@ -72,34 +75,35 @@ const PopularLists = ({ populars }) => {
                 ))}
           </div>
           <p
-            className="text-pb-grey
-            mt-1
+            className="mt-1
             text-sm
-            font-bold 
-            hover:text-sh-grey
-            hover:cursor-pointer"
+            font-bold
+            text-pb-grey 
+            hover:cursor-pointer
+            hover:text-sh-grey"
           >
             List of movies currently rank 1-6
           </p>
         </div>
-        <div>
+        <div className="hidden md:block">
           <div
             className="
-      md:h-[105px]
-      md:w-[275px]
-      flex
-      overflow-hidden
-      border 
-      border-solid 
-      rounded 
-      border-pb-grey/25
-      shadow-inner 
-      shadow-[0_0_1px_1px_rgba(20,24,28,1)]   
-      hover:cursor-pointer 
-      hover:border-3 
-      hover:border-pb-grey 
-      hover:rounded
-      "
+            hover:border-3  
+            flex
+            w-fit
+            overflow-hidden
+            rounded
+            border 
+            border-solid 
+            border-pb-grey/25 
+            shadow-[0_0_1px_1px_rgba(20,24,28,1)]
+            shadow-inner 
+            hover:cursor-pointer   
+            hover:rounded 
+            hover:border-pb-grey 
+            md:h-[105px] 
+            md:w-[275px]
+            "
           >
             {nextSix.length === 0
               ? ""
@@ -108,36 +112,35 @@ const PopularLists = ({ populars }) => {
                 ))}
           </div>
           <p
-            className="text-pb-grey
-            mt-1
+            className="mt-1
             text-sm
-            font-bold 
-            hover:text-sh-grey
-            hover:cursor-pointer"
+            font-bold
+            text-pb-grey 
+            hover:cursor-pointer
+            hover:text-sh-grey"
           >
             List of movies currently rank 7-13
           </p>
         </div>
-        <div>
+        <div className="hidden md:block">
           <div
             className="
-      md:w-fit  
-      md:h-[105px]
-      md:w-[275px]
-      flex
-      overflow-hidden
-      border 
-      border-solid 
-      rounded 
-      border-pb-grey/25
-      shadow-inner 
-      shadow-[0_0_1px_1px_rgba(20,24,28,1)]   
-      hover:cursor-pointer 
-      hover:border-3 
-      hover:border-pb-grey 
-      hover:rounded
-      "
-            style={{ zIndex: 15 }}
+          hover:border-3  
+          flex
+          w-fit
+          overflow-hidden
+          rounded
+          border 
+          border-solid 
+          border-pb-grey/25 
+          shadow-[0_0_1px_1px_rgba(20,24,28,1)]
+          shadow-inner 
+          hover:cursor-pointer   
+          hover:rounded 
+          hover:border-pb-grey 
+          md:h-[105px] 
+          md:w-[275px]
+          "
           >
             {lastSix.length === 0
               ? ""
@@ -146,12 +149,12 @@ const PopularLists = ({ populars }) => {
                 ))}
           </div>
           <p
-            className="text-pb-grey
-            mt-1
+            className="mt-1
             text-sm
-            font-bold 
-            hover:text-sh-grey
-            hover:cursor-pointer"
+            font-bold
+            text-pb-grey 
+            hover:cursor-pointer
+            hover:text-sh-grey"
           >
             List of movies currently rank 14-20
           </p>

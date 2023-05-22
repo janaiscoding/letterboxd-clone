@@ -9,9 +9,10 @@ import Profile from "./profile_page_folder/Profile";
 import FilterPage from "./films_page_folder/FilterPage";
 import Settings from "./settings_page_folder/Settings";
 import NotFound from "./NotFound";
-import Journal from "./journals_page_folder/Journal";
+
 import ProfileFavourites from "./profile_page_folder/ProfileFavourites";
 import ProfileWatched from "./profile_page_folder/ProfileWatched";
+import ReviewsPage from "./reviews_page_folder/ReviewsPage";
 
 const MyRoutes = ({
   authStatus,
@@ -139,7 +140,7 @@ const MyRoutes = ({
       <Route
         path="/reviews"
         element={
-          <Journal apiKey={apiKey} setNewDataGained={setNewDataGained} />
+          <ReviewsPage apiKey={apiKey} setNewDataGained={setNewDataGained} />
         }
       />
       <Route
