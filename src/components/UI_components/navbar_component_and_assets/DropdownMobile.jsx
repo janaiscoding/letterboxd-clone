@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import dropdownLinksData from "./navbar_assets/dropdownLinksData";
 import SignOut from "../../auth/auth_methods/SignOut";
 import "../../../styles/dropdown.css";
@@ -19,7 +19,7 @@ const DropdownMobile = ({
 }) => {
   const dropdownList = dropdownLinksData;
   const [uid, setUid] = useState("");
-
+  const { pathname } = useLocation();
   useEffect(() => {
     if (authStatus) {
       setUserLogin(true);
@@ -33,22 +33,23 @@ const DropdownMobile = ({
       }
     };
     document.addEventListener("mousedown", handlerDDMob);
+    setDDMobOpen(false);
     return () => {
       document.removeEventListener("mousedown", handlerDDMob);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [authStatus]);
+  }, [authStatus, pathname]);
 
   return (
     <>
       <div
         className={`mobile-dropdown-nav ${
           DDMobOpen ? "active" : "inactive"
-        } rounded-sm p-2 bg-h-blue static z-999 sans-serif flex-col
-        absolute top-[2.3rem] left-0 w-full`}
+        } z-999 sans-serif static absolute left-0 top-[2.3rem] w-full
+        flex-col rounded-sm bg-h-blue p-2`}
       >
         {userLogin ? (
-          <div className="py-1 flex mx-4 z-50">
+          <div className="z-50 mx-4 flex py-1">
             <div className="flex gap-1">
               <Link to={"/profile/" + uid}>
                 <img
@@ -61,7 +62,7 @@ const DropdownMobile = ({
               </Link>
               <Link
                 to={"/profile/" + uid}
-                className=" text-p-white font-semibold hover:cursor-pointer hover:text-p-white uppercase z-50"
+                className=" z-50 font-semibold uppercase text-p-white hover:cursor-pointer hover:text-p-white"
               >
                 {userName}
               </Link>
@@ -72,26 +73,26 @@ const DropdownMobile = ({
           ""
         )}
 
-        <ul className="rounded-sm bg-h-blue mx-3 py-3 z-50 sans-serif text-sh-grey font-bold tracking-widest uppercase">
+        <ul className="sans-serif z-50 mx-3 rounded-sm bg-h-blue py-3 font-bold uppercase tracking-widest text-sh-grey">
           <li className="divider-mobile"></li>
 
-          <li className="py-2 grid grid-cols-2">
+          <li className="grid grid-cols-2 py-2">
             {dropdownList.map((L) => (
-              <Link key={L.id} className={`py-0.5 mx-3`} to={L.link}>
+              <Link key={L.id} className={`mx-3 py-0.5`} to={L.link}>
                 {L.name}
               </Link>
             ))}
           </li>
           <li className="divider-mobile"></li>
           {userLogin ? (
-            <li className="z-50 py-3 mx-3 grid grid-cols-2">
-              <Link to="/settings" className="block pt-2 z-50">
+            <li className="z-50 mx-3 grid grid-cols-2 py-3">
+              <Link to="/settings" className="z-50 block pt-2">
                 Settings
               </Link>
               <SignOut setDDMobOpen={setDDMobOpen} />
             </li>
           ) : (
-            <li className="z-50 pt-3 grid grid-cols-2">
+            <li className="z-50 grid grid-cols-2 pt-3">
               <SignInGoogle />
               <SignInTest />
             </li>
