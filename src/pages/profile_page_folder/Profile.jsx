@@ -8,13 +8,10 @@ import UserFavouriteFilms from "./UserFavouriteFilms";
 import UserBio from "./UserBio";
 import UserWatchedFilms from "./UserWatchedFilms";
 import UserReviews from "./UserReviews";
-import Watchlist from "./Watchlist";
 
 const Profile = ({
   apiKey,
   authStatus,
-  fetchRequest,
-  fetchResults,
   isProfileUpdated,
   setProfileUpdated,
   newDataGained,
@@ -74,11 +71,11 @@ const Profile = ({
   };
   useEffect(() => {
     fetchUserMoviesDB(uid);
-  }, [uid,newDataGained]);
+  }, [uid, newDataGained]);
 
   return (
     <div className="site-body min-h-screen-[90vh] py-5">
-      <div className="px-4 flex flex-col md:py-8 md:w-[950px] md:my-0 md:mx-auto font-['Graphik']">
+      <div className="flex flex-col px-4 font-['Graphik'] md:mx-auto md:my-0 md:w-[950px] md:py-8">
         <UserBio
           uid={uid}
           authStatus={authStatus}
@@ -103,53 +100,17 @@ const Profile = ({
               setNewDataGained={setNewDataGained}
             />
           </div>
-          <div className="md:py-3">
-            <img
-              src="https://a.ltrbxd.com/resized/sm/upload/hv/dj/s4/0i/pro-250-0-250-0-0.png?k=dcecb9a011"
-              alt="upgrade to pro"
-              className="hidden md:block"
-              width={275}
-              height={230}
-            />
-            <img
-              src="https://a.ltrbxd.com/sm/upload/1n/js/vs/bi/pro-mobile.png?k=8ce50124d8"
-              alt="upgrade to pro"
-              className="block md:hidden"
-              width={343}
-              height={134}
-              loading="lazy"
-            />
-            <Watchlist
+          <div className="">
+            <UserReviews
               apiKey={apiKey}
-              fetchResults={fetchResults}
-              fetchRequest={fetchRequest}
+              reviews={reviews}
+              setNewDataGained={setNewDataGained}
             />
           </div>
         </div>
-        <UserReviews
-          apiKey={apiKey}
-          reviews={reviews}
-          setNewDataGained={setNewDataGained}
-        />
       </div>
     </div>
   );
 };
 
 export default Profile;
-/* <h1>{userName}</h1>
-      <img src={userPic} alt="your user profile" width={100} height={100} className="rounded-[50px] border border-p-white hover:border-white " />
-      <div>DISPLAY FAVOURITE MOVIES FROM DB</div>
-      {favIDs.length > 0
-        ? favIDs.map((ID) => (
-            <ProfilePoster key={ID} movieID={ID} apiKey={apiKey} />
-          ))
-        : "no fav movies yet"}
-      <div>DISPLAY WATCHED MOVIES FROM DB</div>
-      {watchedIDs.length > 0
-        ? watchedIDs.map((ID) => (
-            <ProfilePoster key={ID} movieID={ID} apiKey={apiKey} />
-          ))
-        : "no watched movies yet"}
-      <div>THIS WILL BE IN A SETTINGS PAGE</div>
-      <ChangeUserInfo setProfileUpdated={setProfileUpdated} /> */

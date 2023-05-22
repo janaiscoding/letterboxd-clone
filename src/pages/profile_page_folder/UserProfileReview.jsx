@@ -18,7 +18,7 @@ const UserProfileReview = ({ apiKey, movieID, review, setNewDataGained }) => {
       .then((response) => response.json())
       .then((data) => {
         setMovieData(data);
-        setMovieYear(data.release_date.substring(0,4))
+        setMovieYear(data.release_date.substring(0, 4));
       })
       .catch((err) => {
         console.log(err.message);
@@ -29,22 +29,28 @@ const UserProfileReview = ({ apiKey, movieID, review, setNewDataGained }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [movieID]);
   return (
-    <div className="flex">
+    <div
+      className="flex 
+    border-b 
+    border-solid 
+    border-b-grey
+    py-2 "
+    >
       <div
         className="
-        mb-[2%]
+        hover:border-3
+        hover:border-h-hov-green
+        relative 
+        h-fit 
+        rounded
         border 
         border-solid 
-        rounded 
-        border-pb-grey/25
-        shadow-inner 
+        border-pb-grey/25 
         shadow-[0_0_1px_1px_rgba(20,24,28,1)] 
-        hover:cursor-pointer 
-        hover:border-3 
-        hover:border-h-hov-green
+        shadow-inner
+        hover:cursor-pointer
         hover:rounded
         md:ml-1
-        relative
     "
         onMouseEnter={() => setVisibility(true)}
         onMouseLeave={() => setVisibility(false)}
@@ -52,7 +58,7 @@ const UserProfileReview = ({ apiKey, movieID, review, setNewDataGained }) => {
       >
         <Link to={"/movie/" + movieData.id}>
           <img
-            className="border rounded block max-w-[100px] max-h-[150px]"
+            className="block max-h-[120px] max-w-[80px] rounded border"
             src={"https://image.tmdb.org/t/p/w500/" + movieData.poster_path}
             alt={movieData.title}
             height={150}
@@ -62,14 +68,14 @@ const UserProfileReview = ({ apiKey, movieID, review, setNewDataGained }) => {
         {visibility ? (
           <div
             className="
-            rounded
             absolute
-            flex 
-            items-center
-            p-0.5
-            top-[70%]     
-            left-[10%]   
-            z-10"
+            left-[6%]
+            top-[70%] 
+            z-10
+            flex
+            items-center     
+            rounded   
+            p-0.5"
             style={{ backgroundColor: "rgba(0,0,0,0.8)" }}
           >
             <FavouriteButton
@@ -85,16 +91,18 @@ const UserProfileReview = ({ apiKey, movieID, review, setNewDataGained }) => {
           " "
         )}
       </div>
-      <div className="ml-3">
+      <div className="ml-3 ">
         <Link
           to={"/movie/" + movieData.id}
-          className="font-bold text-2xl text-p-white hover:text-hov-blue "
+          className="text-xl font-bold text-p-white hover:text-hov-blue "
         >
           {" "}
           {movieData.title}{" "}
-          <span className="text-sh-grey font-normal text-base">{movieYear}</span>
+          <span className="text-base font-normal text-sh-grey">
+            {movieYear}
+          </span>
         </Link>
-        <p className="text-sh-grey text-sm pt-2">{review}</p>
+        <p className="pt-2 text-sm text-sh-grey">{review}</p>
       </div>
     </div>
   );

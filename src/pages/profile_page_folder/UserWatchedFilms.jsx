@@ -37,7 +37,7 @@ const UserWatchedFilms = ({ uid, apiKey, watchedIDs, setNewDataGained }) => {
         flex-wrap 
       md:flex-row 
       md:flex-nowrap
-      mb-10"
+      mb-5"
       >
         {firstFour.length === 0
           ? <p className="text-sh-grey text-base pt-2">This user has no watched movies yet.</p>

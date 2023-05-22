@@ -23,7 +23,7 @@ const UserReviews = ({ apiKey, reviews, setNewDataGained }) => {
         border-b 
         border-solid 
         border-b-grey 
-        my-2"
+        mb-2"
       >
         <p>YOUR REVIEWS</p>
       </div>
