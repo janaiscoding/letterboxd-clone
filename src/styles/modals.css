@@ -1,11 +1,11 @@
 .search-bar-mobile.active {
-  display: block;
+  display: flex;
 }
 .search-bar-mobile.inactive{
   display: none;
 }
 .mobile-dropdown-nav.active{
-  display: block;
+  display: flex;
 }
 .mobile-dropdown-nav.inactive{
   display: none;

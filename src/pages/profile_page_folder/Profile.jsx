@@ -12,6 +12,7 @@ import Watchlist from "./Watchlist";
 
 const Profile = ({
   apiKey,
+  authStatus,
   fetchRequest,
   fetchResults,
   isProfileUpdated,
@@ -80,6 +81,7 @@ const Profile = ({
       <div className="px-4 flex flex-col md:py-8 md:w-[950px] md:my-0 md:mx-auto font-['Graphik']">
         <UserBio
           uid={uid}
+          authStatus={authStatus}
           isProfileUpdated={isProfileUpdated}
           setProfileUpdated={setProfileUpdated}
           favCount={favCount}

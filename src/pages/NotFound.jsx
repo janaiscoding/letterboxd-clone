@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import React, { useEffect } from "react";
-import { auth } from "../firebase/firebase";
-const NotFound = ({  isNavTransparent, setNavTransparent }) => {
+
+const NotFound = ({ isNavTransparent, setNavTransparent }) => {
   useEffect(() => {
     isNavTransparent ? setNavTransparent(true) : setNavTransparent(false);
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -18,7 +18,6 @@ const NotFound = ({  isNavTransparent, setNavTransparent }) => {
         >
           Go back home
         </Link>
-
       </div>
     </div>
   );

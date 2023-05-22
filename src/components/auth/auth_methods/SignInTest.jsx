@@ -10,15 +10,17 @@ const SignInTest = () => {
       "testwithemail@mail.com",
       "mypassword"
     ).catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        console.log(errorCode, errorMessage);
-      });
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      console.log(errorCode, errorMessage);
+    });
   };
 
   const checkUsersFromDB = async () => {
     const userDoc = await getDoc(doc(db, "users/" + auth.currentUser.uid));
-    userDoc.exists() ? console.log("fetched data for the existing user") : await addNewUserToDB();
+    if (!userDoc.exists()) {
+      await addNewUserToDB();
+    }
     //welcome back popup username!
   };
   // creates a new document for the new user
@@ -33,8 +35,8 @@ const SignInTest = () => {
       watched: [],
       favourites: [],
     }).catch((err) => {
-        console.log(err);
-      });
+      console.log(err);
+    });
   };
 
   const onLogin = async () => {
@@ -44,7 +46,7 @@ const SignInTest = () => {
   };
   return (
     <p
-      className="sans-serif text-xs text-sh-grey font-bold tracking-widest hover:text-p-white	hover:cursor-pointer uppercase"
+      className="mx-3 z-50 sans-serif text-sh-grey font-bold tracking-widest uppercase md:text-xs md:hover:text-p-white md:ml-4 md:hover:cursor-pointer md:mx-0"
       onClick={onLogin}
     >
       Test Acc.

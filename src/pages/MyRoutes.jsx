@@ -46,6 +46,7 @@ const MyRoutes = ({
         element={
           <Profile
             apiKey={apiKey}
+            authStatus={authStatus}
             fetchResults={fetchResults}
             fetchRequest={fetchRequest}
             authStatus={authStatus}

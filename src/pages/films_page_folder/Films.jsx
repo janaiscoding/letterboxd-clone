@@ -26,7 +26,9 @@ const Films = ({ apiKey, fetchRequest, fetchResults, setNewDataGained }) => {
           <p className="sans-serif block tracking-normal text-xs uppercase px-4 text-sh-grey self-center">
             Browse by:
           </p>
+          <div className="grid grid-cols-2 md:flex md:flex-row">
           {allSelectionBoxes}
+          </div>
         </div>
         <div className="flex flex-col md:hidden items-center text-center my-3">
           <p className="uppercase text-sh-grey font-['Graphik']">Find a film</p>

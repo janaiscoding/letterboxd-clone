@@ -10,7 +10,6 @@ const Members = () => {
     let tempArray = [];
     usersSnap.forEach((doc) => {
       tempArray.push(doc.data());
-      console.log(doc.data())
     });
     setUsers(tempArray);
 

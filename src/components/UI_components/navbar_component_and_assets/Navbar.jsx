@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 
 import SignInAll from "../../auth/auth_methods/SignInAll";
@@ -40,6 +40,9 @@ const Navbar = ({
 
   // MOBILE HELPER FOR ACTIVE/INACTIVE
   const [searchMobOpen, setSearchMobOpen] = useState(false); //for searchbar mobile
+
+  let searchBarRef = useRef();
+  let dropDownRef = useRef();
   const [DDMobOpen, setDDMobOpen] = useState(false); //for dropdown mobile
 
   //style for online/offline
@@ -60,14 +63,6 @@ const Navbar = ({
   };
 
   useEffect(() => {
-    isNavTransparent
-      ? setStyle(
-          "flex flex-col align-center bg-transparent md:h-[70px] md:flex-row"
-        )
-      : setStyle(
-          "flex flex-col align-center bg-h-blue md:h-[70px] md:flex-row"
-        );
-
     if (authStatus) {
       setUserName(auth.currentUser.displayName);
       setProfilePic(auth.currentUser.photoURL);
@@ -83,7 +78,7 @@ const Navbar = ({
 
   return (
     <>
-      <header className={style}>
+      <header className={`flex flex-col align-center md:h-[70px] md:flex-row ${isNavTransparent ? "bg-transparent" : "bg-h-blue"} ${DDMobOpen ? "mb-48" : "mb-0"}`} >
         <section className="px-2 pl-4 flex justify-between align-center md:w-[950px] md:my-0 md:mx-auto z-50">
           <Link className="self-center block md:hidden" to="/">
             <img
@@ -156,14 +151,6 @@ const Navbar = ({
               </ul>
             </nav>
             <img
-              onClick={() => setDDMobOpen(!DDMobOpen)}
-              className="md:hidden"
-              src={openCloseMenu}
-              width={40}
-              height={40}
-              alt="open and close navbar dropdown menu on mobile"
-            />
-            <img
               className="search-icon-desktop hidden hover:cursor-pointer md:block md:ml-4"
               src={searchIcon}
               width={30}
@@ -180,42 +167,55 @@ const Navbar = ({
                 setNewDataGained={setNewDataGained}
               />
             </div>
-
-            <img
-              className="search-icon-mobile md:hidden"
-              src={searchIcon}
-              width={40}
-              height={40}
-              alt="search icon"
-              onClick={() => {
-                setSearchMobOpen(!searchMobOpen)
-              }}
-            />
-          </div>
-        </section>
-        {/* All mobile components are 
+            {/* All mobile components are 
         1. Hidden from MD with Tailwind
         2. Toggled on/off with the icons 
         3. Handled when clicking outside of them with useRef and document event listeners for mousedown */}
-        <SearchInputMobile
-          apiKey={apiKey}
-          query={query}
-          fetchRequest={fetchRequest}
-          setNewDataGained={setNewDataGained}
-          setSearchMobOpen={setSearchMobOpen}
-          searchMobOpen={searchMobOpen}
-        />
+            <div ref={dropDownRef}>
+              <img
+                onClick={() => setDDMobOpen(!DDMobOpen)}
+                className="md:hidden"
+                src={openCloseMenu}
+                width={40}
+                height={40}
+                alt="open and close navbar dropdown menu on mobile"
+              />
+              <DropdownMobile
+                profilePic={profilePic}
+                userName={userName}
+                arrowDown={arrowDown}
+                userLogin={userLogin}
+                authStatus={authStatus}
+                setUserLogin={setUserLogin}
+                DDMobOpen={DDMobOpen}
+                setDDMobOpen={setDDMobOpen}
+                dropDownRef={dropDownRef}
+              />
+            </div>
 
-        <DropdownMobile
-          profilePic={profilePic}
-          userName={userName}
-          arrowDown={arrowDown}
-          userLogin={userLogin}
-          authStatus={authStatus}
-          setUserLogin={setUserLogin}
-          DDMobOpen={DDMobOpen}
-          setDDMobOpen={setDDMobOpen}
-        />
+            <div ref={searchBarRef}>
+              <img
+                className="search-icon-mobile md:hidden"
+                src={searchIcon}
+                width={40}
+                height={40}
+                alt="search icon"
+                onClick={() => {
+                  setSearchMobOpen(!searchMobOpen);
+                }}
+              />
+              <SearchInputMobile
+                apiKey={apiKey}
+                query={query}
+                fetchRequest={fetchRequest}
+                setNewDataGained={setNewDataGained}
+                setSearchMobOpen={setSearchMobOpen}
+                searchMobOpen={searchMobOpen}
+                searchBarRef={searchBarRef}
+              />
+            </div>
+          </div>
+        </section>
       </header>
     </>
   );

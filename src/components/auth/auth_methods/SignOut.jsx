@@ -10,10 +10,10 @@ const SignOut = () => {
   const onSignOut = () => {
     signOut(auth)
       .then(() => {
-        if (location.contains("profile")) {
+        console.log(location.pathname)
+        if (location.pathname.contains("/profile/")) {
           navigate("/");
         }
-        console.log("signed out successfully");
       })
       .catch((error) => {
         const errorCode = error.code;
