@@ -13,21 +13,21 @@ const IntroMessage = ({ authStatus }) => {
   }, [authStatus]);
   return (
     <>
-      <div className="text-h-grey text-3xl text-center font-normal">
+      <div className="text-center text-3xl font-normal text-h-grey">
         Welcome,{" "}
         <Link
           to={"/profile/" + uid}
-          className="text-p-white border-b border-solid border-h-grey hover:border-p-white"
+          className="border-b border-solid border-h-grey text-p-white hover:border-p-white"
         >
           {displayName}
         </Link>
         .{" "}
-        <span className="hidden md:inline-block">
+        <span className="hidden md:inline-block pb-2">
           Start your movie tracking journey now!
         </span>
       </div>
-      <p className="text-center mb-8 md:mb-8 text-lg text-h-grey">
-        Things to do on Clonnerboxd...{" "}
+      <p className="mb-8 text-center text-lg text-h-grey md:mb-8">
+        On Clonnerboxd you can...{" "}
         <Link
           to={"/profile/" + uid}
           className="text-p-white hover:text-hov-blue"
@@ -48,8 +48,7 @@ const IntroMessage = ({ authStatus }) => {
         </Link>
         <span className="text-h-grey">
           {" "}
-          or search for your favourite movie in the navbar leave a review for
-          it!
+          or press the search icon in the header, and leave a review to your favorite movie!
         </span>
       </p>
     </>
