@@ -41,7 +41,7 @@ const FavouriteButton = ({ movie, setNewDataGained }) => {
     }).then(() => {
       setFavourite(true);
       setNewDataGained(true);
-      createPopup("favourite");
+      createPopup(movie.title, "favourite");
     });
   };
   const removeFromFavsDB = async (movie) => {
@@ -54,19 +54,19 @@ const FavouriteButton = ({ movie, setNewDataGained }) => {
     }).then(() => {
       setFavourite(false);
       setNewDataGained(true);
-      createPopup("removed");
+      createPopup(movie.title, "removed");
     });
   };
 
-  const createPopup = (action) => {
+  const createPopup = (title, action) => {
     const popupAlert = document.createElement("div");
     popupAlert.classList.add("popup");
     if (action === "favourite") {
-      popupAlert.innerText = `Added to favourites!`;
+      popupAlert.innerText = `Added ${title} to favourites!`;
     } else if (action === "error") {
       popupAlert.innerText = `Sign in to add to favourites.`;
     } else if (action === "removed") {
-      popupAlert.innerText = `Removed from favourites!`;
+      popupAlert.innerText = `Removed ${title} from favourites!`;
     }
     document.body.append(popupAlert);
     setTimeout(() => {
