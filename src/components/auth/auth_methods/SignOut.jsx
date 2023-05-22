@@ -11,7 +11,6 @@ const SignOut = ({ setDDMobOpen }) => {
     signOut(auth)
       .then(() => {
         setDDMobOpen(false);
-        console.log(location.pathname);
         if (location.pathname.contains("/profile/")) {
           navigate("/");
         }

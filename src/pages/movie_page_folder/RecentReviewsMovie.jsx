@@ -5,12 +5,12 @@ const RecentReviewsMovie = ({ movie, authStatus }) => {
   return (
     <>
       <div
-        className="flex 
-        justify-between 
-        section-heading
-        mt-3"
+        className="section-heading 
+        mt-3 
+        flex
+        justify-between"
       >
-        <p className="py-1 text-sh-grey text-xs hover:cursor-pointer hover:text-hov-blue">
+        <p className="py-1 text-xs text-sh-grey hover:cursor-pointer hover:text-hov-blue">
           RECENT REVIEWS
         </p>
       </div>{" "}

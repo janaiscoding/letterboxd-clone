@@ -16,14 +16,12 @@ const SelectBox = ({ title, data }) => {
   }, [isClicked]);
   return (
     <div className="m-2">
-      <div className="z-50 flex flex-col self-start rounded-sm bg-drop-grey pb-2 pt-2 hover:cursor-pointer">
+      <div className="z-50 flex flex-col self-start hover:cursor-pointer">
         <div
           onClick={toggleClick}
-          className="flex px-4 py-1 hover:text-p-white"
+          className="sans-serif block flex self-center rounded bg-c-grey p-1 px-4 text-xs font-bold uppercase tracking-normal text-p-white hover:text-p-white"
         >
-          <p className="sans-serif block text-lg uppercase tracking-normal">
-            {title}
-          </p>
+          <p>{title}</p>
           <span>
             <img
               src={arrowDown}
@@ -36,7 +34,7 @@ const SelectBox = ({ title, data }) => {
           {data.map((data, index) => {
             return (
               <li
-                className="sans-serif z-50 block px-4 py-1 text-lg tracking-normal hover:bg-dd-blue  hover:text-p-white"
+                className="sans-serif block self-center rounded bg-c-grey p-1 px-4 text-xs font-bold uppercase tracking-normal text-p-white hover:bg-dd-blue  hover:text-p-white"
                 onClick={() => onSelect(data)}
                 key={index}
               >

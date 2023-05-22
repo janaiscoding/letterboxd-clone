@@ -1,8 +1,9 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import ResultPoster from "../results_page_folder/ResultPoster";
 
-const JournalReview = ({ review, setNewDataGained }) => {
+const SingularReview = ({ review, setNewDataGained }) => {
   const [movieData, setMovieData] = useState([]);
   useEffect(() => {
     fetch(
@@ -52,4 +53,4 @@ const JournalReview = ({ review, setNewDataGained }) => {
   );
 };
 
-export default JournalReview;
+export default SingularReview;

@@ -1,13 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { auth, db } from "../../firebase/firebase";
-import {
-  doc,
-  setDoc,
-  getDoc,
-  updateDoc,
-  arrayUnion,
-  serverTimestamp,
-} from "firebase/firestore";
+import { doc, setDoc, getDoc, updateDoc, arrayUnion } from "firebase/firestore";
 import ReviewItem from "../UI_components/ReviewItem";
 import SignInAll from "../auth/auth_methods/SignInAll";
 
@@ -71,7 +64,6 @@ const ReviewsComp = ({ movie, authStatus }) => {
         userURL: user.photoURL,
         review: review,
         uid: user.uid,
-        timestamp: serverTimestamp(),
       }),
     })
       .then(() => {
@@ -91,7 +83,6 @@ const ReviewsComp = ({ movie, authStatus }) => {
           userName: user.displayName,
           userURL: user.photoURL,
           uid: user.uid,
-          timestamp: serverTimestamp(),
         },
       ],
     });
