@@ -31,7 +31,7 @@ const SingularReview = ({ review, setNewDataGained }) => {
             src={review.userURL}
             width={40}
             height={40}
-            className="rounded-[20px] max-h-[40px] hover:cursor-pointer"
+            className="rounded-[20px] max-h-[40px] min-h-[40px] min-w-[40px] hover:cursor-pointer"
             alt={review.userName + `review`}
           />
         </Link>

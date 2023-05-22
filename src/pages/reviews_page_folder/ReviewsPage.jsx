@@ -22,29 +22,32 @@ const ReviewsPage = ({ apiKey, setNewDataGained }) => {
     fetchReviewsfromDB();
   }, []);
   return (
-    <div className="site-body py-5 min-h-[80vh]">
-      <div className="flex flex-col px-4 md:w-[950px] md:my-0 md:mx-auto font-['Graphik']">
+    <div className="site-body min-h-[80vh] py-5">
+      <div className="flex flex-col px-4 font-['Graphik'] md:mx-auto md:my-0 md:w-[950px]">
         <div
-          className="flex 
+          className="section-heading 
+      mb-3 
+      flex 
       justify-between 
-      section-heading 
-      text-sh-grey 
       text-xs
-      mb-3"
+      text-sh-grey"
         >
           <Link to="/members/" className="text-sm hover:text-hov-blue">
             REVIEWS OF CLONNERBOXD
           </Link>
         </div>
-        <div>
-          {reviews.slice().reverse().map((review, index) => (
-            <SingularReview
-              key={index}
-              review={review}
-              setNewDataGained={setNewDataGained}
-              apiKey={apiKey}
-            />
-          ))}
+        <div className="md:grid md:grid-cols-3 md:gap-5 ">
+          {reviews
+            .slice()
+            .reverse()
+            .map((review, index) => (
+              <SingularReview
+                key={index}
+                review={review}
+                setNewDataGained={setNewDataGained}
+                apiKey={apiKey}
+              />
+            ))}
         </div>
       </div>
     </div>
