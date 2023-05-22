@@ -15,7 +15,7 @@ const FavouriteButton = ({ movie, setNewDataGained }) => {
   const [isFavourite, setFavourite] = useState(false);
   const onFavourite = async (movie) => {
     if (auth.currentUser === null) {
-      createPopup(movie.title, "error");
+      createPopup("error");
     } else {
       await checkMovieFavsDB(movie).then(async () => {
         isFavourite ? await removeFromFavsDB(movie) : await addToFavsDB(movie);
@@ -41,7 +41,7 @@ const FavouriteButton = ({ movie, setNewDataGained }) => {
     }).then(() => {
       setFavourite(true);
       setNewDataGained(true);
-      createPopup(movie.title, "favourite");
+      createPopup("favourite");
     });
   };
   const removeFromFavsDB = async (movie) => {
@@ -54,19 +54,19 @@ const FavouriteButton = ({ movie, setNewDataGained }) => {
     }).then(() => {
       setFavourite(false);
       setNewDataGained(true);
-      createPopup(movie.title, "removed");
+      createPopup("removed");
     });
   };
 
-  const createPopup = (title, action) => {
+  const createPopup = (action) => {
     const popupAlert = document.createElement("div");
-    popupAlert.classList.add('popup') 
+    popupAlert.classList.add("popup");
     if (action === "favourite") {
-      popupAlert.innerText = `You added ${title} to your favourites`;
+      popupAlert.innerText = `Added to favourites!`;
     } else if (action === "error") {
-      popupAlert.innerText = `Please sign in to add ${title} to your favourites!`;
+      popupAlert.innerText = `Sign in to add to favourites.`;
     } else if (action === "removed") {
-      popupAlert.innerText = `You removed ${title} from your favourites!`;
+      popupAlert.innerText = `Removed from favourites!`;
     }
     document.body.append(popupAlert);
     setTimeout(() => {

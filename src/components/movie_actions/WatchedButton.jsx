@@ -15,7 +15,7 @@ const WatchedButton = ({ movie, setNewDataGained }) => {
   // WATCHED LIST LOGIC
   const onWatched = async (movie) => {
     if (auth.currentUser === null) {
-      createPopup(movie.title, "error");
+      createPopup("error");
     } else {
       await checkMovieWatchedDB(movie).then(async () => {
         isWatched
@@ -44,7 +44,7 @@ const WatchedButton = ({ movie, setNewDataGained }) => {
     }).then(() => {
       setWatched(true);
       setNewDataGained(true);
-      createPopup(movie.title, "watched");
+      createPopup("watched");
     });
   };
   const removeFromWatchedDB = async (movie) => {
@@ -57,19 +57,19 @@ const WatchedButton = ({ movie, setNewDataGained }) => {
     }).then(() => {
       setNewDataGained(true);
       setWatched(false);
-      createPopup(movie.title, "removed");
+      createPopup("removed");
     });
   };
 
-  const createPopup = (title, action) => {
+  const createPopup = (action) => {
     const popupAlert = document.createElement("div");
     popupAlert.classList.add("popup");
     if (action === "watched") {
-      popupAlert.innerText = `You added ${title} to your watched list!`;
+      popupAlert.innerText = `Added to watched list!`;
     } else if (action === "error") {
-      popupAlert.innerText = `Please sign in to add ${title} to your watched list!`;
+      popupAlert.innerText = `Sign in to add to watched list!`;
     } else if (action === "removed") {
-      popupAlert.innerText = `You removed ${title} from your watched list!`;
+      popupAlert.innerText = `Removed from watched list!`;
     }
     document.body.append(popupAlert);
     setTimeout(() => {
