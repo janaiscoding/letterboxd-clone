@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import searchInputIcon from "./searchinput.png";
+import searchIcon from "../navbar_assets/searchIcon.png";
 import "../../../../styles/modals.css";
 
 const SearchInputMobile = ({
@@ -26,6 +26,7 @@ const SearchInputMobile = ({
       navigate("/results/" + query);
     }
     setQuery("");
+    setSearchMobOpen(false)
   };
   useEffect(() => {
     let handler = (e) => {
@@ -68,11 +69,12 @@ const SearchInputMobile = ({
         "
       />
       <img
-        src={searchInputIcon}
+        src={searchIcon}
         onClick={handleSearchMobile}
-        width={35}
-        height={35}
-        alt="icon for searching"
+        width={40}
+        height={40}
+        className="absolute left-[85%]"
+        alt="press the search icon to perform your search"
       />
     </div>
   );

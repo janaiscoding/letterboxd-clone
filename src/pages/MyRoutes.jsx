@@ -46,7 +46,6 @@ const MyRoutes = ({
         element={
           <Profile
             apiKey={apiKey}
-            authStatus={authStatus}
             fetchResults={fetchResults}
             fetchRequest={fetchRequest}
             authStatus={authStatus}
@@ -57,7 +56,7 @@ const MyRoutes = ({
           />
         }
       />
-            <Route
+      <Route
         path="/profile/favourites/:uid"
         element={
           <ProfileFavourites
@@ -69,7 +68,7 @@ const MyRoutes = ({
           />
         }
       />
-                  <Route
+      <Route
         path="/profile/watched/:uid"
         element={
           <ProfileWatched
@@ -137,7 +136,12 @@ const MyRoutes = ({
         path="/settings"
         element={<Settings setProfileUpdated={setProfileUpdated} />}
       />
-      <Route path="/reviews" element={<Journal apiKey={apiKey} setNewDataGained={setNewDataGained} />} />
+      <Route
+        path="/reviews"
+        element={
+          <Journal apiKey={apiKey} setNewDataGained={setNewDataGained} />
+        }
+      />
       <Route
         path="*"
         element={

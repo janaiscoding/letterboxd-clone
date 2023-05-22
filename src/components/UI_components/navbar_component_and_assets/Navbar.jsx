@@ -78,7 +78,16 @@ const Navbar = ({
 
   return (
     <>
-      <header className={`flex flex-col align-center md:h-[70px] md:flex-row ${isNavTransparent ? "bg-transparent" : "bg-h-blue"} ${DDMobOpen ? "mb-48" : "mb-0"}`} >
+      <header
+        className={`flex flex-col align-center md:h-[70px] md:flex-row ${
+          isNavTransparent ? "bg-transparent" : "bg-h-blue"
+        } ${
+          DDMobOpen && !authStatus ? "mb-28" : searchMobOpen ? "mb-11" : "mb-0"
+        }
+        ${
+          DDMobOpen && authStatus ? "mb-48" : searchMobOpen ? "mb-12" : "mb-0"
+        }`}
+      >
         <section className="px-2 pl-4 flex justify-between align-center md:w-[950px] md:my-0 md:mx-auto z-50">
           <Link className="self-center block md:hidden" to="/">
             <img

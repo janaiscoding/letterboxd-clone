@@ -6,9 +6,10 @@ import { onAuthStateChanged } from "firebase/auth";
 
 // SPA & UI
 import Navbar from "./components/UI_components/navbar_component_and_assets/Navbar";
-import { HashRouter } from "react-router-dom";
+import { BrowserRouter, HashRouter } from "react-router-dom";
 import MyRoutes from "./pages/MyRoutes";
 import Footer from "./components/UI_components/footer_component_and_assets/Footer";
+import ScrollToTop from "./pages/ScrollToTop";
 
 const App = () => {
   const apiKey = "90a83017dcd0ef93c3e5474af9093de9";
@@ -44,7 +45,8 @@ const App = () => {
 
   return (
     <>
-      <HashRouter>
+      <BrowserRouter>
+        <ScrollToTop />
         <Navbar
           apiKey={apiKey}
           authStatus={authStatus}
@@ -73,7 +75,7 @@ const App = () => {
           setNavTransparent={setNavTransparent}
         />
         <Footer />
-      </HashRouter>
+      </BrowserRouter>
     </>
   );
 };
