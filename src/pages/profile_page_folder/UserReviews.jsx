@@ -25,7 +25,7 @@ const UserReviews = ({ apiKey, reviews, setNewDataGained }) => {
         border-b-grey 
         mb-2"
       >
-        <p>YOUR REVIEWS</p>
+        <p>REVIEWS</p>
       </div>
       <div
         className="flex 

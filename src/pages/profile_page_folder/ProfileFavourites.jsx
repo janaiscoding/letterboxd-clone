@@ -6,8 +6,6 @@ import { db } from "../../firebase/firebase";
 import ProfilePoster from "./ProfilePoster";
 const ProfileFavourites = ({
   apiKey,
-  fetchRequest,
-  fetchResults,
   newDataGained,
   setNewDataGained,
 }) => {
@@ -46,7 +44,7 @@ const ProfileFavourites = ({
   }, [uid, newDataGained]);
 
   return (
-    <div className="min-h-[90vh] py-5">
+    <div className="min-h-[90vh] px-4 py-5">
       <div className=" flex flex-col font-['Graphik'] md:mx-auto md:my-0 md:w-[950px] ">
         <div
           className="section-heading 
@@ -68,16 +66,15 @@ const ProfileFavourites = ({
         </div>
 
         <div className="flex flex-wrap">
-          {favIDs.length > 0
-            ? favIDs.map((id) => (
-                <ProfilePoster
-                  key={id.id}
-                  movieID={id}
-                  apiKey={apiKey}
-                  setNewDataGained={setNewDataGained}
-                />
-              ))
-            : "no fav movies yet"}
+          {favIDs.length > 0 &&
+            favIDs.map((id) => (
+              <ProfilePoster
+                key={id.id}
+                movieID={id}
+                apiKey={apiKey}
+                setNewDataGained={setNewDataGained}
+              />
+            ))}
         </div>
       </div>
     </div>

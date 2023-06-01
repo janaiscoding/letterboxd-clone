@@ -18,7 +18,7 @@ const UserWatchedFilms = ({ uid, apiKey, watchedIDs, setNewDataGained }) => {
       <Link
       to={'/profile/watched/'+uid}
       className="flex 
-       justify-start 
+       justify-between 
       section-heading
       text-sh-grey 
       text-xs
@@ -30,6 +30,7 @@ const UserWatchedFilms = ({ uid, apiKey, watchedIDs, setNewDataGained }) => {
       hover:text-hov-blue"
       >
         <p>WATCHED FILMS</p>
+        <p> SEE ALL</p>
       </Link>
       <div
         className="flex 
