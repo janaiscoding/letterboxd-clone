@@ -15,7 +15,7 @@ const FavouriteButton = ({ movie, setNewDataGained }) => {
   const [isFavourite, setFavourite] = useState(false);
   const onFavourite = async (movie) => {
     if (auth.currentUser === null) {
-      createPopup("error");
+      createPopup(movie.title, "error");
     } else {
       await checkMovieFavsDB(movie).then(async () => {
         isFavourite ? await removeFromFavsDB(movie) : await addToFavsDB(movie);
