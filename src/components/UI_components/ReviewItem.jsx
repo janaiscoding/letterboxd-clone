@@ -9,7 +9,7 @@ const ReviewItem = ({ review }) => {
           src={review.userURL}
           width={40}
           height={40}
-          className="min-h-[40px] min-w-[40px] rounded-[20px] hover:cursor-pointer"
+          className="max-w-[40px] max-h-[40px] rounded-full hover:cursor-pointer"
           alt={review.userName + `review`}
         />
       </Link>
