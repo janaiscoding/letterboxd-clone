@@ -4,6 +4,7 @@ import dropdownLinksData from "./navbar_assets/dropdownLinksData";
 import SignOut from "../../auth/auth_methods/SignOut";
 import "../../../styles/dropdown.css";
 import { auth } from "../../../firebase/firebase";
+
 const DropdownDesktop = ({
   authStatus,
   userName,
@@ -11,8 +12,10 @@ const DropdownDesktop = ({
   arrowDown,
   setShowDropdown,
 }) => {
+
   const dropdownList = dropdownLinksData;
   const [uid, setUid] = useState("");
+
   useEffect(() => {
     if (authStatus) {
       setUid(auth.currentUser.uid);
@@ -24,13 +27,13 @@ const DropdownDesktop = ({
         className="rounded-sm pt-2 pb-2 bg-drop-grey flex flex-col self-start z-50"
         onMouseLeave={() => setShowDropdown(false)}
       >
-        <div className="flex items-center mx-1  z-50">
+        <div className="flex items-center mx-1 z-50">
           <img
             src={profilePic}
             alt={userName}
             width={24}
             height={24}
-            className="rounded-xl  z-50"
+            className="rounded-full z-50 max-h-[24px] max-w-[24px]"
           />
           <Link
             to={"/profile/" + uid}

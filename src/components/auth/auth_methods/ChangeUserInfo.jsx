@@ -10,6 +10,12 @@ const ChangeUserInfo = ({ setProfileUpdated }) => {
   const [newBio, setNewBio] = useState("");
   const navigate = useNavigate();
 
+  const updatePFP = () => {
+    updateProfile(auth.currentUser, {
+      photoURL:
+        "https://cdn.discordapp.com/attachments/1090380369502683217/1166998168085467136/jonny-mckenna-4igCpD-Lnfg-unsplash.jpg?ex=654c86bd&is=653a11bd&hm=5b3536cb660494ee5c5fbb9af95daed2ab68f313d41af19d3c5c42abc837b1f0&",
+    });
+  };
   const updateUserName = () => {
     if (newName === "") {
       createPopup("error");
@@ -28,6 +34,7 @@ const ChangeUserInfo = ({ setProfileUpdated }) => {
         });
     }
   };
+
   const changeLoggedUsername = async (uid) => {
     const userSnap = doc(db, "users", uid);
     await updateDoc(userSnap, {
@@ -38,6 +45,7 @@ const ChangeUserInfo = ({ setProfileUpdated }) => {
       setNewName("");
     });
   };
+
   const updateUserBio = async (uid) => {
     const userSnap = doc(db, "users", uid);
     await updateDoc(userSnap, {
@@ -150,8 +158,8 @@ const ChangeUserInfo = ({ setProfileUpdated }) => {
           Go back to profile
         </button>
       </div>
-      {/* 
-      <button onClick={changePP}>change pp</button> */}
+
+      {/* <button onClick={updatePFP}>change pp</button> */}
     </>
   );
 };

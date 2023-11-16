@@ -45,8 +45,6 @@ const Navbar = ({
   let dropDownRef = useRef();
   const [DDMobOpen, setDDMobOpen] = useState(false); //for dropdown mobile
 
-  //style for online/offline
-  const [style, setStyle] = useState();
   const displaySearchDesktop = () => {
     //show the bar element
     const SBD = document.querySelector(".search-bar-desktop");

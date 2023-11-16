@@ -25,7 +25,7 @@ const UserNavbar = ({
         alt={userName}
         width={24}
         height={24}
-        className="rounded-xl"
+        className="rounded-full max-w-[24px] max-h-[24px]"
       />
       <Link
         to={"/profile/" + uid}

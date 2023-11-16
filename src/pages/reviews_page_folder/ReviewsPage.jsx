@@ -10,9 +10,9 @@ const ReviewsPage = ({ apiKey, setNewDataGained }) => {
   const fetchReviewsfromDB = async () => {
     const moviesSnap = await getDocs(collection(db, "movies"));
     let tempArray = [];
-    moviesSnap.forEach((doc) => {
+    moviesSnap?.forEach((doc) => {
       const movieReviews = doc.data().reviews;
-      movieReviews.forEach((review) => {
+      movieReviews?.forEach((review) => {
         tempArray.push(review);
       });
     });

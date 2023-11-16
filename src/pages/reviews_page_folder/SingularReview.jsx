@@ -5,6 +5,7 @@ import ResultPoster from "../results_page_folder/ResultPoster";
 
 const SingularReview = ({ review, setNewDataGained }) => {
   const [movieData, setMovieData] = useState([]);
+
   useEffect(() => {
     fetch(
       "https://api.themoviedb.org/3/movie/" +
@@ -23,6 +24,7 @@ const SingularReview = ({ review, setNewDataGained }) => {
         console.log(err.message);
       });
   }, [review.movieID]);
+  
   return (
     <div className="flex justify-between py-2 border-t border-solid border-b-grey">
       <div className="flex gap-3 ">
