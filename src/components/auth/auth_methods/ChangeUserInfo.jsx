@@ -22,6 +22,10 @@ const ChangeUserInfo = ({ setProfileUpdated }) => {
     });
   };
 
+  const deleteDemoReviews = () => {
+    
+  }
+
   const updateUserName = () => {
     if (newName === "") {
       createPopup("error");
@@ -62,7 +66,7 @@ const ChangeUserInfo = ({ setProfileUpdated }) => {
       setNewBio("");
     });
   };
-  
+
   const goToProfile = (uid) => {
     navigate("/profile/" + uid);
   };
