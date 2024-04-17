@@ -29,8 +29,7 @@ const SignInTest = () => {
       name: "Demo",
       uid: auth.currentUser.uid,
       bio: "I hope you like my project!",
-      photoUrl:
-        "https://cdn.discordapp.com/attachments/948205733688786974/1108464787651833987/image.png",
+      photoUrl: 'https://images.unsplash.com/photo-1525310072745-f49212b5ac6d?q=80&w=3098&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
       reviews: [],
       watched: [],
       favourites: [],

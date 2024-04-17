@@ -8,14 +8,20 @@ import { useNavigate } from "react-router-dom";
 const ChangeUserInfo = ({ setProfileUpdated }) => {
   const [newName, setNewName] = useState("");
   const [newBio, setNewBio] = useState("");
-  const navigate = useNavigate();
+  const [newPfp, setNewPfp] = useState("");
 
+  const navigate = useNavigate();
+  /**
+   * Use this when the manually set avatar for the demo is not available anymore
+   * Update photoURL with a new one and updates Firebase store
+   */
   const updatePFP = () => {
     updateProfile(auth.currentUser, {
       photoURL:
-        "https://cdn.discordapp.com/attachments/1090380369502683217/1166998168085467136/jonny-mckenna-4igCpD-Lnfg-unsplash.jpg?ex=654c86bd&is=653a11bd&hm=5b3536cb660494ee5c5fbb9af95daed2ab68f313d41af19d3c5c42abc837b1f0&",
+        "https://images.unsplash.com/photo-1525310072745-f49212b5ac6d?q=80&w=3098&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     });
   };
+
   const updateUserName = () => {
     if (newName === "") {
       createPopup("error");
@@ -56,9 +62,11 @@ const ChangeUserInfo = ({ setProfileUpdated }) => {
       setNewBio("");
     });
   };
+  
   const goToProfile = (uid) => {
     navigate("/profile/" + uid);
   };
+
   const createPopup = (action) => {
     const popupAlert = document.createElement("div");
     popupAlert.classList.add("popup");
@@ -77,20 +85,8 @@ const ChangeUserInfo = ({ setProfileUpdated }) => {
 
   return (
     <>
-      <div
-        className="section-heading 
-      m-auto
-      mb-3
-      flex 
-      w-[50%] 
-      justify-between 
-      border-b
-      border-solid 
-      border-b-grey 
-      text-xs 
-      text-sh-grey"
-      >
-        <p className="text-sm uppercase hover:cursor-pointer hover:text-hov-blue">
+      <div className="section-heading m-auto mb-3 flex w-[50%] justify-between border-b border-solid border-b-grey text-xs text-sh-grey">
+        <p className="text-sm uppercase hover:text-hov-blue">
           CHANGE YOUR USERNAME
         </p>{" "}
       </div>
@@ -110,24 +106,11 @@ const ChangeUserInfo = ({ setProfileUpdated }) => {
           className="sans-serif rounded bg-[#567] px-3 py-2 text-xs font-bold text-p-white"
           onClick={updateUserName}
         >
-          Save new name
+          Update name
         </button>
       </div>
-      <div
-        className="section-heading 
-      m-auto
-      mb-3
-      mt-4
-      flex 
-      w-[50%] 
-      justify-between 
-      border-b
-      border-solid 
-      border-b-grey 
-      text-xs 
-      text-sh-grey"
-      >
-        <p className="text-sm uppercase hover:cursor-pointer hover:text-hov-blue">
+      <div className="section-heading  m-auto mb-3 mt-4 flex  w-[50%]  justify-between  border-b border-solid  border-b-grey  text-xs  text-sh-grey">
+        <p className="text-sm hover:text-hov-blue">
           CHANGE YOUR BIO
         </p>{" "}
       </div>
@@ -147,7 +130,7 @@ const ChangeUserInfo = ({ setProfileUpdated }) => {
           className="sans-serif rounded bg-[#567] px-3 py-2 text-xs font-bold text-p-white"
           onClick={() => updateUserBio(auth.currentUser.uid)}
         >
-          Save new bio
+          Update bio
         </button>
       </div>
       <div className="mt-10 flex items-center justify-center">
@@ -157,9 +140,8 @@ const ChangeUserInfo = ({ setProfileUpdated }) => {
         >
           Go back to profile
         </button>
+        {/* <button onClick={updatePFP}>Update Avatar</button> */}
       </div>
-
-      {/* <button onClick={updatePFP}>change pp</button> */}
     </>
   );
 };

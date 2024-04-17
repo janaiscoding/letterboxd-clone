@@ -11,14 +11,12 @@ const SignOut = ({ setDDMobOpen }) => {
     signOut(auth)
       .then(() => {
         setDDMobOpen(false);
-        if (location.pathname.contains("/profile/")) {
+        if (location.pathname.contains("profile")) {
           navigate("/");
         }
       })
       .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        console.log(errorCode, errorMessage);
+        console.error(error);
       });
   };
   return (
