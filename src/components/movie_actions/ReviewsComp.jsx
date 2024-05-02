@@ -1,23 +1,23 @@
-import React, { useEffect, useState } from "react";
-import { auth, db } from "../../firebase/firebase";
-import { doc, setDoc, getDoc, updateDoc, arrayUnion } from "firebase/firestore";
-import ReviewItem from "../UI_components/ReviewItem";
-import SignInAll from "../auth/auth_methods/SignInAll";
+import React, { useEffect, useState } from 'react';
+import { auth, db } from '../../firebase/firebase';
+import { doc, setDoc, getDoc, updateDoc, arrayUnion } from 'firebase/firestore';
+import ReviewItem from '../UI_components/ReviewItem';
+import SignInAll from '../auth/auth_methods/SignInAll';
 
 const ReviewsComp = ({ movie, authStatus }) => {
-  const [review, setReview] = useState("");
+  const [review, setReview] = useState('');
   const [isReviewed, setReviewed] = useState(false);
 
   const onReview = async (movie, review) => {
     if (auth.currentUser === null) {
-      createPopup("error");
-    } else if (review === "") {
+      createPopup('error');
+    } else if (review === '') {
       // handler so you dont send empty reviews
-      createPopup("error");
+      createPopup('error');
     } else {
       await checkMovieReviewedDB(movie).then(async () => {
         isReviewed
-          ? console.log("sent review to movie!")
+          ? console.log('sent review to movie!')
           : await addReviewDB(review).then(async () => {
               await checkMovieCollection(movie, review);
             });
@@ -26,14 +26,14 @@ const ReviewsComp = ({ movie, authStatus }) => {
   };
   const checkMovieReviewedDB = async (movie) => {
     const userId = auth.currentUser.uid;
-    const userDoc = await getDoc(doc(db, "users", userId));
+    const userDoc = await getDoc(doc(db, 'users', userId));
     const userRevs = userDoc.data().reviews;
     setReviewed(userRevs.some((RM) => RM.movieID === movie.id));
   };
 
   const addReviewDB = async (review) => {
     const userId = auth.currentUser.uid;
-    const userRef = doc(db, "users", userId);
+    const userRef = doc(db, 'users', userId);
 
     await updateDoc(userRef, {
       reviews: arrayUnion({
@@ -41,14 +41,14 @@ const ReviewsComp = ({ movie, authStatus }) => {
         review: review,
       }),
     }).then(() => {
-      auth.currentUser.uid === "omVEdBhoCJQr2imTBjMF8Plmiyi2"
+      auth.currentUser.uid === 'omVEdBhoCJQr2imTBjMF8Plmiyi2'
         ? setReviewed(false)
         : setReviewed(true);
     });
   };
 
   const checkMovieCollection = async (movie, review) => {
-    const movieDoc = await getDoc(doc(db, "movies/" + movie.id));
+    const movieDoc = await getDoc(doc(db, 'movies/' + movie.id));
     movieDoc.exists()
       ? await addNewReview(movie, review)
       : await addMovieToCollDB(movie, review);
@@ -56,7 +56,7 @@ const ReviewsComp = ({ movie, authStatus }) => {
 
   const addNewReview = async (movie, review) => {
     const user = auth.currentUser;
-    const movieRef = doc(db, "movies/" + movie.id);
+    const movieRef = doc(db, 'movies/' + movie.id);
     await updateDoc(movieRef, {
       reviews: arrayUnion({
         movieID: movie.id,
@@ -67,7 +67,7 @@ const ReviewsComp = ({ movie, authStatus }) => {
       }),
     })
       .then(() => {
-        console.log("added new review to db");
+        console.log('added new review to db');
       })
       .catch((err) => {
         console.log(err);
@@ -75,7 +75,7 @@ const ReviewsComp = ({ movie, authStatus }) => {
   };
   const addMovieToCollDB = async (movie, review) => {
     const user = auth.currentUser;
-    await setDoc(doc(db, "movies/" + movie.id), {
+    await setDoc(doc(db, 'movies/' + movie.id), {
       reviews: [
         {
           movieID: movie.id,
@@ -90,7 +90,7 @@ const ReviewsComp = ({ movie, authStatus }) => {
   const [reviews, setReviews] = useState([]);
 
   const getReviews = async () => {
-    const movieDoc = await getDoc(doc(db, "movies/" + movie.id));
+    const movieDoc = await getDoc(doc(db, 'movies/' + movie.id));
     if (movieDoc.exists()) {
       const movieReviews = movieDoc.data().reviews;
       const firstFour = movieReviews.reverse().filter((id, index) => index < 4);
@@ -102,13 +102,13 @@ const ReviewsComp = ({ movie, authStatus }) => {
   const handleReviewEvent = async (movie, review) => {
     await onReview(movie, review).then(() => {
       getReviews();
-      setReview("");
+      setReview('');
     });
   };
   const createPopup = (action) => {
-    const popupAlert = document.createElement("div");
-    popupAlert.classList.add("popup-review");
-    if (action === "error") {
+    const popupAlert = document.createElement('div');
+    popupAlert.classList.add('popup-review');
+    if (action === 'error') {
       popupAlert.innerText = `Your review cannot be empty!`;
     }
     document.body.append(popupAlert);

@@ -1,8 +1,8 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useEffect, useState } from "react";
-import ProfilePoster from "./ProfilePoster";
-import { Link } from "react-router-dom";
-const UserFavouriteFilms = ({ uid, apiKey, favIDs, setNewDataGained }) => {
+import React, { useEffect, useState } from 'react';
+import ProfilePoster from './ProfilePoster';
+import { Link } from 'react-router-dom';
+const UserFavouriteFilms = ({ uid, favIDs, setNewDataGained }) => {
   const [firstFour, setFirstFour] = useState([]);
   useEffect(() => {
     if (favIDs.length > 0) {
@@ -16,7 +16,7 @@ const UserFavouriteFilms = ({ uid, apiKey, favIDs, setNewDataGained }) => {
   return (
     <>
       <Link
-        to={"/profile/favourites/" + uid}
+        to={'/profile/favourites/' + uid}
         className="align-start 
       section-heading 
       mb-2
@@ -48,7 +48,6 @@ const UserFavouriteFilms = ({ uid, apiKey, favIDs, setNewDataGained }) => {
         ) : (
           firstFour.map((id) => (
             <ProfilePoster
-              apiKey={apiKey}
               key={id}
               movieID={id}
               setNewDataGained={setNewDataGained}

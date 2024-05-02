@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import { auth } from "../../../firebase/firebase";
+import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import { auth } from '../../../firebase/firebase';
 
 const UserNavbar = ({
   authStatus,
@@ -17,7 +17,7 @@ const UserNavbar = ({
   }, [authStatus]);
   return (
     <div
-      className="flex items-center mt-2 mx-1"
+      className="mx-1 mt-2 flex items-center"
       onMouseEnter={() => setShowDropdown(true)}
     >
       <img
@@ -25,11 +25,11 @@ const UserNavbar = ({
         alt={userName}
         width={24}
         height={24}
-        className="rounded-full max-w-[24px] max-h-[24px]"
+        className="max-h-[24px] max-w-[24px] rounded-full"
       />
       <Link
-        to={"/profile/" + uid}
-        className="sans-serif text-xs text-sh-grey font-bold tracking-widest hover:text-p-white mx-1 uppercase"
+        to={'/profile/' + uid}
+        className="sans-serif mx-1 text-xs font-bold uppercase tracking-widest text-sh-grey hover:text-p-white"
       >
         {userName}
       </Link>

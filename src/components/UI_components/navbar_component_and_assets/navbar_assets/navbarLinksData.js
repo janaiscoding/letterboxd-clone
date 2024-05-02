@@ -1,25 +1,25 @@
-import uniqid from "uniqid";
+import uniqid from 'uniqid';
 
 const navbarLinksData = [
   {
     id: uniqid(),
-    name: "FILMS",
-    link: "/films",
+    name: 'FILMS',
+    link: '/films',
   },
   {
     id: uniqid(),
-    name: "LISTS",
-    link: "/lists",
+    name: 'LISTS',
+    link: '/lists',
   },
   {
     id: uniqid(),
-    name: "MEMBERS",
-    link: "/members",
+    name: 'MEMBERS',
+    link: '/members',
   },
   {
     id: uniqid(),
-    name: "REVIEWS",
-    link: "/Reviews",
+    name: 'REVIEWS',
+    link: '/Reviews',
   },
 ];
 

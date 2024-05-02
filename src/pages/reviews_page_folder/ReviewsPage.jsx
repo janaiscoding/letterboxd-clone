@@ -1,14 +1,14 @@
-import React, { useEffect, useState } from "react";
-import { collection, getDocs } from "firebase/firestore";
-import { db } from "../../firebase/firebase";
-import { Link } from "react-router-dom";
-import SingularReview from "./SingularReview";
+import React, { useEffect, useState } from 'react';
+import { collection, getDocs } from 'firebase/firestore';
+import { db } from '../../firebase/firebase';
+import { Link } from 'react-router-dom';
+import SingularReview from './SingularReview';
 
-const ReviewsPage = ({ apiKey, setNewDataGained }) => {
+const ReviewsPage = ({ setNewDataGained }) => {
   const [reviews, setReviews] = useState([]);
 
   const fetchReviewsfromDB = async () => {
-    const moviesSnap = await getDocs(collection(db, "movies"));
+    const moviesSnap = await getDocs(collection(db, 'movies'));
     let tempArray = [];
     moviesSnap?.forEach((doc) => {
       const movieReviews = doc.data().reviews;
@@ -45,7 +45,6 @@ const ReviewsPage = ({ apiKey, setNewDataGained }) => {
                 key={index}
                 review={review}
                 setNewDataGained={setNewDataGained}
-                apiKey={apiKey}
               />
             ))}
         </div>

@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const PosterHomeLists = ({ movie, index }) => {
   const [fixedIndex, setFixedIndex] = useState();
@@ -38,10 +38,10 @@ const PosterHomeLists = ({ movie, index }) => {
     shadow-inner"
       style={{ zIndex: fixedIndex }}
     >
-      <Link to={"/movie/" + movie.id}>
+      <Link to={'/movie/' + movie.id}>
         <img
           className="rounded border md:h-[100px] md:w-[70px]"
-          src={"https://image.tmdb.org/t/p/w500/" + movie.poster_path}
+          src={'https://image.tmdb.org/t/p/w500/' + movie.poster_path}
           alt={movie.title}
           loading="lazy"
         />

@@ -1,18 +1,21 @@
-import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import FavouriteButton from "../../components/movie_actions/FavouriteButton";
-import WatchedButton from "../../components/movie_actions/WatchedButton";
+import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import FavouriteButton from '../../components/movie_actions/FavouriteButton';
+import WatchedButton from '../../components/movie_actions/WatchedButton';
 
-const UserProfileReview = ({ apiKey, movieID, review, setNewDataGained }) => {
+const UserProfileReview = ({ movieID, review, setNewDataGained }) => {
   const [movieData, setMovieData] = useState([]);
   const [visibility, setVisibility] = useState(false);
   const [movieYear, setMovieYear] = useState();
 
   const fetchRequestFromAPI = () => {
     fetch(
-      "https://api.themoviedb.org/3/movie/" + movieID + "?api_key=" + apiKey,
+      'https://api.themoviedb.org/3/movie/' +
+        movieID +
+        '?api_key=' +
+        process.env.REACT_APP_TMDB_API_KEY,
       {
-        method: "GET",
+        method: 'GET',
       }
     )
       .then((response) => response.json())
@@ -56,10 +59,10 @@ const UserProfileReview = ({ apiKey, movieID, review, setNewDataGained }) => {
         onMouseLeave={() => setVisibility(false)}
         key={movieData.id}
       >
-        <Link to={"/movie/" + movieData.id}>
+        <Link to={'/movie/' + movieData.id}>
           <img
             className="block max-h-[120px] max-w-[80px] rounded border"
-            src={"https://image.tmdb.org/t/p/w500/" + movieData.poster_path}
+            src={'https://image.tmdb.org/t/p/w500/' + movieData.poster_path}
             alt={movieData.title}
             height={150}
             loading="lazy"
@@ -76,7 +79,7 @@ const UserProfileReview = ({ apiKey, movieID, review, setNewDataGained }) => {
             items-center     
             rounded   
             p-0.5"
-            style={{ backgroundColor: "rgba(0,0,0,0.8)" }}
+            style={{ backgroundColor: 'rgba(0,0,0,0.8)' }}
           >
             <FavouriteButton
               movie={movieData}
@@ -88,16 +91,16 @@ const UserProfileReview = ({ apiKey, movieID, review, setNewDataGained }) => {
             />
           </div>
         ) : (
-          " "
+          ' '
         )}
       </div>
       <div className="ml-3 ">
         <Link
-          to={"/movie/" + movieData.id}
+          to={'/movie/' + movieData.id}
           className="text-xl font-bold text-p-white hover:text-hov-blue "
         >
-          {" "}
-          {movieData.title}{" "}
+          {' '}
+          {movieData.title}{' '}
           <span className="text-base font-normal text-sh-grey">
             {movieYear}
           </span>

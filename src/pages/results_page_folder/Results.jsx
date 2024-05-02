@@ -1,26 +1,25 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import ResultComp from "./ResultComp";
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import ResultComp from './ResultComp';
 const Results = ({
-  apiKey,
   fetchResults,
   fetchRequest,
   newDataGained,
   setNewDataGained,
 }) => {
   const { query } = useParams();
-  const [resultsLength, setResultsLength] = useState("");
+  const [resultsLength, setResultsLength] = useState('');
   const [results, setResults] = useState([]);
 
   useEffect(() => {
     fetch(
-      "https://api.themoviedb.org/3/search/movie?api_key=" +
-        apiKey +
-        "&query=" +
+      'https://api.themoviedb.org/3/search/movie?api_key=' +
+        process.env.REACT_APP_TMDB_API_KEY +
+        '&query=' +
         query,
       {
-        method: "GET",
+        method: 'GET',
       }
     )
       .then((response) => response.json())
@@ -34,22 +33,22 @@ const Results = ({
       });
   }, [query, newDataGained]);
   return (
-    <div className="site-body py-5 min-h-[80vh]">
-      <div className="flex flex-col px-4 md:w-[950px] md:my-0 md:mx-auto font-['Graphik']">
+    <div className="site-body min-h-[80vh] py-5">
+      <div className="flex flex-col px-4 font-['Graphik'] md:mx-auto md:my-0 md:w-[950px]">
         <div
-          className="flex 
+          className="section-heading 
+      mb-3 
+      flex 
       justify-between 
-      section-heading 
-      text-sh-grey 
-      text-xs
-      border-b 
+      border-b
       border-solid 
       border-b-grey 
-      mb-3"
+      text-xs 
+      text-sh-grey"
         >
           <p className="text-sm uppercase">
             Found at least {resultsLength} results for {query}
-          </p>{" "}
+          </p>{' '}
         </div>
         {results === undefined ? (
           <p>Nothing found!</p>

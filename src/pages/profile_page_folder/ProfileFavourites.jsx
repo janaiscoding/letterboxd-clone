@@ -1,33 +1,30 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { doc, getDoc } from "firebase/firestore";
-import React, { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
-import { db } from "../../firebase/firebase";
-import ProfilePoster from "./ProfilePoster";
-const ProfileFavourites = ({
-  apiKey,
-  newDataGained,
-  setNewDataGained,
-}) => {
+import { doc, getDoc } from 'firebase/firestore';
+import React, { useEffect, useState } from 'react';
+import { Link, useParams } from 'react-router-dom';
+import { db } from '../../firebase/firebase';
+import ProfilePoster from './ProfilePoster';
+
+const ProfileFavourites = ({ newDataGained, setNewDataGained }) => {
   const { uid } = useParams();
 
   const [favIDs, setFavIDs] = useState([]);
-  const [userName, setUserName] = useState("");
+  const [userName, setUserName] = useState('');
   const fetchUserMoviesDB = (uid) => {
     fetchFavouritesDB(uid);
     setNewDataGained(false);
   };
   const fetchUsername = async (uid) => {
-    const userSnap = await getDoc(doc(db, "users", uid));
+    const userSnap = await getDoc(doc(db, 'users', uid));
     if (userSnap.exists()) {
       setUserName(userSnap.data().name);
     } else {
-      alert("This user does not exist!");
+      alert('This user does not exist!');
     }
   };
 
   const fetchFavouritesDB = async (uid) => {
-    const userSnap = await getDoc(doc(db, "users", uid));
+    const userSnap = await getDoc(doc(db, 'users', uid));
     if (userSnap.exists()) {
       let userFavs = userSnap.data().favourites;
       let tempArray = [];
@@ -58,7 +55,7 @@ const ProfileFavourites = ({
       text-sh-grey"
         >
           <Link
-            to={"/profile/" + uid}
+            to={'/profile/' + uid}
             className="text-sm uppercase hover:cursor-pointer hover:text-hov-blue"
           >
             {userName}'s FAVOURITE MOVIES
@@ -71,7 +68,6 @@ const ProfileFavourites = ({
               <ProfilePoster
                 key={id.id}
                 movieID={id}
-                apiKey={apiKey}
                 setNewDataGained={setNewDataGained}
               />
             ))}

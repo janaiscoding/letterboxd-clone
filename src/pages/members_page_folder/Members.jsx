@@ -1,35 +1,34 @@
-import { collection, getDocs } from "firebase/firestore";
-import React, { useEffect, useState } from "react";
-import { db } from "../../firebase/firebase";
-import { Link } from "react-router-dom";
-import MemberContainer from "./MemberContainer";
+import { collection, getDocs } from 'firebase/firestore';
+import React, { useEffect, useState } from 'react';
+import { db } from '../../firebase/firebase';
+import { Link } from 'react-router-dom';
+import MemberContainer from './MemberContainer';
 const Members = () => {
   const [users, setUsers] = useState([]);
   const fetchUsersfromDB = async () => {
-    const usersSnap = await getDocs(collection(db, "users"));
+    const usersSnap = await getDocs(collection(db, 'users'));
     let tempArray = [];
     usersSnap.forEach((doc) => {
       tempArray.push(doc.data());
     });
     setUsers(tempArray);
-
   };
   useEffect(() => {
     fetchUsersfromDB();
   }, []);
   return (
-    <div className="site-body py-5 min-h-[80vh]">
-      <div className="flex flex-col px-4 md:w-[950px] md:my-0 md:mx-auto font-['Graphik']">
+    <div className="site-body min-h-[80vh] py-5">
+      <div className="flex flex-col px-4 font-['Graphik'] md:mx-auto md:my-0 md:w-[950px]">
         <div
-          className="flex 
+          className="section-heading 
+      mb-3 
+      flex 
       justify-between 
-      section-heading 
-      text-sh-grey 
-      text-xs
-      border-b 
+      border-b
       border-solid 
       border-b-grey 
-      mb-3"
+      text-xs 
+      text-sh-grey"
         >
           <Link to="/members/" className="text-sm hover:text-hov-blue">
             MEMBERS OF CLONNERBOXD
@@ -40,11 +39,11 @@ const Members = () => {
           users.map((user, index) => (
             <div
               key={index}
-              className="flex flex-col text-sh-grey 
-          text-xs
-          border-b 
-          border-solid 
-          border-b-grey"
+              className="flex flex-col border-b 
+          border-solid
+          border-b-grey 
+          text-xs 
+          text-sh-grey"
             >
               <MemberContainer key={user.uid} user={user} />
             </div>

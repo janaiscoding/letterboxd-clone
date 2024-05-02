@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
-import UserProfileReview from "./UserProfileReview";
+import React, { useEffect, useState } from 'react';
+import UserProfileReview from './UserProfileReview';
 
-const UserReviews = ({ apiKey, reviews, setNewDataGained }) => {
+const UserReviews = ({ reviews, setNewDataGained }) => {
   const [firstSix, setFirstSix] = useState([]);
   useEffect(() => {
     if (reviews.length > 0) {
@@ -14,36 +14,35 @@ const UserReviews = ({ apiKey, reviews, setNewDataGained }) => {
   return (
     <>
       <div
-        className="flex 
+        className="section-heading 
         mx-2
+        mb-2 
+        flex
         justify-between 
-        section-heading
-        text-sh-grey 
-        text-xs
-        border-b 
+        border-b
         border-solid 
         border-b-grey 
-        mb-2"
+        text-xs 
+        text-sh-grey"
       >
         <p>REVIEWS</p>
       </div>
       <div
-        className="flex 
+        className="mb-10 
+        flex
         flex-col
-        gap-2
         justify-between 
-        md:flex-nowrap
-        mb-10"
+        gap-2
+        md:flex-nowrap"
       >
         {firstSix.length === 0 ? (
-          <p className=" mx-2 text-sh-grey text-base pt-2">
+          <p className=" mx-2 pt-2 text-base text-sh-grey">
             This user hasn't reviewed any movies yet.
           </p>
         ) : (
-          firstSix.map((R,index) => (
+          firstSix.map((R, index) => (
             <UserProfileReview
               setNewDataGained={setNewDataGained}
-              apiKey={apiKey}
               key={index}
               movieID={R.movieID}
               review={R.review}

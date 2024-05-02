@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from "react";
-import { Link, useLocation } from "react-router-dom";
-import dropdownLinksData from "./navbar_assets/dropdownLinksData";
-import SignOut from "../../auth/auth_methods/SignOut";
-import "../../../styles/dropdown.css";
-import { auth } from "../../../firebase/firebase";
-import SignInGoogle from "../../auth/auth_methods/SignInGoogle";
-import SignInTest from "../../auth/auth_methods/SignInTest";
+import React, { useEffect, useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
+import dropdownLinksData from './navbar_assets/dropdownLinksData';
+import SignOut from '../../auth/auth_methods/SignOut';
+import '../../../styles/dropdown.css';
+import { auth } from '../../../firebase/firebase';
+import SignInGoogle from '../../auth/auth_methods/SignInGoogle';
+import SignInTest from '../../auth/auth_methods/SignInTest';
 
 const DropdownMobile = ({
   authStatus,
@@ -18,7 +18,7 @@ const DropdownMobile = ({
   dropDownRef,
 }) => {
   const dropdownList = dropdownLinksData;
-  const [uid, setUid] = useState("");
+  const [uid, setUid] = useState('');
   const { pathname } = useLocation();
   useEffect(() => {
     if (authStatus) {
@@ -32,10 +32,10 @@ const DropdownMobile = ({
         setDDMobOpen(false);
       }
     };
-    document.addEventListener("mousedown", handlerDDMob);
+    document.addEventListener('mousedown', handlerDDMob);
     setDDMobOpen(false);
     return () => {
-      document.removeEventListener("mousedown", handlerDDMob);
+      document.removeEventListener('mousedown', handlerDDMob);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [authStatus, pathname]);
@@ -44,14 +44,14 @@ const DropdownMobile = ({
     <>
       <div
         className={`mobile-dropdown-nav ${
-          DDMobOpen ? "active" : "inactive"
+          DDMobOpen ? 'active' : 'inactive'
         } z-999 sans-serif static absolute left-0 top-[2.3rem] w-full
         flex-col rounded-sm bg-h-blue p-2`}
       >
         {userLogin ? (
           <div className="z-50 mx-4 flex py-1">
             <div className="flex gap-1">
-              <Link to={"/profile/" + uid}>
+              <Link to={'/profile/' + uid}>
                 <img
                   src={profilePic}
                   alt={userName}
@@ -61,7 +61,7 @@ const DropdownMobile = ({
                 />
               </Link>
               <Link
-                to={"/profile/" + uid}
+                to={'/profile/' + uid}
                 className=" z-50 font-semibold uppercase text-p-white hover:cursor-pointer hover:text-p-white"
               >
                 {userName}
@@ -70,7 +70,7 @@ const DropdownMobile = ({
             <p></p>
           </div>
         ) : (
-          ""
+          ''
         )}
 
         <ul className="sans-serif z-50 mx-3 rounded-sm bg-h-blue py-3 font-bold uppercase tracking-widest text-sh-grey">

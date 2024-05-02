@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
-import "../../styles/poster.css";
-import PosterHomeLists from "./Poster_home_lists";
+import React, { useEffect, useState } from 'react';
+import '../../styles/poster.css';
+import PosterHomeLists from './Poster_home_lists';
 
 const PopularLists = ({ populars }) => {
   const [firstSix, setFirstSix] = useState([]);
@@ -37,7 +37,7 @@ const PopularLists = ({ populars }) => {
       >
         <p className="text-sm  hover:cursor-pointer hover:text-hov-blue">
           POPULAR LISTS
-        </p>{" "}
+        </p>{' '}
         <p className="text-[11px] hover:cursor-pointer hover:text-hov-blue">
           MORE
         </p>
@@ -69,7 +69,7 @@ const PopularLists = ({ populars }) => {
       "
           >
             {firstSix.length === 0
-              ? ""
+              ? ''
               : firstSix.map((movie, index) => (
                   <PosterHomeLists key={movie.id} movie={movie} index={index} />
                 ))}
@@ -106,7 +106,7 @@ const PopularLists = ({ populars }) => {
             "
           >
             {nextSix.length === 0
-              ? ""
+              ? ''
               : nextSix.map((movie, index) => (
                   <PosterHomeLists key={movie.id} movie={movie} index={index} />
                 ))}
@@ -143,7 +143,7 @@ const PopularLists = ({ populars }) => {
           "
           >
             {lastSix.length === 0
-              ? ""
+              ? ''
               : lastSix.map((movie, index) => (
                   <PosterHomeLists key={movie.id} movie={movie} index={index} />
                 ))}

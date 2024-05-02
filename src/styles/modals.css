@@ -1,12 +1,12 @@
 .search-bar-mobile.active {
   display: flex;
 }
-.search-bar-mobile.inactive{
+.search-bar-mobile.inactive {
   display: none;
 }
-.mobile-dropdown-nav.active{
+.mobile-dropdown-nav.active {
   display: flex;
 }
-.mobile-dropdown-nav.inactive{
+.mobile-dropdown-nav.inactive {
   display: none;
 }

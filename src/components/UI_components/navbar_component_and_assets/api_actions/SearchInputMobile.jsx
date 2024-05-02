@@ -1,32 +1,31 @@
-import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import searchIcon from "../navbar_assets/searchIcon.png";
-import "../../../../styles/modals.css";
+import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import searchIcon from '../navbar_assets/searchIcon.png';
+import '../../../../styles/modals.css';
 
 const SearchInputMobile = ({
-  apiKey,
   fetchRequest,
   setNewDataGained,
   searchMobOpen,
   setSearchMobOpen,
   searchBarRef,
 }) => {
-  const [query, setQuery] = useState("");
+  const [query, setQuery] = useState('');
   const navigate = useNavigate();
 
   const handleSearchMobile = () => {
-    if (query !== "") {
+    if (query !== '') {
       fetchRequest(
-        "https://api.themoviedb.org/3/search/movie?api_key=" +
-          apiKey +
-          "&query=" +
+        'https://api.themoviedb.org/3/search/movie?api_key=' +
+          process.env.REACT_APP_TMDB_API_KEY +
+          '&query=' +
           query
       );
       setNewDataGained(true);
-      navigate("/results/" + query);
+      navigate('/results/' + query);
     }
-    setQuery("");
-    setSearchMobOpen(false)
+    setQuery('');
+    setSearchMobOpen(false);
   };
   useEffect(() => {
     let handler = (e) => {
@@ -34,16 +33,16 @@ const SearchInputMobile = ({
         setSearchMobOpen(false);
       }
     };
-    document.addEventListener("mousedown", handler);
+    document.addEventListener('mousedown', handler);
     return () => {
-      document.removeEventListener("mousedown", handler);
+      document.removeEventListener('mousedown', handler);
     };
   });
 
   return (
     <div
-      className={`p-4 z-50 bg-h-blue search-bar-mobile absolute top-[2.3rem] flex left-0 w-full ${
-        searchMobOpen ? "active" : "inactive"
+      className={`search-bar-mobile absolute left-0 top-[2.3rem] z-50 flex w-full bg-h-blue p-4 ${
+        searchMobOpen ? 'active' : 'inactive'
       }`}
     >
       <label htmlFor="search" className="hidden">
@@ -55,16 +54,16 @@ const SearchInputMobile = ({
         value={query}
         onChange={(e) => setQuery(e.target.value)}
         className="
-        rounded
-        text-base
+        focus:bg-white
         h-9
         w-full
+        rounded
+        bg-if-blue
         py-1.5
         pl-2.5
         pr-8
-        bg-if-blue
+        text-base
         text-drop-grey
-        focus:bg-white
         focus:outline-none
         "
       />

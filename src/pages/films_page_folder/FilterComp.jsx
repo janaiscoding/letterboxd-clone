@@ -1,27 +1,27 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import ResultPoster from "../results_page_folder/ResultPoster";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import ResultPoster from '../results_page_folder/ResultPoster';
 
 const FilterComp = ({ movie, setNewDataGained }) => {
   return (
     <div
-      className="flex 
+      className="my-2 
+      flex
       flex-col
-      md:flex-row
       gap-4
-       my-2
-      border-b 
-    border-solid 
+       border-b
+      border-solid 
     border-b-grey 
-    pb-2"
+    pb-2 
+    md:flex-row"
     >
       <ResultPoster movie={movie} setNewDataGained={setNewDataGained} />
       <div className="flex flex-col">
         <Link
-          to={"/movie/" + movie.id}
-          className="text-p-white font-bold text-xl"
+          to={'/movie/' + movie.id}
+          className="text-xl font-bold text-p-white"
         >
-          {" "}
+          {' '}
           {movie.title}
         </Link>
         <div className="flex">

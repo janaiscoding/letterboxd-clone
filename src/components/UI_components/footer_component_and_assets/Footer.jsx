@@ -1,14 +1,14 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import footerLinksData from "./footerLinksData";
-import socialLinksData from "./socialLinksData";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import footerLinksData from './footerLinksData';
+import socialLinksData from './socialLinksData';
 const Footer = () => {
   const footerLinks = footerLinksData;
   const socials = socialLinksData;
   return (
     <footer
       className="relative z-[9999]"
-      style={{ backgroundColor: "#2c3440" }}
+      style={{ backgroundColor: '#2c3440' }}
     >
       <div className="flex flex-col px-4 py-6 font-['Graphik'] md:mx-auto md:my-0 md:w-[950px] ">
         <nav className="mb-3 flex items-center justify-between">
@@ -44,15 +44,15 @@ const Footer = () => {
           </ul>
         </nav>
         <p className="pb-3 text-xs text-sh-grey">
-          © Clonnerboxd Limited. Made by{" "}
+          © Clonnerboxd Limited. Made by{' '}
           <a className="underline" href="https://github.com/JanaIsCoding">
             JanaIsCoding
           </a>
-          . Film data from{" "}
+          . Film data from{' '}
           <a className="underline" href="https://www.themoviedb.org/">
-            TMDb 
+            TMDb
           </a>
-          . Inspired by {" "}
+          . Inspired by{' '}
           <a className="underline" href="https://letterboxd.com/">
             Letterboxd
           </a>

@@ -1,14 +1,11 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import ResultPoster from "./ResultPoster";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import ResultPoster from './ResultPoster';
 
-const ResultComp = ({
-  movie,
-  setNewDataGained
-}) => {
+const ResultComp = ({ movie, setNewDataGained }) => {
   return (
     <div
-      className="flex gap-4 my-2
+      className="my-2 flex gap-4
       border-b 
     border-solid 
     border-b-grey 
@@ -17,10 +14,10 @@ const ResultComp = ({
       <ResultPoster movie={movie} setNewDataGained={setNewDataGained} />
       <div className="flex flex-col">
         <Link
-          to={"/movie/" + movie.id}
-          className="text-p-white font-bold text-xl"
+          to={'/movie/' + movie.id}
+          className="text-xl font-bold text-p-white"
         >
-          {" "}
+          {' '}
           {movie.title}
         </Link>
         <div className="flex">

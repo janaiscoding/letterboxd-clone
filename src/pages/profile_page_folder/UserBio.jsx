@@ -1,6 +1,6 @@
-import UserCounts from "./UserCounts";
-import UserInfo from "./UserInfo";
-import React from "react";
+import UserCounts from './UserCounts';
+import UserInfo from './UserInfo';
+import React from 'react';
 
 const UserBio = ({
   uid,
@@ -12,7 +12,7 @@ const UserBio = ({
   newDataGained,
 }) => {
   return (
-    <div className="flex flex-col items-center md:flex-row md:justify-between mb-10">
+    <div className="mb-10 flex flex-col items-center md:flex-row md:justify-between">
       <UserInfo
         uid={uid}
         authStatus={authStatus}

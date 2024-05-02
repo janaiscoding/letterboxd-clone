@@ -7,6 +7,6 @@
 @media screen {
   .card-description {
     -webkit-line-clamp: 6;
-    font-size:14px;
+    font-size: 14px;
   }
 }

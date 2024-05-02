@@ -1,7 +1,7 @@
-import { signOut } from "firebase/auth";
-import React from "react";
-import { auth } from "../../../firebase/firebase";
-import { useNavigate, useLocation } from "react-router-dom";
+import { signOut } from 'firebase/auth';
+import React from 'react';
+import { auth } from '../../../firebase/firebase';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 // this will work on any auth type
 const SignOut = ({ setDDMobOpen }) => {
@@ -11,8 +11,8 @@ const SignOut = ({ setDDMobOpen }) => {
     signOut(auth)
       .then(() => {
         setDDMobOpen(false);
-        if (location.pathname.contains("profile")) {
-          navigate("/");
+        if (location.pathname.contains('profile')) {
+          navigate('/');
         }
       })
       .catch((error) => {

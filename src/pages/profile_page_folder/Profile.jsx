@@ -1,16 +1,15 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
-import { db } from "../../firebase/firebase";
-import { getDoc, doc } from "firebase/firestore";
+import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+import { db } from '../../firebase/firebase';
+import { getDoc, doc } from 'firebase/firestore';
 
-import UserFavouriteFilms from "./UserFavouriteFilms";
-import UserBio from "./UserBio";
-import UserWatchedFilms from "./UserWatchedFilms";
-import UserReviews from "./UserReviews";
+import UserFavouriteFilms from './UserFavouriteFilms';
+import UserBio from './UserBio';
+import UserWatchedFilms from './UserWatchedFilms';
+import UserReviews from './UserReviews';
 
 const Profile = ({
-  apiKey,
   authStatus,
   isProfileUpdated,
   setProfileUpdated,
@@ -34,7 +33,7 @@ const Profile = ({
   };
 
   const fetchReviewsDB = async (uid) => {
-    const userSnap = await getDoc(doc(db, "users", uid));
+    const userSnap = await getDoc(doc(db, 'users', uid));
     if (userSnap.exists()) {
       let userReviews = userSnap.data().reviews;
       let tempArray = [];
@@ -46,7 +45,7 @@ const Profile = ({
   };
 
   const fetchFavouritesDB = async (uid) => {
-    const userSnap = await getDoc(doc(db, "users", uid));
+    const userSnap = await getDoc(doc(db, 'users', uid));
     if (userSnap.exists()) {
       let userFavs = userSnap.data().favourites;
       let tempArray = [];
@@ -58,7 +57,7 @@ const Profile = ({
     }
   };
   const fetchWatchedDB = async (uid) => {
-    const userSnap = await getDoc(doc(db, "users", uid));
+    const userSnap = await getDoc(doc(db, 'users', uid));
     if (userSnap.exists()) {
       let userFavs = userSnap.data().watched;
       let tempArray = [];
@@ -90,19 +89,16 @@ const Profile = ({
             <UserFavouriteFilms
               favIDs={favIDs}
               uid={uid}
-              apiKey={apiKey}
               setNewDataGained={setNewDataGained}
             />
             <UserWatchedFilms
               watchedIDs={watchedIDs}
-              apiKey={apiKey}
               uid={uid}
               setNewDataGained={setNewDataGained}
             />
           </div>
           <div className="">
             <UserReviews
-              apiKey={apiKey}
               reviews={reviews}
               setNewDataGained={setNewDataGained}
             />

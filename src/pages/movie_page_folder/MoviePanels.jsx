@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from 'react';
 
 const MoviePanels = ({ movie }) => {
   const [cast, setCast] = useState([]);
@@ -75,7 +75,7 @@ const MoviePanels = ({ movie }) => {
                   {actor}
                 </p>
               ))
-            : ""}
+            : ''}
         </div>
       </div>
     </>

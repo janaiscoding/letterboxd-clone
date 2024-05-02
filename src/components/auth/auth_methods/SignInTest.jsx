@@ -1,14 +1,14 @@
-import { doc, getDoc, setDoc } from "firebase/firestore";
-import { db, auth } from "../../../firebase/firebase";
-import React from "react";
-import { signInWithEmailAndPassword } from "firebase/auth";
+import { doc, getDoc, setDoc } from 'firebase/firestore';
+import { db, auth } from '../../../firebase/firebase';
+import React from 'react';
+import { signInWithEmailAndPassword } from 'firebase/auth';
 
 const SignInTest = () => {
   const handleAuthEvent = async () => {
     await signInWithEmailAndPassword(
       auth,
-      "testwithemail@mail.com",
-      "mypassword"
+      'testwithemail@mail.com',
+      'mypassword'
     ).catch((error) => {
       const errorCode = error.code;
       const errorMessage = error.message;
@@ -17,7 +17,7 @@ const SignInTest = () => {
   };
 
   const checkUsersFromDB = async () => {
-    const userDoc = await getDoc(doc(db, "users/" + auth.currentUser.uid));
+    const userDoc = await getDoc(doc(db, 'users/' + auth.currentUser.uid));
     if (!userDoc.exists()) {
       await addNewUserToDB();
     }
@@ -25,11 +25,12 @@ const SignInTest = () => {
   };
   // creates a new document for the new user
   const addNewUserToDB = async () => {
-    await setDoc(doc(db, "users/" + auth.currentUser.uid), {
-      name: "Demo",
+    await setDoc(doc(db, 'users/' + auth.currentUser.uid), {
+      name: 'Demo',
       uid: auth.currentUser.uid,
-      bio: "I hope you like my project!",
-      photoUrl: 'https://images.unsplash.com/photo-1525310072745-f49212b5ac6d?q=80&w=3098&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      bio: 'I hope you like my project!',
+      photoUrl:
+        'https://images.unsplash.com/photo-1525310072745-f49212b5ac6d?q=80&w=3098&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
       reviews: [],
       watched: [],
       favourites: [],
@@ -45,7 +46,7 @@ const SignInTest = () => {
   };
   return (
     <p
-      className="mx-3 z-50 sans-serif text-sh-grey font-bold tracking-widest uppercase md:text-xs md:hover:text-p-white md:ml-4 md:hover:cursor-pointer md:mx-0"
+      className="sans-serif z-50 mx-3 font-bold uppercase tracking-widest text-sh-grey md:mx-0 md:ml-4 md:text-xs md:hover:cursor-pointer md:hover:text-p-white"
       onClick={onLogin}
     >
       DEMO

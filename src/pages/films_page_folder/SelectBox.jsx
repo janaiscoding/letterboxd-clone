@@ -1,18 +1,18 @@
-import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import arrowDown from "../../components/UI_components/navbar_component_and_assets/navbar_assets/arrowdownprofile.png";
+import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import arrowDown from '../../components/UI_components/navbar_component_and_assets/navbar_assets/arrowdownprofile.png';
 const SelectBox = ({ title, data }) => {
   const [isClicked, setClicked] = useState(false);
-  const [style, setStyle] = useState("hidden");
+  const [style, setStyle] = useState('hidden');
   const navigate = useNavigate();
   const onSelect = (i) => {
-    navigate("/filter/" + i);
+    navigate('/filter/' + i);
   };
   const toggleClick = () => {
     isClicked ? setClicked(false) : setClicked(true);
   };
   useEffect(() => {
-    isClicked ? setStyle("block") : setStyle("hidden");
+    isClicked ? setStyle('block') : setStyle('hidden');
   }, [isClicked]);
   return (
     <div className="m-2">

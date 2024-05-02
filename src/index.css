@@ -3,26 +3,26 @@
 @tailwind utilities;
 
 @font-face {
-  font-family: "Graphik";
-  src: url("./assets/font/graphic-web-regular.ttf");
-  font-family: "Tiempos-Regular";
-  src: url("./assets/font/TiemposHeadline-Regular.otf");
+  font-family: 'Graphik';
+  src: url('./assets/font/graphic-web-regular.ttf');
+  font-family: 'Tiempos-Regular';
+  src: url('./assets/font/TiemposHeadline-Regular.otf');
 }
 
 @layer base {
   html {
-    font-family: "Graphik", system-ui, sans-serif;
-    font-family: "Tiempos-Regular", system-ui, sans-serif;
+    font-family: 'Graphik', system-ui, sans-serif;
+    font-family: 'Tiempos-Regular', system-ui, sans-serif;
   }
 
   .sans-serif {
     font-family: sans-serif;
   }
   .tiempos {
-    font-family: "Tiempos-Regular";
+    font-family: 'Tiempos-Regular';
   }
   .graphik {
-    font-family: "Graphik";
+    font-family: 'Graphik';
   }
 }
 .movie-background-helper {
@@ -38,7 +38,7 @@
   border-radius: 10px;
   text-transform: uppercase;
   transform: translate(-50%, -50%);
-  z-index:1000;
+  z-index: 1000;
 }
 @media (min-width: 750px) {
   .popup {
@@ -75,7 +75,7 @@
   display: inline-block;
   width: 3px;
   height: 20px;
-  background-color: rgba(255, 255, 255, .5);
+  background-color: rgba(255, 255, 255, 0.5);
   border-radius: 10px;
   animation: scale-up4 1s linear infinite;
 }
@@ -83,11 +83,11 @@
 .bar:nth-child(2) {
   height: 35px;
   margin: 0 5px;
-  animation-delay: .25s;
+  animation-delay: 0.25s;
 }
 
 .bar:nth-child(3) {
-  animation-delay: .5s;
+  animation-delay: 0.5s;
 }
 
 @keyframes scale-up4 {

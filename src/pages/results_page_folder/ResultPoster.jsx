@@ -1,7 +1,7 @@
-import React, { useState } from "react";
-import FavouriteButton from "../../components/movie_actions/FavouriteButton";
-import WatchedButton from "../../components/movie_actions/WatchedButton";
-import { Link } from "react-router-dom";
+import React, { useState } from 'react';
+import FavouriteButton from '../../components/movie_actions/FavouriteButton';
+import WatchedButton from '../../components/movie_actions/WatchedButton';
+import { Link } from 'react-router-dom';
 
 const ResultPoster = ({ movie, setNewDataGained }) => {
   const [visibility, setVisibility] = useState(false);
@@ -9,38 +9,39 @@ const ResultPoster = ({ movie, setNewDataGained }) => {
   return (
     <div
       className="
-        md:self-start
+        hover:border-3
+        relative 
         hover:cursor-pointer 
-        hover:border-3 
         hover:rounded
         md:ml-1
-        relative
+        md:self-start
         "
       onMouseEnter={() => setVisibility(true)}
       onMouseLeave={() => setVisibility(false)}
       key={movie.id}
     >
-      <Link to={"/movie/"+movie.id}>
-      <img
-        className="border rounded block border 
-        border-solid 
+      <Link to={'/movie/' + movie.id}>
+        <img
+          className="block max-h-[110px] max-w-[75px] rounded 
         rounded 
-        border-pb-grey/25
-        shadow-inner 
-        shadow-[0_0_1px_1px_rgba(20,24,28,1)]  max-h-[110px] max-w-[75px]"
-        src={"https://image.tmdb.org/t/p/w500/" + movie.poster_path}
-        alt={movie.title}
-      /></Link>
+        border 
+        border
+        border-solid 
+        border-pb-grey/25  shadow-[0_0_1px_1px_rgba(20,24,28,1)] shadow-inner"
+          src={'https://image.tmdb.org/t/p/w500/' + movie.poster_path}
+          alt={movie.title}
+        />
+      </Link>
       {visibility ? (
         <div
-          className="rounded absolute flex items-center p-0.5 top-[65%] z-10"
-          style={{ backgroundColor: "rgba(0,0,0,0.8)" }}
+          className="absolute top-[65%] z-10 flex items-center rounded p-0.5"
+          style={{ backgroundColor: 'rgba(0,0,0,0.8)' }}
         >
           <FavouriteButton movie={movie} setNewDataGained={setNewDataGained} />
           <WatchedButton movie={movie} setNewDataGained={setNewDataGained} />
         </div>
       ) : (
-        " "
+        ' '
       )}
     </div>
   );

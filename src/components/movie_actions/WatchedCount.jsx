@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useState, useEffect } from "react";
-import remWatched from "./remWatched.png";
+import React, { useState, useEffect } from 'react';
+import remWatched from './remWatched.png';
 const WatchedCount = ({ movie }) => {
   const [number, setNumber] = useState(0);
   const getRandomNumber = (min, max) => {
@@ -11,13 +11,14 @@ const WatchedCount = ({ movie }) => {
   }, [movie]);
   return (
     <>
-      <div className="py-2 text-xl text-p-white text-center flex flex-col items-center">
+      <div className="flex flex-col items-center py-2 text-center text-xl text-p-white">
         <img
           src={remWatched}
           width={30}
           height={20}
           alt="add movie to favourites icon"
-        /><span>{number}</span>
+        />
+        <span>{number}</span>
       </div>
     </>
   );

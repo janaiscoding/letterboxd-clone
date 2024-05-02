@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
-import PosterHomeSignout from "./PosterHomeSignout";
-import "../../styles/poster.css"
+import React, { useEffect, useState } from 'react';
+import PosterHomeSignout from './PosterHomeSignout';
+import '../../styles/poster.css';
 
 const PopularSignout = ({ populars }) => {
   const [firstSix, setFirstSix] = useState([]);
@@ -13,14 +13,16 @@ const PopularSignout = ({ populars }) => {
 
   return (
     <>
-      <div className="flex 
+      <div
+        className="mb-10 
+      flex 
       flex-wrap 
       justify-between 
-      md:flex-row 
-      md:flex-nowrap
-      mb-10">
+      md:flex-row
+      md:flex-nowrap"
+      >
         {firstSix.length === 0
-          ? "no populars available atm"
+          ? 'no populars available atm'
           : firstSix.map((movie) => (
               <PosterHomeSignout key={movie.id} movie={movie} />
             ))}

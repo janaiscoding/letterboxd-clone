@@ -1,5 +1,5 @@
-import React from "react";
-import ReviewsComp from "../../components/movie_actions/ReviewsComp";
+import React from 'react';
+import ReviewsComp from '../../components/movie_actions/ReviewsComp';
 
 const RecentReviewsMovie = ({ movie, authStatus }) => {
   return (
@@ -13,7 +13,7 @@ const RecentReviewsMovie = ({ movie, authStatus }) => {
         <p className="py-1 text-xs text-sh-grey hover:cursor-pointer hover:text-hov-blue">
           RECENT REVIEWS
         </p>
-      </div>{" "}
+      </div>{' '}
       <ReviewsComp movie={movie} authStatus={authStatus} />
     </>
   );

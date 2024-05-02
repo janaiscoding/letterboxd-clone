@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import FilterComp from "./FilterComp";
+import React, { useState, useEffect } from 'react';
+import FilterComp from './FilterComp';
 
 const FilterList = ({ fetchResults, setNewDataGained }) => {
   const [hasImageList, setHasImageList] = useState([]);
@@ -15,7 +15,7 @@ const FilterList = ({ fetchResults, setNewDataGained }) => {
   return (
     <div>
       {hasImageList.length === 0
-        ? "no movies found for this filtered search"
+        ? 'no movies found for this filtered search'
         : hasImageList.map((movie) => (
             <FilterComp
               key={movie.id}

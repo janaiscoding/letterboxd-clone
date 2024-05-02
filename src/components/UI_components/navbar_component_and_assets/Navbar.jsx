@@ -1,25 +1,24 @@
-import React, { useEffect, useRef, useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useRef, useState } from 'react';
+import { Link } from 'react-router-dom';
 
-import SignInAll from "../../auth/auth_methods/SignInAll";
-import SearchInputMobile from "./api_actions/SearchInputMobile";
-import SearchInputDesktop from "./api_actions/SearchInputDesktop";
-import { auth } from "../../../firebase/firebase";
-import navbarLinksData from "./navbar_assets/navbarLinksData";
+import SignInAll from '../../auth/auth_methods/SignInAll';
+import SearchInputMobile from './api_actions/SearchInputMobile';
+import SearchInputDesktop from './api_actions/SearchInputDesktop';
+import { auth } from '../../../firebase/firebase';
+import navbarLinksData from './navbar_assets/navbarLinksData';
 
-import logo from "./navbar_assets/logo.png";
-import logoMobile from "./navbar_assets/logoMobile.png";
-import openCloseMenu from "./navbar_assets/menuopenclose.png";
-import searchIcon from "./navbar_assets/searchIcon.png";
+import logo from './navbar_assets/logo.png';
+import logoMobile from './navbar_assets/logoMobile.png';
+import openCloseMenu from './navbar_assets/menuopenclose.png';
+import searchIcon from './navbar_assets/searchIcon.png';
 
-import arrowDown from "./navbar_assets/arrowdownprofile.png";
-import DropdownDesktop from "./DropdownDesktop";
-import UserNavbar from "./UserNavbar";
-import DropdownMobile from "./DropdownMobile";
+import arrowDown from './navbar_assets/arrowdownprofile.png';
+import DropdownDesktop from './DropdownDesktop';
+import UserNavbar from './UserNavbar';
+import DropdownMobile from './DropdownMobile';
 
 const Navbar = ({
   query,
-  apiKey,
   authStatus,
   fetchRequest,
   isProfileUpdated,
@@ -47,17 +46,17 @@ const Navbar = ({
 
   const displaySearchDesktop = () => {
     //show the bar element
-    const SBD = document.querySelector(".search-bar-desktop");
-    SBD.classList.remove("md:hidden");
-    SBD.classList.add("md:block");
+    const SBD = document.querySelector('.search-bar-desktop');
+    SBD.classList.remove('md:hidden');
+    SBD.classList.add('md:block');
 
     // hide the icon
-    const SIID = document.querySelector(".search-icon-desktop");
-    SIID.classList.add("md:hidden");
+    const SIID = document.querySelector('.search-icon-desktop');
+    SIID.classList.add('md:hidden');
     // show the x button
-    const CSD = document.querySelector(".close-search-icon-desktop");
-    CSD.classList.add("md:block");
-    CSD.classList.remove("md:hidden");
+    const CSD = document.querySelector('.close-search-icon-desktop');
+    CSD.classList.add('md:block');
+    CSD.classList.remove('md:hidden');
   };
 
   useEffect(() => {
@@ -77,17 +76,17 @@ const Navbar = ({
   return (
     <>
       <header
-        className={`flex flex-col align-center md:h-[70px] md:flex-row ${
-          isNavTransparent ? "bg-transparent" : "bg-h-blue"
+        className={`align-center flex flex-col md:h-[70px] md:flex-row ${
+          isNavTransparent ? 'bg-transparent' : 'bg-h-blue'
         } ${
-          DDMobOpen && !authStatus ? "mb-28" : searchMobOpen ? "mb-11" : "mb-0"
+          DDMobOpen && !authStatus ? 'mb-28' : searchMobOpen ? 'mb-11' : 'mb-0'
         }
         ${
-          DDMobOpen && authStatus ? "mb-48" : searchMobOpen ? "mb-12" : "mb-0"
+          DDMobOpen && authStatus ? 'mb-48' : searchMobOpen ? 'mb-12' : 'mb-0'
         }`}
       >
-        <section className="px-2 pl-4 flex justify-between align-center md:w-[950px] md:my-0 md:mx-auto z-50">
-          <Link className="self-center block md:hidden" to="/">
+        <section className="align-center z-50 flex justify-between px-2 pl-4 md:mx-auto md:my-0 md:w-[950px]">
+          <Link className="block self-center md:hidden" to="/">
             <img
               src={logoMobile}
               width={60}
@@ -96,7 +95,7 @@ const Navbar = ({
               alt="letterboxd mobile logo"
             />
           </Link>
-          <Link className="self-center hidden md:block" to="/">
+          <Link className="hidden self-center md:block" to="/">
             <img
               src={logo}
               width={265}
@@ -106,8 +105,8 @@ const Navbar = ({
             />
           </Link>
           <div className="flex items-center">
-            <nav className="flex flex-col self-start z-[1000] mt-4">
-              <ul className="hidden md:flex  z-[1000]">
+            <nav className="z-[1000] mt-4 flex flex-col self-start">
+              <ul className="z-[1000] hidden  md:flex">
                 {/* if user if logged in, i show the dropdown/normal user UI */}
                 {userLogin ? (
                   <li>
@@ -135,11 +134,11 @@ const Navbar = ({
                   <SignInAll />
                 ) : (
                   <li
-                    className="ml-4 pt-2  self-center items-center"
+                    className="ml-4 items-center  self-center pt-2"
                     onClick={() => setShowLogin(true)}
                   >
-                    <p className="ml-4 sans-serif text-xs text-sh-grey font-bold tracking-widest hover:text-p-white	hover:cursor-pointer uppercase">
-                      {" "}
+                    <p className="sans-serif ml-4 text-xs font-bold uppercase tracking-widest text-sh-grey	hover:cursor-pointer hover:text-p-white">
+                      {' '}
                       SIGN IN
                     </p>
                   </li>
@@ -148,7 +147,7 @@ const Navbar = ({
                 {navbarLinks.map((L) => (
                   <li className="ml-4 mt-2" key={L.id}>
                     <Link
-                      className="sans-serif text-xs text-sh-grey font-bold tracking-widest hover:text-p-white"
+                      className="sans-serif text-xs font-bold tracking-widest text-sh-grey hover:text-p-white"
                       to={L.link}
                     >
                       {L.name}
@@ -158,7 +157,7 @@ const Navbar = ({
               </ul>
             </nav>
             <img
-              className="search-icon-desktop hidden hover:cursor-pointer md:block md:ml-4"
+              className="search-icon-desktop hidden hover:cursor-pointer md:ml-4 md:block"
               src={searchIcon}
               width={30}
               height={30}
@@ -168,7 +167,6 @@ const Navbar = ({
 
             <div className="search-bar-desktop hidden md:hidden">
               <SearchInputDesktop
-                apiKey={apiKey}
                 query={query}
                 fetchRequest={fetchRequest}
                 setNewDataGained={setNewDataGained}
@@ -212,7 +210,6 @@ const Navbar = ({
                 }}
               />
               <SearchInputMobile
-                apiKey={apiKey}
                 query={query}
                 fetchRequest={fetchRequest}
                 setNewDataGained={setNewDataGained}

@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
-import PosterHomePopular from "./Poster_home_popular";
-import "../../styles/poster.css";
+import React, { useEffect, useState } from 'react';
+import PosterHomePopular from './Poster_home_popular';
+import '../../styles/poster.css';
 
 const PopularHome = ({ populars, setNewDataGained }) => {
   const [firstSix, setFirstSix] = useState([]);
@@ -14,30 +14,34 @@ const PopularHome = ({ populars, setNewDataGained }) => {
   return (
     <>
       <div
-        className="flex 
+        className="section-heading 
+      mb-3 
+      flex 
       justify-between 
-      section-heading 
-      text-sh-grey 
-      text-xs
-      border-b 
+      border-b
       border-solid 
       border-b-grey 
-      mb-3"
+      text-xs 
+      text-sh-grey"
       >
-        <p className="text-sm hover:text-hov-blue hover:cursor-pointer">POPULAR ON CLONNERBOXD</p>{" "}
-        <p className="text-[11px] hover:text-hov-blue hover:cursor-pointer">MORE</p>
+        <p className="text-sm hover:cursor-pointer hover:text-hov-blue">
+          POPULAR ON CLONNERBOXD
+        </p>{' '}
+        <p className="text-[11px] hover:cursor-pointer hover:text-hov-blue">
+          MORE
+        </p>
       </div>
 
       <div
-        className="flex 
+        className="mb-10 
+      flex 
       flex-wrap 
       justify-between 
-      md:flex-row 
-      md:flex-nowrap
-      mb-10"
+      md:flex-row
+      md:flex-nowrap"
       >
         {firstSix.length === 0
-          ? "no populars available atm"
+          ? 'no populars available atm'
           : firstSix.map((movie) => (
               <PosterHomePopular
                 key={movie.id}

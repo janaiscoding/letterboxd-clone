@@ -1,8 +1,8 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React from 'react';
+import { Link } from 'react-router-dom';
 const LatestNews = () => {
   let url =
-    "https://a.ltrbxd.com/resized/sm/upload/ym/n6/g5/14/5130362-620-620-348-348-crop-fill.jpg?k=0bcaefc03e";
+    'https://a.ltrbxd.com/resized/sm/upload/ym/n6/g5/14/5130362-620-620-348-348-crop-fill.jpg?k=0bcaefc03e';
   return (
     <>
       <div
@@ -60,7 +60,7 @@ const LatestNews = () => {
               to="/journal"
               className="text-[11px] font-bold text-p-white hover:text-hov-blue"
             >
-              {" "}
+              {' '}
               READ MORE
             </Link>
           </p>

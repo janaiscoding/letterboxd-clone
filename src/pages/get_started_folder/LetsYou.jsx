@@ -1,18 +1,18 @@
-import React from "react";
-import letsYouData from "./lets_you_assets/letsYouData";
-import LetsYouCard from "./LetsYouCard";
+import React from 'react';
+import letsYouData from './lets_you_assets/letsYouData';
+import LetsYouCard from './LetsYouCard';
 const LetsYou = () => {
   const data = letsYouData;
   return (
     <div
-      className="flex 
-      flex-col
+      className="section-heading 
+      mb-3
+      flex 
+      flex-col 
       justify-between 
-      section-heading 
-      text-sh-grey 
-      mb-3"
+      text-sh-grey"
     >
-      <p className="text-base mb-2 text-xs">CLONNERBOX LETS YOU...</p>
+      <p className="mb-2 text-base text-xs">CLONNERBOX LETS YOU...</p>
       <div className="md:grid md:grid-cols-3">
         {data.map((card) => (
           <LetsYouCard

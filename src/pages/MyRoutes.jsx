@@ -1,22 +1,21 @@
-import React from "react";
-import { Route, Routes } from "react-router-dom";
-import Home from "./home_page_folder/Home";
-import Films from "./films_page_folder/Films";
-import Members from "./members_page_folder/Members";
-import Results from "./results_page_folder/Results";
-import MoviePage from "./movie_page_folder/MoviePage";
-import Profile from "./profile_page_folder/Profile";
-import FilterPage from "./films_page_folder/FilterPage";
-import Settings from "./settings_page_folder/Settings";
-import NotFound from "./NotFound";
+import React from 'react';
+import { Route, Routes } from 'react-router-dom';
+import Home from './home_page_folder/Home';
+import Films from './films_page_folder/Films';
+import Members from './members_page_folder/Members';
+import Results from './results_page_folder/Results';
+import MoviePage from './movie_page_folder/MoviePage';
+import Profile from './profile_page_folder/Profile';
+import FilterPage from './films_page_folder/FilterPage';
+import Settings from './settings_page_folder/Settings';
+import NotFound from './NotFound';
 
-import ProfileFavourites from "./profile_page_folder/ProfileFavourites";
-import ProfileWatched from "./profile_page_folder/ProfileWatched";
-import ReviewsPage from "./reviews_page_folder/ReviewsPage";
+import ProfileFavourites from './profile_page_folder/ProfileFavourites';
+import ProfileWatched from './profile_page_folder/ProfileWatched';
+import ReviewsPage from './reviews_page_folder/ReviewsPage';
 
 const MyRoutes = ({
   authStatus,
-  apiKey,
   fetchRequest,
   fetchResults,
   setFetchResults,
@@ -34,7 +33,6 @@ const MyRoutes = ({
         path="/"
         element={
           <Home
-            apiKey={apiKey}
             authStatus={authStatus}
             fetchRequest={fetchRequest}
             fetchResults={fetchResults}
@@ -46,7 +44,6 @@ const MyRoutes = ({
         path="/profile/:uid"
         element={
           <Profile
-            apiKey={apiKey}
             fetchResults={fetchResults}
             fetchRequest={fetchRequest}
             authStatus={authStatus}
@@ -61,7 +58,6 @@ const MyRoutes = ({
         path="/profile/favourites/:uid"
         element={
           <ProfileFavourites
-            apiKey={apiKey}
             fetchResults={fetchResults}
             fetchRequest={fetchRequest}
             setNewDataGained={setNewDataGained}
@@ -73,7 +69,6 @@ const MyRoutes = ({
         path="/profile/watched/:uid"
         element={
           <ProfileWatched
-            apiKey={apiKey}
             fetchResults={fetchResults}
             fetchRequest={fetchRequest}
             setNewDataGained={setNewDataGained}
@@ -85,7 +80,6 @@ const MyRoutes = ({
         path="/films"
         element={
           <Films
-            apiKey={apiKey}
             authStatus={authStatus}
             fetchRequest={fetchRequest}
             fetchResults={fetchResults}
@@ -99,7 +93,6 @@ const MyRoutes = ({
         path="/results/:query"
         element={
           <Results
-            apiKey={apiKey}
             fetchResults={fetchResults}
             fetchRequest={fetchRequest}
             setNewDataGained={setNewDataGained}
@@ -111,7 +104,6 @@ const MyRoutes = ({
         path="/movie/:movieId"
         element={
           <MoviePage
-            apiKey={apiKey}
             authStatus={authStatus}
             fetchResults={fetchResults}
             fetchRequest={fetchRequest}
@@ -125,7 +117,6 @@ const MyRoutes = ({
         path="/filter/:query"
         element={
           <FilterPage
-            apiKey={apiKey}
             fetchResults={fetchResults}
             fetchRequest={fetchRequest}
             setFetchResults={setFetchResults}
@@ -139,9 +130,7 @@ const MyRoutes = ({
       />
       <Route
         path="/reviews"
-        element={
-          <ReviewsPage apiKey={apiKey} setNewDataGained={setNewDataGained} />
-        }
+        element={<ReviewsPage setNewDataGained={setNewDataGained} />}
       />
       <Route
         path="*"
