@@ -8,7 +8,7 @@ const firebaseConfig = {
   projectId: "clonnerboxd",
   storageBucket: "clonnerboxd.appspot.com",
   messagingSenderId: "494667785645",
-  appId: "1:494667785645:web:882708b1bbd24aba92ed24",
+  appId: "1:494667785645:web:882708b1bbd24aba92ed24"
 };
 
 const app = initializeApp(firebaseConfig);
