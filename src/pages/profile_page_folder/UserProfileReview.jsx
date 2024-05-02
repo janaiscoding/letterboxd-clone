@@ -10,13 +10,7 @@ const UserProfileReview = ({ movieID, review, setNewDataGained }) => {
 
   const fetchRequestFromAPI = () => {
     fetch(
-      'https://api.themoviedb.org/3/movie/' +
-        movieID +
-        '?api_key=' +
-        process.env.REACT_APP_TMDB_API_KEY,
-      {
-        method: 'GET',
-      }
+      `https://api.themoviedb.org/3/movie/${movieID}?api_key=${process.env.REACT_APP_TMDB_API_KEY}`
     )
       .then((response) => response.json())
       .then((data) => {

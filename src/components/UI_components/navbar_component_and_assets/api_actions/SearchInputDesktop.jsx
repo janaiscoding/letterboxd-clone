@@ -15,10 +15,7 @@ const SearchInputDesktop = ({ fetchRequest, setNewDataGained }) => {
       SID.classList.add('md:block');
       //fetch first
       fetchRequest(
-        'https://api.themoviedb.org/3/search/movie?api_key=' +
-          process.env.REACT_APP_TMDB_API_KEY +
-          '&query=' +
-          query
+        `https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_TMDB_API_KEY}&query=${query}`
       );
       //setting that new data was gained to refresh results page
       setNewDataGained(true);
@@ -36,10 +33,7 @@ const SearchInputDesktop = ({ fetchRequest, setNewDataGained }) => {
       SID.classList.add('md:block');
       //fetch first
       fetchRequest(
-        'https://api.themoviedb.org/3/search/movie?api_key=' +
-          process.env.REACT_APP_TMDB_API_KEY +
-          '&query=' +
-          query
+        `https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_TMDB_API_KEY}&query=${query}`
       );
       //setting that new data was gained to refresh results page
       setNewDataGained(true);

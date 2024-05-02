@@ -19,9 +19,7 @@ const App = () => {
   const [newDataGained, setNewDataGained] = useState(false); //db event listener
 
   const fetchRequest = (url) => {
-    fetch(url, {
-      method: 'GET',
-    })
+    fetch(url)
       .then((response) => response.json())
       .then((data) => {
         setFetchResults(data);
@@ -55,6 +53,7 @@ const App = () => {
           isNavTransparent={isNavTransparent}
           setNewDataGained={setNewDataGained}
         />
+
         <MyRoutes
           authStatus={authStatus}
           fetchResults={fetchResults}

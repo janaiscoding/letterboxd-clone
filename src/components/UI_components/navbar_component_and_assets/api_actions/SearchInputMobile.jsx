@@ -16,10 +16,7 @@ const SearchInputMobile = ({
   const handleSearchMobile = () => {
     if (query !== '') {
       fetchRequest(
-        'https://api.themoviedb.org/3/search/movie?api_key=' +
-          process.env.REACT_APP_TMDB_API_KEY +
-          '&query=' +
-          query
+        `https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_TMDB_API_KEY}&query=${query}`
       );
       setNewDataGained(true);
       navigate('/results/' + query);
