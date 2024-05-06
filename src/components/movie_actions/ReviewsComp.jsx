@@ -1,6 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { auth, db } from '../../firebase/firebase';
-import { doc, setDoc, getDoc, updateDoc, arrayUnion } from 'firebase/firestore';
+import {
+  doc,
+  setDoc,
+  getDoc,
+  updateDoc,
+  arrayUnion,
+  arrayRemove,
+} from 'firebase/firestore';
 import ReviewItem from '../UI_components/ReviewItem';
 import SignInAll from '../auth/auth_methods/SignInAll';
 
@@ -38,7 +45,7 @@ const ReviewsComp = ({ movie, authStatus }) => {
     await updateDoc(userRef, {
       reviews: arrayUnion({
         movieID: movie.id,
-        review: review,
+        review: review.review,
       }),
     }).then(() => {
       auth.currentUser.uid === 'omVEdBhoCJQr2imTBjMF8Plmiyi2'
@@ -63,16 +70,17 @@ const ReviewsComp = ({ movie, authStatus }) => {
         userName: user.displayName,
         userURL: user.photoURL,
         review: review,
-        uid: user.uid,
+        uid: user.uid, // uid = userID
       }),
     })
       .then(() => {
-        console.log('added new review to db');
+        createPopup('success');
       })
       .catch((err) => {
         console.log(err);
       });
   };
+
   const addMovieToCollDB = async (movie, review) => {
     const user = auth.currentUser;
     await setDoc(doc(db, 'movies/' + movie.id), {
@@ -91,25 +99,69 @@ const ReviewsComp = ({ movie, authStatus }) => {
 
   const getReviews = async () => {
     const movieDoc = await getDoc(doc(db, 'movies/' + movie.id));
+
     if (movieDoc.exists()) {
       const movieReviews = movieDoc.data().reviews;
-      const firstFour = movieReviews.reverse().filter((id, index) => index < 4);
-      setReviews(firstFour);
+      if (!movieReviews) {
+        setReviews([]);
+      } else {
+        console.log(movieReviews);
+        setReviews(movieReviews.reverse());
+      }
     } else {
       setReviews([]);
     }
   };
+
   const handleReviewEvent = async (movie, review) => {
     await onReview(movie, review).then(() => {
       getReviews();
       setReview('');
     });
   };
+
+  const handleDelete = async (review) => {
+    // On the user document, we only store minimal info, and we need a ref. to that to delete as well
+    const userProfileReview = {
+      movieID: review.movieID,
+      review: review.review,
+    };
+
+    const movieRef = doc(db, 'movies', review.movieID.toString());
+    const userRef = doc(db, 'users', review.uid);
+
+    await updateDoc(movieRef, {
+      reviews: arrayRemove(review),
+    })
+      .then(() => {
+        createPopup('delete');
+        getReviews(); // refetch reviews :)
+      })
+      .catch((err) => {
+        console.log(err);
+        createPopup('error');
+      });
+
+    await updateDoc(userRef, {
+      reviews: arrayRemove(userProfileReview),
+    })
+      .then(() => {})
+      .catch((err) => {
+        console.error(err);
+      });
+  };
+
   const createPopup = (action) => {
     const popupAlert = document.createElement('div');
     popupAlert.classList.add('popup-review');
     if (action === 'error') {
       popupAlert.innerText = `Your review cannot be empty!`;
+    } else if (action === 'success') {
+      popupAlert.innerText = 'Your review was successfully added!';
+    } else if (action === 'delete') {
+      popupAlert.innerText = `Your review was successfully deleted!`;
+    } else {
+      popupAlert.innerText = `Your review could not be deleted!`;
     }
     document.body.append(popupAlert);
     setTimeout(() => {
@@ -128,7 +180,13 @@ const ReviewsComp = ({ movie, authStatus }) => {
           reviews
             .slice()
             .reverse()
-            .map((review, index) => <ReviewItem key={index} review={review} />)
+            .map((review, index) => (
+              <ReviewItem
+                key={index}
+                review={review}
+                handleDelete={handleDelete}
+              />
+            ))
         ) : authStatus ? (
           <p className="pt-2 text-base text-sh-grey">Write the first review!</p>
         ) : (

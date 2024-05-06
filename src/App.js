@@ -16,7 +16,12 @@ const App = () => {
   const [fetchResults, setFetchResults] = useState([]);
   const [isProfileUpdated, setProfileUpdated] = useState(false);
   const [isNavTransparent, setNavTransparent] = useState(false);
-  const [newDataGained, setNewDataGained] = useState(false); //db event listener
+
+  /**
+   * This is a variable currently needed app-wide for re-fetching upon doing actions (fav/watch)
+   * Ideally this can be handled a lot better, but for now it is needed on the user profile so that the data re-renders properly.
+   */
+  const [newDataGained, setNewDataGained] = useState(false);
 
   const fetchRequest = (url) => {
     fetch(url)

@@ -2,50 +2,33 @@ import React, { useEffect, useState } from 'react';
 import FavouriteButton from '../../components/movie_actions/FavouriteButton';
 import WatchedButton from '../../components/movie_actions/WatchedButton';
 import { Link } from 'react-router-dom';
+import Loader from '../../components/UI_components/Loader';
 
 const ProfilePoster = ({ movieID, setNewDataGained }) => {
   const [movieData, setMovieData] = useState([]);
+  const [isLoading, setLoading] = useState(true);
   const [visibility, setVisibility] = useState(false);
-  const [received, setReceived] = useState(false);
 
-  const fetchRequestFromAPI = () => {
-    fetch(
-      `https://api.themoviedb.org/3/movie/${movieID}?api_key=${process.env.REACT_APP_TMDB_API_KEY}`
-    )
-      .then((response) => response.json())
-      .then((data) => {
-        setMovieData(data);
-        setTimeout(() => {
-          setReceived(true);
-        }, 100);
+  useEffect(() => {
+    const movieURL = `https://api.themoviedb.org/3/movie/${movieID}?api_key=${process.env.REACT_APP_TMDB_API_KEY}`;
+
+    fetch(movieURL)
+      .then((res) => res.json())
+      .then((movieData) => {
+        setMovieData(movieData);
+        setLoading(false);
       })
       .catch((err) => {
-        console.log(err.message);
+        console.error(err.message);
       });
-  };
-  useEffect(() => {
-    fetchRequestFromAPI();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [movieID]);
   return (
     <>
-      {received ? (
+      {isLoading && <Loader />}
+
+      {!isLoading && (
         <div
-          className=" 
-    hover:border-3
-    hover:border-h-hov-green 
-    relative 
-    mb-[2%] 
-    rounded
-    border 
-    border-solid 
-    border-pb-grey/25 
-    shadow-[0_0_1px_1px_rgba(20,24,28,1)] 
-    shadow-inner
-    hover:cursor-pointer
-    hover:rounded
-    md:ml-1
-    "
+          className="hover:border-3 hover:border-h-hov-green relative mb-[2%] rounded border border-solid border-pb-grey/25 shadow-[0_0_1px_1px_rgba(20,24,28,1)] shadow-inner hover:cursor-pointer hover:rounded md:ml-1"
           onMouseEnter={() => setVisibility(true)}
           onMouseLeave={() => setVisibility(false)}
           key={movieData.id}
@@ -60,16 +43,7 @@ const ProfilePoster = ({ movieID, setNewDataGained }) => {
           </Link>
           {visibility && (
             <div
-              className="
-        absolute
-        left-[20%]
-        top-[75%] 
-        z-10
-        flex
-        items-center     
-        rounded   
-        p-0.5
-        "
+              className="absolute left-[20%] top-[75%] z-10 flex items-center rounded p-0.5"
               style={{ backgroundColor: 'rgba(0,0,0,0.8)' }}
             >
               <FavouriteButton
@@ -82,12 +56,6 @@ const ProfilePoster = ({ movieID, setNewDataGained }) => {
               />
             </div>
           )}
-        </div>
-      ) : (
-        <div className="loader mb-[2%] ml-1 min-h-[120px] min-w-[80px] rounded border text-hov-blue md:min-h-[220px] md:min-w-[140px]">
-          <span className="bar"></span>
-          <span className="bar"></span>
-          <span className="bar"></span>
         </div>
       )}
     </>
