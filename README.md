@@ -26,6 +26,11 @@ git clone https://github.com/janaiscoding/letterboxd-clone.git
 cd letterboxd-clone
 npm install
 npm run start
+
+And deployment:
+
+npm run build
+firebase deploy
 ```
 
 ## Project Details & Description
