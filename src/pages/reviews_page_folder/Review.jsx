@@ -3,26 +3,25 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import ResultPoster from '../results_page_folder/ResultPoster';
 
-const SingularReview = ({ review, setNewDataGained }) => {
+const Review = ({ review, setNewDataGained }) => {
   const [movieData, setMovieData] = useState([]);
 
   useEffect(() => {
     fetch(
-      'https://api.themoviedb.org/3/movie/' +
-        review.movieID +
-        '?api_key=90a83017dcd0ef93c3e5474af9093de9',
-      {
-        method: 'GET',
-      }
+      `https://api.themoviedb.org/3/movie/${review.movieID}?api_key=${process.env.REACT_APP_TMDB_API_KEY}`
     )
       .then((response) => response.json())
       .then((data) => {
         setMovieData(data);
-        setNewDataGained(false);
       })
       .catch((err) => {
         console.log(err.message);
       });
+
+    if (review.userURL.includes('discord')) {
+      review.userURL =
+        'https://images.unsplash.com/photo-1525310072745-f49212b5ac6d?q=80&w=3098&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D';
+    }
   }, [review.movieID]);
 
   return (
@@ -34,7 +33,7 @@ const SingularReview = ({ review, setNewDataGained }) => {
             width={40}
             height={40}
             className="max-h-[40px] max-w-[40px] rounded-full hover:cursor-pointer"
-            alt={review.userName + `review`}
+            alt={'profile picture of' + review.userName}
           />
         </Link>
         <div className="flex flex-col">
@@ -44,7 +43,7 @@ const SingularReview = ({ review, setNewDataGained }) => {
               to={'/profile/' + review.uid}
               className="text-p-white hover:text-hov-blue"
             >
-              {review.userName}{' '}
+              {review.userName}
             </Link>
           </p>{' '}
           <p className="text-sh-grey">{review.review}</p>
@@ -55,4 +54,4 @@ const SingularReview = ({ review, setNewDataGained }) => {
   );
 };
 
-export default SingularReview;
+export default Review;

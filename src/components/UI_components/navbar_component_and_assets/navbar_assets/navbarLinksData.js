@@ -19,7 +19,7 @@ const navbarLinksData = [
   {
     id: uniqid(),
     name: 'REVIEWS',
-    link: '/Reviews',
+    link: '/reviews',
   },
 ];
 

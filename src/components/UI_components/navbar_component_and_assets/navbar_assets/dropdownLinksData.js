@@ -19,7 +19,7 @@ const dropdownLinksData = [
   {
     id: uniqid(),
     name: 'Reviews',
-    link: '/Reviews',
+    link: '/reviews',
   },
 ];
 
