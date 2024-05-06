@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { auth } from '../../../firebase/firebase';
 import { updateProfile } from 'firebase/auth';
-import { doc, updateDoc } from 'firebase/firestore';
+import { arrayRemove, doc, getDoc, updateDoc } from 'firebase/firestore';
 import { db } from '../../../firebase/firebase';
 import { useNavigate } from 'react-router-dom';
 
@@ -22,7 +22,32 @@ const ChangeUserInfo = ({ setProfileUpdated }) => {
     });
   };
 
-  const deleteDemoReviews = () => {};
+  const deleteDemoReviews = async () => {
+    const moviesToCleanUp = []; // for performing the movies below
+    const userRef = doc(db, 'users', 'omVEdBhoCJQr2imTBjMF8Plmiyi2');
+    const userDoc = await getDoc(userRef);
+
+    if (userDoc.exists()) {
+      userDoc.data().reviews.forEach(async (review) => {
+        moviesToCleanUp.push(review.movieID);
+
+        await updateDoc(userRef, {
+          reviews: arrayRemove(review),
+        });
+      });
+    }
+
+    moviesToCleanUp.forEach(async (movieID) => {
+      const movieRef = doc(db, 'movies', movieID.toString());
+      const movieDoc = await getDoc(movieRef);
+
+      movieDoc.data().reviews.forEach(async (review) => {
+        await updateDoc(movieRef, {
+          reviews: arrayRemove(review),
+        });
+      });
+    });
+  };
 
   const updateUserName = () => {
     if (newName === '') {
@@ -87,6 +112,7 @@ const ChangeUserInfo = ({ setProfileUpdated }) => {
 
   return (
     <>
+      {/* <h1 onClick={deleteDemoReviews}>DELETE ALL REVIEWS FOR DEMO</h1> */}
       <div className="section-heading m-auto mb-3 flex w-[50%] justify-between border-b border-solid border-b-grey text-xs text-sh-grey">
         <p className="text-sm uppercase hover:text-hov-blue">
           CHANGE YOUR USERNAME
