@@ -1,10 +1,11 @@
 import { collection, getDocs } from 'firebase/firestore';
 import React, { useEffect, useState } from 'react';
 import { db } from '../../firebase/firebase';
-import { Link } from 'react-router-dom';
 import MemberContainer from './MemberContainer';
+
 const Members = () => {
   const [users, setUsers] = useState([]);
+
   const fetchUsersfromDB = async () => {
     const usersSnap = await getDocs(collection(db, 'users'));
     let tempArray = [];
@@ -13,26 +14,17 @@ const Members = () => {
     });
     setUsers(tempArray);
   };
+
   useEffect(() => {
     fetchUsersfromDB();
   }, []);
+
   return (
     <div className="site-body min-h-[80vh] py-5">
       <div className="flex flex-col px-4 font-['Graphik'] md:mx-auto md:my-0 md:w-[950px]">
-        <div
-          className="section-heading 
-      mb-3 
-      flex 
-      justify-between 
-      border-b
-      border-solid 
-      border-b-grey 
-      text-xs 
-      text-sh-grey"
-        >
-          <Link to="/members/" className="text-sm hover:text-hov-blue">
-            MEMBERS OF CLONNERBOXD
-          </Link>
+        <div className="section-heading mb-3 flex justify-between border-b border-solid border-b-grey text-xs text-sh-grey">
+          <p>MEMBERS OF CLONNERBOXD</p>
+          {users.length > 0 && <p>{users.length} total members</p>}
         </div>
 
         {users.length > 0 ? (
