@@ -13,64 +13,68 @@ import SignInAll from '../auth/auth_methods/SignInAll';
 
 const ReviewsComp = ({ movie, authStatus }) => {
   const [review, setReview] = useState('');
-  const [isReviewed, setReviewed] = useState(false);
+  const [reviews, setReviews] = useState([]);
 
-  const onReview = async (movie, review) => {
-    if (auth.currentUser === null) {
+  const handleReviewSubmit = async (e, review) => {
+    e.preventDefault();
+
+    if (!review || !auth.currentUser) {
       createPopup('error');
-    } else if (review === '') {
-      // handler so you dont send empty reviews
-      createPopup('error');
-    } else {
-      await checkMovieReviewedDB(movie).then(async () => {
-        isReviewed
-          ? console.log('sent review to movie!')
-          : await addReviewDB(review).then(async () => {
-              await checkMovieCollection(movie, review);
-            });
-      });
+      return;
     }
-  };
-  const checkMovieReviewedDB = async (movie) => {
-    const userId = auth.currentUser.uid;
-    const userDoc = await getDoc(doc(db, 'users', userId));
-    const userRevs = userDoc.data().reviews;
-    setReviewed(userRevs.some((RM) => RM.movieID === movie.id));
+
+    await addReviewToUser(review)
+      .then(async () => {
+        await onAddMovieReview(review);
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+      .finally(() => {
+        // refetch reviews
+        getReviews();
+        // cleanup input
+        setReview('');
+      });
   };
 
-  const addReviewDB = async (review) => {
+  const addReviewToUser = async (review) => {
     const userId = auth.currentUser.uid;
     const userRef = doc(db, 'users', userId);
 
     await updateDoc(userRef, {
       reviews: arrayUnion({
         movieID: movie.id,
-        review: review.review,
+        review: review,
       }),
-    }).then(() => {
-      auth.currentUser.uid === 'omVEdBhoCJQr2imTBjMF8Plmiyi2'
-        ? setReviewed(false)
-        : setReviewed(true);
     });
   };
 
-  const checkMovieCollection = async (movie, review) => {
+  /**
+   * Checks if a movie is already stored in DB. If not, it will create a new movie document
+   * and then it will add the review
+   * @param {*} review
+   */
+  const onAddMovieReview = async (review) => {
     const movieDoc = await getDoc(doc(db, 'movies/' + movie.id));
-    movieDoc.exists()
-      ? await addNewReview(movie, review)
-      : await addMovieToCollDB(movie, review);
+
+    if (movieDoc.exists()) {
+      await addMovieReview(review);
+    } else {
+      await addNewMovieDocWithReview(review);
+    }
   };
 
-  const addNewReview = async (movie, review) => {
-    const user = auth.currentUser;
+  const addMovieReview = async (review) => {
     const movieRef = doc(db, 'movies/' + movie.id);
+
     await updateDoc(movieRef, {
       reviews: arrayUnion({
         movieID: movie.id,
-        userName: user.displayName,
-        userURL: user.photoURL,
+        userName: auth.currentUser.displayName,
+        userURL: auth.currentUser.photoURL,
         review: review,
-        uid: user.uid, // uid = userID
+        uid: auth.currentUser.uid,
       }),
     })
       .then(() => {
@@ -81,21 +85,19 @@ const ReviewsComp = ({ movie, authStatus }) => {
       });
   };
 
-  const addMovieToCollDB = async (movie, review) => {
-    const user = auth.currentUser;
+  const addNewMovieDocWithReview = async (review) => {
     await setDoc(doc(db, 'movies/' + movie.id), {
       reviews: [
         {
           movieID: movie.id,
           review: review,
-          userName: user.displayName,
-          userURL: user.photoURL,
-          uid: user.uid,
+          userName: auth.currentUser.displayName,
+          userURL: auth.currentUser.photoURL,
+          uid: auth.currentUser.uid,
         },
       ],
     });
   };
-  const [reviews, setReviews] = useState([]);
 
   const getReviews = async () => {
     const movieDoc = await getDoc(doc(db, 'movies/' + movie.id));
@@ -105,19 +107,11 @@ const ReviewsComp = ({ movie, authStatus }) => {
       if (!movieReviews) {
         setReviews([]);
       } else {
-        console.log(movieReviews);
         setReviews(movieReviews.reverse());
       }
     } else {
       setReviews([]);
     }
-  };
-
-  const handleReviewEvent = async (movie, review) => {
-    await onReview(movie, review).then(() => {
-      getReviews();
-      setReview('');
-    });
   };
 
   const handleDelete = async (review) => {
@@ -135,7 +129,8 @@ const ReviewsComp = ({ movie, authStatus }) => {
     })
       .then(() => {
         createPopup('delete');
-        getReviews(); // refetch reviews :)
+        // refetch the latest reviews ^^
+        getReviews();
       })
       .catch((err) => {
         console.log(err);
@@ -144,15 +139,15 @@ const ReviewsComp = ({ movie, authStatus }) => {
 
     await updateDoc(userRef, {
       reviews: arrayRemove(userProfileReview),
-    })
-      .then(() => {})
-      .catch((err) => {
-        console.error(err);
-      });
+    }).catch((err) => {
+      console.error(err);
+    });
   };
 
+  // just a generic popup element that should be replaced with a better handler here.
   const createPopup = (action) => {
     const popupAlert = document.createElement('div');
+
     popupAlert.classList.add('popup-review');
     if (action === 'error') {
       popupAlert.innerText = `Your review cannot be empty!`;
@@ -168,6 +163,7 @@ const ReviewsComp = ({ movie, authStatus }) => {
       popupAlert.remove();
     }, 1000);
   };
+
   useEffect(() => {
     getReviews();
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -195,19 +191,22 @@ const ReviewsComp = ({ movie, authStatus }) => {
           </p>
         )}
         {authStatus ? (
-          <>
+          <form
+            className="flex flex-col gap-2"
+            onSubmit={(e) => handleReviewSubmit(e, review)}
+          >
             <input
               className="active-outline-none rounded bg-h-grey p-3 text-drop-black focus:outline-none"
               value={review}
               onChange={(e) => setReview(e.target.value)}
             />
             <button
+              type="submit"
               className="rounded bg-c-grey p-1 text-base text-l-white hover:bg-sh-grey hover:text-b-blue"
-              onClick={() => handleReviewEvent(movie, review)}
             >
               Send Review
             </button>
-          </>
+          </form>
         ) : (
           <SignInAll />
         )}
