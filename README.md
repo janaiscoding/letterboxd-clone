@@ -25,12 +25,24 @@
 git clone https://github.com/janaiscoding/letterboxd-clone.git
 cd letterboxd-clone
 npm install
+```
+
+Create a `.env` file at the root of the repository with the following values:
+
+https://firebase.google.com/docs/web/learn-more#config-object
+
+```
+REACT_APP_API_KEY = "your-firebase-api-key"
+REACT_APP_APP_ID = "your-firebase-app-id"
+REACT_APP_MESSAGING_ID = "your-firebase-messaging-id"
+REACT_APP_AUTH_DOMAIN = "your-firebase-auth-domain-id"
+REACT_APP_PROJECT_ID = "your-firebase-project-id"
+REACT_APP_STORAGE_BUCKET = "your-firebase-storage-bucket"
+REACT_APP_TMDB_API_KEY="your-TMDB-api-key"
+```
+
+```
 npm run start
-
-And deployment:
-
-npm run build
-firebase deploy
 ```
 
 ## Project Details & Description
