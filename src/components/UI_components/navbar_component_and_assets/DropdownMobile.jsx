@@ -9,8 +9,6 @@ import SignInTest from '../../auth/auth_methods/SignInTest';
 
 const DropdownMobile = ({
   authStatus,
-  setUserLogin,
-  userLogin,
   userName,
   profilePic,
   DDMobOpen,
@@ -18,20 +16,21 @@ const DropdownMobile = ({
   dropDownRef,
 }) => {
   const dropdownList = dropdownLinksData;
-  const [uid, setUid] = useState('');
   const { pathname } = useLocation();
+
+  const [uid, setUid] = useState('');
+
   useEffect(() => {
     if (authStatus) {
-      setUserLogin(true);
       setUid(auth.currentUser.uid);
-    } else {
-      setUserLogin(false);
     }
+
     let handlerDDMob = (e) => {
       if (!dropDownRef.current.contains(e.target)) {
         setDDMobOpen(false);
       }
     };
+
     document.addEventListener('mousedown', handlerDDMob);
     setDDMobOpen(false);
     return () => {
@@ -48,7 +47,7 @@ const DropdownMobile = ({
         } z-999 sans-serif static absolute left-0 top-[2.3rem] w-full
         flex-col rounded-sm bg-h-blue p-2`}
       >
-        {userLogin ? (
+        {uid ? (
           <div className="z-50 mx-4 flex py-1">
             <div className="flex gap-1">
               <Link to={'/profile/' + uid}>
@@ -84,7 +83,7 @@ const DropdownMobile = ({
             ))}
           </li>
           <li className="divider-mobile"></li>
-          {userLogin ? (
+          {uid ? (
             <li className="z-50 mx-3 grid grid-cols-2 py-3">
               <Link to="/settings" className="z-50 block pt-2">
                 Settings

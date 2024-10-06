@@ -15,7 +15,6 @@ const App = () => {
   const [authStatus, setAuthStatus] = useState(false);
   const [fetchResults, setFetchResults] = useState([]);
   const [isProfileUpdated, setProfileUpdated] = useState(false);
-  const [isNavTransparent, setNavTransparent] = useState(false);
 
   /**
    * This is a variable currently needed app-wide for re-fetching upon doing actions (fav/watch)
@@ -54,8 +53,6 @@ const App = () => {
           fetchRequest={fetchRequest}
           isProfileUpdated={isProfileUpdated}
           setProfileUpdated={setProfileUpdated}
-          setNavTransparent={setNavTransparent}
-          isNavTransparent={isNavTransparent}
           setNewDataGained={setNewDataGained}
         />
 
@@ -71,9 +68,6 @@ const App = () => {
           //handler for movies
           setNewDataGained={setNewDataGained}
           newDataGained={newDataGained}
-          //handler for transparent navbar
-          isNavTransparent={isNavTransparent}
-          setNavTransparent={setNavTransparent}
         />
         <Footer />
       </BrowserRouter>

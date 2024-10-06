@@ -6,9 +6,9 @@ import LatestNews from './LatestNews';
 import RecentStories from './RecentStories';
 import '../../styles/home.css';
 import PopularLists from './PopularLists';
-import GetStarted from '../get_started_folder/GetStarted';
-import PopularSignout from '../get_started_folder/PopularSignout';
-import LetsYou from '../get_started_folder/LetsYou';
+import GetStarted from '../get-started/GetStarted';
+import PopularSignout from '../get-started/PopularSignout';
+import LetsYou from '../get-started/LetsYou';
 
 const Home = ({ fetchResults, fetchRequest, authStatus, setNewDataGained }) => {
   useEffect(() => {

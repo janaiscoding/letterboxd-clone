@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import arrays from './filtering/arrays';
-import PopularHome from '../home_page_folder/PopularHome';
+import PopularHome from '../home/PopularHome';
 import SelectBoxFilterPage from './SelectBoxFilterPage';
 
 const Films = ({ fetchRequest, fetchResults, setNewDataGained }) => {

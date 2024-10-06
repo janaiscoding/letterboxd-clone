@@ -1,18 +1,18 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
-import Home from './home_page_folder/Home';
-import Films from './films_page_folder/Films';
-import Members from './members_page_folder/Members';
-import Results from './results_page_folder/Results';
-import MoviePage from './movie_page_folder/MoviePage';
-import Profile from './profile_page_folder/Profile';
-import FilterPage from './films_page_folder/FilterPage';
-import Settings from './settings_page_folder/Settings';
+import Home from './home/Home';
+import Films from './films/Films';
+import Members from './members/Members';
+import Results from './search-results/Results';
+import MoviePage from './movie/MoviePage';
+import Profile from './profile/Profile';
+import FilterPage from './films/FilterPage';
+import Settings from './user-settings/Settings';
 import NotFound from './NotFound';
 
-import ProfileFavourites from './profile_page_folder/ProfileFavourites';
-import ProfileWatched from './profile_page_folder/ProfileWatched';
-import ReviewsPage from './reviews_page_folder/ReviewsPage';
+import ProfileFavourites from './profile/ProfileFavourites';
+import ProfileWatched from './profile/ProfileWatched';
+import ReviewsPage from './reviews/ReviewsPage';
 
 const MyRoutes = ({
   authStatus,
@@ -23,8 +23,6 @@ const MyRoutes = ({
   isProfileUpdated,
   setNewDataGained,
   newDataGained,
-  setNavTransparent,
-  isNavTransparent,
 }) => {
   return (
     <Routes>
@@ -109,7 +107,6 @@ const MyRoutes = ({
             fetchRequest={fetchRequest}
             newDataGained={newDataGained}
             setNewDataGained={setNewDataGained}
-            setNavTransparent={setNavTransparent}
           />
         }
       />
@@ -132,15 +129,7 @@ const MyRoutes = ({
         path="/reviews"
         element={<ReviewsPage setNewDataGained={setNewDataGained} />}
       />
-      <Route
-        path="*"
-        element={
-          <NotFound
-            setNavTransparent={setNavTransparent}
-            isNavTransparent={isNavTransparent}
-          />
-        }
-      />
+      <Route path="*" element={<NotFound />} />
     </Routes>
   );
 };

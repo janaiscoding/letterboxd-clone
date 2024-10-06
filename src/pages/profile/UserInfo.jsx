@@ -9,6 +9,7 @@ const UserInfo = ({ uid, isProfileUpdated, setProfileUpdated, authStatus }) => {
   const [userPic, setUserPic] = useState('');
   const [userBio, setUserBio] = useState('');
   const [displayName, setDisplayName] = useState('');
+
   const fetchUsername = async (uid) => {
     const userSnap = await getDoc(doc(db, 'users', uid));
     if (userSnap.exists()) {
@@ -22,6 +23,7 @@ const UserInfo = ({ uid, isProfileUpdated, setProfileUpdated, authStatus }) => {
   useEffect(() => {
     fetchUsername(uid);
     setProfileUpdated(false);
+
     if (authStatus) {
       setDisplayName(auth.currentUser.displayName);
     } else if (!authStatus) {
@@ -35,11 +37,11 @@ const UserInfo = ({ uid, isProfileUpdated, setProfileUpdated, authStatus }) => {
       <div className="flex">
         <img
           src={userPic}
-          alt="your user profile"
+          alt="your user profile avatar"
           width={85}
           height={85}
           loading="lazy"
-          className="rounded-[50px] border border-solid border-[#678] hover:cursor-pointer hover:border-sh-grey md:h-[100px] md:w-[100px] "
+          className="h-[5rem] w-[5rem] rounded-[50px] border border-solid border-[#678] hover:cursor-pointer hover:border-sh-grey md:h-[100px] md:w-[100px] "
         />{' '}
         <div className=" ml-4 mt-3 md:flex md:flex-col md:items-start md:gap-1 ">
           <div className="flex w-full flex-col items-start gap-1 md:flex-row">

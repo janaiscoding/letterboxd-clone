@@ -23,19 +23,20 @@ const Navbar = ({
   fetchRequest,
   isProfileUpdated,
   setProfileUpdated,
-  isNavTransparent,
-  setNavTransparent,
   setNewDataGained,
 }) => {
   const navbarLinks = navbarLinksData;
+
   const [userName, setUserName] = useState();
   const [profilePic, setProfilePic] = useState();
 
   //this handles the login/logout styles and displays in the navbar
-  const [userLogin, setUserLogin] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [showLogin, setShowLogin] = useState(false);
+
   //for hover on navbar to display dropdown menu on desktop
   const [showDropdown, setShowDropdown] = useState(false);
+  const [isTransparentNav, setIsTransparentNav] = useState(false);
 
   // MOBILE HELPER FOR ACTIVE/INACTIVE
   const [searchMobOpen, setSearchMobOpen] = useState(false); //for searchbar mobile
@@ -63,21 +64,22 @@ const Navbar = ({
     if (authStatus) {
       setUserName(auth.currentUser.displayName);
       setProfilePic(auth.currentUser.photoURL);
-      setUserLogin(true);
+      setIsLoggedIn(true);
+
       setProfileUpdated(false);
-      setNavTransparent(false);
+      setIsTransparentNav(false);
     } else {
-      setUserLogin(false);
-      setNavTransparent(true);
+      setIsLoggedIn(false);
+      setIsTransparentNav(true);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [authStatus, isNavTransparent, isProfileUpdated]);
+  }, [authStatus, isProfileUpdated]);
 
   return (
     <>
       <header
         className={`align-center flex flex-col md:h-[70px] md:flex-row ${
-          isNavTransparent ? 'bg-transparent' : 'bg-h-blue'
+          isTransparentNav ? 'bg-transparent' : 'bg-h-blue'
         } ${
           DDMobOpen && !authStatus ? 'mb-28' : searchMobOpen ? 'mb-11' : 'mb-0'
         }
@@ -108,7 +110,7 @@ const Navbar = ({
             <nav className="z-[1000] mt-4 flex flex-col self-start">
               <ul className="z-[1000] hidden  md:flex">
                 {/* if user if logged in, i show the dropdown/normal user UI */}
-                {userLogin ? (
+                {isLoggedIn ? (
                   <li>
                     {showDropdown ? (
                       <DropdownDesktop
@@ -189,9 +191,8 @@ const Navbar = ({
                 profilePic={profilePic}
                 userName={userName}
                 arrowDown={arrowDown}
-                userLogin={userLogin}
                 authStatus={authStatus}
-                setUserLogin={setUserLogin}
+                setUserLogin={setIsLoggedIn}
                 DDMobOpen={DDMobOpen}
                 setDDMobOpen={setDDMobOpen}
                 dropDownRef={dropDownRef}

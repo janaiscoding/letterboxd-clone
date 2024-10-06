@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import ResultPoster from '../results_page_folder/ResultPoster';
+import ResultPoster from '../search-results/ResultPoster';
 
 const Review = ({ review, setNewDataGained }) => {
   const [movieData, setMovieData] = useState([]);
@@ -26,6 +26,7 @@ const Review = ({ review, setNewDataGained }) => {
       );
     } else {
       setFixedUserURL(review.userURL);
+      console.log('fixedUserURL', fixedUserURL);
     }
   }, [review]);
 
@@ -38,7 +39,7 @@ const Review = ({ review, setNewDataGained }) => {
             width={40}
             height={40}
             className="max-h-[40px] max-w-[40px] rounded-full hover:cursor-pointer"
-            alt={'profile picture of' + review.userName}
+            alt={'profile picture of ' + review.userName}
           />
         </Link>
         <div className="flex flex-col">

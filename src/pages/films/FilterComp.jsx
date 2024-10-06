@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import ResultPoster from '../results_page_folder/ResultPoster';
+import ResultPoster from '../search-results/ResultPoster';
 
 const FilterComp = ({ movie, setNewDataGained }) => {
   return (
