@@ -8,9 +8,7 @@ const MemberContainer = ({ user }) => {
         <img
           src={user.photoUrl}
           alt="your user profile"
-          width={85}
-          height={85}
-          className="rounded-[50px] border border-solid border-[#678] hover:cursor-pointer hover:border-sh-grey md:h-[100px] md:w-[100px] "
+          className="member__avatar rounded-[50px] border border-solid border-[#678] hover:cursor-pointer hover:border-sh-grey"
         />
       </Link>
       <div className=" ml-4 mt-3 md:flex md:flex-col md:items-start md:gap-1 ">

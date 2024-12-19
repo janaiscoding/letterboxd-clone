@@ -26,7 +26,6 @@ const Review = ({ review, setNewDataGained }) => {
       );
     } else {
       setFixedUserURL(review.userURL);
-      console.log('fixedUserURL', fixedUserURL);
     }
   }, [review]);
 

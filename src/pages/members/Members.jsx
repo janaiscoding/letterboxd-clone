@@ -12,6 +12,14 @@ const Members = () => {
     usersSnap.forEach((doc) => {
       tempArray.push(doc.data());
     });
+
+    console.log(tempArray);
+
+    tempArray.sort((a, b) => {
+      if (a.name.includes('Jana')) return -1;
+      if (b.name.includes('Jana')) return 1;
+    });
+
     setUsers(tempArray);
   };
 
@@ -27,22 +35,20 @@ const Members = () => {
           {users.length > 0 && <p>{users.length} total members</p>}
         </div>
 
-        {users.length > 0 ? (
-          users.map((user, index) => (
-            <div
-              key={index}
-              className="flex flex-col border-b 
-          border-solid
-          border-b-grey 
-          text-xs 
-          text-sh-grey"
-            >
-              <MemberContainer key={user.uid} user={user} />
-            </div>
-          ))
-        ) : (
-          <p>No users yet, login to be the first!</p>
-        )}
+        <div className="grid__wrapper">
+          {users.length > 0 ? (
+            users.map((user, index) => (
+              <div
+                key={index}
+                className="users__wrapper stext-sh-grey flex flex-col border-b border-solid border-b-grey text-xs"
+              >
+                <MemberContainer key={user.uid} user={user} />
+              </div>
+            ))
+          ) : (
+            <p>No users yet, login to be the first!</p>
+          )}
+        </div>
       </div>
     </div>
   );

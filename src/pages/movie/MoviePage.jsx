@@ -10,7 +10,6 @@ const MoviePage = ({
   fetchRequest,
   newDataGained,
   setNewDataGained,
-  setNavTransparent,
 }) => {
   const { movieId } = useParams();
   useEffect(() => {
@@ -19,7 +18,6 @@ const MoviePage = ({
         movieId +
         '?api_key=90a83017dcd0ef93c3e5474af9093de9&append_to_response=credits'
     );
-    setNavTransparent(true);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (

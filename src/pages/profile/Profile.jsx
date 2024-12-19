@@ -73,7 +73,7 @@ const Profile = ({
   }, [uid, newDataGained]);
 
   return (
-    <div className="site-body min-h-screen-[90vh] py-5">
+    <div className="site-body min-h-[78vh] py-5">
       <div className="flex flex-col px-4 font-['Graphik'] md:mx-auto md:my-0 md:w-[950px] md:py-8">
         <UserBio
           uid={uid}

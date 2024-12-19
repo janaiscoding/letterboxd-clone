@@ -100,3 +100,34 @@
     transform: scaleY(1);
   }
 }
+
+.grid__wrapper {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 15em), 1fr));
+  gap: 1rem;
+}
+
+.member__avatar {
+  border-radius: 50%;
+  height: 85px;
+  width: 85px;
+  min-width: 85px;
+  min-height: 85px;
+}
+
+.users__wrapper:nth-child(1) a img {
+  animation: borderPulse 2s infinite;
+  border-width: 2px; /* Adjust as needed */
+}
+
+@keyframes borderPulse {
+  0% {
+    border-color: #678;
+  }
+  50% {
+    border-color: #ff5733;
+  }
+  100% {
+    border-color: #678;
+  }
+}

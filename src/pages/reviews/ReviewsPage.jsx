@@ -31,7 +31,7 @@ const ReviewsPage = ({ setNewDataGained }) => {
           <p>REVIEWS OF CLONNERBOXD</p>
           {reviews.length > 0 && <p>{reviews.length} total reviews</p>}
         </div>
-        <>
+        <div className="grid__wrapper">
           {reviews
             .slice()
             .reverse()
@@ -42,7 +42,7 @@ const ReviewsPage = ({ setNewDataGained }) => {
                 setNewDataGained={setNewDataGained}
               />
             ))}
-        </>
+        </div>
       </div>
     </div>
   );

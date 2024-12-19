@@ -3,8 +3,8 @@ import { auth, db } from '../../../firebase/firebase';
 import React from 'react';
 import { doc, getDoc, setDoc } from 'firebase/firestore';
 
-//when i sign in, check if user exists
-//if not, create db references and docs and collection for it like this:
+// When i sign in, check if user exists
+// If not, create db references and docs and collection for it like this:
 // users / displayName (name, bio, reviews, watched) /favourites (movieid, isfav) / reviews (movieid, review) /watched(movieid, iswatched)/watchlist
 
 const SignInGoogle = () => {
@@ -17,17 +17,12 @@ const SignInGoogle = () => {
     });
   };
 
-  const checkUsersFromDB = async () => {
-    const userDoc = await getDoc(doc(db, 'users/' + auth.currentUser.uid));
-    userDoc.exists() ? console.log('fetched data') : await addNewUserToDB();
-    //welcome back popup username!
-  };
-  // creates a new document for the new user
+  // Creates a new document for the new user
   const addNewUserToDB = async () => {
     await setDoc(doc(db, 'users', auth.currentUser.uid), {
       name: auth.currentUser.displayName,
       uid: auth.currentUser.uid,
-      bio: 'I hope you like my project!',
+      bio: 'My movie watching journey, on clonnerboxd :)',
       photoUrl: auth.currentUser.photoURL,
       reviews: [],
       watched: [],
@@ -39,18 +34,21 @@ const SignInGoogle = () => {
 
   const onLogin = async () => {
     await handleAuthEvent().then(async () => {
-      await checkUsersFromDB();
+      const userDoc = await getDoc(doc(db, 'users/' + auth.currentUser.uid));
+
+      if (!userDoc.exists()) {
+        await addNewUserToDB();
+      }
     });
   };
+
   return (
-    <>
-      <p
-        className="sans-serif z-50 mx-3 font-bold uppercase tracking-widest text-sh-grey md:mx-0 md:ml-4 md:text-xs md:hover:cursor-pointer md:hover:text-p-white"
-        onClick={onLogin}
-      >
-        Google
-      </p>
-    </>
+    <p
+      className="sans-serif z-50 mx-3 font-bold uppercase tracking-widest text-sh-grey md:mx-0 md:ml-4 md:text-xs md:hover:cursor-pointer md:hover:text-p-white"
+      onClick={onLogin}
+    >
+      Google
+    </p>
   );
 };
 
