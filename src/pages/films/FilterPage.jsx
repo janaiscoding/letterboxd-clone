@@ -24,14 +24,14 @@ const FilterPage = ({
   // FETCHING THE GENRE LIST => FINDING THE MATCHING WITH MY QUERY GENRE ID => FETCHING MOVIES BY GENRE ID => DISPLAYING
   const fetchByGenre = () => {
     fetch(
-      `https://api.themoviedb.org/3/genre/movie/list?api_key=${process.env.REACT_APP_TMDB_API_KEY}` +
+      `https://api.themoviedb.org/3/genre/movie/list?api_key=${process.env.NEXT_PUBLIC_TMDB_API_KEY}` +
         '&language=en-US'
     )
       .then((response) => response.json())
       .then((data) => {
         let genreObj = data.genres.find(({ name }) => name === query);
         fetch(
-          `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.REACT_APP_TMDB_API_KEY}` +
+          `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.NEXT_PUBLIC_TMDB_API_KEY}` +
             '&language=en-US&sort_by=release_date.desc&page=1&with_genres=' +
             genreObj.id +
             '&vote_count.gte=50'
@@ -50,7 +50,7 @@ const FilterPage = ({
     let queryNumStart = Number(query.substring(0, query.length - 1));
     let queryNumEnd = queryNumStart + 10;
     let url =
-      `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.REACT_APP_TMDB_API_KEY}` +
+      `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.NEXT_PUBLIC_TMDB_API_KEY}` +
       '&language=en-US&primary_release_date.gte=' +
       queryNumStart +
       '-01-01&primary_release_date.lte=' +
@@ -61,7 +61,7 @@ const FilterPage = ({
 
   const fetchByRating = () => {
     let url =
-      `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.REACT_APP_TMDB_API_KEY}` +
+      `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.NEXT_PUBLIC_TMDB_API_KEY}` +
       '&language=en-US&sort_by=popularity.' +
       (query === 'Highest First' ? 'desc' : 'asc');
     fetchRequest(url);
@@ -79,13 +79,13 @@ const FilterPage = ({
     }
     if (query === 'this year') {
       let url =
-        `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.REACT_APP_TMDB_API_KEY}` +
+        `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.NEXT_PUBLIC_TMDB_API_KEY}` +
         '&language=en-US&year=' +
         thisYear;
       fetchRequest(url);
     } else if (query === 'this month') {
       let url =
-        `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.REACT_APP_TMDB_API_KEY}` +
+        `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.NEXT_PUBLIC_TMDB_API_KEY}` +
         '&language=en-US&primary_release_date.gte=' +
         thisYear +
         '-' +
@@ -94,7 +94,7 @@ const FilterPage = ({
       fetchRequest(url);
     } else if (query === 'this week') {
       let url =
-        `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.REACT_APP_TMDB_API_KEY}` +
+        `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.NEXT_PUBLIC_TMDB_API_KEY}` +
         '&language=en-US&primary_release_date.gte=' +
         thisYear +
         '-' +

@@ -4,9 +4,13 @@
 
 @font-face {
   font-family: 'Graphik';
-  src: url('./assets/font/graphic-web-regular.ttf');
+  src: url('../assets/font/graphic-web-regular.ttf');
   font-family: 'Tiempos-Regular';
-  src: url('./assets/font/TiemposHeadline-Regular.otf');
+  src: url('../assets/font/TiemposHeadline-Regular.otf');
+}
+
+body {
+  background-color: #14181cfa;
 }
 
 @layer base {

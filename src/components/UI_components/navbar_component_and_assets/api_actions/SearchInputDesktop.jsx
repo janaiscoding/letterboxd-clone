@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import searchInputIcon from './searchinput.png';
 import closeIcon from './csb.png';
+import Image from 'next/image';
 const SearchInputDesktop = ({ fetchRequest, setNewDataGained }) => {
   const [query, setQuery] = useState('');
   const navigate = useNavigate();
@@ -15,7 +16,7 @@ const SearchInputDesktop = ({ fetchRequest, setNewDataGained }) => {
       SID.classList.add('md:block');
       //fetch first
       fetchRequest(
-        `https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_TMDB_API_KEY}&query=${query}`
+        `https://api.themoviedb.org/3/search/movie?api_key=${process.env.NEXT_PUBLIC_TMDB_API_KEY}&query=${query}`
       );
       //setting that new data was gained to refresh results page
       setNewDataGained(true);
@@ -33,7 +34,7 @@ const SearchInputDesktop = ({ fetchRequest, setNewDataGained }) => {
       SID.classList.add('md:block');
       //fetch first
       fetchRequest(
-        `https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_TMDB_API_KEY}&query=${query}`
+        `https://api.themoviedb.org/3/search/movie?api_key=${process.env.NEXT_PUBLIC_TMDB_API_KEY}&query=${query}`
       );
       //setting that new data was gained to refresh results page
       setNewDataGained(true);
@@ -58,7 +59,7 @@ const SearchInputDesktop = ({ fetchRequest, setNewDataGained }) => {
   // let allResponses = movieData.map((movie) => <div>{movie.title}</div>);
   return (
     <div className="ml-2 flex items-center">
-      <img
+      <Image
         className="close-search-icon-desktop hidden hover:cursor-pointer md:hidden"
         src={closeIcon}
         width={25}
@@ -88,7 +89,7 @@ const SearchInputDesktop = ({ fetchRequest, setNewDataGained }) => {
         md:w-[150px]
         "
       />
-      <img
+      <Image
         src={searchInputIcon}
         onClick={handleSearchDesktop}
         width={20}

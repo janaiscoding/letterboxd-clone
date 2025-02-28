@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import searchIcon from '../navbar_assets/searchIcon.png';
 import '../../../../styles/modals.css';
+import Image from 'next/image';
 
 const SearchInputMobile = ({
   fetchRequest,
@@ -16,7 +17,7 @@ const SearchInputMobile = ({
   const handleSearchMobile = () => {
     if (query !== '') {
       fetchRequest(
-        `https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_TMDB_API_KEY}&query=${query}`
+        `https://api.themoviedb.org/3/search/movie?api_key=${process.env.NEXT_PUBLIC_TMDB_API_KEY}&query=${query}`
       );
       setNewDataGained(true);
       navigate('/results/' + query);
@@ -64,7 +65,7 @@ const SearchInputMobile = ({
         focus:outline-none
         "
       />
-      <img
+      <Image
         src={searchIcon}
         onClick={handleSearchMobile}
         width={40}

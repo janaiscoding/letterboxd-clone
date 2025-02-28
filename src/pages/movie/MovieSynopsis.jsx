@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import MoviePanels from './MoviePanels';
-import RecentReviewsMovie from './RecentReviewsMovie';
+import RecentReviews from './RecentReviews';
 
 const MovieSynopsis = ({ movie, authStatus }) => {
   const [movieYear, setMovieYear] = useState('');
@@ -42,7 +42,7 @@ const MovieSynopsis = ({ movie, authStatus }) => {
           {movie.overview}
         </p>
         <MoviePanels movie={movie} />
-        <RecentReviewsMovie movie={movie} authStatus={authStatus} />
+        <RecentReviews movie={movie} authStatus={authStatus} />
       </div>
     </div>
   );

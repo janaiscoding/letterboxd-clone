@@ -32,13 +32,13 @@ Create a `.env` file at the root of the repository with the following values:
 https://firebase.google.com/docs/web/learn-more#config-object
 
 ```
-REACT_APP_API_KEY = "your-firebase-api-key"
-REACT_APP_APP_ID = "your-firebase-app-id"
-REACT_APP_MESSAGING_ID = "your-firebase-messaging-id"
-REACT_APP_AUTH_DOMAIN = "your-firebase-auth-domain-id"
-REACT_APP_PROJECT_ID = "your-firebase-project-id"
-REACT_APP_STORAGE_BUCKET = "your-firebase-storage-bucket"
-REACT_APP_TMDB_API_KEY="your-TMDB-api-key"
+NEXT_PUBLIC_API_KEY = "your-firebase-api-key"
+NEXT_PUBLIC_APP_ID = "your-firebase-app-id"
+NEXT_PUBLIC_MESSAGING_ID = "your-firebase-messaging-id"
+NEXT_PUBLIC_AUTH_DOMAIN = "your-firebase-auth-domain-id"
+NEXT_PUBLIC_PROJECT_ID = "your-firebase-project-id"
+NEXT_PUBLIC_STORAGE_BUCKET = "your-firebase-storage-bucket"
+NEXT_PUBLIC_TMDB_API_KEY="your-TMDB-api-key"
 ```
 
 ```

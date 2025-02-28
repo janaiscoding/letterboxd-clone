@@ -13,7 +13,7 @@ const Films = ({ fetchRequest, fetchResults, setNewDataGained }) => {
   ));
   useEffect(() => {
     fetchRequest(
-      `https://api.themoviedb.org/3/movie/popular?api_key=${process.env.REACT_APP_TMDB_API_KEY}`
+      `https://api.themoviedb.org/3/movie/popular?api_key=${process.env.NEXT_PUBLIC_TMDB_API_KEY}`
     );
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

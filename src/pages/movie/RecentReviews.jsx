@@ -1,7 +1,7 @@
 import React from 'react';
-import ReviewsComp from '../../components/movie_actions/ReviewsComp';
+import MovieDetailReviews from '../../components/movie_actions/MovieDetailReviews';
 
-const RecentReviewsMovie = ({ movie, authStatus }) => {
+const RecentReviews = ({ movie, authStatus }) => {
   return (
     <>
       <div
@@ -14,8 +14,8 @@ const RecentReviewsMovie = ({ movie, authStatus }) => {
           RECENT REVIEWS
         </p>
       </div>{' '}
-      <ReviewsComp movie={movie} authStatus={authStatus} />
+      <MovieDetailReviews movie={movie} authStatus={authStatus} />
     </>
   );
 };
-export default RecentReviewsMovie;
+export default RecentReviews;

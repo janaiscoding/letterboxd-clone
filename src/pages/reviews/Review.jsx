@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import ResultPoster from '../search-results/ResultPoster';
+import Image from 'next/image';
 
 const Review = ({ review, setNewDataGained }) => {
   const [movieData, setMovieData] = useState([]);
@@ -9,7 +10,7 @@ const Review = ({ review, setNewDataGained }) => {
 
   useEffect(() => {
     fetch(
-      `https://api.themoviedb.org/3/movie/${review.movieID}?api_key=${process.env.REACT_APP_TMDB_API_KEY}`
+      `https://api.themoviedb.org/3/movie/${review.movieID}?api_key=${process.env.NEXT_PUBLIC_TMDB_API_KEY}`
     )
       .then((response) => response.json())
       .then((data) => {
@@ -33,7 +34,7 @@ const Review = ({ review, setNewDataGained }) => {
     <div className="flex justify-between border-t border-solid border-b-grey py-2">
       <div className="flex gap-3">
         <Link to={'/profile/' + review.uid}>
-          <img
+          <Image
             src={fixedUserURL}
             width={40}
             height={40}

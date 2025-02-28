@@ -1,11 +1,12 @@
-import React, { useEffect, useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import dropdownLinksData from './navbar_assets/dropdownLinksData';
-import SignOut from '../../auth/auth_methods/SignOut';
-import '../../../styles/dropdown.css';
-import { auth } from '../../../firebase/firebase';
-import SignInGoogle from '../../auth/auth_methods/SignInGoogle';
-import SignInTest from '../../auth/auth_methods/SignInTest';
+import React, { useEffect, useState } from "react";
+import { Link, useLocation } from "react-router-dom";
+import dropdownLinksData from "./navbar_assets/dropdownLinksData";
+import SignOut from "../../auth/auth_methods/SignOut";
+import "../../../styles/dropdown.css";
+import { auth } from "../../../firebase/firebase";
+import SignInGoogle from "../../auth/auth_methods/SignInGoogle";
+import SignInTest from "../../auth/auth_methods/SignInTest";
+import Image from "next/image";
 
 const DropdownMobile = ({
   authStatus,
@@ -18,7 +19,7 @@ const DropdownMobile = ({
   const dropdownList = dropdownLinksData;
   const { pathname } = useLocation();
 
-  const [uid, setUid] = useState('');
+  const [uid, setUid] = useState("");
 
   useEffect(() => {
     if (authStatus) {
@@ -31,10 +32,10 @@ const DropdownMobile = ({
       }
     };
 
-    document.addEventListener('mousedown', handlerDDMob);
+    document.addEventListener("mousedown", handlerDDMob);
     setDDMobOpen(false);
     return () => {
-      document.removeEventListener('mousedown', handlerDDMob);
+      document.removeEventListener("mousedown", handlerDDMob);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [authStatus, pathname]);
@@ -43,15 +44,15 @@ const DropdownMobile = ({
     <>
       <div
         className={`mobile-dropdown-nav ${
-          DDMobOpen ? 'active' : 'inactive'
-        } z-999 sans-serif static absolute left-0 top-[2.3rem] w-full
-        flex-col rounded-sm bg-h-blue p-2`}
+          DDMobOpen ? "active" : "inactive"
+        } z-999 sans-serif bg-h-blue static absolute left-0 top-[2.3rem]
+        w-full flex-col rounded-sm p-2`}
       >
         {uid ? (
           <div className="z-50 mx-4 flex py-1">
             <div className="flex gap-1">
-              <Link to={'/profile/' + uid}>
-                <img
+              <Link to={"/profile/" + uid}>
+                <Image
                   src={profilePic}
                   alt={userName}
                   width={24}
@@ -60,8 +61,8 @@ const DropdownMobile = ({
                 />
               </Link>
               <Link
-                to={'/profile/' + uid}
-                className=" z-50 font-semibold uppercase text-p-white hover:cursor-pointer hover:text-p-white"
+                to={"/profile/" + uid}
+                className=" text-p-white hover:text-p-white z-50 font-semibold uppercase hover:cursor-pointer"
               >
                 {userName}
               </Link>
@@ -69,10 +70,10 @@ const DropdownMobile = ({
             <p></p>
           </div>
         ) : (
-          ''
+          ""
         )}
 
-        <ul className="sans-serif z-50 mx-3 rounded-sm bg-h-blue py-3 font-bold uppercase tracking-widest text-sh-grey">
+        <ul className="sans-serif bg-h-blue text-sh-grey z-50 mx-3 rounded-sm py-3 font-bold uppercase tracking-widest">
           <li className="divider-mobile"></li>
 
           <li className="grid grid-cols-2 py-2">

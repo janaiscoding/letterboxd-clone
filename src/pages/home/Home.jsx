@@ -4,7 +4,6 @@ import IntroMessage from './IntroMessage';
 import UpgradeToPro from './UpgradeToPro';
 import LatestNews from './LatestNews';
 import RecentStories from './RecentStories';
-import '../../styles/home.css';
 import PopularLists from './PopularLists';
 import GetStarted from '../get-started/GetStarted';
 import PopularSignout from '../get-started/PopularSignout';
@@ -13,7 +12,7 @@ import LetsYou from '../get-started/LetsYou';
 const Home = ({ fetchResults, fetchRequest, authStatus, setNewDataGained }) => {
   useEffect(() => {
     fetchRequest(
-      `https://api.themoviedb.org/3/movie/popular?api_key=${process.env.REACT_APP_TMDB_API_KEY}`
+      `https://api.themoviedb.org/3/movie/popular?api_key=${process.env.NEXT_PUBLIC_TMDB_API_KEY}`
     );
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

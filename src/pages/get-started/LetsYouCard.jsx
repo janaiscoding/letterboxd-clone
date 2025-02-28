@@ -1,17 +1,18 @@
-import React, { useState } from 'react';
+import Image from "next/image";
+import React, { useState } from "react";
 
 const LetsYouCard = ({ id, icon, description, bgHov }) => {
-  const [background, setBackground] = useState('');
+  const [background, setBackground] = useState("");
 
   return (
     <div
-      className="mb-3 flex rounded bg-b-grey px-5 py-4 text-p-white hover:cursor-pointer md:mr-3"
+      className="bg-b-grey text-p-white mb-3 flex rounded px-5 py-4 hover:cursor-pointer md:mr-3"
       id={id}
       onMouseEnter={() => setBackground(bgHov)}
-      onMouseLeave={() => setBackground('#456')}
+      onMouseLeave={() => setBackground("#456")}
       style={{ backgroundColor: background }}
     >
-      <img
+      <Image
         src={icon}
         id={id + 1}
         className="self-start opacity-50"

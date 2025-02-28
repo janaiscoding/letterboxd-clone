@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
-import FavouriteButton from '../../components/movie_actions/FavouriteButton';
-import WatchedButton from '../../components/movie_actions/WatchedButton';
+import React, { useState } from "react";
+import FavouriteButton from "../../components/movie_actions/FavouriteButton";
+import WatchedButton from "../../components/movie_actions/WatchedButton";
+import Image from "next/image";
 const MoviePoster = ({ movie, setNewDataGained }) => {
   const [visibility, setVisibility] = useState(false);
 
@@ -19,14 +20,14 @@ const MoviePoster = ({ movie, setNewDataGained }) => {
       onMouseLeave={() => setVisibility(false)}
       key={movie.id}
     >
-      <img
-        className="block  
-        h-40 
-        w-28
-        rounded 
-        border border-solid border-pb-grey/25 shadow-[0_0_1px_1px_rgba(20,24,28,1)] shadow-inner md:h-80 md:w-56"
-        src={'https://image.tmdb.org/t/p/w500/' + movie.poster_path}
-        alt={movie.title}
+      <Image
+        className="border-pb-grey/25 block h-40 w-28 rounded border
+      border-solid shadow-[0_0_1px_1px_rgba(20,24,28,1)] shadow-inner
+      md:h-80 md:w-56"
+        width={300}
+        height={300}
+        src={"https://image.tmdb.org/t/p/w500/" + movie.poster_path}
+        alt={"Movie title for" + movie.title}
       />
       {visibility ? (
         <div
@@ -42,13 +43,13 @@ const MoviePoster = ({ movie, setNewDataGained }) => {
                 p-0.5   
                 md:flex
                 "
-          style={{ backgroundColor: 'rgba(0,0,0,0.8)' }}
+          style={{ backgroundColor: "rgba(0,0,0,0.8)" }}
         >
           <FavouriteButton movie={movie} setNewDataGained={setNewDataGained} />
           <WatchedButton movie={movie} setNewDataGained={setNewDataGained} />
         </div>
       ) : (
-        ' '
+        " "
       )}
       <div
         className="
@@ -62,7 +63,7 @@ const MoviePoster = ({ movie, setNewDataGained }) => {
                 p-0.5
                 md:hidden
                 "
-        style={{ backgroundColor: 'rgba(0,0,0,0.8)' }}
+        style={{ backgroundColor: "rgba(0,0,0,0.8)" }}
       >
         <FavouriteButton movie={movie} setNewDataGained={setNewDataGained} />
         <WatchedButton movie={movie} setNewDataGained={setNewDataGained} />

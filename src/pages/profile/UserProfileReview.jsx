@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import FavouriteButton from '../../components/movie_actions/FavouriteButton';
 import WatchedButton from '../../components/movie_actions/WatchedButton';
+import Image from 'next/image';
 
 const UserProfileReview = ({ movieID, review, setNewDataGained }) => {
   const [movieData, setMovieData] = useState([]);
@@ -10,7 +11,7 @@ const UserProfileReview = ({ movieID, review, setNewDataGained }) => {
 
   const fetchRequestFromAPI = () => {
     fetch(
-      `https://api.themoviedb.org/3/movie/${movieID}?api_key=${process.env.REACT_APP_TMDB_API_KEY}`
+      `https://api.themoviedb.org/3/movie/${movieID}?api_key=${process.env.NEXT_PUBLIC_TMDB_API_KEY}`
     )
       .then((response) => response.json())
       .then((data) => {
@@ -54,11 +55,12 @@ const UserProfileReview = ({ movieID, review, setNewDataGained }) => {
         key={movieData.id}
       >
         <Link to={'/movie/' + movieData.id}>
-          <img
+          <Image
             className="block max-h-[120px] max-w-[80px] rounded border"
             src={'https://image.tmdb.org/t/p/w500/' + movieData.poster_path}
-            alt={movieData.title}
-            height={150}
+            alt={'Movie title for' + movieData.title}
+            height={300}
+            width={300}
             loading="lazy"
           />
         </Link>

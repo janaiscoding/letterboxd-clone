@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { auth } from '../../../firebase/firebase';
+import Image from 'next/image';
 
 const UserNavbar = ({
   authStatus,
@@ -20,7 +21,7 @@ const UserNavbar = ({
       className="mx-1 mt-2 flex items-center"
       onMouseEnter={() => setShowDropdown(true)}
     >
-      <img
+      <Image
         src={profilePic}
         alt={userName}
         width={24}
@@ -34,7 +35,7 @@ const UserNavbar = ({
         {userName}
       </Link>
       <span>
-        <img src={arrowDown} alt="arrow down indicator icon" className="ml-1" />
+        <Image src={arrowDown} alt="arrow down indicator icon" className="ml-1" />
       </span>
     </div>
   );

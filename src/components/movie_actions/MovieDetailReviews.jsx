@@ -11,7 +11,7 @@ import {
 import ReviewItem from '../UI_components/ReviewItem';
 import SignInAll from '../auth/auth_methods/SignInAll';
 
-const ReviewsComp = ({ movie, authStatus }) => {
+const MovieDetailReviews = ({ movie, authStatus }) => {
   const [review, setReview] = useState('');
   const [reviews, setReviews] = useState([]);
 
@@ -101,9 +101,12 @@ const ReviewsComp = ({ movie, authStatus }) => {
 
   const getReviews = async () => {
     const movieDoc = await getDoc(doc(db, 'movies/' + movie.id));
+    console.log('get reviews');
 
     if (movieDoc.exists()) {
       const movieReviews = movieDoc.data().reviews;
+      console.log(movieReviews.reverse());
+
       if (!movieReviews) {
         setReviews([]);
       } else {
@@ -165,6 +168,7 @@ const ReviewsComp = ({ movie, authStatus }) => {
   };
 
   useEffect(() => {
+    console.log('use effect');
     getReviews();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [movie, authStatus, setReviews]);
@@ -216,4 +220,4 @@ const ReviewsComp = ({ movie, authStatus }) => {
   );
 };
 
-export default ReviewsComp;
+export default MovieDetailReviews;

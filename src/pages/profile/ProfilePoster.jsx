@@ -3,6 +3,7 @@ import FavouriteButton from '../../components/movie_actions/FavouriteButton';
 import WatchedButton from '../../components/movie_actions/WatchedButton';
 import { Link } from 'react-router-dom';
 import Loader from '../../components/UI_components/Loader';
+import Image from 'next/image';
 
 const ProfilePoster = ({ movieID, setNewDataGained }) => {
   const [movieData, setMovieData] = useState([]);
@@ -10,7 +11,7 @@ const ProfilePoster = ({ movieID, setNewDataGained }) => {
   const [visibility, setVisibility] = useState(false);
 
   useEffect(() => {
-    const movieURL = `https://api.themoviedb.org/3/movie/${movieID}?api_key=${process.env.REACT_APP_TMDB_API_KEY}`;
+    const movieURL = `https://api.themoviedb.org/3/movie/${movieID}?api_key=${process.env.NEXT_PUBLIC_TMDB_API_KEY}`;
 
     fetch(movieURL)
       .then((res) => res.json())
@@ -34,11 +35,13 @@ const ProfilePoster = ({ movieID, setNewDataGained }) => {
           key={movieData.id}
         >
           <Link to={'/movie/' + movieData.id}>
-            <img
+            <Image
               className="block max-h-[120px] max-w-[80px]  rounded border md:max-h-[220px] md:max-w-[140px] "
               src={'https://image.tmdb.org/t/p/w500/' + movieData.poster_path}
-              alt={movieData.title}
+              alt={'Title for'+movieData.title}
               loading="lazy"
+              width={300}
+              height={300}
             />
           </Link>
           {visibility && (

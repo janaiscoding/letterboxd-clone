@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { doc, getDoc } from 'firebase/firestore';
 import { db } from '../../firebase/firebase';
 import { auth } from '../../firebase/firebase';
+import Image from 'next/image';
 
 const UserInfo = ({ uid, isProfileUpdated, setProfileUpdated, authStatus }) => {
   const [userName, setUserName] = useState('');
@@ -35,14 +36,18 @@ const UserInfo = ({ uid, isProfileUpdated, setProfileUpdated, authStatus }) => {
   return (
     <div className="flex flex-col items-center">
       <div className="flex">
-        <img
-          src={userPic}
+        {
+          userPic && 
+          <Image
+          src={userPic }
           alt="your user profile avatar"
           width={85}
           height={85}
           loading="lazy"
           className="h-[5rem] w-[5rem] rounded-[50px] border border-solid border-[#678] hover:cursor-pointer hover:border-sh-grey md:h-[100px] md:w-[100px] "
-        />{' '}
+        />
+        }
+
         <div className=" ml-4 mt-3 md:flex md:flex-col md:items-start md:gap-1 ">
           <div className="flex w-full flex-col items-start gap-1 md:flex-row">
             <h1 className="sans-serif text-2xl font-bold text-p-white">
