@@ -18,7 +18,6 @@ export const WatchButton = ({
   isWatched: boolean;
   setIsWatched: Dispatch<React.SetStateAction<boolean>>;
 }) => {
-  // WATCHED LIST LOGIC
   const onWatched = async () => {
     if (isWatched) {
       await removeFromWatchedDB();

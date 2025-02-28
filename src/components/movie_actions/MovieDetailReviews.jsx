@@ -102,11 +102,9 @@ const MovieDetailReviews = ({ movie, authStatus }) => {
 
   const getReviews = async () => {
     const movieDoc = await getDoc(doc(db, "movies/" + movie.id));
-    console.log("get reviews");
 
     if (movieDoc.exists()) {
       const movieReviews = movieDoc.data().reviews;
-      console.log(movieReviews.reverse());
 
       if (!movieReviews) {
         setReviews([]);
@@ -169,7 +167,6 @@ const MovieDetailReviews = ({ movie, authStatus }) => {
   };
 
   useEffect(() => {
-    console.log("use effect");
     getReviews();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [movie, authStatus, setReviews]);

@@ -1,9 +1,9 @@
 import Image from "next/image";
-import FavouriteButton from "./Buttons/FavoriteButton";
 import { useEffect, useState } from "react";
-import { auth, db } from "../../src/firebase/firebase";
 import { doc, getDoc } from "firebase/firestore";
-import { WatchButton } from "./Buttons/WatchButton";
+import { auth, db } from "../../../src/firebase/firebase";
+import { WatchButton } from "../Buttons/WatchButton";
+import FavouriteButton from "../Buttons/FavoriteButton";
 
 export default function MoviePoster({
   poster,
@@ -29,7 +29,6 @@ export default function MoviePoster({
   };
 
   const setIsMovieWatched = async () => {
-    console.log(auth.currentUser);
     if (!auth || !auth.currentUser) return;
 
     const userId = auth.currentUser.uid;
