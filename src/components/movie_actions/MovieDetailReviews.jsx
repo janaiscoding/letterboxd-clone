@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from 'react';
-import { auth, db } from '../../firebase/firebase';
+"use client";
+import React, { useEffect, useState } from "react";
+import { auth, db } from "../../firebase/firebase";
 import {
   doc,
   setDoc,
@@ -7,19 +8,19 @@ import {
   updateDoc,
   arrayUnion,
   arrayRemove,
-} from 'firebase/firestore';
-import ReviewItem from '../UI_components/ReviewItem';
-import SignInAll from '../auth/auth_methods/SignInAll';
+} from "firebase/firestore";
+import ReviewItem from "../UI_components/ReviewItem";
+import SignInAll from "../auth/auth_methods/SignInAll";
 
 const MovieDetailReviews = ({ movie, authStatus }) => {
-  const [review, setReview] = useState('');
+  const [review, setReview] = useState("");
   const [reviews, setReviews] = useState([]);
 
   const handleReviewSubmit = async (e, review) => {
     e.preventDefault();
 
     if (!review || !auth.currentUser) {
-      createPopup('error');
+      createPopup("error");
       return;
     }
 
@@ -34,13 +35,13 @@ const MovieDetailReviews = ({ movie, authStatus }) => {
         // refetch reviews
         getReviews();
         // cleanup input
-        setReview('');
+        setReview("");
       });
   };
 
   const addReviewToUser = async (review) => {
     const userId = auth.currentUser.uid;
-    const userRef = doc(db, 'users', userId);
+    const userRef = doc(db, "users", userId);
 
     await updateDoc(userRef, {
       reviews: arrayUnion({
@@ -56,7 +57,7 @@ const MovieDetailReviews = ({ movie, authStatus }) => {
    * @param {*} review
    */
   const onAddMovieReview = async (review) => {
-    const movieDoc = await getDoc(doc(db, 'movies/' + movie.id));
+    const movieDoc = await getDoc(doc(db, "movies/" + movie.id));
 
     if (movieDoc.exists()) {
       await addMovieReview(review);
@@ -66,7 +67,7 @@ const MovieDetailReviews = ({ movie, authStatus }) => {
   };
 
   const addMovieReview = async (review) => {
-    const movieRef = doc(db, 'movies/' + movie.id);
+    const movieRef = doc(db, "movies/" + movie.id);
 
     await updateDoc(movieRef, {
       reviews: arrayUnion({
@@ -78,7 +79,7 @@ const MovieDetailReviews = ({ movie, authStatus }) => {
       }),
     })
       .then(() => {
-        createPopup('success');
+        createPopup("success");
       })
       .catch((err) => {
         console.log(err);
@@ -86,7 +87,7 @@ const MovieDetailReviews = ({ movie, authStatus }) => {
   };
 
   const addNewMovieDocWithReview = async (review) => {
-    await setDoc(doc(db, 'movies/' + movie.id), {
+    await setDoc(doc(db, "movies/" + movie.id), {
       reviews: [
         {
           movieID: movie.id,
@@ -100,8 +101,8 @@ const MovieDetailReviews = ({ movie, authStatus }) => {
   };
 
   const getReviews = async () => {
-    const movieDoc = await getDoc(doc(db, 'movies/' + movie.id));
-    console.log('get reviews');
+    const movieDoc = await getDoc(doc(db, "movies/" + movie.id));
+    console.log("get reviews");
 
     if (movieDoc.exists()) {
       const movieReviews = movieDoc.data().reviews;
@@ -124,20 +125,20 @@ const MovieDetailReviews = ({ movie, authStatus }) => {
       review: review.review,
     };
 
-    const movieRef = doc(db, 'movies', review.movieID.toString());
-    const userRef = doc(db, 'users', review.uid);
+    const movieRef = doc(db, "movies", review.movieID.toString());
+    const userRef = doc(db, "users", review.uid);
 
     await updateDoc(movieRef, {
       reviews: arrayRemove(review),
     })
       .then(() => {
-        createPopup('delete');
+        createPopup("delete");
         // refetch the latest reviews ^^
         getReviews();
       })
       .catch((err) => {
         console.log(err);
-        createPopup('error');
+        createPopup("error");
       });
 
     await updateDoc(userRef, {
@@ -149,14 +150,14 @@ const MovieDetailReviews = ({ movie, authStatus }) => {
 
   // just a generic popup element that should be replaced with a better handler here.
   const createPopup = (action) => {
-    const popupAlert = document.createElement('div');
+    const popupAlert = document.createElement("div");
 
-    popupAlert.classList.add('popup-review');
-    if (action === 'error') {
+    popupAlert.classList.add("popup-review");
+    if (action === "error") {
       popupAlert.innerText = `Your review cannot be empty!`;
-    } else if (action === 'success') {
-      popupAlert.innerText = 'Your review was successfully added!';
-    } else if (action === 'delete') {
+    } else if (action === "success") {
+      popupAlert.innerText = "Your review was successfully added!";
+    } else if (action === "delete") {
       popupAlert.innerText = `Your review was successfully deleted!`;
     } else {
       popupAlert.innerText = `Your review could not be deleted!`;
@@ -168,7 +169,7 @@ const MovieDetailReviews = ({ movie, authStatus }) => {
   };
 
   useEffect(() => {
-    console.log('use effect');
+    console.log("use effect");
     getReviews();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [movie, authStatus, setReviews]);
@@ -188,9 +189,9 @@ const MovieDetailReviews = ({ movie, authStatus }) => {
               />
             ))
         ) : authStatus ? (
-          <p className="pt-2 text-base text-sh-grey">Write the first review!</p>
+          <p className="text-sh-grey pt-2 text-base">Write the first review!</p>
         ) : (
-          <p className="pt-2 text-base text-sh-grey">
+          <p className="text-sh-grey pt-2 text-base">
             Login and write the first review!
           </p>
         )}
@@ -200,13 +201,13 @@ const MovieDetailReviews = ({ movie, authStatus }) => {
             onSubmit={(e) => handleReviewSubmit(e, review)}
           >
             <input
-              className="active-outline-none rounded bg-h-grey p-3 text-drop-black focus:outline-none"
+              className="active-outline-none bg-h-grey text-drop-black rounded p-3 focus:outline-none"
               value={review}
               onChange={(e) => setReview(e.target.value)}
             />
             <button
               type="submit"
-              className="rounded bg-c-grey p-1 text-base text-l-white hover:bg-sh-grey hover:text-b-blue"
+              className="bg-c-grey text-l-white hover:bg-sh-grey hover:text-b-blue rounded p-1 text-base"
             >
               Send Review
             </button>

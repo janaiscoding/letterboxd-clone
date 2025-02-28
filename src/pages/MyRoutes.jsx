@@ -1,18 +1,18 @@
-import React from 'react';
-import { Route, Routes } from 'react-router-dom';
-import Home from './home/Home';
-import Films from './films/Films';
-import Members from './members/Members';
-import Results from './search-results/Results';
-import MoviePage from './movie/MoviePage';
-import Profile from './profile/Profile';
-import FilterPage from './films/FilterPage';
-import Settings from './user-settings/Settings';
-import NotFound from './NotFound';
+import React from "react";
+import { Route, Routes } from "react-router-dom";
+import Home from "./home/Home";
+import Films from "./films/Films";
+import Members from "./members/Members";
+import Results from "./search-results/Results";
+// import MoviePage from "./movie/MoviePage";
+import Profile from "./profile/Profile";
+import FilterPage from "./films/FilterPage";
+import Settings from "./user-settings/Settings";
+import NotFound from "./NotFound";
 
-import ProfileFavourites from './profile/ProfileFavourites';
-import ProfileWatched from './profile/ProfileWatched';
-import ReviewsPage from './reviews/ReviewsPage';
+import ProfileFavourites from "./profile/ProfileFavourites";
+import ProfileWatched from "./profile/ProfileWatched";
+import ReviewsPage from "./reviews/ReviewsPage";
 
 const MyRoutes = ({
   authStatus,
@@ -98,7 +98,7 @@ const MyRoutes = ({
           />
         }
       />
-      <Route
+      {/* <Route
         path="/movie/:movieId"
         element={
           <MoviePage
@@ -109,7 +109,7 @@ const MyRoutes = ({
             setNewDataGained={setNewDataGained}
           />
         }
-      />
+      /> */}
       <Route
         path="/filter/:query"
         element={

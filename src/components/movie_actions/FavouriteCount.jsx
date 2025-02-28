@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from "react";
-import removeFavIcon from "./remFav.png";
+
 import Image from "next/image";
 
 const FavouriteCount = ({ movie }) => {
@@ -15,7 +15,7 @@ const FavouriteCount = ({ movie }) => {
     <>
       <div className="text-p-white flex flex-col items-center py-2 text-center text-xl">
         <Image
-          src={removeFavIcon}
+          src={"asda"}
           width={30}
           height={20}
           alt="favourite icon"

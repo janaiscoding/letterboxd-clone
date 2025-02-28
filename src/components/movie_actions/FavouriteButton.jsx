@@ -8,8 +8,7 @@ import {
   arrayRemove,
   arrayUnion,
 } from "firebase/firestore";
-import favIcon from "./fav.png";
-import removeFavIcon from "./remFav.png";
+
 import Image from "next/image";
 
 const FavouriteButton = ({ movie, setNewDataGained }) => {
@@ -84,7 +83,7 @@ const FavouriteButton = ({ movie, setNewDataGained }) => {
     <>
       <div className="p-2" onClick={() => onFavourite(movie)}>
         <Image
-          src={isFavourite ? removeFavIcon : favIcon}
+          src={"img"}
           width={20}
           height={20}
           alt={

@@ -1,0 +1,15 @@
+@media (min-width: 750px) {
+  .movie-backdrop {
+    box-shadow: inset 5px -46px 80px 109px rgba(20, 24, 28, 1);
+  }
+}
+.backdrop-helper {
+  box-shadow: 16px 130px 0px 200px rgba(20, 24, 28, 1);
+}
+.movie-body {
+  background-color: #14181c;
+}
+.movie-backdrop {
+  background-repeat: no-repeat;
+  background-size: cover;
+}
