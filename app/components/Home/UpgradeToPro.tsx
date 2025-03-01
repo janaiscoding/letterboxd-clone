@@ -10,7 +10,6 @@ export const UpgradeToPro = () => {
   return (
     <>
       <Link href="https://letterboxd.com/pro/?utm_medium=banner&utm_campaign=get-pro">
-        {/* @todo - verify image */}
         <Image
           className="mb-8 block self-center md:hidden"
           src={mobileUrl}

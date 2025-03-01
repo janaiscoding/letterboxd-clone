@@ -9,7 +9,7 @@ import { HomeSignedOut } from "./components/Home/HomeSignedOut";
 
 export default function Page() {
   const [user, setUser] = useState<any>();
-  const [popularMovies, setPopularMovies] = useState<any>();
+  const [movies, setMovies] = useState<any>();
 
   //this handles the login/logout styles and displays in the navbar
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -26,9 +26,8 @@ export default function Page() {
     }
 
     const data = await res.json();
-    const popularMovies = data.results.slice(0, 6);
 
-    setPopularMovies(popularMovies);
+    setMovies(data.results);
   };
 
   useEffect(() => {
@@ -52,9 +51,9 @@ export default function Page() {
         isLoggedIn={isLoggedIn}
         isTransparentNav={isTransparentNav}
       />
-      {isLoggedIn && <Home popular={popularMovies} user={user} />}
+      {isLoggedIn && <Home movies={movies} user={user} />}
 
-      {!isLoggedIn && <HomeSignedOut movies={popularMovies} />}
+      {!isLoggedIn && <HomeSignedOut movies={movies} />}
     </>
   );
 }

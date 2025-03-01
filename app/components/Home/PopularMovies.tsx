@@ -18,9 +18,11 @@ export const PopularMovies = ({ movies }: { movies: any }) => {
           "No populars available at the moment. Please try again later."}
 
         {movies &&
-          movies.map((movie) => (
-            <PopularMoviePoster key={movie.id} movie={movie} />
-          ))}
+          movies
+            .slice(0, 6)
+            .map((movie) => (
+              <PopularMoviePoster key={movie.id} movie={movie} />
+            ))}
       </div>
     </>
   );
