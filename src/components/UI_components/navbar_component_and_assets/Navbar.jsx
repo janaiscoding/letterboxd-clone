@@ -7,15 +7,15 @@ import SearchInputDesktop from "./api_actions/SearchInputDesktop";
 import { auth } from "../../../firebase/firebase";
 import navbarLinksData from "./navbar_assets/navbarLinksData";
 
-import logo from "./navbar_assets/logo.png";
+import DropdownMobile from "./DropdownMobile";
+import UserNavbar from "./UserNavbar";
+import DropdownDesktop from "./DropdownDesktop";
+
 import logoMobile from "./navbar_assets/logoMobile.png";
 import openCloseMenu from "./navbar_assets/menuopenclose.png";
 import searchIcon from "./navbar_assets/searchIcon.png";
-
 import arrowDown from "./navbar_assets/arrowdownprofile.png";
-import DropdownDesktop from "./DropdownDesktop";
-import UserNavbar from "./UserNavbar";
-import DropdownMobile from "./DropdownMobile";
+import logo from "./navbar_assets/logo.png";
 import Image from "next/image";
 
 const Navbar = ({
@@ -147,7 +147,7 @@ const Navbar = ({
                   </li>
                 )}
 
-                {navbarLinks.map((L) => (
+                {/* {navbarLinks.map((L) => (
                   <li className="ml-4 mt-2" key={L.id}>
                     <Link
                       className="sans-serif text-sh-grey hover:text-p-white text-xs font-bold tracking-widest"
@@ -156,7 +156,7 @@ const Navbar = ({
                       {L.name}
                     </Link>
                   </li>
-                ))}
+                ))} */}
               </ul>
             </nav>
             <Image

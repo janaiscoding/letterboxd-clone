@@ -14,9 +14,7 @@ const MoviePage = ({
   const { movieId } = useParams();
   useEffect(() => {
     fetchRequest(
-      "https://api.themoviedb.org/3/movie/" +
-        movieId +
-        "?api_key=90a83017dcd0ef93c3e5474af9093de9&append_to_response=credits"
+      `https://api.themoviedb.org/3/movie/${movieId}?api_key=${NEXT_PUBLIC_TMDB_API_KEY}&append_to_response=credits`
     );
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

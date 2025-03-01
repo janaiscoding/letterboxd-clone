@@ -27,7 +27,7 @@ export default function Page({ params }: { params: Promise<{ id: string }> }) {
     async function fetchMovie() {
       try {
         const res = await fetch(
-          `https://api.themoviedb.org/3/movie/${id}?api_key=90a83017dcd0ef93c3e5474af9093de9&append_to_response=credits`
+          `https://api.themoviedb.org/3/movie/${id}?api_key=${process.env.NEXT_PUBLIC_TMDB_API_KEY}&append_to_response=credits`
         );
 
         if (!res.ok) throw new Error("Movie not found");

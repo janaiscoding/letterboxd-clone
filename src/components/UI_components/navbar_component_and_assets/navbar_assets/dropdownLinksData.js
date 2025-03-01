@@ -1,25 +1,25 @@
-import uniqid from 'uniqid';
+// import uniqid from 'uniqid';
 
 const dropdownLinksData = [
   {
-    id: uniqid(),
-    name: 'Home',
-    link: '/',
+    id: "1",
+    name: "Home",
+    link: "/",
   },
   {
-    id: uniqid(),
-    name: 'Films',
-    link: '/films',
+    id: "2",
+    name: "Films",
+    link: "/films",
   },
   {
-    id: uniqid(),
-    name: 'Members',
-    link: '/members',
+    id: "3",
+    name: "Members",
+    link: "/members",
   },
   {
-    id: uniqid(),
-    name: 'Reviews',
-    link: '/reviews',
+    id: "4",
+    name: "Reviews",
+    link: "/reviews",
   },
 ];
 

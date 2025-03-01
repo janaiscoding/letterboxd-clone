@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import searchIcon from '../navbar_assets/searchIcon.png';
-import '../../../../styles/modals.css';
-import Image from 'next/image';
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import searchIcon from "../navbar_assets/searchIcon.png";
+import "../../../../styles/modals.css";
+import Image from "next/image";
 
 const SearchInputMobile = ({
   fetchRequest,
@@ -11,18 +11,18 @@ const SearchInputMobile = ({
   setSearchMobOpen,
   searchBarRef,
 }) => {
-  const [query, setQuery] = useState('');
+  const [query, setQuery] = useState("");
   const navigate = useNavigate();
 
   const handleSearchMobile = () => {
-    if (query !== '') {
+    if (query !== "") {
       fetchRequest(
         `https://api.themoviedb.org/3/search/movie?api_key=${process.env.NEXT_PUBLIC_TMDB_API_KEY}&query=${query}`
       );
       setNewDataGained(true);
-      navigate('/results/' + query);
+      navigate("/results/" + query);
     }
-    setQuery('');
+    setQuery("");
     setSearchMobOpen(false);
   };
   useEffect(() => {
@@ -31,16 +31,16 @@ const SearchInputMobile = ({
         setSearchMobOpen(false);
       }
     };
-    document.addEventListener('mousedown', handler);
+    document.addEventListener("mousedown", handler);
     return () => {
-      document.removeEventListener('mousedown', handler);
+      document.removeEventListener("mousedown", handler);
     };
   });
 
   return (
     <div
-      className={`search-bar-mobile absolute left-0 top-[2.3rem] z-50 flex w-full bg-h-blue p-4 ${
-        searchMobOpen ? 'active' : 'inactive'
+      className={`search-bar-mobile bg-h-blue absolute left-0 top-[2.3rem] z-50 flex w-full p-4 ${
+        searchMobOpen ? "active" : "inactive"
       }`}
     >
       <label htmlFor="search" className="hidden">
@@ -52,16 +52,16 @@ const SearchInputMobile = ({
         value={query}
         onChange={(e) => setQuery(e.target.value)}
         className="
-        focus:bg-white
+        bg-input-bg
+        text-drop-grey
         h-9
         w-full
         rounded
-        bg-if-blue
         py-1.5
         pl-2.5
         pr-8
         text-base
-        text-drop-grey
+        focus:bg-white
         focus:outline-none
         "
       />

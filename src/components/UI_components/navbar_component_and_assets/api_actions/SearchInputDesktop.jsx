@@ -1,59 +1,59 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import searchInputIcon from './searchinput.png';
-import closeIcon from './csb.png';
-import Image from 'next/image';
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import searchInputIcon from "./searchinput.png";
+import closeIcon from "./csb.png";
+import Image from "next/image";
 const SearchInputDesktop = ({ fetchRequest, setNewDataGained }) => {
-  const [query, setQuery] = useState('');
+  const [query, setQuery] = useState("");
   const navigate = useNavigate();
   const handleKeyDown = (e) => {
-    if (e.key === 'Enter' && query !== '') {
-      const SBD = document.querySelector('.search-bar-desktop');
-      SBD.classList.add('md:hidden');
-      const SID = document.querySelector('.search-icon-desktop');
+    if (e.key === "Enter" && query !== "") {
+      const SBD = document.querySelector(".search-bar-desktop");
+      SBD.classList.add("md:hidden");
+      const SID = document.querySelector(".search-icon-desktop");
 
-      SID.classList.remove('md:hidden');
-      SID.classList.add('md:block');
+      SID.classList.remove("md:hidden");
+      SID.classList.add("md:block");
       //fetch first
       fetchRequest(
         `https://api.themoviedb.org/3/search/movie?api_key=${process.env.NEXT_PUBLIC_TMDB_API_KEY}&query=${query}`
       );
       //setting that new data was gained to refresh results page
       setNewDataGained(true);
-      navigate('/results/' + query);
-      setQuery('');
+      navigate("/results/" + query);
+      setQuery("");
     }
   };
   const handleSearchDesktop = () => {
-    if (query !== '') {
-      const SBD = document.querySelector('.search-bar-desktop');
-      SBD.classList.add('md:hidden');
-      const SID = document.querySelector('.search-icon-desktop');
+    if (query !== "") {
+      const SBD = document.querySelector(".search-bar-desktop");
+      SBD.classList.add("md:hidden");
+      const SID = document.querySelector(".search-icon-desktop");
 
-      SID.classList.remove('md:hidden');
-      SID.classList.add('md:block');
+      SID.classList.remove("md:hidden");
+      SID.classList.add("md:block");
       //fetch first
       fetchRequest(
         `https://api.themoviedb.org/3/search/movie?api_key=${process.env.NEXT_PUBLIC_TMDB_API_KEY}&query=${query}`
       );
       //setting that new data was gained to refresh results page
       setNewDataGained(true);
-      navigate('/results/' + query);
-      setQuery('');
+      navigate("/results/" + query);
+      setQuery("");
     }
   };
   const closeSearchDeskop = () => {
     //the x button is hidden now
-    const CSD = document.querySelector('.close-search-icon-desktop');
-    CSD.classList.remove('md:block');
-    CSD.classList.add('md:hidden');
+    const CSD = document.querySelector(".close-search-icon-desktop");
+    CSD.classList.remove("md:block");
+    CSD.classList.add("md:hidden");
     //display the search icon again
-    const SIID = document.querySelector('.search-icon-desktop');
-    SIID.classList.remove('md:hidden');
-    SIID.classList.add('md:block');
+    const SIID = document.querySelector(".search-icon-desktop");
+    SIID.classList.remove("md:hidden");
+    SIID.classList.add("md:block");
     // hide the input field
-    const SBD = document.querySelector('.search-bar-desktop');
-    SBD.classList.add('md:hidden');
+    const SBD = document.querySelector(".search-bar-desktop");
+    SBD.classList.add("md:hidden");
   };
 
   // let allResponses = movieData.map((movie) => <div>{movie.title}</div>);
@@ -77,14 +77,14 @@ const SearchInputDesktop = ({ fetchRequest, setNewDataGained }) => {
         onChange={(e) => setQuery(e.target.value)}
         onKeyDown={handleKeyDown}
         className="
+        bg-input-bg
+        text-drop-grey
         h-8
         rounded-2xl
-        bg-if-blue
         py-1.5
         pl-2.5
         pr-7
         text-base
-        text-drop-grey
         focus:outline-none
         md:w-[150px]
         "

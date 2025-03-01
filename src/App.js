@@ -5,7 +5,7 @@ import { auth } from './firebase/firebase';
 import { onAuthStateChanged } from 'firebase/auth';
 
 // SPA & UI
-import Navbar from './components/UI_components/navbar_component_and_assets/Navbar';
+// import Navbar from './components/UI_components/navbar_component_and_assets/Navbar';
 import { BrowserRouter } from 'react-router-dom';
 import MyRoutes from './pages/MyRoutes';
 import Footer from './components/UI_components/footer_component_and_assets/Footer';
@@ -48,14 +48,6 @@ const App = () => {
     <>
       <BrowserRouter>
         <ScrollToTop />
-        <Navbar
-          authStatus={authStatus}
-          fetchRequest={fetchRequest}
-          isProfileUpdated={isProfileUpdated}
-          setProfileUpdated={setProfileUpdated}
-          setNewDataGained={setNewDataGained}
-        />
-
         <MyRoutes
           authStatus={authStatus}
           fetchResults={fetchResults}

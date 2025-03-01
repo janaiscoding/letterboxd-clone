@@ -1,11 +1,12 @@
-import { Metadata } from 'next';
-import React from 'react';
-import './globals.css';
-import './reset.css';
+import { Metadata } from "next";
+import React from "react";
+import "./globals.css";
+import "./reset.css";
+import Navbar from "./components/Navigation/Navbar";
 
 export const metadata: Metadata = {
-  title: 'Clonnerboxd • Social film discovery',
-  description: 'Letterboxd Clone by JanaIsCoding',
+  title: "Clonnerboxd • Social film discovery",
+  description: "Letterboxd Clone by JanaIsCoding",
 };
 
 export default function RootLayout({
