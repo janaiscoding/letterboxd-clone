@@ -5,14 +5,16 @@ import Link from "next/link";
 import Image from "next/image";
 import FavouriteButton from "../Buttons/FavoriteButton";
 import { WatchButton } from "../Buttons/WatchButton";
-import { User } from "app/profile/User";
+import { User, UserFavourite, UserWatched } from "app/profile/User";
 
 export const ProfileMoviePoster = ({
-  user,
+  watched,
+  favourites,
   movieId,
   onEvent,
 }: {
-  user: User;
+  watched: UserWatched[];
+  favourites: UserFavourite[];
   movieId: string;
   onEvent: () => void;
 }) => {
@@ -20,23 +22,21 @@ export const ProfileMoviePoster = ({
   const [isHovered, setIsHovered] = useState(false);
 
   const [movie, setMovie] = useState<Movie>({} as Movie);
+
   const [isFavourite, setIsFavourite] = useState(false);
   const [isWatched, setIsWatched] = useState(false);
 
   const setInitialMovieStatuses = () => {
-    const isFavorite = user.favourites.some(
-      (movies) => movies?.movieID === movieId
-    );
+    const isFavorite = favourites.some((movies) => movies?.movieID === movieId);
     setIsFavourite(isFavorite);
 
-    const isWatched = user.watched.some(
-      (movies) => movies?.movieID === movieId
-    );
+    const isWatched = watched.some((movies) => movies?.movieID === movieId);
     setIsWatched(isWatched);
   };
 
   useEffect(() => {
     setIsLoading(true);
+
     const movieURL = `https://api.themoviedb.org/3/movie/${movieId}?api_key=${process.env.NEXT_PUBLIC_TMDB_API_KEY}`;
 
     fetch(movieURL)
@@ -83,11 +83,12 @@ export const ProfileMoviePoster = ({
             setIsFavourite={setIsFavourite}
             onEvent={onEvent}
           />
+
           <WatchButton
             id={movie.id}
             title={movie.title}
             isWatched={isWatched}
-            setIsWatched={setIsFavourite}
+            setIsWatched={setIsWatched}
             onEvent={onEvent}
           />
         </div>

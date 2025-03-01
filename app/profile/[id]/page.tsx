@@ -8,6 +8,7 @@ import { User, UserFavourite, UserWatched } from "../User";
 import { ProfileBio } from "app/components/Profile/ProfileBio";
 import { LayoutNavbar } from "app/components/Navigation/LayoutNavbar";
 import { ProfileMoviesHighlight } from "app/components/Profile/ProfileMoviesHighlight";
+import { ProfileReviews } from "app/components/Profile/ProfileReviews";
 
 export default function Page({ params }: { params: Promise<{ id: string }> }) {
   const { id } = use(params);
@@ -27,6 +28,7 @@ export default function Page({ params }: { params: Promise<{ id: string }> }) {
     if (userSnap.exists()) {
       const user = userSnap.data() as User;
       setUser(user);
+
       setWatched(user.watched);
       setFavourites(user.favourites);
     }
@@ -61,11 +63,13 @@ export default function Page({ params }: { params: Promise<{ id: string }> }) {
       <div className="site-body min-h-[78vh] py-5">
         <div className="flex flex-col px-4 font-['Graphik'] md:mx-auto md:my-0 md:w-[950px] md:py-8">
           <ProfileBio user={user} />
-          <div className="flex flex-col md:flex-row md:justify-between">
+          <div className="flex flex-col gap-4 md:flex-row md:justify-between">
             <div>
               <ProfileMoviesHighlight
                 user={user}
                 movies={favourites?.reverse()}
+                watched={watched}
+                favourites={favourites}
                 type="favourites"
                 onEvent={onEvent}
               />
@@ -73,17 +77,14 @@ export default function Page({ params }: { params: Promise<{ id: string }> }) {
               <ProfileMoviesHighlight
                 user={user}
                 movies={watched?.reverse()}
+                watched={watched}
+                favourites={favourites}
                 type="watched"
                 onEvent={onEvent}
               />
             </div>
 
-            <div className="">
-              {/* <UserReviews
-                reviews={reviews}
-                setNewDataGained={setNewDataGained}
-              /> */}
-            </div>
+            {user.reviews && <ProfileReviews reviews={user.reviews} />}
           </div>
         </div>
       </div>

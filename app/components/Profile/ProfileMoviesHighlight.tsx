@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { User, UserFavourite } from "app/profile/User";
+import { User, UserFavourite, UserWatched } from "app/profile/User";
 import React, { useEffect, useState } from "react";
 import { ProfileMoviePoster } from "./ProfileMoviePoster";
 import Link from "next/link";
@@ -7,11 +7,15 @@ import Link from "next/link";
 export const ProfileMoviesHighlight = ({
   user,
   movies,
+  watched,
+  favourites,
   type,
   onEvent,
 }: {
   user: User;
   movies: UserFavourite[];
+  watched: UserWatched[];
+  favourites: UserFavourite[];
   type: string;
   onEvent: () => void;
 }) => {
@@ -20,8 +24,6 @@ export const ProfileMoviesHighlight = ({
   const getLatestMovies = (movies: UserFavourite[]) => {
     const latestMovies = movies.slice(0, 4).map((movie) => movie.movieID);
     setMovieIds(latestMovies);
-
-    console.log("getLatestMovies, latestMovies: ", latestMovies);
   };
 
   useEffect(() => {
@@ -50,7 +52,8 @@ export const ProfileMoviesHighlight = ({
           movieIds.map((id) => (
             <ProfileMoviePoster
               key={id}
-              user={user}
+              watched={watched}
+              favourites={favourites}
               movieId={id}
               onEvent={onEvent}
             />
