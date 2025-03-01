@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import arrowDown from "../../components/UI_components/navbar_component_and_assets/navbar_assets/arrowdownprofile.png";
+
 import Image from "next/image";
 const SelectBoxFilterPage = ({ title, data }) => {
   const [showDropdown, setShowDropdown] = useState(false);
@@ -22,7 +22,7 @@ const SelectBoxFilterPage = ({ title, data }) => {
           </p>
           <span>
             <Image
-              src={arrowDown}
+              src={"arrowDown"}
               alt="arrow down indicator icon"
               className="ml-1"
             />

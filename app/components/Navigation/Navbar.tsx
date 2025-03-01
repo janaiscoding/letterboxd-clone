@@ -1,32 +1,55 @@
 "use client";
 import React, { useState } from "react";
 import Image from "next/image";
-import { menuLinks } from "./NavigationLinks";
 import Link from "next/link";
 import { auth } from "../../../src/firebase/firebase";
-
-//@todo move them in assets
-import openCloseMenu from "../../../src/components/UI_components/navbar_component_and_assets/navbar_assets/menuopenclose.png";
-import searchIcon from "../../../src/components/UI_components/navbar_component_and_assets/navbar_assets/searchIcon.png";
-import arrowDown from "../../../src/components/UI_components/navbar_component_and_assets/navbar_assets/arrowdownprofile.png";
-import logo from "../../../src/components/UI_components/navbar_component_and_assets/navbar_assets/logo.png";
-import logoMobile from "../../../src/components/UI_components/navbar_component_and_assets/navbar_assets/logoMobile.png";
 import UserNavbar from "./UserNavbar";
 import DropdownDesktop from "./DropdownDesktop";
 import { AuthProviders } from "../Auth/AuthProviders";
 import { SignInButton } from "../Buttons/SignInButton";
 import { SearchInputDesktop } from "../Searching/SearchInputDesktop";
+import { DropdownMobile } from "./DropdownMobile";
+import { SearchInputMobile } from "../Searching/SearchInputMobile";
+
+import openCloseMenu from "@/assets/menuopenclose.png";
+import searchIcon from "@/assets/searchIcon.png";
+import arrowDown from "@/assets/arrowdownprofile.png";
+import logo from "@/assets/logo.png";
+import logoMobile from "@/assets/logoMobile.png";
+const menuLinks = [
+  {
+    id: 1,
+    name: "FILMS",
+    href: "/films",
+  },
+  {
+    id: 2,
+    name: "LISTS",
+    href: "/lists",
+  },
+  {
+    id: 3,
+    name: "MEMBERS",
+    href: "/members",
+  },
+  {
+    id: 4,
+    name: "REVIEWS",
+    href: "/reviews",
+  },
+];
 
 const Navbar = ({ userName, profilePic, isLoggedIn, isTransparentNav }) => {
   const [showLogin, setShowLogin] = useState(false);
-
-  //for hover on navbar to display dropdown menu on desktop
   const [showDropdown, setShowDropdown] = useState(false);
+  const [isMobileSearchOpen, setisMobileSearchOpen] = useState(false);
+  const [isMobileNavBarOpen, setisMobileNavBarOpen] = useState(false);
 
-  // MOBILE HELPER FOR ACTIVE/INACTIVE
-  const [searchMobOpen, setSearchMobOpen] = useState(false); //for searchbar mobile
-  const [DDMobOpen, setDDMobOpen] = useState(false); //for dropdown mobile
+  // @to-do click outside on mobile
+  // let dropDownRef: any = useRef();
+  // let searchBarRef = useRef();
 
+  // @to-do improve this
   const displaySearchDesktop = () => {
     //show the bar element
     const SBD = document.querySelector(".search-bar-desktop");
@@ -46,9 +69,19 @@ const Navbar = ({ userName, profilePic, isLoggedIn, isTransparentNav }) => {
     <header
       className={`align-center flex flex-col md:h-[60px] md:flex-row ${
         isTransparentNav ? "bg-transparent" : "bg-h-blue"
-      } ${DDMobOpen && !isLoggedIn ? "mb-28" : searchMobOpen ? "mb-11" : "mb-0"}
+      } ${
+        isMobileNavBarOpen && !isLoggedIn
+          ? "mb-28"
+          : isMobileSearchOpen
+          ? "mb-11"
+          : "mb-0"
+      }
         ${
-          DDMobOpen && isLoggedIn ? "mb-48" : searchMobOpen ? "mb-12" : "mb-0"
+          isMobileNavBarOpen && isLoggedIn
+            ? "mb-48"
+            : isMobileSearchOpen
+            ? "mb-12"
+            : "mb-0"
         }`}
     >
       <section className="align-center z-10 flex justify-between px-2 pl-4 md:mx-auto md:my-0 md:w-[950px]">
@@ -137,49 +170,39 @@ const Navbar = ({ userName, profilePic, isLoggedIn, isTransparentNav }) => {
             <SearchInputDesktop />
           </div>
 
-          {/* All mobile components are 
-        1. Hidden from MD with Tailwind
-        2. Toggled on/off with the icons 
-        3. Handled when clicking outside of them with useRef and document event listeners for mousedown */}
-          {/* <div ref={dropDownRef}>
-              <Image
-                src={openCloseMenu}
-                onClick={() => setDDMobOpen(!DDMobOpen)}
-                className="md:hidden"
-                width={40}
-                height={40}
-                alt="open and close navbar dropdown menu on mobile"
-              />
-              <DropdownMobile
-                profilePic={profilePic}
-                userName={userName}
-                arrowDown={arrowDown}
-                authStatus={authStatus}
-                setUserLogin={setIsLoggedIn}
-                DDMobOpen={DDMobOpen}
-                setDDMobOpen={setDDMobOpen}
-                dropDownRef={dropDownRef}
-              />
-            </div>
-            <div ref={searchBarRef}>
-              <Image
-                className="search-icon-mobile md:hidden"
-                src={searchIcon}
-                width={40}
-                height={40}
-                alt="search icon"
-                onClick={() => {
-                  setSearchMobOpen(!searchMobOpen);
-                }}
-              />
-              <SearchInputMobile
-                fetchRequest={fetchRequest}
-                setNewDataGained={setNewDataGained}
-                setSearchMobOpen={setSearchMobOpen}
-                searchMobOpen={searchMobOpen}
-                searchBarRef={searchBarRef}
-              />
-            </div> */}
+          {/* All mobile components are 1. Hidden from MD with Tailwind 2. Toggled on/off with the icons 
+          3. Handled when clicking outside of them with useRef and document event listeners for mousedown */}
+
+          <div className="md:hidden">
+            <Image
+              src={openCloseMenu}
+              onClick={() => {
+                setisMobileNavBarOpen(!isMobileNavBarOpen);
+                setisMobileSearchOpen(false);
+              }}
+              width={40}
+              height={40}
+              alt="toggle mobile menu navigation"
+            />
+            {isMobileNavBarOpen && (
+              <DropdownMobile userName={userName} profilePic={profilePic} />
+            )}
+          </div>
+
+          <div>
+            <Image
+              className="search-icon-mobile md:hidden"
+              src={searchIcon}
+              width={40}
+              height={40}
+              alt="search icon"
+              onClick={() => {
+                setisMobileSearchOpen(!isMobileSearchOpen);
+                setisMobileNavBarOpen(false);
+              }}
+            />
+            {isMobileSearchOpen && <SearchInputMobile />}
+          </div>
         </div>
       </section>
     </header>

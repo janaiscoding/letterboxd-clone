@@ -14,7 +14,9 @@ export default function MoviePoster({
   id: string;
   title: string;
 }) {
-  const [isHovered, setIsHovered] = useState(true);
+  const [isHovered, setIsHovered] = useState(false);
+
+  // @to-do create hook
   const [isFavourite, setIsFavourite] = useState(false);
   const [isWatched, setIsWatched] = useState(false);
 

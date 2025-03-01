@@ -1,15 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 
 // DB FIREBASE
-import { auth } from './firebase/firebase';
-import { onAuthStateChanged } from 'firebase/auth';
+import { auth } from "./firebase/firebase";
+import { onAuthStateChanged } from "firebase/auth";
 
 // SPA & UI
-// import Navbar from './components/UI_components/navbar_component_and_assets/Navbar';
-import { BrowserRouter } from 'react-router-dom';
-import MyRoutes from './pages/MyRoutes';
-import Footer from './components/UI_components/footer_component_and_assets/Footer';
-import ScrollToTop from './pages/ScrollToTop';
+import { BrowserRouter } from "react-router-dom";
+import MyRoutes from "./pages/MyRoutes";
+import Footer from "./components/UI_components/footer_component_and_assets/Footer";
+import ScrollToTop from "./pages/ScrollToTop";
 
 const App = () => {
   const [authStatus, setAuthStatus] = useState(false);
