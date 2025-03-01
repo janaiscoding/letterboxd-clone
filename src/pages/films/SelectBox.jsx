@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import arrowDown from "../../components/UI_components/navbar_component_and_assets/navbar_assets/arrowdownprofile.png";
+
 const SelectBox = ({ title, data }) => {
   const [isClicked, setClicked] = useState(false);
   const [style, setStyle] = useState("hidden");
@@ -23,8 +23,11 @@ const SelectBox = ({ title, data }) => {
         >
           <p>{title}</p>
           <span>
-            Image src={arrowDown}
-            alt="arrow down indicator icon" className="ml-1" />
+            <Image
+              src={"arrowDown"}
+              alt="arrow down indicator icon"
+              className="ml-1"
+            />
           </span>
         </div>
         <ul className={style}>

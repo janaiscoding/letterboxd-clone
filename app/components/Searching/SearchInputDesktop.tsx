@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import searchInputIcon from "../../../src/components/UI_components/navbar_component_and_assets/navbar_assets/searchIcon.png";
-import closeIcon from "../../../src/components/UI_components/navbar_component_and_assets/api_actions/csb.png";
+import searchInputIcon from "@/assets/searchIcon.png";
+import closeIcon from "@/assets/csb.png";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 
@@ -15,7 +15,7 @@ export const SearchInputDesktop = () => {
     }
   };
 
-  const handleSearchDesktop = () => {
+  const onSearch = () => {
     if (query !== "") {
       hideExtendedSearch();
       navigateToResults();
@@ -67,7 +67,7 @@ export const SearchInputDesktop = () => {
       />
       <Image
         src={searchInputIcon}
-        onClick={handleSearchDesktop}
+        onClick={onSearch}
         width={20}
         height={20}
         alt="icon for searching"

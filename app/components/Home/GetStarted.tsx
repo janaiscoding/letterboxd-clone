@@ -1,7 +1,6 @@
 import React from "react";
-import "../../styles/started.css";
 
-const GetStarted = () => {
+export const GetStarted = () => {
   return (
     <>
       <div
@@ -11,7 +10,7 @@ const GetStarted = () => {
         }}
       ></div>
 
-      <div className="flex-colitems-center relative z-40 mt-[5%] flex gap-2 md:mt-[-15%]">
+      <div className="relative z-40 mt-[5%] flex flex-col items-center gap-2 md:mt-[-15%]">
         <div className="gradient-helper-mobile text-center text-2xl font-bold text-[#fff] md:text-5xl">
           <p>Track films you’ve watched.</p>
           <p>Save those you want to see.</p>
@@ -29,5 +28,3 @@ const GetStarted = () => {
     </>
   );
 };
-
-export default GetStarted;

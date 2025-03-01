@@ -17,7 +17,10 @@ export const SignOut = () => {
   };
 
   return (
-    <p className="block px-4 pt-2 md:p-0" onClick={onSignOut}>
+    <p
+      className="block cursor-pointer px-4 pt-2 hover:text-white md:p-0"
+      onClick={onSignOut}
+    >
       Sign Out
     </p>
   );
