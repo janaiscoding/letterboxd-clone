@@ -11,13 +11,17 @@ export const FavouriteButton = ({
   title,
   isFavourite,
   setIsFavourite,
+  onEvent,
 }: {
   id: string;
   title: string;
   isFavourite: boolean;
   setIsFavourite: Dispatch<SetStateAction<boolean>>;
+  onEvent?: () => void;
 }) => {
   const onFavourite = async () => {
+    onEvent && onEvent();
+
     if (isFavourite) {
       return await removeFromFavsDB();
     } else {

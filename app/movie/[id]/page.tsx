@@ -7,8 +7,9 @@ import { useRouter } from "next/navigation";
 import MovieSynopsis from "../../components/Movie/MovieSynopsis";
 import MoviePoster from "../../components/Movie/MoviePoster";
 import { MovieReviews } from "../../components/Movie/MovieReviews";
+import { LayoutNavbar } from "app/components/Navigation/LayoutNavbar";
 
-interface Movie {
+export interface Movie {
   id: string;
   title: string;
   backdrop_path: string;
@@ -52,17 +53,20 @@ export default function Page({ params }: { params: Promise<{ id: string }> }) {
   const poster = `https://image.tmdb.org/t/p/w500/${movie.poster_path}`;
 
   return (
-    <div className="movie-body min-h-[80vh] pb-5 md:mx-auto">
-      <MovieBackdrop backdrop={backdrop} />
-      <div className="flex flex-col px-4 md:mx-auto md:my-0 md:w-[950px]">
-        <div className="mt-[-20%] flex flex-col gap-3 md:mt-[-10%] md:flex-row">
-          <MoviePoster poster={poster} title={movie.title} id={movie.id} />
-          <MovieSynopsis movie={movie} />
-        </div>
-        <div className="flex items-center justify-center">
-          <MovieReviews movie={movie} />
+    <>
+      <LayoutNavbar />
+      <div className="movie-body min-h-[80vh] pb-5 md:mx-auto">
+        <MovieBackdrop backdrop={backdrop} />
+        <div className="flex flex-col px-4 md:mx-auto md:my-0 md:w-[950px]">
+          <div className="mt-[-20%] flex flex-col gap-3 md:mt-[-10%] md:flex-row">
+            <MoviePoster poster={poster} title={movie.title} id={movie.id} />
+            <MovieSynopsis movie={movie} />
+          </div>
+          <div className="flex items-center justify-center">
+            <MovieReviews movie={movie} />
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }

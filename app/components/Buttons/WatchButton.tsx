@@ -12,13 +12,17 @@ export const WatchButton = ({
   title,
   isWatched,
   setIsWatched,
+  onEvent,
 }: {
   id: string;
   title: string;
   isWatched: boolean;
   setIsWatched: Dispatch<React.SetStateAction<boolean>>;
+  onEvent?: () => void;
 }) => {
   const onWatched = async () => {
+    onEvent && onEvent();
+
     if (isWatched) {
       await removeFromWatchedDB();
     } else {
