@@ -9,6 +9,7 @@ import { LayoutNavbar } from "app/components/Navigation/LayoutNavbar";
 import { ProfileMoviesHighlight } from "app/components/Profile/ProfileMoviesHighlight";
 import { ProfileReviews } from "app/components/Profile/ProfileReviews";
 import { User, UserFavourite, UserReview, UserWatched } from "app/types";
+import { Footer } from "app/components/Navigation/Footer";
 
 export default function Page({ params }: { params: Promise<{ id: string }> }) {
   const { id } = use(params);
@@ -95,6 +96,8 @@ export default function Page({ params }: { params: Promise<{ id: string }> }) {
           </div>
         </div>
       </div>
+
+      <Footer />
     </>
   );
 }

@@ -3,6 +3,7 @@
 import { LayoutNavbar } from "app/components/Navigation/LayoutNavbar";
 import React, { Usable, use, useEffect, useState } from "react";
 import { FilterResults } from "app/components/Filter/FilterResults";
+import { Footer } from "app/components/Navigation/Footer";
 
 export default function Page({
   searchParams,
@@ -70,6 +71,8 @@ export default function Page({
             />
           )}
         </div>
+
+        <Footer />
       </div>
     </>
   );

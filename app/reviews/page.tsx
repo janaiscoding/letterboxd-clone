@@ -6,6 +6,7 @@ import { LayoutNavbar } from "app/components/Navigation/LayoutNavbar";
 import { db } from "firebase/firebase";
 import { Review } from "app/types";
 import { MovieReview } from "app/components/Movie/MovieReview";
+import { Footer } from "app/components/Navigation/Footer";
 
 // @to-do infinite scrolling
 // @to-do sort by user, movie, etc..
@@ -43,6 +44,8 @@ export default function Page() {
             reviews.length &&
             reviews.map((review, i) => <MovieReview review={review} key={i} />)}
         </div>
+
+        <Footer />
       </div>
     </>
   );

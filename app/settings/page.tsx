@@ -1,4 +1,5 @@
 "use client";
+import { Footer } from "app/components/Navigation/Footer";
 import { LayoutNavbar } from "app/components/Navigation/LayoutNavbar";
 import { User } from "app/types";
 import { updateProfile } from "firebase/auth";
@@ -110,6 +111,8 @@ export default function Page() {
           </button>
           {/* <button onClick={updatePFP}>Update Avatar</button> */}
         </div>
+
+        <Footer />
       </div>
     </>
   );
