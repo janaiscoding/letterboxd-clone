@@ -105,12 +105,6 @@ body {
   }
 }
 
-.grid__wrapper {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 15em), 1fr));
-  gap: 1rem;
-}
-
 .member__avatar {
   border-radius: 50%;
   height: 85px;
