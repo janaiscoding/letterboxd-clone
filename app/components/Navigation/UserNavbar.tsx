@@ -23,6 +23,7 @@ const UserNavbar = ({
       />
       <Link
         href={"/profile/" + currentUserId}
+        id="userName"
         className="sans-serif text-sh-grey hover:text-p-white mx-1 text-xs font-bold uppercase tracking-widest"
       >
         {userName}
