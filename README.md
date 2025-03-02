@@ -5,17 +5,17 @@
 - Fully responsive clone of a popular social movie tracking and reviewing platform
 - Search, save and review your favourite movies, fetched from The Movie Database ’s API
 - Implement Google Auth using BaaS Firebase Auth and store all users' information in Firestore DB
-- Live preview on [Firebase's Hosting](https://clonnerboxd.web.app/).
+- Live preview on [Vercel's Hosting](https://clonnerboxd.vercel.app/).
 
 ## Live Demo
 
 ### On Browser
 
-![Gif preview of the Clonnerboxd](./src/assets/clonnerboxd-preview-desktop.gif)
+![Gif preview of the Clonnerboxd](./assets/clonnerboxd-preview-desktop.gif)
 
 ### On Mobile
 
-![Gif preview of the Clonnerboxd on mobile](/src/assets/clonnerboxd-mobile-preview.gif)
+![Gif preview of the Clonnerboxd on mobile](./assets/clonnerboxd-mobile-preview.gif)
 
 ## Getting Started
 
