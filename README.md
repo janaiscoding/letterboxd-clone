@@ -2,9 +2,9 @@
 
 ## Project's Scope
 
-- Fully responsive clone of a popular social movie tracking and reviewing platform.
-- Search, save and review your favourite movies, fetched from The Movie Database ’s API.
-- Implemented Google Authentication using the BaaS Firebase Auth and storing all users' information in Firestore DB.
+- Fully responsive clone of a popular social movie tracking and reviewing platform
+- Search, save and review your favourite movies, fetched from The Movie Database ’s API
+- Implement Google Auth using BaaS Firebase Auth and store all users' information in Firestore DB
 - Live preview on [Firebase's Hosting](https://clonnerboxd.web.app/).
 
 ## Live Demo
@@ -27,22 +27,26 @@ cd letterboxd-clone
 npm install
 ```
 
-Create a `.env` file at the root of the repository with the following values:
+### Prerequisites for running your own version
 
-https://firebase.google.com/docs/web/learn-more#config-object
+Get an API key from [TMDB](https://developer.themoviedb.org/reference/intro/getting-started)
 
-```
-REACT_APP_API_KEY = "your-firebase-api-key"
-REACT_APP_APP_ID = "your-firebase-app-id"
-REACT_APP_MESSAGING_ID = "your-firebase-messaging-id"
-REACT_APP_AUTH_DOMAIN = "your-firebase-auth-domain-id"
-REACT_APP_PROJECT_ID = "your-firebase-project-id"
-REACT_APP_STORAGE_BUCKET = "your-firebase-storage-bucket"
-REACT_APP_TMDB_API_KEY="your-TMDB-api-key"
-```
+Create a new project from [Firebase Console](https://console.firebase.google.com/u/0/) and connect it
+
+Create a `.env` file at the root of the repository with the following values for the [firebase](https://firebase.google.com/docs/web/learn-more#config-object) and API key:
 
 ```
-npm run start
+NEXT_PUBLIC_API_KEY = "your-firebase-api-key"
+NEXT_PUBLIC_APP_ID = "your-firebase-app-id"
+NEXT_PUBLIC_MESSAGING_ID = "your-firebase-messaging-id"
+NEXT_PUBLIC_AUTH_DOMAIN = "your-firebase-auth-domain-id"
+NEXT_PUBLIC_PROJECT_ID = "your-firebase-project-id"
+NEXT_PUBLIC_STORAGE_BUCKET = "your-firebase-storage-bucket"
+NEXT_PUBLIC_TMDB_API_KEY="your-TMDB-api-key"
+```
+
+```
+npm run dev
 ```
 
 ## Project Details & Description
@@ -59,7 +63,7 @@ npm run start
 
 ## Technologies
 
-- ReactJs, Javascript
+- ReactJs, Javascript, TypeScript, Next.js
 - CSS3, TailwindCSS
 - HTML5
 
@@ -72,5 +76,5 @@ npm run start
 
 ## Sources, Materials, Copyright
 
-- This project is part of The Odin Project's curriculum [Project: JavaScript Final Project](https://www.theodinproject.com/lessons/node-path-javascript-javascript-final-project).
+- This is a [Letterboxd](https://letterboxd.com/) website replica
 - API used: [The Movie Database](https://www.themoviedb.org/)
