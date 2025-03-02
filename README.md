@@ -2,9 +2,9 @@
 
 ## Project's Scope
 
-- Fully responsive clone of a popular social movie tracking and reviewing platform.
-- Search, save and review your favourite movies, fetched from The Movie Database ’s API.
-- Implemented Google Authentication using the BaaS Firebase Auth and storing all users' information in Firestore DB.
+- Fully responsive clone of a popular social movie tracking and reviewing platform
+- Search, save and review your favourite movies, fetched from The Movie Database ’s API
+- Implement Google Auth using BaaS Firebase Auth and store all users' information in Firestore DB
 - Live preview on [Firebase's Hosting](https://clonnerboxd.web.app/).
 
 ## Live Demo
@@ -27,9 +27,13 @@ cd letterboxd-clone
 npm install
 ```
 
-Create a `.env` file at the root of the repository with the following values:
+### Prerequisites for running your own version
 
-https://firebase.google.com/docs/web/learn-more#config-object
+Get an API key from [TMDB](https://developer.themoviedb.org/reference/intro/getting-started)
+
+Create a new project from [Firebase Console](https://console.firebase.google.com/u/0/) and connect it
+
+Create a `.env` file at the root of the repository with the following values for the [firebase](https://firebase.google.com/docs/web/learn-more#config-object) and API key:
 
 ```
 NEXT_PUBLIC_API_KEY = "your-firebase-api-key"
@@ -42,7 +46,7 @@ NEXT_PUBLIC_TMDB_API_KEY="your-TMDB-api-key"
 ```
 
 ```
-npm run start
+npm run dev
 ```
 
 ## Project Details & Description

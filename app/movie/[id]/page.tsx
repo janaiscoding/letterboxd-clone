@@ -49,7 +49,7 @@ export default function Page({ params }: { params: Promise<{ id: string }> }) {
   return (
     <>
       <LayoutNavbar />
-      <div className="movie-body min-h-[80vh] pb-5 md:mx-auto">
+      <div className="movie-body pb-5 md:mx-auto">
         <MovieBackdrop backdrop={backdrop} />
         <div className="flex flex-col px-4 md:mx-auto md:my-0 md:w-[950px]">
           <div className="mt-[-20%] flex flex-col gap-3 md:mt-[-10%] md:flex-row">
