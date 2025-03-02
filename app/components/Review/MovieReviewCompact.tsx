@@ -45,14 +45,17 @@ export const MovieReviewCompact = ({
         </Link>
       )}
       <div className="flex w-full flex-col">
-        <div className="text-sh-grey flex justify-between gap-1 text-sm">
-          <div className="flex gap-1">
+        <div className="text-sh-grey flex justify-between text-base">
+          <div className="flex items-baseline">
             <Link
               href={"/profile/" + review.uid}
               className="text-p-white hover:text-hov-blue"
             >
-              {review.userName}{" "}
+              {review.userName}
             </Link>
+            {review.timestamp && (
+              <p className="text-sh-grey text-xs">, {review.timestamp}</p>
+            )}
           </div>
           {isAuthor && handleDelete && (
             <p
@@ -63,9 +66,6 @@ export const MovieReviewCompact = ({
             </p>
           )}
         </div>{" "}
-        {review.timestamp && (
-          <p className="text-sh-grey text-xs">{review.timestamp}</p>
-        )}
         <p className="text-sh-grey pt-2">{review.review}</p>
       </div>
     </div>
