@@ -21,7 +21,7 @@ export const MovieSynopsis = ({ movie }: { movie: any }) => {
   }, []);
 
   return (
-    <div className="flex w-1/2 flex-col md:pl-10">
+    <div className="flex flex-col md:w-1/2 md:pl-10">
       <div className="flex flex-wrap items-baseline gap-2">
         <h1 className="text-p-white font-['Tiempos-Regular'] text-4xl/[2.25rem] font-bold">
           {movie.title}

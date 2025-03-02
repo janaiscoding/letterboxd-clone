@@ -59,7 +59,7 @@ npm run start
 
 ## Technologies
 
-- ReactJs, Javascript
+- ReactJs, Javascript, TypeScript, Next.js
 - CSS3, TailwindCSS
 - HTML5
 
@@ -72,5 +72,5 @@ npm run start
 
 ## Sources, Materials, Copyright
 
-- This project is part of The Odin Project's curriculum [Project: JavaScript Final Project](https://www.theodinproject.com/lessons/node-path-javascript-javascript-final-project).
+- This is a [Letterboxd](https://letterboxd.com/) website replica
 - API used: [The Movie Database](https://www.themoviedb.org/)

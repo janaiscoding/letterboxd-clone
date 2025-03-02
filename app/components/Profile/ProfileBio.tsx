@@ -1,8 +1,8 @@
-import { User } from "app/profile/User";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import placeholder from "@/assets/sappling.jpg";
+import { User } from "app/types";
 
 export const ProfileBio = ({
   user,
@@ -50,20 +50,14 @@ export const ProfileBio = ({
         </p>
       </div>
       <div className="flex p-3">
-        <Link
-          href={"/profile/favourites/" + user.uid}
-          className="text-p-white hover:text-hov-blue flex flex-col items-center justify-center px-3 hover:cursor-pointer"
-        >
+        <div className="text-p-white flex flex-col items-center justify-center px-3">
           <h1 className=" text-2xl font-bold">{user?.favourites?.length}</h1>
           <p className=" sans-serif text-xs ">FAVOURITES</p>
-        </Link>
-        <Link
-          href={"/profile/watched/" + user.uid}
-          className="text-p-white hover:text-hov-blue flex flex-col items-center justify-center border-l border-solid border-[#6677884f] px-3 hover:cursor-pointer"
-        >
+        </div>
+        <div className="text-p-white flex flex-col items-center justify-center border-l border-solid border-[#6677884f] px-3">
           <h1 className="text-2xl font-bold">{user?.watched?.length}</h1>
           <p className="sans-serif text-xs">WATCHED</p>
-        </Link>
+        </div>
       </div>
     </div>
   );
