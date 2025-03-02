@@ -111,9 +111,9 @@ export default function Page() {
           </button>
           {/* <button onClick={updatePFP}>Update Avatar</button> */}
         </div>
-
-        <Footer />
       </div>
+
+      <Footer />
     </>
   );
 }
