@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import { auth } from "src/firebase/firebase";
 import Navbar from "./Navbar";
 
-export const LayoutNavbar = () => {
+export const LayoutNavbar = ({ newUserName }: { newUserName?: string }) => {
   const [user, setUser] = useState<any>();
 
   //this handles the login/logout styles and displays in the navbar
@@ -22,10 +22,12 @@ export const LayoutNavbar = () => {
         setIsTransparentNav(true);
       }
     });
-  });
+  }, []);
+
+  useEffect(() => {}, [newUserName]);
   return (
     <Navbar
-      userName={user?.displayName}
+      userName={newUserName || user?.displayName}
       profilePic={user?.photoURL}
       isLoggedIn={isLoggedIn}
       isTransparentNav={isTransparentNav}
