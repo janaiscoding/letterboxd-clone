@@ -5,7 +5,7 @@ import { auth } from "../../firebase/firebase";
 import Link from "next/link";
 import { Review } from "app/types";
 
-export const MovieReview = ({
+export const MovieReviewCompact = ({
   review,
   handleDelete,
 }: {
@@ -32,7 +32,7 @@ export const MovieReview = ({
   }, [review]);
 
   return (
-    <div className="border-b-grey flex gap-3 border-t border-solid py-2">
+    <div className="flex gap-3 py-2">
       {avatar && (
         <Link href={`/profile/${review.uid}`}>
           <Image

@@ -11,7 +11,7 @@ import {
 } from "firebase/firestore";
 import { auth, db } from "../../firebase/firebase";
 import { createReviewPopup, PopupAction } from "../../utils";
-import { MovieReview } from "./MovieReview";
+import { MovieReviewCompact } from "../Review/MovieReviewCompact";
 import moment from "moment";
 import { Review } from "app/types";
 
@@ -178,7 +178,11 @@ export const MovieReviews = ({ movie }) => {
     <div className="mt-3 flex w-full flex-col justify-between gap-2 md:ml-[6.5rem] md:w-[50%]">
       {reviews.length > 0
         ? reviews.map((r, i) => (
-            <MovieReview key={i} review={r} handleDelete={handleDelete} />
+            <MovieReviewCompact
+              key={i}
+              review={r}
+              handleDelete={handleDelete}
+            />
           ))
         : ""}
 

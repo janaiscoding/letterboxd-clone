@@ -1,5 +1,5 @@
 import React from "react";
-import { ProfileReview } from "./ProfileReview";
+import { MovieReviewExtended } from "../Review/MovieReviewExtended";
 import { UserReview } from "app/types";
 
 export const ProfileReviews = ({ reviews }: { reviews: UserReview[] }) => {
@@ -14,7 +14,9 @@ export const ProfileReviews = ({ reviews }: { reviews: UserReview[] }) => {
             This user hasn't reviewed any movies yet.
           </p>
         ) : (
-          reviews.map((review, i) => <ProfileReview key={i} review={review} />)
+          reviews.map((review, i) => (
+            <MovieReviewExtended key={i} review={review} />
+          ))
         )}
       </div>
     </div>

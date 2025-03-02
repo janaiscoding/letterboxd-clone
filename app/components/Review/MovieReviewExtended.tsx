@@ -1,9 +1,13 @@
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Movie, UserReview } from "app/types";
+import { Movie, Review, UserReview } from "app/types";
 
-export const ProfileReview = ({ review }: { review: UserReview }) => {
+export const MovieReviewExtended = ({
+  review,
+}: {
+  review: UserReview | Review;
+}) => {
   const [movie, setMovie] = useState<Movie>();
 
   const fetchRequestFromAPI = () => {
@@ -26,7 +30,7 @@ export const ProfileReview = ({ review }: { review: UserReview }) => {
   }, [review]);
 
   return (
-    <div className="border-b-grey  flex  border-b  border-solid py-2 ">
+    <div className="border-b-grey flex border-b border-solid py-2">
       <div className=" hover:border-3 hover:border-h-hov-green border-pb-grey/25  relative  h-fit rounded  border  border-solid  shadow-[0_0_1px_1px_rgba(20,24,28,1)]  shadow-inner hover:cursor-pointer hover:rounded md:ml-1">
         <Link href={"/movie/" + movie?.id}>
           <Image

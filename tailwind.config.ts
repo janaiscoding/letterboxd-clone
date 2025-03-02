@@ -45,6 +45,8 @@ export default {
       "b-h-green": "#00B020",
       // cast bg color
       "c-grey": "#283038",
+
+      "review-bg": "#0b1014",
     },
     extend: {},
   },
