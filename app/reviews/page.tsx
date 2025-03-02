@@ -39,13 +39,9 @@ export default function Page() {
 
           {!isLoading && !reviews.length && <p>No reviews yet, go post one!</p>}
 
-          {!isLoading && reviews.length && (
-            <div className="grid__wrapper">
-              {reviews.map((review, i) => (
-                <MovieReview review={review} key={i} />
-              ))}
-            </div>
-          )}
+          {!isLoading &&
+            reviews.length &&
+            reviews.map((review, i) => <MovieReview review={review} key={i} />)}
         </div>
       </div>
     </>
