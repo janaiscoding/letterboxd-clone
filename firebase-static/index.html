@@ -4,22 +4,83 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Clonnerboxd • Social film discovery</title>
+    <!-- Meta refresh as fallback -->
+    <meta
+      http-equiv="refresh"
+      content="0;url=https://clonnerboxd.vercel.app/"
+    />
     <style>
-      body,
-      html {
-        margin: 0;
-        padding: 0;
-        height: 100%;
-        overflow: hidden;
-      }
-      iframe {
-        border: none;
-        width: 100%;
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+        background-color: #14181c;
+        color: #fff;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
         height: 100vh;
+        margin: 0;
+        text-align: center;
+        padding: 0 20px;
+      }
+      .logo {
+        font-size: 2.5rem;
+        font-weight: bold;
+        margin-bottom: 1rem;
+        color: #9ab;
+      }
+      .message {
+        font-size: 1rem;
+        margin-bottom: 2rem;
+        max-width: 600px;
+        line-height: 1.5;
+      }
+      .redirect-link {
+        color: #9ab;
+        text-decoration: none;
+        font-weight: bold;
+        border: 2px solid #9ab;
+        padding: 10px 20px;
+        border-radius: 4px;
+        transition: all 0.3s ease;
+      }
+      .redirect-link:hover {
+        background-color: #9ab;
+        color: #14181c;
+      }
+      .loader {
+        border: 3px solid #f3f3f3;
+        border-top: 3px solid #00e054;
+        border-radius: 50%;
+        width: 30px;
+        height: 30px;
+        animation: spin 1s linear infinite;
+        margin: 20px auto;
+      }
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
       }
     </style>
+    <script>
+      // Immediate redirect
+      window.location.href = "https://clonnerboxd.vercel.app/";
+    </script>
   </head>
   <body>
-    <iframe src="https://clonnerboxd.vercel.app/" title="Vercel App"></iframe>
+    <div class="logo">Clonnerboxd</div>
+    <div class="message">
+      We've moved to a new home! You're being redirected to our new site. If
+      you're not redirected automatically, please click the link below.
+    </div>
+    <div class="loader"></div>
+    <a href="https://clonnerboxd.vercel.app/" class="redirect-link">
+      Go to Clonnerboxd
+    </a>
   </body>
 </html>
