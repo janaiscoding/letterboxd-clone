@@ -6,14 +6,12 @@ import { auth } from "../src/firebase/firebase";
 import Navbar from "./components/Navigation/Navbar";
 import { Home } from "./components/Home/Home";
 import { HomeSignedOut } from "./components/Home/HomeSignedOut";
+import { LayoutNavbar } from "./components/Navigation/LayoutNavbar";
 
 export default function Page() {
   const [user, setUser] = useState<any>();
   const [movies, setMovies] = useState<any>();
-
-  //this handles the login/logout styles and displays in the navbar
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [isTransparentNav, setIsTransparentNav] = useState(false);
 
   const fetchPopularMovies = async () => {
     const res = await fetch(
@@ -37,7 +35,6 @@ export default function Page() {
         setIsLoggedIn(true);
       } else {
         setIsLoggedIn(false);
-        setIsTransparentNav(true);
       }
     });
 
@@ -45,12 +42,7 @@ export default function Page() {
   }, []);
   return (
     <>
-      <Navbar
-        userName={user?.displayName}
-        profilePic={user?.photoURL}
-        isLoggedIn={isLoggedIn}
-        isTransparentNav={isTransparentNav}
-      />
+      <LayoutNavbar />
       {isLoggedIn && <Home movies={movies} user={user} />}
 
       {!isLoggedIn && <HomeSignedOut movies={movies} />}

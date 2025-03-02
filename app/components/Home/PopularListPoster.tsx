@@ -12,7 +12,7 @@ export const PopularListPoster = ({ movie, i }) => {
         <Image
           width={70}
           height={150}
-          className="h-auto w-auto rounded border"
+          className="h-auto w-auto rounded border md:max-w-[70]"
           src={"https://image.tmdb.org/t/p/w500/" + movie.poster_path}
           alt={movie.title}
           loading="lazy"

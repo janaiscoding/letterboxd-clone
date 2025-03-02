@@ -12,6 +12,7 @@ import {
 import { auth, db } from "../../../src/firebase/firebase";
 import { createReviewPopup, PopupAction } from "../../utils";
 import { MovieReview } from "./MovieReview";
+import moment from "moment";
 
 export interface Review {
   movieID: number;
@@ -19,6 +20,7 @@ export interface Review {
   uid: string;
   userURL: string;
   review: string;
+  timestamp?: string;
 }
 
 export const MovieReviews = ({ movie }) => {
@@ -57,6 +59,7 @@ export const MovieReviews = ({ movie }) => {
       reviews: arrayUnion({
         movieID: movie.id,
         review: review,
+        timestamp: getDate(),
       }),
     });
   };
@@ -96,6 +99,7 @@ export const MovieReviews = ({ movie }) => {
           userURL: auth.currentUser.photoURL,
           review: review,
           uid: auth.currentUser.uid,
+          timestamp: getDate(),
         }),
       });
 
@@ -117,6 +121,7 @@ export const MovieReviews = ({ movie }) => {
             userName: auth.currentUser.displayName,
             userURL: auth.currentUser.photoURL,
             uid: auth.currentUser.uid,
+            timestamp: getDate(),
           },
         ],
       });
@@ -145,6 +150,7 @@ export const MovieReviews = ({ movie }) => {
     const userProfileReview = {
       movieID: review.movieID,
       review: review.review,
+      timestamp: review.timestamp,
     };
 
     const movieRef = doc(db, "movies", review.movieID.toString());
@@ -169,6 +175,9 @@ export const MovieReviews = ({ movie }) => {
     });
   };
 
+  const getDate = () => {
+    return moment().format("DD.MM.YYYY");
+  };
   useEffect(() => {
     fetchReviewsByMovie();
   }, []);
