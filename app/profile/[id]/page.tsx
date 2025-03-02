@@ -74,7 +74,7 @@ export default function Page({ params }: { params: Promise<{ id: string }> }) {
             <div>
               <ProfileMoviesHighlight
                 user={user}
-                movies={favourites?.reverse()}
+                movies={favourites}
                 watched={watched}
                 favourites={favourites}
                 type="favourites"
@@ -83,7 +83,7 @@ export default function Page({ params }: { params: Promise<{ id: string }> }) {
 
               <ProfileMoviesHighlight
                 user={user}
-                movies={watched?.reverse()}
+                movies={watched}
                 watched={watched}
                 favourites={favourites}
                 type="watched"

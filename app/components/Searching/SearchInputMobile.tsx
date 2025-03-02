@@ -10,7 +10,7 @@ export const SearchInputMobile = () => {
 
   const onSearch = () => {
     if (query !== "") {
-      router.push("/results/" + query);
+      router.push("/results?searchTerm=" + query);
     }
     setQuery("");
   };
