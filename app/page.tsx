@@ -1,12 +1,11 @@
 "use client";
 import { useEffect, useState } from "react";
-import App from "../src/App";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../src/firebase/firebase";
-import Navbar from "./components/Navigation/Navbar";
 import { Home } from "./components/Home/Home";
 import { HomeSignedOut } from "./components/Home/HomeSignedOut";
 import { LayoutNavbar } from "./components/Navigation/LayoutNavbar";
+import { Footer } from "./components/Navigation/Footer";
 
 export default function Page() {
   const [user, setUser] = useState<any>();
@@ -46,6 +45,8 @@ export default function Page() {
       {isLoggedIn && <Home movies={movies} user={user} />}
 
       {!isLoggedIn && <HomeSignedOut movies={movies} />}
+
+      <Footer />
     </>
   );
 }

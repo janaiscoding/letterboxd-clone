@@ -7,6 +7,7 @@ import { Filter } from "app/components/Filter/Filter";
 import { PopularMovies } from "app/components/Home/PopularMovies";
 import { FilterResults } from "app/components/Filter/FilterResults";
 import { useRouter } from "next/navigation";
+import { Footer } from "app/components/Navigation/Footer";
 
 export default function Page({
   searchParams,
@@ -231,6 +232,8 @@ export default function Page({
           )}
         </div>
       </div>
+
+      <Footer />
     </>
   );
 }

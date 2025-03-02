@@ -1,5 +1,6 @@
 "use client";
 
+import { Footer } from "app/components/Navigation/Footer";
 import { LayoutNavbar } from "app/components/Navigation/LayoutNavbar";
 import { UserCard } from "app/components/User/UserCard";
 import { User } from "app/types";
@@ -60,6 +61,8 @@ export default function Page() {
             ))}
         </div>
       </div>
+
+      <Footer />
     </>
   );
 }
