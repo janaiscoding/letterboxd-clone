@@ -1,6 +1,7 @@
 export interface UserReview {
   review: string;
   movieID: string;
+  timestamp?: string;
 }
 
 export interface UserFavourite {

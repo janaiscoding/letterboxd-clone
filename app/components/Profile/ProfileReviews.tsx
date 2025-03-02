@@ -14,16 +14,7 @@ export const ProfileReviews = ({ reviews }: { reviews: UserReview[] }) => {
             This user hasn't reviewed any movies yet.
           </p>
         ) : (
-          reviews
-            .reverse()
-            .slice(0, 6)
-            .map((review, i) => (
-              <ProfileReview
-                key={i}
-                movieID={review.movieID}
-                review={review.review}
-              />
-            ))
+          reviews.map((review, i) => <ProfileReview key={i} review={review} />)
         )}
       </div>
     </div>

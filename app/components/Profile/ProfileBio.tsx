@@ -1,17 +1,16 @@
 import { User } from "app/profile/User";
 import Image from "next/image";
 import Link from "next/link";
-import React, { useEffect, useState } from "react";
-import { auth } from "src/firebase/firebase";
+import React from "react";
 import placeholder from "@/assets/sappling.jpg";
 
-export const ProfileBio = ({ user }: { user: User }) => {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-
-  useEffect(() => {
-    setIsAuthenticated(auth.currentUser?.uid === user.uid);
-  }, [auth.currentUser]);
-
+export const ProfileBio = ({
+  user,
+  isAuthor,
+}: {
+  user: User;
+  isAuthor: boolean;
+}) => {
   return (
     <div className="mb-10 flex flex-col items-center md:flex-row md:justify-between">
       <div className="flex flex-col items-center">
@@ -30,7 +29,7 @@ export const ProfileBio = ({ user }: { user: User }) => {
               <h1 className="sans-serif text-p-white text-2xl font-bold">
                 {user.name}
               </h1>
-              {isAuthenticated && (
+              {isAuthor && (
                 <Link
                   href="/settings"
                   className="sans-serif text-p-white rounded bg-[#567] px-3 py-2 text-xs font-bold"
