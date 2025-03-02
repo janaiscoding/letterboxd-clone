@@ -26,3 +26,6 @@ yarn-error.log*
 
 .next
 next-env.d.ts
+
+firebase-debug.log
+.firebase
