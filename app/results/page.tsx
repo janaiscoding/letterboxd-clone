@@ -24,7 +24,8 @@ export default function Page({
     );
 
     if (!res.ok) {
-      console.error("error fetching popular movies");
+      console.error("error fetching movies with your search term");
+      setIsLoading(false);
       return;
     }
 
@@ -63,7 +64,7 @@ export default function Page({
 
           {movies && (
             <FilterResults
-              filter={"search for"}
+              filter={""}
               filterValue={searchTerm}
               movies={movies}
             />
