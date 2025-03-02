@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { auth } from "../../../src/firebase/firebase";
+import { auth } from "../../../firebase/firebase";
 import UserNavbar from "./UserNavbar";
 import DropdownDesktop from "./DropdownDesktop";
 import { AuthProviders } from "../Auth/AuthProviders";

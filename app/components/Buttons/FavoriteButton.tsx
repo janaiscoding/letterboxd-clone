@@ -3,7 +3,7 @@ import { doc, updateDoc, arrayRemove, arrayUnion } from "firebase/firestore";
 import favIcon from "./fav.png";
 import removeFavIcon from "./remFav.png";
 import Image from "next/image";
-import { auth, db } from "../../../src/firebase/firebase";
+import { auth, db } from "../../../firebase/firebase";
 import { createFavouritePopup, PopupAction } from "../../utils";
 
 export const FavouriteButton = ({

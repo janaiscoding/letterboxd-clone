@@ -2,7 +2,7 @@ import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 
 import React from "react";
 import { doc, getDoc, setDoc } from "firebase/firestore";
-import { auth, db } from "../../../src/firebase/firebase";
+import { auth, db } from "../../../firebase/firebase";
 
 // When i sign in, check if user exists
 // If not, create db references and docs and collection for it like this:

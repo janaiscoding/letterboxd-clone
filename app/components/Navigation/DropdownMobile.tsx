@@ -4,7 +4,7 @@ import Link from "next/link";
 import { SignInWithGoogle } from "../Auth/SignInWithGoogle";
 import { SignInWithDemo } from "../Auth/SignInWithDemo";
 import { SignOut } from "../Auth/SignOut";
-import { auth } from "../../../src/firebase/firebase";
+import { auth } from "../../../firebase/firebase";
 
 // @to-do click outside
 export const DropdownMobile = ({ userName, profilePic }) => {

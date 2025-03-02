@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { doc, getDoc } from "firebase/firestore";
-import { auth, db } from "../../../src/firebase/firebase";
+import { auth, db } from "../../../firebase/firebase";
 import { WatchButton } from "../Buttons/WatchButton";
 import FavouriteButton from "../Buttons/FavoriteButton";
 

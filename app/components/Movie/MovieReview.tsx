@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
-import { auth } from "../../../src/firebase/firebase";
+import { auth } from "../../../firebase/firebase";
 
 import Link from "next/link";
 import { Review } from "app/types";

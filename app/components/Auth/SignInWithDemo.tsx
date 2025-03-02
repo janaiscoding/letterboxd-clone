@@ -1,6 +1,6 @@
 import React from "react";
 import { signInWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../../../src/firebase/firebase";
+import { auth } from "../../../firebase/firebase";
 
 export const SignInWithDemo = () => {
   const signInWithDemoAccount = async () => {
