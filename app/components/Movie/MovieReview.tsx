@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { auth } from "../../../src/firebase/firebase";
-import { Review } from "./MovieReviews";
+
 import Link from "next/link";
+import { Review } from "app/types";
 
 export const MovieReview = ({
   review,
   handleDelete,
 }: {
   review: Review;
-  handleDelete: (review: Review) => Promise<void>;
+  handleDelete?: (review: Review) => Promise<void>;
 }) => {
   const [avatar, setAvatar] = useState("");
   const [isAuthor, setIsAuthor] = useState(false);
@@ -46,7 +47,6 @@ export const MovieReview = ({
       <div className="flex w-full flex-col">
         <div className="text-sh-grey flex justify-between gap-1 text-sm">
           <div className="flex gap-1">
-            <p>Reviewed by </p>
             <Link
               href={"/profile/" + review.uid}
               className="text-p-white hover:text-hov-blue"
@@ -54,7 +54,7 @@ export const MovieReview = ({
               {review.userName}{" "}
             </Link>
           </div>
-          {isAuthor && (
+          {isAuthor && handleDelete && (
             <p
               className="hover:text-sh-grey hover:cursor-pointer"
               onClick={() => handleDelete(review)}

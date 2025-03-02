@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Movie } from "app/movie/[id]/page";
-import { UserReview } from "app/profile/User";
+import { Movie, UserReview } from "app/types";
 
 export const ProfileReview = ({ review }: { review: UserReview }) => {
   const [movie, setMovie] = useState<Movie>();

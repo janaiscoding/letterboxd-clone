@@ -1,6 +1,6 @@
 import React from "react";
 import { ProfileReview } from "./ProfileReview";
-import { UserReview } from "app/profile/User";
+import { UserReview } from "app/types";
 
 export const ProfileReviews = ({ reviews }: { reviews: UserReview[] }) => {
   return (

@@ -5,8 +5,9 @@ export const MovieCast = ({ actors }) => {
 
   const getCast = () => {
     if (actors !== undefined) {
-      const first = actors.filter((_, index) => index < 15);
-      const actorNames = first.map(({ name }: { name: string }) => name);
+      const actorNames = actors
+        .slice(0, 15)
+        .map(({ name }: { name: string }) => name);
 
       setCast(actorNames);
     }

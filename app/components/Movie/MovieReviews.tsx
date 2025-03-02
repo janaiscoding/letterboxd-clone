@@ -13,15 +13,7 @@ import { auth, db } from "../../../src/firebase/firebase";
 import { createReviewPopup, PopupAction } from "../../utils";
 import { MovieReview } from "./MovieReview";
 import moment from "moment";
-
-export interface Review {
-  movieID: number;
-  userName: string;
-  uid: string;
-  userURL: string;
-  review: string;
-  timestamp?: string;
-}
+import { Review } from "app/types";
 
 export const MovieReviews = ({ movie }) => {
   const [review, setReview] = useState("");

@@ -1,11 +1,10 @@
-import { Movie } from "app/movie/[id]/page";
 import { useEffect, useState } from "react";
 import { Loader } from "../Loader/Loader";
 import Link from "next/link";
 import Image from "next/image";
 import FavouriteButton from "../Buttons/FavoriteButton";
 import { WatchButton } from "../Buttons/WatchButton";
-import { User, UserFavourite, UserWatched } from "app/profile/User";
+import { Movie, UserFavourite, UserWatched } from "app/types";
 
 export const ProfileMoviePoster = ({
   watched,
