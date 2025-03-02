@@ -9,8 +9,12 @@
   src: url("../assets/font/TiemposHeadline-Regular.otf");
 }
 
+:root {
+  --background-color: #17171b;
+}
+
 body {
-  background-color: #14181cfa;
+  background-color: var(--background-color);
 }
 
 @layer base {
@@ -30,7 +34,7 @@ body {
   }
 }
 .movie-background-helper {
-  background-color: #14181cbe;
+  background-color: var(--background-color);
 }
 .popup,
 .popup-review {
@@ -180,14 +184,14 @@ body {
 }
 @media (min-width: 750px) {
   .started-backdrop {
-    box-shadow: inset 5px -46px 80px 109px #181c20;
+    box-shadow: inset 5px -46px 80px 109px var(--background-color);
   }
 }
 .backdrop-helper {
-  box-shadow: 16px 130px 0px 200px #181c20;
+  box-shadow: 16px 130px 0px 200px var(--background-color);
 }
 .movie-body {
-  background-color: #181c20;
+  background-color: var(--background-color);
 }
 .started-backdrop {
   background-repeat: no-repeat;
@@ -209,15 +213,13 @@ body {
 
 @media (min-width: 750px) {
   .movie-backdrop {
-    box-shadow: inset 5px -46px 80px 109px rgba(20, 24, 28, 1);
+    box-shadow: inset 5px -46px 80px 109px var(--background-color);
   }
 }
 .backdrop-helper {
-  box-shadow: 16px 130px 0px 200px rgba(20, 24, 28, 1);
+  box-shadow: 16px 130px 0px 200px var(--background-color);
 }
-.movie-body {
-  background-color: #14181c;
-}
+
 .movie-backdrop {
   background-repeat: no-repeat;
   background-size: cover;

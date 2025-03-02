@@ -68,7 +68,7 @@ const Navbar = ({ userName, profilePic, isLoggedIn, isTransparentNav }) => {
   return (
     <header
       className={`align-center flex flex-col md:h-[60px] md:flex-row ${
-        isTransparentNav ? "bg-transparent" : "bg-h-blue"
+        isTransparentNav ? "bg-transparent" : "bg-navigation-bg"
       } ${
         isMobileNavBarOpen && !isLoggedIn
           ? "mb-28"

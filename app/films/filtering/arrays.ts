@@ -2,8 +2,6 @@ const filterOptions = [
   {
     title: "years",
     values: [
-      "all",
-      "upcoming",
       "2020s",
       "2010s",
       "1990s",

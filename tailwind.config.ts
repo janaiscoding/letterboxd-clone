@@ -16,6 +16,9 @@ export default {
       "l-white": "#99AABB",
       "p-white": "#def",
 
+      // new theme
+      "navigation-bg": "#1e1f21",
+
       "h-grey": "#91A0AF",
       // bg dropdown menu
       "drop-grey": "#89a",

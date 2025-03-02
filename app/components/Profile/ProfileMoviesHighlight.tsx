@@ -36,13 +36,10 @@ export const ProfileMoviesHighlight = ({
 
   return (
     <>
-      <Link
-        href={"/profile/favourites/" + user.uid}
-        className="align-start  section-heading  border-b-grey text-sh-grey  hover:text-hov-blue mb-2 flex  justify-between  border-b  border-solid text-xs md:min-w-[600px]"
-      >
+      <div className="align-start section-heading border-b-grey text-sh-grey  mb-2 flex  justify-between  border-b  border-solid text-xs md:min-w-[600px]">
         <p>{type.toUpperCase()} FILMS</p>
         <p> SEE ALL</p>
-      </Link>
+      </div>
       <div className="mb-5 flex flex-wrap gap-1 md:flex-row md:flex-nowrap">
         {movieIds.length === 0 && (
           <p className="text-sh-grey pt-2 text-base">

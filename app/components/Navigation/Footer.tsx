@@ -9,10 +9,7 @@ export const Footer = () => {
   const socials = socialLinksData;
 
   return (
-    <footer
-      className="relative z-[9999]"
-      style={{ backgroundColor: "#2c3440" }}
-    >
+    <footer className="bg-navigation-bg relative">
       <div className="flex flex-col px-4 py-6 font-['Graphik'] md:mx-auto md:my-0 md:w-[950px] ">
         <nav className="mb-3 flex items-center justify-between">
           <ul className=" grid grid-cols-3 py-1  md:flex">
