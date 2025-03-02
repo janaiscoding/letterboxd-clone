@@ -56,14 +56,17 @@ export const MovieReview = ({
           </div>
           {isAuthor && (
             <p
-              className="hover:cursor-pointer"
+              className="hover:text-sh-grey hover:cursor-pointer"
               onClick={() => handleDelete(review)}
             >
-              Delete
+              x
             </p>
           )}
         </div>{" "}
-        <p className="text-sh-grey">{review.review}</p>
+        {review.timestamp && (
+          <p className="text-sh-grey text-xs">{review.timestamp}</p>
+        )}
+        <p className="text-sh-grey pt-2">{review.review}</p>
       </div>
     </div>
   );
