@@ -6,7 +6,6 @@
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
-    "bootstrap": "^5.2.3",
     "firebase": "^9.21.0",
     "moment": "^2.30.1",
     "next": "^15.2.0",
@@ -18,8 +17,7 @@
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build",
-    "start": "npx serve@latest ./build",
-    "prettier": "npx prettier . --write"
+    "deploy": "npm run build && firebase deploy"
   },
   "eslintConfig": {
     "extends": [
