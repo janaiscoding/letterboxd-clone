@@ -24,6 +24,7 @@ export const ProfileMoviesHighlight = ({
 
   const getLatestMovies = (movies: UserFavourite[]) => {
     const latestMovies = movies.slice(0, 4).map((movie) => movie.movieID);
+
     setMovieIds(latestMovies);
   };
 

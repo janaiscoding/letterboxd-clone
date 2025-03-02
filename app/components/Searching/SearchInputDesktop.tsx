@@ -23,7 +23,7 @@ export const SearchInputDesktop = () => {
   };
 
   const navigateToResults = () => {
-    router.push("/results/" + query);
+    router.push("/results?searchTerm=" + query);
     setQuery("");
   };
 
