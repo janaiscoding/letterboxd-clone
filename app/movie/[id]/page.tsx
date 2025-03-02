@@ -1,6 +1,5 @@
 "use client";
 
-import "../movie.css";
 import MovieBackdrop from "../../components/Movie/MovieBackdrop";
 import { use, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
@@ -9,6 +8,7 @@ import MoviePoster from "../../components/Movie/MoviePoster";
 import { MovieReviews } from "../../components/Movie/MovieReviews";
 import { LayoutNavbar } from "app/components/Navigation/LayoutNavbar";
 import { Movie } from "app/types";
+import { Footer } from "app/components/Navigation/Footer";
 
 export default function Page({ params }: { params: Promise<{ id: string }> }) {
   const { id } = use(params);
@@ -61,6 +61,8 @@ export default function Page({ params }: { params: Promise<{ id: string }> }) {
           </div>
         </div>
       </div>
+
+      <Footer />
     </>
   );
 }

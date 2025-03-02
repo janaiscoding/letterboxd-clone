@@ -1,10 +1,13 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import footerLinksData from "./footerLinksData";
-import socialLinksData from "./socialLinksData";
-const Footer = () => {
+
+import footerLinksData from "./footerLinks";
+import socialLinksData from "./socialLinks";
+import Link from "next/link";
+
+export const Footer = () => {
   const footerLinks = footerLinksData;
   const socials = socialLinksData;
+
   return (
     <footer
       className="relative z-[9999]"
@@ -15,10 +18,7 @@ const Footer = () => {
           <ul className=" grid grid-cols-3 py-1  md:flex">
             {footerLinks.map((link) => (
               <li key={link.id}>
-                <p
-                  className="text-s text-sh-grey hover:text-p-white mr-2 font-bold hover:cursor-pointer"
-                  to={link.link}
-                >
+                <p className="text-s text-sh-grey hover:text-p-white mr-2 font-bold hover:cursor-pointer">
                   {link.name}
                 </p>
               </li>
@@ -28,7 +28,7 @@ const Footer = () => {
           <ul className=" sans-serif hidden flex-col items-center justify-between gap-2 py-1 md:flex  md:flex-row  md:gap-0">
             {socials.map((social) => (
               <li className="self-center" key={social.id}>
-                {/* <Link to={social.link}>
+                <Link href={social.link}>
                   <svg
                     width={social.width}
                     height={social.height}
@@ -38,7 +38,7 @@ const Footer = () => {
                     <path d={social.path}></path>
                   </svg>
                   <span className="hidden">{social.name}</span>
-                </Link> */}
+                </Link>
               </li>
             ))}
           </ul>
@@ -61,4 +61,3 @@ const Footer = () => {
     </footer>
   );
 };
-export default Footer;
