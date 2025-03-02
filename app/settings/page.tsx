@@ -7,7 +7,7 @@ import { doc, getDoc, updateDoc } from "firebase/firestore";
 import { useRouter } from "next/navigation";
 
 import React, { useEffect, useState } from "react";
-import { auth, db } from "firebase/firebase";
+import { auth, db } from "app/firebase/firebase";
 
 export default function Page() {
   const router = useRouter();

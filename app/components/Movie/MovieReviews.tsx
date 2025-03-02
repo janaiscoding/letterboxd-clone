@@ -9,7 +9,7 @@ import {
   arrayUnion,
   arrayRemove,
 } from "firebase/firestore";
-import { auth, db } from "../../../firebase/firebase";
+import { auth, db } from "../../firebase/firebase";
 import { createReviewPopup, PopupAction } from "../../utils";
 import { MovieReview } from "./MovieReview";
 import moment from "moment";

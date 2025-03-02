@@ -9,11 +9,7 @@ import { FilterResults } from "app/components/Filter/FilterResults";
 import { useRouter } from "next/navigation";
 import { Footer } from "app/components/Navigation/Footer";
 
-export default function Page({
-  searchParams,
-}: {
-  searchParams: Usable<{ [filter: string]: string }>;
-}) {
+export default function Page({ searchParams }: { searchParams: any }) {
   const query = use(searchParams);
   const router = useRouter();
 
@@ -181,11 +177,13 @@ export default function Page({
   };
 
   useEffect(() => {
+    //@ts-ignore
     for (const [key, value] of Object.entries(query)) {
       setFilter(key);
-      setFilterValue(value);
+      setFilterValue(value as string);
     }
 
+    //@ts-ignore
     if (!Object.keys(query).length) {
       fetchPopularMovies();
     }

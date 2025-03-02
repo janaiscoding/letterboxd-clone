@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import { onAuthStateChanged } from "firebase/auth";
-import { auth } from "../firebase/firebase";
+import { auth } from "./firebase/firebase";
 import { Home } from "./components/Home/Home";
 import { HomeSignedOut } from "./components/Home/HomeSignedOut";
 import { LayoutNavbar } from "./components/Navigation/LayoutNavbar";

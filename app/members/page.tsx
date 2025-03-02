@@ -7,7 +7,7 @@ import { User } from "app/types";
 
 import { collection, getDocs } from "firebase/firestore";
 import React, { useEffect, useState } from "react";
-import { db } from "firebase/firebase";
+import { db } from "app/firebase/firebase";
 
 // @to-do infinite scrolling
 // @to-do sort by most watches, most favs, etc..

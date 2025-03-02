@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from "react";
 import { collection, getDocs } from "firebase/firestore";
 import { LayoutNavbar } from "app/components/Navigation/LayoutNavbar";
-import { db } from "firebase/firebase";
+import { db } from "app/firebase/firebase";
 import { Review } from "app/types";
 import { MovieReview } from "app/components/Movie/MovieReview";
 import { Footer } from "app/components/Navigation/Footer";

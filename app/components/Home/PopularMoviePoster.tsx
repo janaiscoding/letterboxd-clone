@@ -4,7 +4,7 @@ import Image from "next/image";
 import FavouriteButton from "../Buttons/FavoriteButton";
 import { WatchButton } from "../Buttons/WatchButton";
 import Link from "next/link";
-import { auth, db } from "firebase/firebase";
+import { auth, db } from "app/firebase/firebase";
 import { doc, getDoc } from "firebase/firestore";
 
 export const PopularMoviePoster = ({

@@ -4,7 +4,7 @@ import { doc, updateDoc, arrayRemove, arrayUnion } from "firebase/firestore";
 import watchIcon from "./watched.png";
 import remWatched from "./remWatched.png";
 import Image from "next/image";
-import { auth, db } from "../../../firebase/firebase";
+import { auth, db } from "../../firebase/firebase";
 import { createWatchedPopup, PopupAction } from "../../utils";
 
 export const WatchButton = ({

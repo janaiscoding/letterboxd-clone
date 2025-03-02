@@ -5,11 +5,7 @@ import React, { Usable, use, useEffect, useState } from "react";
 import { FilterResults } from "app/components/Filter/FilterResults";
 import { Footer } from "app/components/Navigation/Footer";
 
-export default function Page({
-  searchParams,
-}: {
-  searchParams: Usable<{ [searchTerm: string]: string }>;
-}) {
+export default function Page({ searchParams }: { searchParams: any }) {
   const query = use(searchParams);
 
   const [isLoading, setIsLoading] = useState(true);
@@ -43,7 +39,9 @@ export default function Page({
   };
 
   useEffect(() => {
+    //@ts-ignore
     if (query.searchTerm) {
+      //@ts-ignore
       setSearchTerm(query.searchTerm);
     } else {
       console.error("query is invalid");

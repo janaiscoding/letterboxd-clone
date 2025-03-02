@@ -2,7 +2,7 @@
 
 import { onAuthStateChanged } from "firebase/auth";
 import { useEffect, useState } from "react";
-import { auth } from "firebase/firebase";
+import { auth } from "app/firebase/firebase";
 import Navbar from "./Navbar";
 
 export const LayoutNavbar = ({ newUserName }: { newUserName?: string }) => {
