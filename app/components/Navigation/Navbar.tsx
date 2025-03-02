@@ -22,11 +22,11 @@ const menuLinks = [
     name: "FILMS",
     href: "/films",
   },
-  {
-    id: 2,
-    name: "LISTS",
-    href: "/lists",
-  },
+  // {
+  //   id: 2,
+  //   name: "LISTS",
+  //   href: "/lists",
+  // },
   {
     id: 3,
     name: "MEMBERS",

@@ -3,8 +3,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { SignOut } from "../Auth/SignOut";
 
-// import "../../../styles/dropdown.css";
-
 const DropdownDesktop = ({
   currentUserId,
   userName,

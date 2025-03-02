@@ -7,7 +7,13 @@ import Link from "next/link";
 import { auth, db } from "src/firebase/firebase";
 import { doc, getDoc } from "firebase/firestore";
 
-export const PopularMoviePoster = ({ movie }: { movie: any }) => {
+export const PopularMoviePoster = ({
+  movie,
+  compact = false,
+}: {
+  movie: any;
+  compact?: boolean;
+}) => {
   const [isHovered, setIsHovered] = useState(false);
 
   // @to-do create hook
@@ -50,7 +56,12 @@ export const PopularMoviePoster = ({ movie }: { movie: any }) => {
 
   return (
     <div
-      className="hover:border-3 border-pb-grey/25 hover:border-pb-grey relative mb-[2%] w-[32.33%] rounded border border-solid shadow-[0_0_1px_1px_rgba(20,24,28,1)] shadow-inner hover:cursor-pointer hover:rounded md:ml-1"
+      className={
+        compact
+          ? "w-[32.33%]"
+          : "" +
+            `hover:border-3 border-pb-grey/25 hover:border-pb-grey relative mb-[2%] rounded border border-solid shadow-[0_0_1px_1px_rgba(20,24,28,1)] shadow-inner hover:cursor-pointer hover:rounded md:ml-1`
+      }
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       key={movie.id}
