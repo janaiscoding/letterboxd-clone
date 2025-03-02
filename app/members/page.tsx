@@ -2,7 +2,8 @@
 
 import { LayoutNavbar } from "app/components/Navigation/LayoutNavbar";
 import { UserCard } from "app/components/User/UserCard";
-import { User } from "app/profile/User";
+import { User } from "app/types";
+
 import { collection, getDocs } from "firebase/firestore";
 import React, { useEffect, useState } from "react";
 import { db } from "src/firebase/firebase";

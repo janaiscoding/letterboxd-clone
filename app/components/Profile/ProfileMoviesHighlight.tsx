@@ -1,8 +1,9 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { User, UserFavourite, UserWatched } from "app/profile/User";
+
 import React, { useEffect, useState } from "react";
 import { ProfileMoviePoster } from "./ProfileMoviePoster";
 import Link from "next/link";
+import { User, UserFavourite, UserWatched } from "app/types";
 
 export const ProfileMoviesHighlight = ({
   user,

@@ -8,13 +8,7 @@ import MovieSynopsis from "../../components/Movie/MovieSynopsis";
 import MoviePoster from "../../components/Movie/MoviePoster";
 import { MovieReviews } from "../../components/Movie/MovieReviews";
 import { LayoutNavbar } from "app/components/Navigation/LayoutNavbar";
-
-export interface Movie {
-  id: string;
-  title: string;
-  backdrop_path: string;
-  poster_path: string;
-}
+import { Movie } from "app/types";
 
 export default function Page({ params }: { params: Promise<{ id: string }> }) {
   const { id } = use(params);

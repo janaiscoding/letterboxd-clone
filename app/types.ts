@@ -21,3 +21,19 @@ export interface User {
   watched: UserWatched[];
   reviews: UserReview[];
 }
+
+export interface Review {
+  movieID: number;
+  userName: string;
+  uid: string;
+  userURL: string;
+  review: string;
+  timestamp?: string;
+}
+
+export interface Movie {
+  id: string;
+  title: string;
+  backdrop_path: string;
+  poster_path: string;
+}

@@ -1,4 +1,4 @@
-import { User } from "app/profile/User";
+import { User } from "app/types";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";

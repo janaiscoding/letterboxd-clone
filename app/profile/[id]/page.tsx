@@ -4,11 +4,11 @@ import { use, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { doc, getDoc } from "firebase/firestore";
 import { auth, db } from "src/firebase/firebase";
-import { User, UserFavourite, UserReview, UserWatched } from "../User";
 import { ProfileBio } from "app/components/Profile/ProfileBio";
 import { LayoutNavbar } from "app/components/Navigation/LayoutNavbar";
 import { ProfileMoviesHighlight } from "app/components/Profile/ProfileMoviesHighlight";
 import { ProfileReviews } from "app/components/Profile/ProfileReviews";
+import { User, UserFavourite, UserReview, UserWatched } from "app/types";
 
 export default function Page({ params }: { params: Promise<{ id: string }> }) {
   const { id } = use(params);
