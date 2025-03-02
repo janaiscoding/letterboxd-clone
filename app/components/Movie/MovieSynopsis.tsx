@@ -27,9 +27,17 @@ export const MovieSynopsis = ({ movie }: { movie: any }) => {
           {movie.title}
         </h1>
         <div className="flex gap-1 font-['Graphik']">
-          <p className="text-p-white cursor-default underline">{year}</p>
-          <p className="text-sh-grey">Directed by</p>
-          <p className="text-p-white cursor-default underline">{director}</p>
+          {year && (
+            <p className="text-p-white cursor-default underline">{year}</p>
+          )}
+          {director && (
+            <>
+              <p className="text-sh-grey">Directed by</p>
+              <p className="text-p-white cursor-default underline">
+                {director}
+              </p>
+            </>
+          )}
         </div>
       </div>
       <div className="flex flex-col">

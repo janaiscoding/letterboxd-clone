@@ -16,11 +16,20 @@ export const MovieCast = ({ actors }) => {
   useEffect(() => {
     getCast();
   }, [actors]);
+
   return (
     <>
       <div className="flex cursor-default flex-col gap-2">
-        <p className="border-b-grey text-p-white border-b border-solid">CAST</p>
+        <p className="border-b-grey text-sh-grey border-b border-solid pb-2 text-sm">
+          CAST
+        </p>
         <div className="flex flex-wrap gap-1">
+          {!cast.length && (
+            <p className="text-sh-grey max-w-full rounded p-1 text-center text-sm">
+              The cast for this movie remains a mystery...
+            </p>
+          )}
+
           {cast &&
             cast.map((actor, index) => (
               <p

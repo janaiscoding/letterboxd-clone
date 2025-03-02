@@ -10,7 +10,7 @@ export const LayoutNavbar = ({ newUserName }: { newUserName?: string }) => {
 
   //this handles the login/logout styles and displays in the navbar
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [isTransparentNav, setIsTransparentNav] = useState(false);
+  const [isTransparentNav, setIsTransparentNav] = useState(true);
 
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
