@@ -156,7 +156,7 @@ export const MovieReviews = ({ movie }) => {
         fetchReviewsByMovie();
       })
       .catch((err) => {
-        console.log(err);
+        console.error(err);
         createReviewPopup(PopupAction.ERROR);
       });
 

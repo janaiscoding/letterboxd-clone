@@ -23,8 +23,6 @@ export const MovieReviewExtended = ({
       });
   };
 
-  const onDelete = () => {};
-
   useEffect(() => {
     fetchRequestFromAPI();
   }, [review]);

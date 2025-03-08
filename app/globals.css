@@ -224,3 +224,71 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
 }
+
+.skeleton-loader__bone {
+  align-items: center;
+  /* border-radius: inherit; */
+  display: flex;
+  flex: 1 1 100%;
+  flex-wrap: wrap;
+  overflow: hidden;
+  position: relative;
+}
+
+.skeleton-loader__bone::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.skeleton-loader__bone::after {
+  animation: loading 1.5s infinite;
+  background: linear-gradient(
+    90deg,
+    rgba(11, 16, 20, 0),
+    rgba(11, 16, 20, 0.3),
+    rgba(11, 16, 20, 0)
+  );
+  transform: translate(-100%);
+  z-index: 1;
+}
+
+.skeleton-loader__image {
+  background: rgba(11, 16, 20, 0.12);
+}
+
+@keyframes loading {
+  to {
+    transform: translate(100%);
+  }
+}
+
+.loading-dots {
+  width: 60px;
+  aspect-ratio: 4;
+  --_g: no-repeat radial-gradient(circle closest-side, #fff 90%, #0000);
+  background: var(--_g) 0% 50%, var(--_g) 50% 50%, var(--_g) 100% 50%;
+  background-size: calc(100% / 3) 100%;
+  animation: l7 1s infinite linear;
+}
+@keyframes l7 {
+  33% {
+    background-size: calc(100% / 3) 0%, calc(100% / 3) 100%, calc(100% / 3) 100%;
+  }
+  50% {
+    background-size: calc(100% / 3) 100%, calc(100% / 3) 0%, calc(100% / 3) 100%;
+  }
+  66% {
+    background-size: calc(100% / 3) 100%, calc(100% / 3) 100%, calc(100% / 3) 0%;
+  }
+}
+
+.loading-dots__wrapper {
+  margin: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
