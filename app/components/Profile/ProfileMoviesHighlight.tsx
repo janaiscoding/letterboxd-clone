@@ -40,7 +40,7 @@ export const ProfileMoviesHighlight = ({
         <p>{type.toUpperCase()} FILMS</p>
         <p> SEE ALL</p>
       </div>
-      <div className="mb-5 flex flex-wrap gap-1 md:flex-row md:flex-nowrap">
+      <div className="mb-5 flex flex-wrap gap-1 md:flex-row">
         {movieIds.length === 0 && (
           <p className="text-sh-grey pt-2 text-base">
             This user has no {type} movies yet.

@@ -157,23 +157,36 @@ export default function Page() {
                   className="border-sh-grey/10 bg-review-bg/30 my-2 flex w-full justify-between gap-4 rounded-md border border-solid p-2"
                   key={i}
                 >
-                  <MovieReviewCompact review={review} key={i} />
+                  <MovieReviewCompact
+                    review={review}
+                    key={i}
+                    movieTitle={movieMap[review.movieID]}
+                  />
+
                   {movieMap[review.movieID] && (
-                    <Link href={"/movie/" + review.movieID}>
-                      <Image
-                        className="block max-h-[120px] max-w-[80px] rounded border"
-                        src={
-                          "https://image.tmdb.org/t/p/w500/" +
-                          movieMap[review.movieID]?.poster_path
-                        }
-                        alt={
-                          "Movie title for" + movieMap[review.movieID]?.title
-                        }
-                        height={300}
-                        width={300}
-                        loading="lazy"
-                      />
-                    </Link>
+                    <div className="flex flex-col items-end justify-end">
+                      <Link
+                        href={"/movie/" + review.movieID}
+                        className="text-sh-grey hover:text-hov-blue pb-2"
+                      >
+                        {movieMap[review.movieID].title}
+                      </Link>
+                      <Link href={"/movie/" + review.movieID}>
+                        <Image
+                          className="block max-h-[120px] max-w-[80px] rounded border"
+                          src={
+                            "https://image.tmdb.org/t/p/w500/" +
+                            movieMap[review.movieID]?.poster_path
+                          }
+                          alt={
+                            "Movie title for" + movieMap[review.movieID]?.title
+                          }
+                          height={300}
+                          width={300}
+                          loading="lazy"
+                        />
+                      </Link>
+                    </div>
                   )}
                 </div>
               ))}
