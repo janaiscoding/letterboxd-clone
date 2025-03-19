@@ -157,11 +157,7 @@ export default function Page() {
                   className="border-sh-grey/10 bg-review-bg/30 my-2 flex w-full justify-between gap-4 rounded-md border border-solid p-2"
                   key={i}
                 >
-                  <MovieReviewCompact
-                    review={review}
-                    key={i}
-                    movieTitle={movieMap[review.movieID]}
-                  />
+                  <MovieReviewCompact review={review} key={i} />
 
                   {movieMap[review.movieID] && (
                     <div className="flex flex-col items-end justify-end">

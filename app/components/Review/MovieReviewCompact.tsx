@@ -7,11 +7,9 @@ import { Review } from "app/types";
 
 export const MovieReviewCompact = ({
   review,
-  movieTitle,
   handleDelete,
 }: {
   review: Review;
-  movieTitle: string;
   handleDelete?: (review: Review) => Promise<void>;
 }) => {
   const [avatar, setAvatar] = useState("");
