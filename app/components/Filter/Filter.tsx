@@ -5,17 +5,19 @@ import arrowDown from "@/assets/arrowdownprofile.png";
 export const Filter = ({
   title,
   values,
+  currentValues,
   onSelect,
 }: {
   title: string;
   values: string[];
-  onSelect: (value: string) => void;
+  currentValues: string[];
+  onSelect: (value: string, title: string) => void;
 }) => {
   const [showDropdown, setShowDropdown] = useState(false);
 
   const handleSelect = (value: string) => {
     setShowDropdown(false);
-    onSelect(value);
+    onSelect(value, title);
   };
 
   return (
@@ -42,12 +44,15 @@ export const Filter = ({
 
         {showDropdown && (
           <ul className="bg-drop-grey absolute z-[9999] mt-5 rounded">
-            {values.map((value, i) => {
+            {values.map((value) => {
+              const fl = currentValues.includes(value);
               return (
                 <li
-                  className="sans-serif hover:bg-dd-blue hover:text-p-white z-[9999] block px-4 py-1 text-xs tracking-normal"
+                  className={`sans-serif z-[9999] block px-4 py-1 text-xs tracking-normal
+                  ${fl?"bg-dd-blue text-p-white":"hover:bg-dd-blue hover:text-p-white"
+                  }`}
                   onClick={() => handleSelect(value)}
-                  key={i}
+                  key={`${title}-${value}`}
                 >
                   {value}
                 </li>
