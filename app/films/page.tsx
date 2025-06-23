@@ -14,7 +14,7 @@ import { useSearchParams } from "next/navigation";
 export default function Page() {
   const searchParams = useSearchParams();
   const router = useRouter();
-  
+
   const [activeFilters, setActiveFilters] = useState<{ [key: string]: string }>({});
 
   const [isLoading, setIsLoading] = useState(true);
@@ -134,8 +134,8 @@ export default function Page() {
       <LayoutNavbar />
       <div className="site-body min-h-[80vh] py-5">
         <div className="px-4 font-['Graphik'] md:mx-auto md:my-0 md:flex md:w-[950px] md:flex-col">
-          <div className="mb-10 md:flex md:flex-row">
-            <p className="sans-serif text-sh-grey block self-center px-4 text-xs uppercase tracking-normal md:px-0">
+          <div className="md:flex md:flex-row">
+            <p className="sans-serif block self-center px-4 text-xs uppercase tracking-normal text-sh-grey md:px-0">
               Browse by:
             </p>
             <div className="grid grid-cols-2 md:flex md:flex-row">
@@ -151,35 +151,36 @@ export default function Page() {
             </div>
           </div>
 
-          {Object.keys(activeFilters).length > 0 && (
-            <div className="mb-6">
-              <button
-                onClick={() => router.push("/films")}className="text-sm text-blue-600 hover:text-blue-800 underline"
-              >Clear all filters
-              </button>
-            </div>
-          )}
-
-          {Object.keys(activeFilters).length > 0 && (
-            <div className="mb-6">
-              <p className="text-sm text-gray-600 mb-2">Active filters:</p>
-              <div className="flex flex-wrap gap-2">
-                {Object.entries(activeFilters).map(([key, value]) => (
-                  <span
-                    key={key}
-                    className="inline-flex items-center px-3 py-1 rounded-full text-xs bg-blue-100 text-blue-800"
-                  >
-                    {key}: {value}
-                    <button onClick={() => onSelect(value, key)} className="ml-2 text-blue-600 hover:text-blue-800">
-                      ×
-                    </button>
-                  </span>
-                ))}
+          <div className="mb-10 flex items-center justify-between gap-2">
+            {Object.keys(activeFilters).length > 0 && (
+              <div className="flex items-center gap-2 text-sh-grey">
+                <p className="text-gray-600">Active filters:</p>
+                <div className="flex gap-2">
+                  {Object.entries(activeFilters).map(([key, value]) => (
+                    <span key={key} className="bg-blue-100 text-blue-800 inline-flex items-center rounded-full text-sm">
+                      {key}: {value}
+                      <button onClick={() => onSelect(value, key)} className="text-blue-600 hover:text-blue-800 ml-2">
+                        ×
+                      </button>
+                    </span>
+                  ))}
+                </div>
               </div>
-            </div>
-          )}
-          
-          {isLoading && <p className="text-sh-grey text-base">Loading..</p>}
+            )}
+
+            {Object.keys(activeFilters).length > 0 && (
+              <div>
+                <button
+                  onClick={() => router.push("/films")}
+                  className="hover:text-blue-800 text-sh-grey hover:underline"
+                >
+                  Clear all filters
+                </button>
+              </div>
+            )}
+          </div>
+
+          {isLoading && <p className="text-base text-sh-grey">Loading..</p>}
           {!isLoading && popularMovies && <PopularMovies movies={popularMovies} />}
           {!isLoading && filterResults && (
             <FilterResults
