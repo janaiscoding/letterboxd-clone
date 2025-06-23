@@ -151,14 +151,14 @@ export default function Page() {
             </div>
           </div>
 
-          <div className="mb-10 flex items-center justify-between gap-2">
+          <div className="mb-10 flex items-start justify-between gap-2">
             {Object.keys(activeFilters).length > 0 && (
-              <div className="flex items-center gap-2 text-sh-grey">
-                <p className="text-gray-600">Active filters:</p>
+              <div className="flex flex-col gap-2 text-sh-grey">
+                <p className="text-gray-600">Active filters</p>
                 <div className="flex gap-2">
                   {Object.entries(activeFilters).map(([key, value]) => (
-                    <span key={key} className="bg-blue-100 text-blue-800 inline-flex items-center rounded-full text-sm">
-                      {key}: {value}
+                    <span key={key} className="bg-blue-100 text-blue-800 inline-flex items-center rounded-full">
+                      {key.substring(0, 1).toUpperCase() + key.substring(1)} : {value}
                       <button onClick={() => onSelect(value, key)} className="text-blue-600 hover:text-blue-800 ml-2">
                         ×
                       </button>
@@ -182,13 +182,7 @@ export default function Page() {
 
           {isLoading && <p className="text-base text-sh-grey">Loading..</p>}
           {!isLoading && popularMovies && <PopularMovies movies={popularMovies} />}
-          {!isLoading && filterResults && (
-            <FilterResults
-              filter={Object.keys(activeFilters).join(", ")}
-              filterValue={Object.values(activeFilters).join(", ")}
-              movies={filterResults}
-            />
-          )}
+          {!isLoading && filterResults && <FilterResults movies={filterResults} />}
         </div>
       </div>
       <Footer />
