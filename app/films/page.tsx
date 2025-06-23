@@ -155,7 +155,7 @@ export default function Page() {
             {Object.keys(activeFilters).length > 0 && (
               <div className="flex flex-col gap-2 text-sh-grey">
                 <p className="text-gray-600">Active filters</p>
-                <div className="flex gap-2">
+                <div className="flex flex-col gap-2">
                   {Object.entries(activeFilters).map(([key, value]) => (
                     <span key={key} className="bg-blue-100 text-blue-800 inline-flex items-center rounded-full">
                       {key.substring(0, 1).toUpperCase() + key.substring(1)} : {value}

@@ -29,9 +29,7 @@ export default function Page({ searchParams }: { searchParams: any }) {
     const data = await res.json();
 
     // skip those that don't have an image
-    const validMovieResults = data.results.filter(
-      (movie) => movie.poster_path !== null
-    );
+    const validMovieResults = data.results.filter((movie) => movie.poster_path !== null);
 
     setMovies(validMovieResults);
 
@@ -59,15 +57,9 @@ export default function Page({ searchParams }: { searchParams: any }) {
       <LayoutNavbar />
       <div className="site-body min-h-[80vh] py-5">
         <div className="px-4 font-['Graphik'] md:mx-auto md:my-0 md:flex md:w-[950px] md:flex-col">
-          {isLoading && <p className="text-sh-grey text-base">Loading..</p>}
+          {isLoading && <p className="text-base text-sh-grey">Loading..</p>}
 
-          {movies && (
-            <FilterResults
-              filter={""}
-              filterValue={searchTerm}
-              movies={movies}
-            />
-          )}
+          {movies && <FilterResults movies={movies} />}
         </div>
 
         <Footer />
