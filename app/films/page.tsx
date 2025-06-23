@@ -32,18 +32,10 @@ export default function Page() {
   const onSelect = (value: string, title: string) => {
     let updated = { ...activeFilters };
 
-    if (title === "popularity") {
-      if (updated[title] === value) {
-        updated = {};
-      } else {
-        updated = { [title]: value };
-      }
+    if (updated[title] === value) {
+      delete updated[title];
     } else {
-      if (updated[title] === value) {
-        delete updated[title];
-      } else {
-        updated[title] = value;
-      }
+      updated[title] = value;
     }
 
     const queryString = new URLSearchParams(updated).toString();
@@ -91,27 +83,8 @@ export default function Page() {
         url += `&primary_release_date.gte=${startYear}-01-01&primary_release_date.lte=${endYear}-12-31`;
       }
 
-      if (activeFilters.popularity) {
-        const now = new Date();
-        const year = now.getFullYear();
-        const month = String(now.getMonth() + 1).padStart(2, "0");
-        const day = String(now.getDate()).padStart(2, "0");
-
-        if (activeFilters.popularity === "this year") {
-          url += `&year=${year}&sort_by=popularity.desc`;
-        } else if (activeFilters.popularity === "this month") {
-          const lastDayOfMonth = new Date(year, now.getMonth() + 1, 0).getDate();
-          url += `&primary_release_date.gte=${year}-${month}-01&primary_release_date.lte=${year}-${month}-${lastDayOfMonth}&sort_by=popularity.desc`;
-        } else if (activeFilters.popularity === "this week") {
-          const weekAgo = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000);
-          const weekAgoYear = weekAgo.getFullYear();
-          const weekAgoMonth = String(weekAgo.getMonth() + 1).padStart(2, "0");
-          const weekAgoDay = String(weekAgo.getDate()).padStart(2, "0");
-          url += `&primary_release_date.gte=${weekAgoYear}-${weekAgoMonth}-${weekAgoDay}&primary_release_date.lte=${year}-${month}-${day}&sort_by=popularity.desc`;
-        }
-      }
-
       setIsLoading(true);
+      console.log("final url", url);
       try {
         const res = await fetch(url);
         const data = await res.json();

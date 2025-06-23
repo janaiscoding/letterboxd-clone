@@ -21,10 +21,6 @@ const filterOptions = [
     values: ["Highest First", "Lowest First"],
   },
   {
-    title: "popularity",
-    values: ["this year", "this month", "this week"],
-  },
-  {
     title: "genres",
     values: [
       "Action",
