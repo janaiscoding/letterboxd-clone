@@ -23,8 +23,9 @@ export const FilterResults = ({ movies }: { movies: any[] }) => {
                 <Link href={"/movie/" + movie.id} className="text-xl font-bold text-p-white">
                   {movie.title}
                 </Link>
-                <div className="flex">
-                  <p className="text-normal text-sh-grey">{movie.overview}</p>
+                <div className="flex flex-col gap-2 text-sh-grey">
+                  <p className="text-sm">Rating: {movie.vote_average.toFixed(2)}</p>
+                  <p className="text-normal">{movie.overview}</p>
                 </div>
               </div>
             </div>
