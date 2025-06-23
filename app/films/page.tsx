@@ -9,191 +9,125 @@ import { FilterResults } from "app/components/Filter/FilterResults";
 import { useRouter } from "next/navigation";
 import { Footer } from "app/components/Navigation/Footer";
 
-export default function Page({ searchParams }: { searchParams: any }) {
-  const query = use(searchParams);
+import { useSearchParams } from "next/navigation";
+
+export default function Page() {
+  const searchParams = useSearchParams();
   const router = useRouter();
+  
+  const [activeFilters, setActiveFilters] = useState<{ [key: string]: string }>({});
 
   const [isLoading, setIsLoading] = useState(true);
-  const [movies, setMovies] = useState<any[] | null>();
+  const [filterResults, setFilterResults] = useState<any[] | null>(null);
+  const [popularMovies, setPopularMovies] = useState<any[] | null>(null);
 
-  const [filter, setFilter] = useState("");
-  const [filterValue, setFilterValue] = useState("");
-  const [filterResults, setFilteredResults] = useState();
-
-  const fetchPopularMovies = async () => {
-    setIsLoading(true);
-
-    const res = await fetch(
-      `https://api.themoviedb.org/3/movie/popular?api_key=${process.env.NEXT_PUBLIC_TMDB_API_KEY}`
-    );
-
-    if (!res.ok) {
-      console.error("error fetching popular movies");
-      return;
+  useEffect(() => {
+    const initialFilters: { [key: string]: string } = {};
+    for (const [key, value] of searchParams.entries()) {
+      initialFilters[key] = value;
     }
+    setActiveFilters(initialFilters);
+  }, [searchParams]);
 
-    const data = await res.json();
+  const onSelect = (value: string, title: string) => {
+    let updated = { ...activeFilters };
 
-    setMovies(data.results);
-    setIsLoading(false);
-  };
-
-  const onSelect = (filter: string, value: string) => {
-    router.push(`/films?${filter}=${value}`);
-  };
-
-  const fetchByFilterType = () => {
-    if (filter === "genres") {
-      fetchByGenre();
-    } else if (filter === "years") {
-      fetchByYear();
-    } else if (filter === "ratings") {
-      fetchByRating();
-    } else if (filter === "popularity") {
-      fetchByPopularity();
+    if (title === "popularity") {
+      if (updated[title] === value) {
+        updated = {};
+      } else {
+        updated = { [title]: value };
+      }
     } else {
-      // No available filter provided
-      setFilter("");
-      setFilterValue("");
-      fetchPopularMovies();
+      if (updated[title] === value) {
+        delete updated[title];
+      } else {
+        updated[title] = value;
+      }
     }
+
+    const queryString = new URLSearchParams(updated).toString();
+    const newUrl = queryString ? `/films?${queryString}` : "/films";
+    router.push(newUrl);
   };
 
-  const fetchByGenre = () => {
-    setIsLoading(true);
-    fetch(
-      `https://api.themoviedb.org/3/genre/movie/list?api_key=${process.env.NEXT_PUBLIC_TMDB_API_KEY}` +
-        "&language=en-US"
-    )
-      .then((response) => response.json())
-      .then((data) => {
-        let genreObj = data.genres.find(({ name }) => name === filterValue);
-
-        fetch(
-          `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.NEXT_PUBLIC_TMDB_API_KEY}` +
-            "&language=en-US&sort_by=release_date.desc&page=1&with_genres=" +
-            genreObj?.id +
-            "&vote_count.gte=50"
-        )
-          .then((response) => response.json())
-          .then((data) => {
-            const validMovieResults = data.results.filter(
-              (movie) => movie.poster_path !== null
-            );
-
-            setFilteredResults(validMovieResults);
-            setIsLoading(false);
-          })
-          .catch((err) => {
-            console.error("Error fetching movies by genre:", err);
-            setIsLoading(false);
-          });
-      });
-  };
-
-  const fetchByYear = () => {
-    const startYearStr = filterValue.substring(0, filterValue.length - 1); // remove the "s" in the end, i.e. '1950s' = 1950
-    let startYear = Number(startYearStr);
-    let endYear = startYear + 10;
-
-    let url =
-      `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.NEXT_PUBLIC_TMDB_API_KEY}` +
-      "&language=en-US&primary_release_date.gte=" +
-      startYear +
-      "-01-01&primary_release_date.lte=" +
-      endYear +
-      "-12-31&vote_count.gte=500";
-
-    fetchAndSetResults(url);
-  };
-
-  const fetchByRating = () => {
-    let url =
-      `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.NEXT_PUBLIC_TMDB_API_KEY}` +
-      "&language=en-US&sort_by=popularity." +
-      (filterValue === "Highest First" ? "desc" : "asc");
-
-    fetchAndSetResults(url);
-  };
-
-  const fetchByPopularity = () => {
-    const newDate = new Date();
-    const thisYear = newDate.getFullYear();
-
-    const thisMonth =
-      newDate.getMonth() < 10
-        ? `0${newDate.getMonth()}`
-        : newDate.getMonth().toString();
-    const thisDay =
-      newDate.getDay() < 10 ? `0${newDate.getDay()}` : newDate.getDay();
-
-    if (filterValue === "this year") {
-      let url =
-        `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.NEXT_PUBLIC_TMDB_API_KEY}` +
-        "&language=en-US&year=" +
-        thisYear;
-      fetchAndSetResults(url);
-    } else if (filterValue === "this month") {
-      let url =
-        `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.NEXT_PUBLIC_TMDB_API_KEY}` +
-        "&language=en-US&primary_release_date.gte=" +
-        thisYear +
-        "-" +
-        thisMonth +
-        "-01";
-
-      fetchAndSetResults(url);
-    } else if (filterValue === "this week") {
-      let url =
-        `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.NEXT_PUBLIC_TMDB_API_KEY}` +
-        "&language=en-US&primary_release_date.gte=" +
-        thisYear +
-        "-" +
-        thisMonth +
-        "-" +
-        thisDay;
-
-      fetchAndSetResults(url);
-    }
-  };
-
-  const fetchAndSetResults = (url: string) => {
-    setIsLoading(true);
-
-    fetch(url)
-      .then((response) => response.json())
-      .then((data) => {
-        const validMovieResults = data.results.filter(
-          (movie) => movie.poster_path !== null
+  useEffect(() => {
+    const fetchData = async () => {
+      if (Object.keys(activeFilters).length === 0) {
+        const res = await fetch(
+          `https://api.themoviedb.org/3/movie/popular?api_key=${process.env.NEXT_PUBLIC_TMDB_API_KEY}`
         );
-
-        setFilteredResults(validMovieResults);
+        const data = await res.json();
+        setPopularMovies(data.results);
+        setFilterResults(null);
         setIsLoading(false);
-      })
-      .catch((err) => {
-        console.error("Error fetching movies:", err);
-        setIsLoading(false);
-      });
-  };
+        return;
+      }
 
-  useEffect(() => {
-    //@ts-ignore
-    for (const [key, value] of Object.entries(query)) {
-      setFilter(key);
-      setFilterValue(value as string);
-    }
+      let url = `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.NEXT_PUBLIC_TMDB_API_KEY}&language=en-US&vote_count.gte=100`;
 
-    //@ts-ignore
-    if (!Object.keys(query).length) {
-      fetchPopularMovies();
-    }
-  }, [query]);
+      if (activeFilters.genres) {
+        const genreRes = await fetch(
+          `https://api.themoviedb.org/3/genre/movie/list?api_key=${process.env.NEXT_PUBLIC_TMDB_API_KEY}&language=en-US`
+        );
+        const genreData = await genreRes.json();
+        const genreId = genreData.genres.find((gen: any) => gen.name === activeFilters.genres)?.id;
+        if (genreId) {
+          url += `&with_genres=${genreId}`;
+        }
+      }
 
-  useEffect(() => {
-    if (filter && filterValue) {
-      fetchByFilterType();
-    }
-  }, [filter, filterValue]);
+      if (activeFilters.ratings) {
+        if (activeFilters.ratings === "Highest First") {
+          url += `&sort_by=vote_average.desc`;
+        } else if (activeFilters.ratings === "Lowest First") {
+          url += `&sort_by=vote_average.asc`;
+        }
+      }
+
+      if (activeFilters.years) {
+        const startYear = parseInt(activeFilters.years.slice(0, -1));
+        const endYear = startYear + 9;
+        url += `&primary_release_date.gte=${startYear}-01-01&primary_release_date.lte=${endYear}-12-31`;
+      }
+
+      if (activeFilters.popularity) {
+        const now = new Date();
+        const year = now.getFullYear();
+        const month = String(now.getMonth() + 1).padStart(2, "0");
+        const day = String(now.getDate()).padStart(2, "0");
+
+        if (activeFilters.popularity === "this year") {
+          url += `&year=${year}&sort_by=popularity.desc`;
+        } else if (activeFilters.popularity === "this month") {
+          const lastDayOfMonth = new Date(year, now.getMonth() + 1, 0).getDate();
+          url += `&primary_release_date.gte=${year}-${month}-01&primary_release_date.lte=${year}-${month}-${lastDayOfMonth}&sort_by=popularity.desc`;
+        } else if (activeFilters.popularity === "this week") {
+          const weekAgo = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000);
+          const weekAgoYear = weekAgo.getFullYear();
+          const weekAgoMonth = String(weekAgo.getMonth() + 1).padStart(2, "0");
+          const weekAgoDay = String(weekAgo.getDate()).padStart(2, "0");
+          url += `&primary_release_date.gte=${weekAgoYear}-${weekAgoMonth}-${weekAgoDay}&primary_release_date.lte=${year}-${month}-${day}&sort_by=popularity.desc`;
+        }
+      }
+
+      setIsLoading(true);
+      try {
+        const res = await fetch(url);
+        const data = await res.json();
+        const filtered = data.results?.filter((m: any) => m.poster_path !== null) || [];
+        setFilterResults(filtered);
+        setPopularMovies(null);
+      } catch (error) {
+        console.error("Error fetching movies:", error);
+        setFilterResults([]);
+        setPopularMovies(null);
+      }
+      setIsLoading(false);
+    };
+
+    fetchData();
+  }, [activeFilters]);
 
   return (
     <>
@@ -205,32 +139,57 @@ export default function Page({ searchParams }: { searchParams: any }) {
               Browse by:
             </p>
             <div className="grid grid-cols-2 md:flex md:flex-row">
-              {filterOptions.map((option, index) => (
+              {filterOptions.map((option) => (
                 <Filter
+                  key={option.title}
                   title={option.title}
                   values={option.values}
-                  key={index}
-                  onSelect={(value) => onSelect(option.title, value)}
+                  currentValues={activeFilters[option.title] ? [activeFilters[option.title]] : []}
+                  onSelect={onSelect}
                 />
               ))}
             </div>
           </div>
 
-          {isLoading && <p className="text-sh-grey text-base">Loading..</p>}
-          {!isLoading && movies && !filterResults && (
-            <PopularMovies movies={movies} />
+          {Object.keys(activeFilters).length > 0 && (
+            <div className="mb-6">
+              <button
+                onClick={() => router.push("/films")}className="text-sm text-blue-600 hover:text-blue-800 underline"
+              >Clear all filters
+              </button>
+            </div>
           )}
 
-          {filterResults && (
+          {Object.keys(activeFilters).length > 0 && (
+            <div className="mb-6">
+              <p className="text-sm text-gray-600 mb-2">Active filters:</p>
+              <div className="flex flex-wrap gap-2">
+                {Object.entries(activeFilters).map(([key, value]) => (
+                  <span
+                    key={key}
+                    className="inline-flex items-center px-3 py-1 rounded-full text-xs bg-blue-100 text-blue-800"
+                  >
+                    {key}: {value}
+                    <button onClick={() => onSelect(value, key)} className="ml-2 text-blue-600 hover:text-blue-800">
+                      ×
+                    </button>
+                  </span>
+                ))}
+              </div>
+            </div>
+          )}
+          
+          {isLoading && <p className="text-sh-grey text-base">Loading..</p>}
+          {!isLoading && popularMovies && <PopularMovies movies={popularMovies} />}
+          {!isLoading && filterResults && (
             <FilterResults
-              filter={filter}
-              filterValue={filterValue}
+              filter={Object.keys(activeFilters).join(", ")}
+              filterValue={Object.values(activeFilters).join(", ")}
               movies={filterResults}
             />
           )}
         </div>
       </div>
-
       <Footer />
     </>
   );
